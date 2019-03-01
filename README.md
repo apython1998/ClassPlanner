@@ -1,5 +1,5 @@
 # Class Planner
-### Created by Joe Cleveland, Dan McCaffrey, Alex Python, and Dylan Shane
+## Created by Joe Cleveland, Dan McCaffrey, Alex Python, and Dylan Shane
 
 #### Description:
 Class Planner is intended to expand on functionality offered by Degree Works. 
@@ -9,6 +9,19 @@ The software then uses this information to determine what classes are needed for
 The software also allows students to compare their schedules with a friend’s, given permission, allowing them to easily see if they will be or can be in any classes together. 
 Finally the software allows teachers to login using their Ithaca College Email and allows them to see the expected future interest in classes they teach.
 
-#### Link for Client Narratives: 
+#### Use Case Diagram:
+![Use Case Diagram](diagrams/useCaseDiagram.jpg)
 
+#### Link for Client Narratives: 
 https://docs.google.com/document/d/1SFKT3TnqM1oDATUORLqnYdA5S14drWhr_GxGILWN4oM/edit?usp=sharing
+
+#### Use Cases/Narratives to Develop First
+1. 
+1. 
+1. 
+
+#### Class Diagram:
+![Class Diagram](diagrams/classDiagram.jpg)
+
+#### Class Diagram:
+![Sequence Diagram](diagrams/sequenceDiagram1.jpg)
