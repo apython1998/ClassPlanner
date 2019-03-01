@@ -16,9 +16,8 @@ Finally the software allows teachers to login using their Ithaca College Email a
 https://docs.google.com/document/d/1SFKT3TnqM1oDATUORLqnYdA5S14drWhr_GxGILWN4oM/edit?usp=sharing
 
 #### Use Cases/Narratives to Develop First
-1. 
-1. 
-1. 
+1. View Current Schedule
+1. Student Upload Transcript
 
 #### Class Diagram:
 ![Class Diagram](diagrams/classDiagram.jpg)
