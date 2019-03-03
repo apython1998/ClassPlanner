@@ -22,5 +22,7 @@ https://docs.google.com/document/d/1SFKT3TnqM1oDATUORLqnYdA5S14drWhr_GxGILWN4oM/
 #### Class Diagram:
 ![Class Diagram](diagrams/classDiagram.jpg)
 
-#### Class Diagram:
-![Sequence Diagram](diagrams/sequenceDiagram1.jpg)
+#### Sequence Diagram:
+![Sequence Diagram](diagrams/viewGraduationPathsSequenceDiagram.jpg)
+This sequence diagram is for the Student's view graduation paths use case.
+The student logs in, tries to view graduation paths, and is then printed a report of all the classes they can take to graduate.
