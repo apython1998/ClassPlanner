@@ -24,5 +24,6 @@ https://drive.google.com/file/d/13ZaL421P3cTURQgeACvPvqre03yMlLVa/view?usp=shari
 
 #### Sequence Diagram:
 ![Sequence Diagram](diagrams/viewGraduationPathsSequenceDiagram.jpg)
+
 This sequence diagram is for the Student's view graduation paths use case.
 The student logs in, tries to view graduation paths, and is then printed a report of all the classes they can take to graduate.
