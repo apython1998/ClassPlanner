@@ -19,8 +19,8 @@ https://docs.google.com/document/d/1SFKT3TnqM1oDATUORLqnYdA5S14drWhr_GxGILWN4oM/
 1. View Current Schedule
 1. Student Upload Transcript
 
-#### Class Diagram:
-![Class Diagram](diagrams/classDiagram.jpg)
+#### Link to Class Diagram:
+https://drive.google.com/file/d/13ZaL421P3cTURQgeACvPvqre03yMlLVa/view?usp=sharing
 
 #### Sequence Diagram:
 ![Sequence Diagram](diagrams/viewGraduationPathsSequenceDiagram.jpg)
