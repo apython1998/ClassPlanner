@@ -27,3 +27,9 @@ https://drive.google.com/file/d/13ZaL421P3cTURQgeACvPvqre03yMlLVa/view?usp=shari
 
 This sequence diagram is for the Student's view graduation paths use case.
 The student logs in, tries to view graduation paths, and is then printed a report of all the classes they can take to graduate.
+
+#### Constructive Collaboration:
+In order to productively work on ClassPlanner at the same time, we will be breaking up into two smaller groups. For at least the first sprint, the entire group will be working on the student side of ClassPlanner and will lead to the following break up of work:
+* 2 people will work on Transcript, Major, and Minor - These will provide the course functionality of the system
+* 2 people will work on the Student, StudentAPI, StudentUI (& CombinedUI to get into StudentUI) - This will provide the student functionality for the system.
+This is an effective break down of the system because the pairs will each have multiple classes to work on separately. This should limit the direct dependencies between members of the entire group.
