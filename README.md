@@ -35,4 +35,4 @@ In order to productively work on ClassPlanner at the same time, we will be break
 This is an effective break down of the system because the pairs will each have multiple classes to work on separately. This should limit the direct dependencies between members of the entire group.
 
 #### Sprint 1:
-Sprint Goal: Allow to students to upload their transcript and view their graduation requirements (on the way to getting semester schedules).
+Sprint Goal: Allow students to upload their transcript and view their graduation requirements (on the way to getting semester schedules).
