@@ -18,7 +18,7 @@ public class User {
             throw new InvalidArgumentException("Cannot use empty strings to create account");
         } else {
             this.username = username;
-            this.passwordHash = password;
+            this.passwordHash = secureHash(password);
         }
     }
 
