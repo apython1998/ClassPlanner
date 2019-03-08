@@ -44,7 +44,12 @@ public class User {
      * @return true if the passwordToCheck matches passwordHash
      */
     public static boolean authenticate(String passwordToCheck, String passwordHash) {
-        return false;
+        if (passwordHash == null || passwordHash.equals("") || passwordToCheck == null || passwordToCheck.equals("")) {
+            throw new InvalidArgumentException("Cannot authenticate invalid strings");
+        } else {
+            boolean matched = BCrypt.checkpw(passwordToCheck, passwordHash);
+            return matched;
+        }
     }
 
     /**************************** GETTERS AND SETTERS     ****************************/
