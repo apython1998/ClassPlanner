@@ -1,5 +1,7 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
+import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
+
 public class User {
 
     private String username;
@@ -9,26 +11,28 @@ public class User {
     }
 
     public User(String username, String password) {
-        if (username != null && password != null) {
-            this.username = username;
-            this.passwordHash = secureHash(password);
-        } else {
+        if (username == null || password == null) {
             throw new NullPointerException("Null arguments invalid");
+        } else if (username.trim().equals("") || password.trim().equals("")) {
+            throw new InvalidArgumentException("Cannot use empty strings to create account");
+        } else {
+            this.username = username;
+            this.passwordHash = password;
         }
     }
 
     /**
      * Generates a salted password hash for secure password storage
-     * USES PBKDF2
+     * USES Java Bcrypt algorithm
      * @param password plaintext password to be hashed
      * @return null if password is null, hashed password otherwise
      */
-    private static String secureHash(String password) {
+    protected static String secureHash(String password) {
         return null;
     }
 
 
-    private static boolean authenticate(String password) {
+    protected static boolean authenticate(String password) {
         return false;
     }
 
