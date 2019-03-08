@@ -9,8 +9,12 @@ public class User {
     }
 
     public User(String username, String password) {
-        this.username = username;
-        this.password = password;
+        if (username != null && password != null) {
+            this.username = username;
+            this.password = password;
+        } else {
+            throw new NullPointerException("Null arguments invalid");
+        }
     }
 
 
