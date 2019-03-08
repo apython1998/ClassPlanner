@@ -9,8 +9,12 @@ class UserTest {
 
     @Test
     void constructorTest() {
-        User user = new User("user1", "password");
+        String password = "password";
+        User user = new User("user1", password);
         assertNotNull(user);
+        // Make sure that the user's password is not kept as plaintext
+        assertNotEquals(password, user.getPasswordHash());
+
         assertThrows(InvalidArgumentException.class, ()-> new User("", "password"));
         assertThrows(InvalidArgumentException.class, ()-> new User("user1", ""));
         assertThrows(NullPointerException.class, ()-> new User(null, "password"));
