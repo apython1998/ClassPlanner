@@ -37,8 +37,13 @@ public class User {
         }
     }
 
-
-    protected static boolean authenticate(String password) {
+    /**
+     * Checks password against a users stored hash
+     * @param passwordToCheck
+     * @param passwordHash
+     * @return true if the passwordToCheck matches passwordHash
+     */
+    public static boolean authenticate(String passwordToCheck, String passwordHash) {
         return false;
     }
 
