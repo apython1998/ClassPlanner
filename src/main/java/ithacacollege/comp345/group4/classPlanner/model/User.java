@@ -1,6 +1,7 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class User {
 
@@ -28,7 +29,12 @@ public class User {
      * @return null if password is null, hashed password otherwise
      */
     protected static String secureHash(String password) {
-        return null;
+        if (password == null || password.equals("")) {
+            throw new InvalidArgumentException("Cannot hash invalid string");
+        } else {
+            String salt = BCrypt.gensalt();
+            return BCrypt.hashpw(password, salt);
+        }
     }
 
 
