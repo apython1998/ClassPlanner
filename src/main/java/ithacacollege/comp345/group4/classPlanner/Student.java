@@ -47,29 +47,52 @@ public class Student {
         this.minors.add(minor);
     }
 
+    /**
+     * Removes a minor from the Student
+     * @param minor - minor intended to be removed
+     * @return - boolean if the removal was successful (false if the minor wasn't there)
+     */
     public boolean removeMinor(Major minor){
         return minors.remove(minor);
     }
 
+    /**
+     * Adds the courses a Student has already taken
+     * @param courses - list of courses the student has already taken
+     */
     public void addCoursesTaken(List<Course> courses){
         for (Course c: courses) {
-            this.coursesTaken.add(c);
+            if (!coursesTaken.contains(c)) {
+                this.coursesTaken.add(c);
+            }
         }
     }
 
     public List<Course> getCoursesTaken() { return coursesTaken; }
 
+    /**
+     * Adds the courses a Student plans on taking
+     * @param courses - list of courses the student intends on taking
+     */
     public void addCoursesPlanned(List<Course> courses){
         for (Course c: courses) {
-            this.coursesPlanned.add(c);
+            if (!coursesPlanned.contains(c)) {
+                this.coursesPlanned.add(c);
+            }
         }
     }
 
     public List<Course> getCoursesPlanned() { return coursesPlanned; }
 
+    /**
+     * Adds the courses a Student is currently registered for
+     * @param courses - list of current courses the student is registered for
+     */
     public void addCurrentCourses(List<Course> courses){
         for (Course c: courses) {
-            this.currentCourses.add(c);
+            if (!currentCourses.contains(c)) {
+                this.currentCourses.add(c);
+            }
         }
     }
 
