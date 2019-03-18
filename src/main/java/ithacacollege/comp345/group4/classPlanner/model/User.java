@@ -5,12 +5,18 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class User {
 
+    private int id;
     private String username;
     private String passwordHash;
 
     public User() {
     }
 
+    /**
+     * Constructor creates a new user with username and hashed password
+     * @param username
+     * @param password
+     */
     public User(String username, String password) {
         if (username == null || password == null) {
             throw new NullPointerException("Null arguments invalid");
@@ -65,7 +71,15 @@ public class User {
         return passwordHash;
     }
 
-    public void setPassword(String password) {
+    public void setPasswordHash(String password) {
         this.passwordHash = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
