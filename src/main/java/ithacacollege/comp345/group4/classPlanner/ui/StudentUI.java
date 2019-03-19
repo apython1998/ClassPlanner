@@ -19,6 +19,9 @@ public class StudentUI {
         this.scanner = new Scanner(System.in);
     }
 
+    /**
+     * UI function to get registration information
+     */
     public void register() {
         System.out.println("Thank you for taking time to register!");
         String username;
