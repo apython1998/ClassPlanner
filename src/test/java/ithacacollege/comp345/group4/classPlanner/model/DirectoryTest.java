@@ -11,20 +11,20 @@ class DirectoryTest {
         Directory directory = new Directory();
 
         //Add someone to the directory
-        assertEquals(0, directory.getUsers().size());
-        assertTrue(directory.register("asdf", "asdf"));
+        assertEquals(0, directory.getStudents().size());
+        assertTrue(directory.registerStudent("asdf", "asdf"));
         //Check that user is added to user directory
-        assertEquals(1, directory.getUsers().size());
-        assertNotNull(directory.getUsers().get("asdf"));
+        assertEquals(1, directory.getStudents().size());
+        assertNotNull(directory.getStudents().get("asdf"));
 
         //Add someone that already exists in directory
-        assertFalse(directory.register("asdf", "fdsa"));
+        assertFalse(directory.registerStudent("asdf", "fdsa"));
 
         //Bad Input Checks
-        assertThrows(InvalidArgumentException.class, ()-> directory.register(null, "asdf"));
-        assertThrows(InvalidArgumentException.class, ()-> directory.register("asdf", null));
-        assertThrows(InvalidArgumentException.class, ()-> directory.register("", "asdf"));
-        assertThrows(InvalidArgumentException.class, ()-> directory.register("asdf", ""));
-        assertThrows(InvalidArgumentException.class, ()-> directory.register(null, null));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent(null, "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("asdf", null));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("", "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("asdf", ""));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent(null, null));
     }
 }
