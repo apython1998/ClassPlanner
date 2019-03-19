@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Major {
     public String title;
-    private List<Requirement> requirements;
+    public List<Requirement> requirements;
 
     public void addCourse(Course course){
         Requirement r = new SingleCourse(course);
@@ -16,11 +16,11 @@ public class Major {
         requirements.add(r);
     }
 
-    private interface Requirement {
+    public interface Requirement {
         boolean fulfillsRequirment(Course c);
     }
 
-    private class SingleCourse implements Requirement {
+    public class SingleCourse implements Requirement {
         private Course course;
         public SingleCourse(Course c){
             course = c;
@@ -30,7 +30,7 @@ public class Major {
         }
     }
 
-    private class ChooseOne implements Requirement {
+    public class ChooseOne implements Requirement {
         private List<Course> courses;
         public ChooseOne(List<Course> l){
             courses = l;
