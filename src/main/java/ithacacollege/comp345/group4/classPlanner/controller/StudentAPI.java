@@ -20,7 +20,7 @@ public class StudentAPI {
      * @param password
      */
     public boolean register(String username, String password) {
-        return false;
+        return directory.registerStudent(username, password);
     }
 
 
