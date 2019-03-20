@@ -24,8 +24,15 @@ public class StudentTest {
 
         List<Course> emptyList = new ArrayList<>();
 
+        //check equals
         assertEquals(courseList, student.getCoursesTaken());
+
+        //check not equals
         assertNotEquals(emptyList, student.getCoursesTaken());
+
+        //bad input
+        assertThrows(InvalidArgumentException.class, ()-> student.addCoursesTaken(null));
+
     }
 
     @Test
@@ -43,8 +50,14 @@ public class StudentTest {
 
         List<Course> emptyList = new ArrayList<>();
 
+        //check equals
         assertEquals(courseList, student.getCurrentCourses());
+
+        //check not equals
         assertNotEquals(emptyList, student.getCurrentCourses());
+
+        //bad input
+        assertThrows(InvalidArgumentException.class, ()-> student.addCurrentCourses(null));
     }
 
     @Test
@@ -62,8 +75,14 @@ public class StudentTest {
 
         List<Course> emptyList = new ArrayList<>();
 
+        //check equals
         assertEquals(courseList, student.getCoursesPlanned());
+
+        //check not equals
         assertNotEquals(emptyList, student.getCoursesPlanned());
+
+        //bad input
+        assertThrows(InvalidArgumentException.class, ()-> student.addCoursesPlanned(null));
     }
 
 }
