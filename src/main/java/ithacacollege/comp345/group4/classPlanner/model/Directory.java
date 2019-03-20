@@ -3,11 +3,13 @@ package ithacacollege.comp345.group4.classPlanner.model;
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Directory {
 
     private Map<String, User> students;
+    private List<Major> majorDirectory;
 
     public Directory() {
         this.students = new HashMap<>();
@@ -35,6 +37,10 @@ public class Directory {
         }
     }
 
+    public void uploadMajor(String file){
+
+    }
+
     /**
      * Authenticates a student's attempt to login if username and password exist in Student directory
      * @param username String of student's username
@@ -58,8 +64,11 @@ public class Directory {
     public Map<String, User> getStudents() {
         return students;
     }
+    public List<Major> getMajorDirectory() { return majorDirectory; }
 
     public void setStudents(Map<String, User> users) {
         this.students = users;
     }
+
+
 }

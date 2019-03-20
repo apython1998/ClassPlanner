@@ -45,4 +45,23 @@ class DirectoryTest {
         assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent(null, null));
     }
 
+
+
+    @Test
+    public void uploadMajorTest(){
+        Directory d = new Directory();
+        d.uploadMajor("resources/TestMajorReqs.json");
+
+        Major cs = new Major();
+        for(Major m : d.getMajorDirectory()) {
+            if (m.title.equals("Computer Science")) {
+                cs = m;
+            }
+        }
+        assertEquals(cs.title, "Computer Science");
+
+        //Many of these needed but course constr. not yet implemented:
+        assertTrue(cs.requirements.get(0).fulfillsRequirment(new Course()));
+        //TODO add one of these assertions for each course req in the JSON file
+    }
 }
