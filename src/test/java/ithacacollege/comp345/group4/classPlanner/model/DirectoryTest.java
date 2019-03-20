@@ -27,4 +27,22 @@ class DirectoryTest {
         assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("asdf", ""));
         assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent(null, null));
     }
+
+    @Test
+    void login() {
+        Directory directory = new Directory();
+        directory.registerStudent("asdf", "asdf"); //Populate directory with a student
+
+        assertTrue(directory.loginStudent("asdf", "asdf")); // Should login successfully
+        assertFalse(directory.loginStudent("asdf", "badPassword")); // Should fail w/ incorrect pw
+        assertFalse(directory.loginStudent("badUsername", "asdf")); // Should fail w/ incorrect user
+
+        //Bad Input Checks
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent(null, "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("asdf", null));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("", "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("asdf", ""));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent(null, null));
+    }
+
 }

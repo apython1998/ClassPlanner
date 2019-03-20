@@ -35,6 +35,16 @@ public class Directory {
         }
     }
 
+    /**
+     * Authenticates a student's attempt to login if username and password exist in Student directory
+     * @param username String of student's username
+     * @param password String of student's attempted password entry
+     * @return
+     */
+    public boolean loginStudent(String username, String password) {
+        return false;
+    }
+
     /**************************** GETTERS AND SETTERS     ****************************/
     public Map<String, User> getStudents() {
         return students;
