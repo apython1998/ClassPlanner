@@ -42,7 +42,16 @@ public class Directory {
      * @return
      */
     public boolean loginStudent(String username, String password) {
-        return false;
+        if (username == null || username.trim().equals("") || password == null || password.trim().equals("")) {
+            throw new InvalidArgumentException("Invalid String Used for Username or Password");
+        } else {
+            User userAttempt = students.get(username);
+            if (userAttempt != null) {
+                return userAttempt.authenticate(password);
+            } else {
+                return false;
+            }
+        }
     }
 
     /**************************** GETTERS AND SETTERS     ****************************/

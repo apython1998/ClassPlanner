@@ -46,14 +46,13 @@ public class User {
     /**
      * Checks password against a users stored hash
      * @param passwordToCheck
-     * @param passwordHash
      * @return true if the passwordToCheck matches passwordHash
      */
-    public static boolean authenticate(String passwordToCheck, String passwordHash) {
-        if (passwordHash == null || passwordHash.equals("") || passwordToCheck == null || passwordToCheck.equals("")) {
+    public boolean authenticate(String passwordToCheck) {
+        if (passwordToCheck == null || passwordToCheck.equals("")) {
             throw new InvalidArgumentException("Cannot authenticate invalid strings");
         } else {
-            boolean matched = BCrypt.checkpw(passwordToCheck, passwordHash);
+            boolean matched = BCrypt.checkpw(passwordToCheck, this.passwordHash);
             return matched;
         }
     }
