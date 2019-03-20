@@ -58,11 +58,16 @@ public class Student {
      * @param courses - list of courses the student has already taken
      */
     public void addCoursesTaken(List<Course> courses){
-        for (Course c: courses) {
-            if (!coursesTaken.contains(c)) {
-                this.coursesTaken.add(c);
+            for (Course c : courses) {
+                if (c != null) {
+                    if (!coursesTaken.contains(c)) {
+                        this.coursesTaken.add(c);
+                    }
+                } else {
+                    throw new InvalidArgumentException("Invalid Course");
+                }
             }
-        }
+        
     }
 
     public List<Course> getCoursesTaken() { return coursesTaken; }
@@ -72,11 +77,17 @@ public class Student {
      * @param courses - list of courses the student intends on taking
      */
     public void addCoursesPlanned(List<Course> courses){
-        for (Course c: courses) {
-            if (!coursesPlanned.contains(c)) {
-                this.coursesPlanned.add(c);
+            for (Course c : courses) {
+                if (c != null) {
+                    if (!coursesPlanned.contains(c)) {
+                        this.coursesPlanned.add(c);
+                    }
+                } else {
+                    throw new InvalidArgumentException("Invalid Course");
+                }
+
             }
-        }
+
     }
 
     public List<Course> getCoursesPlanned() { return coursesPlanned; }
@@ -86,11 +97,16 @@ public class Student {
      * @param courses - list of current courses the student is registered for
      */
     public void addCurrentCourses(List<Course> courses){
-        for (Course c: courses) {
-            if (!currentCourses.contains(c)) {
-                this.currentCourses.add(c);
+            for (Course c : courses) {
+                if (c != null) {
+                    if (!currentCourses.contains(c)) {
+                        this.currentCourses.add(c);
+                    }
+                } else {
+                    throw new InvalidArgumentException("Invalid Course");
+                }
             }
-        }
+
     }
 
     public List<Course> getCurrentCourses() { return currentCourses; }
