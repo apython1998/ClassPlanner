@@ -61,6 +61,7 @@ public class Student {
      * @param courses - list of courses the student has already taken
      */
     public void addCoursesTaken(List<Course> courses){
+        if (courses != null) {
             for (Course c : courses) {
                 if (c != null) {
                     if (!coursesTaken.contains(c)) {
@@ -70,7 +71,9 @@ public class Student {
                     throw new InvalidArgumentException("Invalid Course");
                 }
             }
-        
+        } else {
+            throw new InvalidArgumentException("Invalid Course");
+        }
     }
 
     public List<Course> getCoursesTaken() { return coursesTaken; }
@@ -80,6 +83,7 @@ public class Student {
      * @param courses - list of courses the student intends on taking
      */
     public void addCoursesPlanned(List<Course> courses){
+        if (courses != null) {
             for (Course c : courses) {
                 if (c != null) {
                     if (!coursesPlanned.contains(c)) {
@@ -90,7 +94,10 @@ public class Student {
                 }
 
             }
-
+        }
+        else {
+            throw new InvalidArgumentException("Invalid Course");
+        }
     }
 
     public List<Course> getCoursesPlanned() { return coursesPlanned; }
@@ -100,6 +107,7 @@ public class Student {
      * @param courses - list of current courses the student is registered for
      */
     public void addCurrentCourses(List<Course> courses){
+        if (courses != null) {
             for (Course c : courses) {
                 if (c != null) {
                     if (!currentCourses.contains(c)) {
@@ -109,7 +117,9 @@ public class Student {
                     throw new InvalidArgumentException("Invalid Course");
                 }
             }
-
+        } else {
+            throw new InvalidArgumentException("Invalid Course");
+        }
     }
 
     public List<Course> getCurrentCourses() { return currentCourses; }
