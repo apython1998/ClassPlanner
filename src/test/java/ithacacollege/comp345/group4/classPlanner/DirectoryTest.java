@@ -1,5 +1,6 @@
 package ithacacollege.comp345.group4.classPlanner;
 
+import ithacacollege.comp345.group4.classPlanner.model.Major;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
