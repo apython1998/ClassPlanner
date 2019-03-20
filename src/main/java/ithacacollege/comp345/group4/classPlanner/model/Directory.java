@@ -37,10 +37,6 @@ public class Directory {
         }
     }
 
-    public void uploadMajor(String file){
-
-    }
-
     /**
      * Authenticates a student's attempt to login if username and password exist in Student directory
      * @param username String of student's username
@@ -59,6 +55,12 @@ public class Directory {
             }
         }
     }
+
+    public void uploadMajor(String file){
+
+    }
+
+
 
     /**************************** GETTERS AND SETTERS     ****************************/
     public Map<String, User> getStudents() {
