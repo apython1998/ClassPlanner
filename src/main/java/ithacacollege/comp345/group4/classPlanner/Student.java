@@ -11,7 +11,7 @@ public class Student {
     private Major major;
     private List<Major> minors;
 
-    Transcript transcript;
+    private Transcript transcript;
 
     public Student(int ID, Major major, List<Major> minors){
         this.ID = ID;
