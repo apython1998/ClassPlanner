@@ -1,0 +1,12 @@
+{
+  "major": {
+    "title" : "Computer Science",
+    "type" : "BA",
+    "course" : "COMP 11500",
+    "course" : "COMP 17100",
+    "chooseOne" : {
+      "course": "COMP 32100",
+      "course": "COMP 32500"
+    }
+  }
+}
