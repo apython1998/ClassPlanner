@@ -1,5 +1,6 @@
 package ithacacollege.comp345.group4.classPlanner;
 
+import ithacacollege.comp345.group4.classPlanner.model.Course;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
