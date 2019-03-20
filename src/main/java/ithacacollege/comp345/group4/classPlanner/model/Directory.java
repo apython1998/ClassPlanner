@@ -45,6 +45,7 @@ public class Directory {
     public Map<String, User> getStudents() {
         return students;
     }
+    public List<Major> getMajorDirectory() { return majorDirectory; }
 
     public void setStudents(Map<String, User> users) {
         this.students = users;
