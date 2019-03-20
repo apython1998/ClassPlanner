@@ -3,11 +3,13 @@ package ithacacollege.comp345.group4.classPlanner.model;
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Directory {
 
     private Map<String, User> students;
+    private List<Major> majorDirectory;
 
     public Directory() {
         this.students = new HashMap<>();
@@ -35,6 +37,10 @@ public class Directory {
         }
     }
 
+    public void uploadMajor(String file){
+
+    }
+
     /**************************** GETTERS AND SETTERS     ****************************/
     public Map<String, User> getStudents() {
         return students;
@@ -43,4 +49,6 @@ public class Directory {
     public void setStudents(Map<String, User> users) {
         this.students = users;
     }
+
+
 }
