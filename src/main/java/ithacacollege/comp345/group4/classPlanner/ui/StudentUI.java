@@ -1,6 +1,7 @@
 package ithacacollege.comp345.group4.classPlanner.ui;
 
 import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
+import ithacacollege.comp345.group4.classPlanner.model.Student;
 
 import java.util.Scanner;
 
@@ -48,8 +49,39 @@ public class StudentUI {
         }
     }
 
+    /**
+     * UI function to let users login
+     */
+    public void login() {
+        String username;
+        String password;
+        Student student = null;
+        System.out.println("Login - Please Enter Your Credentials");
+        System.out.print("Enter your Username: ");
+        username = scanner.nextLine();
+        while (username.trim().equals("")) {
+            System.out.println("Bad Username!");
+            System.out.print("Please Enter Your Username: ");
+            username = scanner.nextLine();
+        }
+        System.out.print("Please Enter Your Password: ");
+        password = scanner.nextLine();
+        while (password.trim().equals("")) {
+            System.out.println("Bad Password!");
+            System.out.print("Please Enter Your Password: ");
+            password = scanner.nextLine();
+        }
+        student = studentAPI.login(username, password);
+        if (student != null) {
+            System.out.println("Login Successful!");
+        } else {
+            System.out.println("Username or Password is Incorrect");
+        }
+    }
+
     public static void main(String[] args) {
         StudentUI studentUI = new StudentUI();
         studentUI.register();
+        studentUI.login();
     }
 }
