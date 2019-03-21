@@ -1,6 +1,4 @@
 package ithacacollege.comp345.group4.classPlanner;
 
-
-public class ClassPlannerMain {
-
+public class Major {
 }
