@@ -41,6 +41,11 @@ public class Directory {
 
     }
 
+    public List<Course> viewCourses(String name){
+        User student = students.get(name);
+        return ((Student) student).getCurrentCourses();
+    }
+
     /**************************** GETTERS AND SETTERS     ****************************/
     public Map<String, User> getStudents() {
         return students;

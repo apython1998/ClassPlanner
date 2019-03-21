@@ -1,6 +1,9 @@
 package ithacacollege.comp345.group4.classPlanner.controller;
 
+import ithacacollege.comp345.group4.classPlanner.model.Course;
 import ithacacollege.comp345.group4.classPlanner.model.Directory;
+
+import java.util.List;
 
 public class StudentAPI {
 
@@ -23,7 +26,9 @@ public class StudentAPI {
         return directory.registerStudent(username, password);
     }
 
-
+    public List<Course> viewCourses(String name){
+        return directory.viewCourses(name);
+    }
 
     /****************************    GETTERS AND SETTERS     ****************************/
     public Directory getDirectory() {
