@@ -1,5 +1,6 @@
 package ithacacollege.comp345.group4.classPlanner.controller;
 
+import ithacacollege.comp345.group4.classPlanner.Student;
 import ithacacollege.comp345.group4.classPlanner.model.Directory;
 
 public class StudentAPI {
@@ -21,6 +22,16 @@ public class StudentAPI {
      */
     public boolean register(String username, String password) {
         return directory.registerStudent(username, password);
+    }
+
+    /**
+     * Takes a login attempt information and checks if its authenticated
+     * @param username
+     * @param password
+     * @return
+     */
+    public Student login(String username, String password) {
+        return null;
     }
 
 

@@ -8,14 +8,14 @@ import java.util.Map;
 
 public class Directory {
 
-    private Map<String, User> students;
+    private Map<String, Student> students;
     private List<Major> majorDirectory;
 
     public Directory() {
         this.students = new HashMap<>();
     }
 
-    public Directory(Map<String, User> users) {
+    public Directory(Map<String, Student> users) {
         this.students = users;
     }
 
@@ -41,17 +41,21 @@ public class Directory {
      * Authenticates a student's attempt to login if username and password exist in Student directory
      * @param username String of student's username
      * @param password String of student's attempted password entry
-     * @return
+     * @return Student that is logged in if authenticated, else return null
      */
-    public boolean loginStudent(String username, String password) {
+    public Student loginStudent(String username, String password) {
         if (username == null || username.trim().equals("") || password == null || password.trim().equals("")) {
             throw new InvalidArgumentException("Invalid String Used for Username or Password");
         } else {
-            User userAttempt = students.get(username);
+            Student userAttempt = students.get(username);
             if (userAttempt != null) {
-                return userAttempt.authenticate(password);
+                if (userAttempt.authenticate(password)) {
+                    return userAttempt;
+                } else {
+                    return null;
+                }
             } else {
-                return false;
+                return null;
             }
         }
     }
@@ -63,12 +67,12 @@ public class Directory {
 
 
     /**************************** GETTERS AND SETTERS     ****************************/
-    public Map<String, User> getStudents() {
+    public Map<String, Student> getStudents() {
         return students;
     }
     public List<Major> getMajorDirectory() { return majorDirectory; }
 
-    public void setStudents(Map<String, User> users) {
+    public void setStudents(Map<String, Student> users) {
         this.students = users;
     }
 

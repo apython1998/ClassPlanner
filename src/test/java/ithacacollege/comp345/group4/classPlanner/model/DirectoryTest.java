@@ -29,13 +29,13 @@ class DirectoryTest {
     }
 
     @Test
-    void login() {
+    void loginStudentTest() {
         Directory directory = new Directory();
         directory.registerStudent("asdf", "asdf"); //Populate directory with a student
 
-        assertTrue(directory.loginStudent("asdf", "asdf")); // Should login successfully
-        assertFalse(directory.loginStudent("asdf", "badPassword")); // Should fail w/ incorrect pw
-        assertFalse(directory.loginStudent("badUsername", "asdf")); // Should fail w/ incorrect user
+        assertNotNull(directory.loginStudent("asdf", "asdf")); // Should login successfully
+        assertNull(directory.loginStudent("asdf", "badPassword")); // Should fail w/ incorrect pw
+        assertNull(directory.loginStudent("badUsername", "asdf")); // Should fail w/ incorrect user
 
         //Bad Input Checks
         assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent(null, "asdf"));
