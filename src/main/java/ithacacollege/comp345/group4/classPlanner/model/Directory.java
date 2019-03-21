@@ -14,11 +14,11 @@ import org.json.simple.parser.ParseException;
 public class Directory {
 
     private Map<String, User> students;
-    private List<Major> majorDirectory;
+    private Map<String, Major> majorDirectory;
 
     public Directory() {
         this.students = new HashMap<>();
-        this.majorDirectory = new ArrayList<>();
+        this.majorDirectory = new HashMap<>();
     }
 
     public Directory(Map<String, User> users) {
@@ -77,14 +77,14 @@ public class Directory {
         }
         catch(IOException e){e.printStackTrace();}
         catch(ParseException e){e.printStackTrace();}
-        majorDirectory.add(newMajor);
+        majorDirectory.put(newMajor.title, newMajor);
     }
 
     /**************************** GETTERS AND SETTERS     ****************************/
     public Map<String, User> getStudents() {
         return students;
     }
-    public List<Major> getMajorDirectory() { return majorDirectory; }
+    public Map<String, Major> getMajorDirectory() { return majorDirectory; }
 
     public void setStudents(Map<String, User> users) {
         this.students = users;

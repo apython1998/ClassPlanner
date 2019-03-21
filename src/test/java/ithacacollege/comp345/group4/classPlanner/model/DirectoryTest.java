@@ -34,13 +34,9 @@ class DirectoryTest {
         Directory d = new Directory();
         d.uploadMajor("resources/TestMajorReqs.json");
 
-        Major cs = new Major();
-        for(Major m : d.getMajorDirectory()) {
-            if (m.title.equals("Computer Science")) {
-                cs = m;
-            }
-        }
-        assertEquals(cs.title, "Computer Science");
+        Major cs = d.getMajorDirectory().get("Computer Science");
+
+        assertNotNull(cs);
 
         Course c = new Course();
         c.setCourseDiscAndNum("COMP 11500");
