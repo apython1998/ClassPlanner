@@ -23,7 +23,7 @@ public class StudentUI {
     /**
      * UI function to get registration information
      */
-    public void register() {
+    protected void register() {
         System.out.println("Thank you for taking time to register!");
         String username;
         String password;
@@ -52,7 +52,7 @@ public class StudentUI {
     /**
      * UI function to let users login
      */
-    public void login() {
+    protected void login() {
         String username;
         String password;
         Student student = null;
@@ -77,6 +77,10 @@ public class StudentUI {
         } else {
             System.out.println("Username or Password is Incorrect");
         }
+    }
+
+    public void run() {
+        System.out.println("Running!");
     }
 
     public static void main(String[] args) {
