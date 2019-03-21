@@ -1,6 +1,11 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.junit.jupiter.api.Test;
+
+import java.io.FileReader;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TranscriptEntryTest {
@@ -10,7 +15,7 @@ public class TranscriptEntryTest {
         TranscriptEntry myEntry = new TranscriptEntry();
         assertNotNull(myEntry);
         try {
-            myEntry = new TranscriptEntry("C:\\Users\\dcaff\\IdeaProjects\\comp345-classPlanner\\src\\test\\testResources\\exTranscriptEntry.json");
+            myEntry = new TranscriptEntry("src/test/testResources/exTranscriptEntry.json");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -27,5 +32,21 @@ public class TranscriptEntryTest {
         assertEquals("In Progress\tCOMP17100\tPrinciples of Comp Sci I\t\t4.0\tF2019", myEntry.toString());
         myEntry = new TranscriptEntry();
         assertEquals("", myEntry.toString());
+    }
+
+    @Test
+    public void parseCourseTest() {
+        JSONParser jsonParser = new JSONParser();
+        try (FileReader reader = new FileReader("src/test/testResources/exTranscriptEntry.json")) {
+            Object obj = jsonParser.parse(reader);
+
+            JSONObject entry = (JSONObject) obj;
+            JSONObject myCourse = (JSONObject) entry.get("course");
+
+            Course thisCourse = TranscriptEntry.parseCourse(myCourse);
+//            assertEquals("")
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
