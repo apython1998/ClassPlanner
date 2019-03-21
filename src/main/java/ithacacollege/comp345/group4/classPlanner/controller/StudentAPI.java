@@ -26,8 +26,20 @@ public class StudentAPI {
         return directory.registerStudent(username, password);
     }
 
-    public List<Course> viewCourses(String name){
-        return directory.viewCourses(name);
+    public List<Course> viewCurrentCourses(String name){
+        return directory.viewCurrentCourses(name);
+    }
+
+    public boolean addCurrentCourse(String name, Course course){
+        return directory.addCurrentCourse(name, course);
+    }
+
+    public boolean addPastCourse(String name, Course course){
+        return directory.addPastCourse(name, course);
+    }
+
+    public boolean addFutureCourse(String name, Course course){
+        return directory.addFutureCourse(name, course);
     }
 
     /****************************    GETTERS AND SETTERS     ****************************/

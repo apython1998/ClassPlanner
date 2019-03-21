@@ -80,6 +80,18 @@ public class Student extends User {
         }
     }
 
+    public boolean addCoursesTaken(Course course){
+        if (course == null){
+            throw new InvalidArgumentException("Invalid course");
+        }
+        if (coursesTaken.contains(course)){
+            return false;
+        } else {
+            coursesTaken.add(course);
+            return true;
+        }
+    }
+
     public List<Course> getCoursesTaken() {
         if (coursesTaken.isEmpty()){
             throw new InvalidArgumentException("No courses are entered");
@@ -101,11 +113,22 @@ public class Student extends User {
                 } else {
                     throw new InvalidArgumentException("Invalid Course");
                 }
-
             }
         }
         else {
             throw new InvalidArgumentException("Invalid Course");
+        }
+    }
+
+    public boolean addCoursesPlanned(Course course){
+        if (course == null){
+            throw new InvalidArgumentException("Invalid course");
+        }
+        if (coursesPlanned.contains(course)){
+            return false;
+        } else {
+            coursesPlanned.add(course);
+            return true;
         }
     }
 
@@ -133,6 +156,18 @@ public class Student extends User {
             }
         } else {
             throw new InvalidArgumentException("Invalid Course");
+        }
+    }
+
+    public boolean addCurrentCourses(Course course){
+        if (course == null){
+            throw new InvalidArgumentException("Invalid course");
+        }
+        if (currentCourses.contains(course)){
+            return false;
+        } else {
+            currentCourses.add(course);
+            return true;
         }
     }
 
