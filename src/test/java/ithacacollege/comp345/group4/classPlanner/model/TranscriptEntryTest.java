@@ -14,7 +14,7 @@ public class TranscriptEntryTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        assertEquals("In Progress\tCOMP17100\tPrinciples of Comp Sci I\t\t4.0\tF2019", myEntry.toString());
+        assertEquals("Completed\tCOMP17100\tPrinciples of Comp Sci I\tA\t4.0\tF2019", myEntry.toString());
     }
 
     @Test

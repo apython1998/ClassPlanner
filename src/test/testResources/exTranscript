@@ -1,5 +1,5 @@
-{
-    entry : {
+[
+  {
       "course" : {
         "name" : "Principles of Comp Sci I",
         "crn" : "24850",
@@ -8,11 +8,31 @@
         "semester" : "F2019",
         "preReqs" : null
       },
-      "grade" : "",
-      "inProgress" : true,
-      "courseComplete" : false
+      "grade" : "A",
+      "inProgress" : false,
+      "courseComplete" : true
     },
-    entry : {
+    {
+      "course" : {
+        "name" : "Principles of Comp Sci II",
+        "crn" : "24725",
+        "credits" : 4.0,
+        "courseDiscAndNum" : "COMP17200",
+        "semester" : "F2019",
+        "preReqs" : [
+          {
+            "name": "Principles of Comp Sci I",
+            "crn": "24850",
+            "credits": 4.0,
+            "courseDiscAndNum": "COMP17100",
+            "semester": "F2019",
+            "preReqs": null
+          }
+        ]
+      },
+      "grade" : "A",
+      "inProgress" : false,
+      "courseComplete" : true
 
     }
-}
+]

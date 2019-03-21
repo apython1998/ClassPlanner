@@ -7,7 +7,7 @@
     "semester" : "F2019",
     "preReqs" : null
   },
-  "grade" : "",
-  "inProgress" : true,
-  "courseComplete" : false
+  "grade" : "A",
+  "inProgress" : false,
+  "courseComplete" : true
 }

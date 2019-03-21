@@ -38,23 +38,7 @@ public class TranscriptEntry {
 
             JSONObject entry = (JSONObject) obj;
             JSONObject myCourse = (JSONObject) entry.get("course");
-            JSONArray myPreReqs = (JSONArray) myCourse.get("preReqs") ;
-
-            String courseName = (String) myCourse.get("name");
-            int courseCRN = Integer.parseInt((String) myCourse.get("crn"));
-            String courseDiscAndNum = (String) myCourse.get("courseDiscAndNum");
-            double credits = (double) myCourse.get("credits");
-            String courseSemester = (String) myCourse.get("semester");
-            List<Course> coursePreReqs;
-            if (myPreReqs != null) {
-                coursePreReqs = new ArrayList<>();
-                for (Object o : myPreReqs) {
-                    coursePreReqs.add((Course) o);
-                }
-            } else {
-                coursePreReqs = null;
-            }
-            course = new Course(courseName, courseCRN, credits, courseDiscAndNum, courseSemester, coursePreReqs);
+            course = parseCourse(myCourse);
             grade = (String) entry.get("grade");
             inProgress = (boolean) entry.get("inProgress");
             courseComplete = (boolean) entry.get("courseComplete");
@@ -87,5 +71,34 @@ public class TranscriptEntry {
                     "\t" + //
                     course.getSemester();
         }
+    }
+
+    public static Course parseCourse(JSONObject myCourse) {
+        JSONArray myPreReqs = (JSONArray) myCourse.get("preReqs") ;
+
+        String courseName = (String) myCourse.get("name");
+        int courseCRN = Integer.parseInt((String) myCourse.get("crn"));
+        String courseDiscAndNum = (String) myCourse.get("courseDiscAndNum");
+        double credits = (double) myCourse.get("credits");
+        String courseSemester = (String) myCourse.get("semester");
+        List<Course> coursePreReqs;
+        if (myPreReqs != null) {
+            coursePreReqs = new ArrayList<>();
+            for (Object o : myPreReqs) {
+                coursePreReqs.add(parseCourse((JSONObject) o));
+            }
+        } else {
+            coursePreReqs = null;
+        }
+        return new Course(courseName, courseCRN, credits, courseDiscAndNum, courseSemester, coursePreReqs);
+    }
+
+    public static TranscriptEntry parseEntry(JSONObject entry) {
+            JSONObject myCourse = (JSONObject) entry.get("course");
+            Course course = parseCourse(myCourse);
+            String myGrade = (String) entry.get("grade");
+            boolean myInProgress = (boolean) entry.get("inProgress");
+            boolean myCourseComplete = (boolean) entry.get("courseComplete");
+            return new TranscriptEntry(course, myGrade, myInProgress, myCourseComplete);
     }
 }
