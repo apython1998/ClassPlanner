@@ -44,7 +44,12 @@ public class TranscriptEntryTest {
             JSONObject myCourse = (JSONObject) entry.get("course");
 
             Course thisCourse = TranscriptEntry.parseCourse(myCourse);
-//            assertEquals("")
+            assertEquals("Principles of Comp Sci I", thisCourse.getName());
+            assertEquals("COMP17100", thisCourse.getCourseDiscAndNum());
+            assertEquals("F2019", thisCourse.getSemester());
+            assertEquals(4.0, thisCourse.getCredits());
+            assertEquals(24850, thisCourse.getCrn());
+            assertNull(thisCourse.getPreReqs());
         } catch (Exception e){
             e.printStackTrace();
         }
