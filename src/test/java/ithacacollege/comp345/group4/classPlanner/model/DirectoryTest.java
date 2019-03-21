@@ -52,16 +52,18 @@ class DirectoryTest {
         Directory d = new Directory();
         d.uploadMajor("resources/TestMajorReqs.json");
 
-        Major cs = new Major();
-        for(Major m : d.getMajorDirectory()) {
-            if (m.title.equals("Computer Science")) {
-                cs = m;
-            }
-        }
-        assertEquals(cs.title, "Computer Science");
+        Major cs = d.getMajorDirectory().get("Computer Science");
 
-        //Many of these needed but course constr. not yet implemented:
-        assertTrue(cs.requirements.get(0).fulfillsRequirment(new Course()));
-        //TODO add one of these assertions for each course req in the JSON file
+        assertNotNull(cs);
+
+        Course c = new Course();
+        c.setCourseDiscAndNum("COMP 11500");
+        assertTrue(cs.requirements.get(0).fulfillsRequirment(c));
+        c.setCourseDiscAndNum("COMP 17100");
+        assertTrue(cs.requirements.get(1).fulfillsRequirment(c));
+        c.setCourseDiscAndNum("COMP 32100");
+        assertTrue(cs.requirements.get(2).fulfillsRequirment(c));
+        c.setCourseDiscAndNum("ITAL 10100");
+        assertFalse(cs.requirements.get(2).fulfillsRequirment(c));
     }
 }

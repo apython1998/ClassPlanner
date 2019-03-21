@@ -1,10 +1,16 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Major {
     public String title;
     public List<Requirement> requirements;
+
+    public Major() {
+        requirements = new ArrayList<Requirement>();
+        title = "";
+    }
 
     public void addCourse(Course course){
         Requirement r = new SingleCourse(course);
@@ -26,7 +32,7 @@ public class Major {
             course = c;
         }
         public boolean fulfillsRequirment(Course c){
-            return c.equals(course);
+            return c.getCourseDiscAndNum().equals(course.getCourseDiscAndNum());
         }
     }
 
@@ -38,10 +44,10 @@ public class Major {
         public boolean fulfillsRequirment(Course c){
             boolean found = false;
             for(Course lc : courses){
-                if(lc.equals(c))
+                if(lc.getCourseDiscAndNum().equals(c.getCourseDiscAndNum()))
                     found = true;
             }
-            return true;
+            return found;
         }
     }
 }
