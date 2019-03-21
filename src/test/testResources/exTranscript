@@ -1,5 +1,5 @@
 {
-    {
+    entry : {
       "course" : {
         "name" : "Principles of Comp Sci I",
         "crn" : "24850",
@@ -11,5 +11,8 @@
       "grade" : "",
       "inProgress" : true,
       "courseComplete" : false
-        }
+    },
+    entry : {
+
+    }
 }

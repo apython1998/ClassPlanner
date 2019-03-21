@@ -9,7 +9,11 @@ public class TranscriptEntryTest {
     public void constructorTest() {
         TranscriptEntry myEntry = new TranscriptEntry();
         assertNotNull(myEntry);
-        myEntry = new TranscriptEntry("exTranscriptEntry.json");
+        try {
+            myEntry = new TranscriptEntry("C:\\Users\\dcaff\\IdeaProjects\\comp345-classPlanner\\src\\test\\testResources\\exTranscriptEntry.json");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         assertEquals("In Progress\tCOMP17100\tPrinciples of Comp Sci I\t\t4.0\tF2019", myEntry.toString());
     }
 
