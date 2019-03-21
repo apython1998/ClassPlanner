@@ -31,7 +31,7 @@ public class Directory {
         } else if (students.containsKey(username)) {
             return false;
         } else {
-            Student newUser = new Student(username, password);
+            Student newUser = new Student(username, password, null, null);
             students.put(newUser.getUsername(), newUser);
             return true;
         }
