@@ -76,7 +76,12 @@ public class Student {
         }
     }
 
-    public List<Course> getCoursesTaken() { return coursesTaken; }
+    public List<Course> getCoursesTaken() {
+        if (coursesTaken.isEmpty()){
+            throw new InvalidArgumentException("No courses are entered");
+        }
+        return coursesTaken;
+    }
 
     /**
      * Adds the courses a Student plans on taking
@@ -100,7 +105,12 @@ public class Student {
         }
     }
 
-    public List<Course> getCoursesPlanned() { return coursesPlanned; }
+    public List<Course> getCoursesPlanned() {
+        if (coursesPlanned.isEmpty()){
+            throw new InvalidArgumentException("No courses are entered");
+        }
+        return coursesPlanned;
+    }
 
     /**
      * Adds the courses a Student is currently registered for
@@ -122,5 +132,10 @@ public class Student {
         }
     }
 
-    public List<Course> getCurrentCourses() { return currentCourses; }
+    public List<Course> getCurrentCourses() {
+        if (currentCourses.isEmpty()){
+            throw new InvalidArgumentException("No courses are entered");
+        }
+        return currentCourses;
+    }
 }

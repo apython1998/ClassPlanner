@@ -40,9 +40,9 @@ public class StudentTest {
     void addCurrentCoursesTest(){
         Student student = new Student(12345678, null, null);
         List<Course> courseList = new ArrayList<>();
-        Course course1 = new Course("test1", 12345, 3.0, "TEST123", "FA17", null);
-        Course course2 = new Course("test2", 13465, 3.0, "TEST321", "FA17", null);
-        Course course3 = new Course("test1", 12345, 3.0, "TEST123", "FA17", null);
+        Course course1 = new Course("Software Engineering", 12345, 3.0, "COMP345", "FA17", null);
+        Course course2 = new Course("Machine Learning", 13465, 3.0, "COMP490", "FA17", null);
+        Course course3 = new Course("Probability", 12345, 3.0, "MATH316", "FA17", null);
         courseList.add(course1);
         courseList.add(course2);
         courseList.add(course3);
@@ -81,6 +81,33 @@ public class StudentTest {
 
         //check not equals
         assertNotEquals(emptyList, student.getCoursesPlanned());
+
+        //bad input
+        assertThrows(InvalidArgumentException.class, ()-> student.addCoursesPlanned(null));
+    }
+
+    @Test
+    void viewCoursesTest(){
+        Student student = new Student(12345678, null, null);
+        List<Course> courseList = new ArrayList<>();
+        Course course1 = new Course("Software Engineering", 12345, 3.0, "COMP345", "FA17", null);
+        Course course2 = new Course("Machine Learning", 13465, 3.0, "COMP490", "FA17", null);
+        Course course3 = new Course("Probability", 12345, 3.0, "MATH316", "FA17", null);
+        courseList.add(course1);
+        courseList.add(course2);
+        courseList.add(course3);
+
+        student.addCurrentCourses(courseList);
+
+        List<Course> emptyList = new ArrayList<>();
+
+        System.out.println(student.getCurrentCourses());
+
+        //check equals
+        assertEquals(courseList, student.getCurrentCourses());
+
+        //check not equals
+        assertNotEquals(emptyList, student.getCurrentCourses());
 
         //bad input
         assertThrows(InvalidArgumentException.class, ()-> student.addCoursesPlanned(null));
