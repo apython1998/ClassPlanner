@@ -16,9 +16,10 @@ public class Transcript {
     }
 
     public Transcript(String filename) {
+        courseList = new ArrayList<>();
         JSONParser jsonParser = new JSONParser();
         try (FileReader reader = new FileReader(filename)) {
-            Object obj = jsonParser.parse(filename);
+            Object obj = jsonParser.parse(reader);
             JSONArray transcript = (JSONArray) obj;
             for (Object o : transcript) {
                 courseList.add(TranscriptEntry.parseEntry((JSONObject) o));
@@ -30,8 +31,9 @@ public class Transcript {
 
     public String toString() {
         String result = "";
-        for (TranscriptEntry c: courseList) {
-            result += c.toString() + "\n";
+        result += courseList.get(0).toString();
+        for (int i = 1; i < courseList.size(); i++) {
+            result += "\n" + courseList.get(i).toString();
         }
         return result;
     }

@@ -11,14 +11,14 @@
       "grade" : "A",
       "inProgress" : false,
       "courseComplete" : true
-    },
-    {
+  },
+  {
       "course" : {
         "name" : "Principles of Comp Sci II",
         "crn" : "24725",
         "credits" : 4.0,
         "courseDiscAndNum" : "COMP17200",
-        "semester" : "F2019",
+        "semester" : "S2020",
         "preReqs" : [
           {
             "name": "Principles of Comp Sci I",
@@ -30,9 +30,8 @@
           }
         ]
       },
-      "grade" : "A",
-      "inProgress" : false,
-      "courseComplete" : true
-
-    }
+      "grade" : "",
+      "inProgress" : true,
+      "courseComplete" : false
+  }
 ]
