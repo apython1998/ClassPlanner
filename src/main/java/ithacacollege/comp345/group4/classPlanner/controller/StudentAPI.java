@@ -1,6 +1,6 @@
 package ithacacollege.comp345.group4.classPlanner.controller;
 
-import ithacacollege.comp345.group4.classPlanner.Student;
+import ithacacollege.comp345.group4.classPlanner.model.Student;
 import ithacacollege.comp345.group4.classPlanner.model.Directory;
 
 public class StudentAPI {
