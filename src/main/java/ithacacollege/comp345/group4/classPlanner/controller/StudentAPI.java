@@ -28,10 +28,10 @@ public class StudentAPI {
      * Takes a login attempt information and checks if its authenticated
      * @param username
      * @param password
-     * @return
+     * @return Student if login is successful, otherwise null
      */
     public Student login(String username, String password) {
-        return null;
+        return directory.loginStudent(username, password);
     }
 
 
