@@ -1,5 +1,10 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +16,25 @@ public class Transcript {
     }
 
     public Transcript(String filename) {
-
+        courseList = new ArrayList<>();
+        JSONParser jsonParser = new JSONParser();
+        try (FileReader reader = new FileReader(filename)) {
+            Object obj = jsonParser.parse(reader);
+            JSONArray transcript = (JSONArray) obj;
+            for (Object o : transcript) {
+                courseList.add(TranscriptEntry.parseEntry((JSONObject) o));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    public String toString() {
+        String result = "";
+        result += courseList.get(0).toString();
+        for (int i = 1; i < courseList.size(); i++) {
+            result += "\n" + courseList.get(i).toString();
+        }
+        return result;
+    }
 }
