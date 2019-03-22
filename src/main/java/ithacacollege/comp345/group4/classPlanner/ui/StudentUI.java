@@ -2,6 +2,7 @@ package ithacacollege.comp345.group4.classPlanner.ui;
 
 import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
+import ithacacollege.comp345.group4.classPlanner.model.Transcript;
 
 import java.util.Scanner;
 
@@ -130,6 +131,10 @@ public class StudentUI {
                     // TODO : Dylan Add Course
                 } else if (option == 4) {
                     // TODO : Dan Input Transcript
+                    System.out.println("Please enter file path: ");
+                    String file = scanner.next();
+                    student.setTranscript(new Transcript(file));
+                    System.out.println(student.getTranscript().toString());
                 }
             }
         }

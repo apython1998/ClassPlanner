@@ -30,22 +30,30 @@ public class Student extends User {
         this.transcript = new Transcript();
     }
 
-    public int getID() { return ID; }
+    public int getID() {
+        return ID;
+    }
 
-    public Major getMajor() { return major; }
+    public Major getMajor() {
+        return major;
+    }
 
     /**
      * Changes the major of a Student
+     *
      * @param major - major the Student intends on completing
      */
-    public void changeMajor(Major major){ this.major = major; }
+    public void changeMajor(Major major) {
+        this.major = major;
+    }
 
     /**
      * Adds a minor to the student's account
+     *
      * @param minor - minor the Student would like to add
      */
-    public void addMinor(Major minor){
-        if (this.minors.contains(minor)){
+    public void addMinor(Major minor) {
+        if (this.minors.contains(minor)) {
             return;
         }
         this.minors.add(minor);
@@ -53,18 +61,20 @@ public class Student extends User {
 
     /**
      * Removes a minor from the Student
+     *
      * @param minor - minor intended to be removed
      * @return - boolean if the removal was successful (false if the minor wasn't there)
      */
-    public boolean removeMinor(Major minor){
+    public boolean removeMinor(Major minor) {
         return minors.remove(minor);
     }
 
     /**
      * Adds the courses a Student has already taken
+     *
      * @param courses - list of courses the student has already taken
      */
-    public void addCoursesTaken(List<Course> courses){
+    public void addCoursesTaken(List<Course> courses) {
         if (courses != null) {
             for (Course c : courses) {
                 if (c != null) {
@@ -80,11 +90,11 @@ public class Student extends User {
         }
     }
 
-    public boolean addCoursesTaken(Course course){
-        if (course == null){
+    public boolean addCoursesTaken(Course course) {
+        if (course == null) {
             throw new InvalidArgumentException("Invalid course");
         }
-        if (coursesTaken.contains(course)){
+        if (coursesTaken.contains(course)) {
             return false;
         } else {
             coursesTaken.add(course);
@@ -93,7 +103,7 @@ public class Student extends User {
     }
 
     public List<Course> getCoursesTaken() {
-        if (coursesTaken.isEmpty()){
+        if (coursesTaken.isEmpty()) {
             throw new InvalidArgumentException("No courses are entered");
         }
         return coursesTaken;
@@ -101,9 +111,10 @@ public class Student extends User {
 
     /**
      * Adds the courses a Student plans on taking
+     *
      * @param courses - list of courses the student intends on taking
      */
-    public void addCoursesPlanned(List<Course> courses){
+    public void addCoursesPlanned(List<Course> courses) {
         if (courses != null) {
             for (Course c : courses) {
                 if (c != null) {
@@ -114,17 +125,16 @@ public class Student extends User {
                     throw new InvalidArgumentException("Invalid Course");
                 }
             }
-        }
-        else {
+        } else {
             throw new InvalidArgumentException("Invalid Course");
         }
     }
 
-    public boolean addCoursesPlanned(Course course){
-        if (course == null){
+    public boolean addCoursesPlanned(Course course) {
+        if (course == null) {
             throw new InvalidArgumentException("Invalid course");
         }
-        if (coursesPlanned.contains(course)){
+        if (coursesPlanned.contains(course)) {
             return false;
         } else {
             coursesPlanned.add(course);
@@ -133,7 +143,7 @@ public class Student extends User {
     }
 
     public List<Course> getCoursesPlanned() {
-        if (coursesPlanned.isEmpty()){
+        if (coursesPlanned.isEmpty()) {
             throw new InvalidArgumentException("No courses are entered");
         }
         return coursesPlanned;
@@ -141,9 +151,10 @@ public class Student extends User {
 
     /**
      * Adds the courses a Student is currently registered for
+     *
      * @param courses - list of current courses the student is registered for
      */
-    public void addCurrentCourses(List<Course> courses){
+    public void addCurrentCourses(List<Course> courses) {
         if (courses != null) {
             for (Course c : courses) {
                 if (c != null) {
@@ -159,11 +170,11 @@ public class Student extends User {
         }
     }
 
-    public boolean addCurrentCourses(Course course){
-        if (course == null){
+    public boolean addCurrentCourses(Course course) {
+        if (course == null) {
             throw new InvalidArgumentException("Invalid course");
         }
-        if (currentCourses.contains(course)){
+        if (currentCourses.contains(course)) {
             return false;
         } else {
             currentCourses.add(course);
@@ -171,9 +182,18 @@ public class Student extends User {
         }
     }
 
-    public List<Course> getCurrentCourses(){
-        if (currentCourses.isEmpty()){
+    public List<Course> getCurrentCourses() {
+        if (currentCourses.isEmpty()) {
             throw new InvalidArgumentException("No courses are entered");
         }
-        return currentCourses;}
+        return currentCourses;
+    }
+
+    public Transcript getTranscript() {
+        return transcript;
+    }
+
+    public void setTranscript(Transcript transcriptIn) {
+        transcript = transcriptIn;
+    }
 }
