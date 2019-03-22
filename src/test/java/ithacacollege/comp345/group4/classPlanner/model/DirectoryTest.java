@@ -28,23 +28,43 @@ class DirectoryTest {
         assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent(null, null));
     }
 
+    @Test
+    void loginStudentTest() {
+        Directory directory = new Directory();
+        directory.registerStudent("asdf", "asdf"); //Populate directory with a student
+
+        assertNotNull(directory.loginStudent("asdf", "asdf")); // Should login successfully
+        assertNull(directory.loginStudent("asdf", "badPassword")); // Should fail w/ incorrect pw
+        assertNull(directory.loginStudent("badUsername", "asdf")); // Should fail w/ incorrect user
+
+        //Bad Input Checks
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent(null, "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("asdf", null));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("", "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("asdf", ""));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent(null, null));
+    }
+
+
 
     @Test
     public void uploadMajorTest(){
         Directory d = new Directory();
         d.uploadMajor("resources/TestMajorReqs.json");
 
-        Major cs = new Major();
-        for(Major m : d.getMajorDirectory()) {
-            if (m.title.equals("Computer Science")) {
-                cs = m;
-            }
-        }
-        assertEquals(cs.title, "Computer Science");
+        Major cs = d.getMajorDirectory().get("Computer Science");
 
-        //Many of these needed but course constr. not yet implemented:
-        assertTrue(cs.requirements.get(0).fulfillsRequirment(new Course()));
-        //TODO add one of these assertions for each course req in the JSON file
+        assertNotNull(cs);
+
+        Course c = new Course();
+        c.setCourseDiscAndNum("COMP 11500");
+        assertTrue(cs.requirements.get(0).fulfillsRequirment(c));
+        c.setCourseDiscAndNum("COMP 17100");
+        assertTrue(cs.requirements.get(1).fulfillsRequirment(c));
+        c.setCourseDiscAndNum("COMP 32100");
+        assertTrue(cs.requirements.get(2).fulfillsRequirment(c));
+        c.setCourseDiscAndNum("ITAL 10100");
+        assertFalse(cs.requirements.get(2).fulfillsRequirment(c));
     }
 
     @Test

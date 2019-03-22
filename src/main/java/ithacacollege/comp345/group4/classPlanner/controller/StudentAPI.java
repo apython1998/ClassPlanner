@@ -1,6 +1,10 @@
 package ithacacollege.comp345.group4.classPlanner.controller;
 
+
 import ithacacollege.comp345.group4.classPlanner.model.Course;
+
+import ithacacollege.comp345.group4.classPlanner.model.Student;
+
 import ithacacollege.comp345.group4.classPlanner.model.Directory;
 
 import java.util.List;
@@ -33,6 +37,16 @@ public class StudentAPI {
     public boolean addCurrentCourse(String name, Course course){
         return directory.addCurrentCourse(name, course);
     }
+    /**
+     * Takes a login attempt information and checks if its authenticated
+     * @param username
+     * @param password
+     * @return Student if login is successful, otherwise null
+     */
+    public Student login(String username, String password) {
+        return directory.loginStudent(username, password);
+    }
+
 
     public boolean addPastCourse(String name, Course course){
         return directory.addPastCourse(name, course);

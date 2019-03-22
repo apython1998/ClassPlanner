@@ -7,7 +7,7 @@ public class Course {
     private String name;
     private int crn;
     private double credits;
-    private String courseDiscAndNum;
+    private String courseNum;
     private String semester;
     private List<Course> preReqs;
 
@@ -15,7 +15,7 @@ public class Course {
         name = "";
         crn = 0;
         credits = 0.0;
-        courseDiscAndNum = "";
+        courseNum = "";
         semester = "";
         preReqs = new ArrayList<Course>(0);
     }
@@ -24,7 +24,7 @@ public class Course {
         this.name = name;
         this.crn = crn;
         this.credits = credits;
-        this.courseDiscAndNum = courseDiscAndNum;
+        this.courseNum = courseDiscAndNum;
         this.semester = semester;
         this.preReqs = preReqs;
     }
@@ -54,11 +54,11 @@ public class Course {
     }
 
     public String getCourseDiscAndNum() {
-        return courseDiscAndNum;
+        return courseNum;
     }
 
     public void setCourseDiscAndNum(String courseDiscAndNum) {
-        this.courseDiscAndNum = courseDiscAndNum;
+        this.courseNum = courseDiscAndNum;
     }
 
     public String getSemester() {

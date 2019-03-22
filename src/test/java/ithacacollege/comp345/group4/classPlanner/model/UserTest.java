@@ -44,20 +44,18 @@ class UserTest {
     void authenticate() {
         // Create a password and its hash
         String password = "password";
-        String hashedPassword = User.secureHash(password);
+        User user = new User("asdf", "password");
 
         //Check that authentication works when they match
-        assertTrue(User.authenticate(password, hashedPassword));
+        assertTrue(user.authenticate(password));
 
         //Check that authentication fails with a bad password
-        assertFalse(User.authenticate("adsf", hashedPassword));
+        assertFalse(user.authenticate("adsf"));
 
         //Don't accept null or empty strings
-        assertThrows(InvalidArgumentException.class, ()-> User.authenticate(null, null));
-        assertThrows(InvalidArgumentException.class, ()-> User.authenticate("asdf", null));
-        assertThrows(InvalidArgumentException.class, ()-> User.authenticate(null, "asdf"));
-        assertThrows(InvalidArgumentException.class, ()-> User.authenticate("", "asdf"));
-        assertThrows(InvalidArgumentException.class, ()-> User.authenticate("asdf", ""));
+        assertThrows(InvalidArgumentException.class, ()-> user.authenticate(null));
+        assertThrows(InvalidArgumentException.class, ()-> user.authenticate(""));
+
     }
 
 }
