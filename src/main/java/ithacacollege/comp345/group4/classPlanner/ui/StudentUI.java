@@ -52,9 +52,9 @@ public class StudentUI {
     /**
      * UI function to let users login
      */
-    protected void login() {
-        String username;
-        String password;
+    protected Student login() {
+        String username = "";
+        String password = "";
         Student student = null;
         System.out.println("Login - Please Enter Your Credentials");
         System.out.print("Enter your Username: ");
@@ -77,15 +77,62 @@ public class StudentUI {
         } else {
             System.out.println("Username or Password is Incorrect");
         }
+        return student;
     }
 
     public void run() {
-        System.out.println("Running!");
-    }
-
-    public static void main(String[] args) {
-        StudentUI studentUI = new StudentUI();
-        studentUI.register();
-        studentUI.login();
+        Integer option = Integer.MAX_VALUE;
+        Student student = null;
+        String nullStudentOptions = " 0 - Quit\n" +
+                " 1 - Login\n" +
+                " 2 - Register\n";
+        String loggedInOptions = " 0 - Quit\n" +
+                " 1 - See Major Requirements\n" +
+                " 2 - View Courses\n" +
+                " 3 - Add Courses\n" +
+                " 4 - Input Transcript\n";
+        System.out.println("Welcome to Class Planner\n");
+        while (option != 0) {
+            if (student == null) {
+                System.out.print("Please choose one\n" +
+                        nullStudentOptions +
+                        "Enter Selection Here: ");
+                option = scanner.nextInt();
+                while (option < 0 || option > 2) {
+                    System.out.print("Invalid Selection\n" +
+                            "Please choose one\n" +
+                            nullStudentOptions +
+                            "Enter Selection Here: ");
+                    option = scanner.nextInt();
+                }
+                if (option == 1) {
+                    student = login();
+                } else if (option == 2) {
+                    register();
+                }
+            } else {
+                System.out.print("Please choose one\n" +
+                        loggedInOptions +
+                        "Enter Selection Here: ");
+                option = scanner.nextInt();
+                while (option < 0 || option > 4) {
+                    System.out.print("Invalid Selection\n" +
+                            "Please Choose One\n" +
+                            loggedInOptions +
+                            "Enter Selection Here: ");
+                    option = scanner.nextInt();
+                }
+                if (option == 1) {
+                    // TODO : Joe Major Requirements
+                } else if (option == 2) {
+                    // TODO : Dylan View Courses
+                } else if (option == 3) {
+                    // TODO : Dylan Add Course
+                } else if (option == 4) {
+                    // TODO : Dan Input Transcript
+                }
+            }
+        }
+        System.out.println("Thank you for using Class Planner");
     }
 }
