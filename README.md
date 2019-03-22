@@ -38,3 +38,4 @@ This is an effective break down of the system because the pairs will each have m
 Sprint Goal: Allow students to upload their transcript and view their graduation requirements (on the way to getting semester schedules).
 
 Sprint 1 Review Agenda: https://docs.google.com/document/d/1bdwsNKYNy78iPnmrDw8bjLgYCWM1s2EtdD01Kj5EsLY/edit?usp=sharing
+Sprint 1 Retrospective: https://docs.google.com/document/d/1oXoySuA57THElxI3NhtHu9jUS7e0WjkKYyz740Xx4TM/edit?usp=sharing
