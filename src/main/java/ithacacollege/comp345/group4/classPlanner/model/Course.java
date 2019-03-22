@@ -78,6 +78,6 @@ public class Course {
     }
 
     public String toString() {
-        return this.courseDiscAndNum + ": " + this.name + " " + this.credits + " credits";
+        return this.courseNum + ": " + this.name + " " + this.credits + " credits";
     }
 }
