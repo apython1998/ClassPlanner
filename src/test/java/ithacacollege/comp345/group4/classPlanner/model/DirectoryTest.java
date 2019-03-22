@@ -46,4 +46,16 @@ class DirectoryTest {
         assertTrue(cs.requirements.get(0).fulfillsRequirment(new Course()));
         //TODO add one of these assertions for each course req in the JSON file
     }
+
+    @Test
+    void viewCurrentCourses(){
+        Directory directory = new Directory();
+        directory.registerStudent("asdf", "asdf");
+
+        Course course1 = new Course("Software Engineering", 12345, 3.0, "COMP345", "FA17", null);
+
+        directory.addCurrentCourse("asdf", course1);
+
+        System.out.println(directory.viewCurrentCourses("asdf"));
+    }
 }

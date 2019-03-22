@@ -76,4 +76,8 @@ public class Course {
     public void setPreReqs(List<Course> preReqs) {
         this.preReqs = preReqs;
     }
+
+    public String toString() {
+        return this.courseDiscAndNum + ": " + this.name + " " + this.credits + " credits";
+    }
 }

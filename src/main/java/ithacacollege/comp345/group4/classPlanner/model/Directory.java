@@ -31,7 +31,7 @@ public class Directory {
         } else if (students.containsKey(username)) {
             return false;
         } else {
-            Student newUser = new Student(username, password);
+            Student newUser = new Student(username, password, null, null);
             students.put(newUser.getUsername(), newUser);
             return true;
         }
@@ -39,6 +39,38 @@ public class Directory {
 
     public void uploadMajor(String file){
 
+    }
+
+    public List<Course> viewCurrentCourses(String name){
+        if (!students.containsKey(name)){
+            throw new InvalidArgumentException("There is no account associated with that name");
+        }
+        User student = students.get(name);
+        return ((Student) student).getCurrentCourses();
+    }
+
+    public boolean addCurrentCourse(String name, Course course){
+        if (!students.containsKey(name)){
+            throw new InvalidArgumentException("There is no account associated with that name");
+        }
+        User student = students.get(name);
+        return ((Student) student).addCurrentCourses(course);
+    }
+
+    public boolean addPastCourse(String name, Course course){
+        if (!students.containsKey(name)){
+            throw new InvalidArgumentException("There is no account associated with that name");
+        }
+        User student = students.get(name);
+        return ((Student) student).addCoursesTaken(course);
+    }
+
+    public boolean addFutureCourse(String name, Course course){
+        if (!students.containsKey(name)){
+            throw new InvalidArgumentException("There is no account associated with that name");
+        }
+        User student = students.get(name);
+        return ((Student) student).addCoursesPlanned(course);
     }
 
     /**************************** GETTERS AND SETTERS     ****************************/
