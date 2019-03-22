@@ -19,7 +19,7 @@ public class Student extends User {
     public Student() {
     }
 
-    public Student(String username, String password) {
+    public Student(String username, String password, Major major, List<Major> minors) {
         super(username, password);
         this.ID = ID;
         this.coursesTaken = new ArrayList<>();
@@ -29,7 +29,6 @@ public class Student extends User {
         this.minors = minors;
         this.transcript = new Transcript();
     }
-
 
     public int getID() { return ID; }
 
@@ -81,7 +80,24 @@ public class Student extends User {
         }
     }
 
-    public List<Course> getCoursesTaken() { return coursesTaken; }
+    public boolean addCoursesTaken(Course course){
+        if (course == null){
+            throw new InvalidArgumentException("Invalid course");
+        }
+        if (coursesTaken.contains(course)){
+            return false;
+        } else {
+            coursesTaken.add(course);
+            return true;
+        }
+    }
+
+    public List<Course> getCoursesTaken() {
+        if (coursesTaken.isEmpty()){
+            throw new InvalidArgumentException("No courses are entered");
+        }
+        return coursesTaken;
+    }
 
     /**
      * Adds the courses a Student plans on taking
@@ -97,7 +113,6 @@ public class Student extends User {
                 } else {
                     throw new InvalidArgumentException("Invalid Course");
                 }
-
             }
         }
         else {
@@ -105,7 +120,24 @@ public class Student extends User {
         }
     }
 
-    public List<Course> getCoursesPlanned() { return coursesPlanned; }
+    public boolean addCoursesPlanned(Course course){
+        if (course == null){
+            throw new InvalidArgumentException("Invalid course");
+        }
+        if (coursesPlanned.contains(course)){
+            return false;
+        } else {
+            coursesPlanned.add(course);
+            return true;
+        }
+    }
+
+    public List<Course> getCoursesPlanned() {
+        if (coursesPlanned.isEmpty()){
+            throw new InvalidArgumentException("No courses are entered");
+        }
+        return coursesPlanned;
+    }
 
     /**
      * Adds the courses a Student is currently registered for
@@ -127,5 +159,21 @@ public class Student extends User {
         }
     }
 
-    public List<Course> getCurrentCourses() { return currentCourses; }
+    public boolean addCurrentCourses(Course course){
+        if (course == null){
+            throw new InvalidArgumentException("Invalid course");
+        }
+        if (currentCourses.contains(course)){
+            return false;
+        } else {
+            currentCourses.add(course);
+            return true;
+        }
+    }
+
+    public List<Course> getCurrentCourses(){
+        if (currentCourses.isEmpty()){
+            throw new InvalidArgumentException("No courses are entered");
+        }
+        return currentCourses;}
 }

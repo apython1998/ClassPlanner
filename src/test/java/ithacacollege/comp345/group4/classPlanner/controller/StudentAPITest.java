@@ -1,6 +1,7 @@
 package ithacacollege.comp345.group4.classPlanner.controller;
 
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
+import ithacacollege.comp345.group4.classPlanner.model.Course;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +28,18 @@ public class StudentAPITest {
     }
 
     @Test
+    void viewCourses() {
+        StudentAPI studentAPI = new StudentAPI();
+
+        studentAPI.register("asdf", "asdf");
+
+        Course course1 = new Course("Software Engineering", 12345, 3.0, "COMP345", "FA17", null);
+
+        studentAPI.addCurrentCourse("asdf", course1);
+
+        System.out.println(studentAPI.viewCurrentCourses("asdf"));
+    }
+
     void loginTest() {
         StudentAPI studentAPI = new StudentAPI();
         studentAPI.register("username", "password"); // Create a user account

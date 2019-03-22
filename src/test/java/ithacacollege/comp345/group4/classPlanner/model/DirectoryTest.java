@@ -66,4 +66,16 @@ class DirectoryTest {
         c.setCourseDiscAndNum("ITAL 10100");
         assertFalse(cs.requirements.get(2).fulfillsRequirment(c));
     }
+
+    @Test
+    void viewCurrentCourses(){
+        Directory directory = new Directory();
+        directory.registerStudent("asdf", "asdf");
+
+        Course course1 = new Course("Software Engineering", 12345, 3.0, "COMP345", "FA17", null);
+
+        directory.addCurrentCourse("asdf", course1);
+
+        System.out.println(directory.viewCurrentCourses("asdf"));
+    }
 }

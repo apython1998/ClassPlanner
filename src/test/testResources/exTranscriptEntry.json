@@ -1,0 +1,13 @@
+{
+  "course" : {
+    "name" : "Principles of Comp Sci I",
+    "crn" : "24850",
+    "credits" : 4.0,
+    "courseDiscAndNum" : "COMP17100",
+    "semester" : "F2019",
+    "preReqs" : null
+  },
+  "grade" : "A",
+  "inProgress" : false,
+  "courseComplete" : true
+}

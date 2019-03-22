@@ -1,7 +1,13 @@
 package ithacacollege.comp345.group4.classPlanner.controller;
 
+
+import ithacacollege.comp345.group4.classPlanner.model.Course;
+
 import ithacacollege.comp345.group4.classPlanner.model.Student;
+
 import ithacacollege.comp345.group4.classPlanner.model.Directory;
+
+import java.util.List;
 
 public class StudentAPI {
 
@@ -24,6 +30,13 @@ public class StudentAPI {
         return directory.registerStudent(username, password);
     }
 
+    public List<Course> viewCurrentCourses(String name){
+        return directory.viewCurrentCourses(name);
+    }
+
+    public boolean addCurrentCourse(String name, Course course){
+        return directory.addCurrentCourse(name, course);
+    }
     /**
      * Takes a login attempt information and checks if its authenticated
      * @param username
@@ -35,6 +48,13 @@ public class StudentAPI {
     }
 
 
+    public boolean addPastCourse(String name, Course course){
+        return directory.addPastCourse(name, course);
+    }
+
+    public boolean addFutureCourse(String name, Course course){
+        return directory.addFutureCourse(name, course);
+    }
 
     /****************************    GETTERS AND SETTERS     ****************************/
     public Directory getDirectory() {
