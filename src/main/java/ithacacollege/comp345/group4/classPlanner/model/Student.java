@@ -171,10 +171,9 @@ public class Student extends User {
         }
     }
 
-    public List<Course> getCurrentCourses() {
+    public List<Course> getCurrentCourses(){
         if (currentCourses.isEmpty()){
             throw new InvalidArgumentException("No courses are entered");
         }
-        return currentCourses;
-    }
+        return currentCourses;}
 }
