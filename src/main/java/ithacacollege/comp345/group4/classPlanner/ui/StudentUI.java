@@ -1,9 +1,11 @@
 package ithacacollege.comp345.group4.classPlanner.ui;
 
 import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
+import ithacacollege.comp345.group4.classPlanner.model.Course;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 import ithacacollege.comp345.group4.classPlanner.model.Transcript;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentUI {
@@ -127,8 +129,71 @@ public class StudentUI {
                     // TODO : Joe Major Requirements
                 } else if (option == 2) {
                     // TODO : Dylan View Courses
+                    /*System.out.print("Please choose one:\n" +
+                            "1. View Past Courses\n" +
+                            "2. View Current Courses\n" +
+                            "3. View Planned Courses\n"
+                            "Enter Selection Here: ");*/
+                    int courseOp = 2; //scanner.nextInt();
+                    /*
+                    while (courseOp < 0 || courseOp > 4) {
+                        System.out.print("Invalid Selection\n" +
+                                "Please choose one:\n" +
+                                "1. View Past Courses\n" +
+                                "2. View Current Courses\n" +
+                                "3. View Planned Courses\n
+                                "Enter Selection Here: "");
+                    }*/
+                    
+                    switch (courseOp){
+                        /*case 1:
+                            studentAPI.viewTakenCourses(student.getUsername());
+                            break;*/
+                        case 2:
+                            System.out.print("\nCurrent courses " + student.getUsername()
+                                    + " is enrolled in:\n" + studentAPI.viewCurrentCourses(student.getUsername())+"\n\n");
+                            break;
+                        /*case 3:
+                            studentAPI.viewPlannedCourses(student.getUsername());
+                            break;*/
+
+                    }
                 } else if (option == 3) {
                     // TODO : Dylan Add Course
+                    System.out.print("Please choose one:\n" +
+                            "1. Add Past Courses\n" +
+                            "2. Add Current Courses\n" +
+                            "3. Add Planned Courses\n" +
+                            "Enter Selection Here: ");
+                    int addOp = scanner.nextInt();
+                    System.out.print("Enter the information for the course\n" +
+                            "Name: ");
+                    String name = scanner.next();
+                    System.out.print("CRN: ");
+                    int CRN = scanner.nextInt();
+                    System.out.print("Credits: ");
+                    double credits = scanner.nextDouble();
+                    System.out.print("Department & Number: ");
+                    String courseNum = scanner.next();
+                    System.out.print("Semester: ");
+                    String semester = scanner.next();
+                    /*System.out.print("Does this course have any prerequisites?\n" +
+                            "1. Yes\n" +
+                            "2. No\n" +
+                            "Enter Selection Here: ");
+                    String preReq*/
+                    switch (addOp) {
+                        case 1:
+                            student.addCoursesTaken(new Course(name, CRN, credits, courseNum, semester, null));
+                            break;
+                        case 2:
+                            student.addCurrentCourses(new Course(name, CRN, credits, courseNum, semester, null));
+                            break;
+                        case 3:
+                            student.addCoursesPlanned(new Course(name, CRN, credits, courseNum, semester, null));
+                            break;
+                    }
+
                 } else if (option == 4) {
                     // TODO : Dan Input Transcript
                     System.out.println("Please enter file path: ");
