@@ -28,18 +28,18 @@ public class StudentUI {
         String username;
         String password;
         System.out.print("Please Enter a Username: ");
-        username = scanner.nextLine();
+        username = scanner.next();
         while (username.trim().equals("")) {
             System.out.println("Bad Username!");
             System.out.print("Please Enter a Username: ");
-            username = scanner.nextLine();
+            username = scanner.next();
         }
         System.out.print("Please Enter a Password: ");
-        password = scanner.nextLine();
+        password = scanner.next();
         while (password.trim().equals("")) {
             System.out.println("Bad Password!");
             System.out.print("Please Enter a Password: ");
-            password = scanner.nextLine();
+            password = scanner.next();
         }
         boolean registered = studentAPI.register(username, password);
         if (registered) {
@@ -58,18 +58,18 @@ public class StudentUI {
         Student student = null;
         System.out.println("Login - Please Enter Your Credentials");
         System.out.print("Enter your Username: ");
-        username = scanner.nextLine();
+        username = scanner.next();
         while (username.trim().equals("")) {
             System.out.println("Bad Username!");
             System.out.print("Please Enter Your Username: ");
-            username = scanner.nextLine();
+            username = scanner.next();
         }
         System.out.print("Please Enter Your Password: ");
-        password = scanner.nextLine();
+        password = scanner.next();
         while (password.trim().equals("")) {
             System.out.println("Bad Password!");
             System.out.print("Please Enter Your Password: ");
-            password = scanner.nextLine();
+            password = scanner.next();
         }
         student = studentAPI.login(username, password);
         if (student != null) {
