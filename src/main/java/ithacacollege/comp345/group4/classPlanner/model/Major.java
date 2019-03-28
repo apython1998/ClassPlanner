@@ -34,6 +34,10 @@ public class Major {
         public boolean fulfillsRequirment(Course c){
             return c.getCourseDiscAndNum().equals(course.getCourseDiscAndNum());
         }
+
+        public String toString(){
+            return "Required Course: " + course.getCourseDiscAndNum();
+        }
     }
 
     public class ChooseOne implements Requirement {
@@ -48,6 +52,16 @@ public class Major {
                     found = true;
             }
             return found;
+        }
+
+        public String toString(){
+            String s = "Choose One: \n";
+            int index = 1;
+            for(Course c : courses){
+                s += index + " - " + c.getCourseDiscAndNum() + "\n";
+                index++;
+            }
+            return s;
         }
     }
 }

@@ -2,10 +2,12 @@ package ithacacollege.comp345.group4.classPlanner.ui;
 
 import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
 import ithacacollege.comp345.group4.classPlanner.model.Course;
+import ithacacollege.comp345.group4.classPlanner.model.Major;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 import ithacacollege.comp345.group4.classPlanner.model.Transcript;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class StudentUI {
@@ -126,7 +128,14 @@ public class StudentUI {
                     option = scanner.nextInt();
                 }
                 if (option == 1) {
-                    // TODO : Joe Major Requirements
+                    //Currently student object has no major, so just using Computer Science for now
+
+                    //String majorString = student.getMajor().title;
+                    String majorString = "Computer Science";
+                    List<Major.Requirement> reqs = studentAPI.viewMajorRequirment(majorString);
+                    for(Major.Requirement req : reqs){
+                        System.out.println(req.toString());
+                    }
                 } else if (option == 2) {
                     // TODO : Dylan View Courses
                     /*System.out.print("Please choose one:\n" +

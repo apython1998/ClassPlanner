@@ -19,10 +19,14 @@ public class Directory {
     public Directory() {
         this.students = new HashMap<>();
         this.majorDirectory = new HashMap<>();
+        //Preload major JSON:
+        uploadMajor("resources/TestMajorReqs.json");
     }
 
     public Directory(Map<String, Student> users) {
         this.students = users;
+        //Preload major JSON:
+        uploadMajor("resources/TestMajorReqs.json");
     }
 
     /**

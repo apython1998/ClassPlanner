@@ -3,6 +3,7 @@ package ithacacollege.comp345.group4.classPlanner.controller;
 
 import ithacacollege.comp345.group4.classPlanner.model.Course;
 
+import ithacacollege.comp345.group4.classPlanner.model.Major;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 
 import ithacacollege.comp345.group4.classPlanner.model.Directory;
@@ -33,6 +34,8 @@ public class StudentAPI {
     public List<Course> viewCurrentCourses(String name){
         return directory.viewCurrentCourses(name);
     }
+
+    public List<Major.Requirement> viewMajorRequirment(String major){ return directory.getMajorDirectory().get(major).requirements; }
 
     public boolean addCurrentCourse(String name, Course course){
         return directory.addCurrentCourse(name, course);
