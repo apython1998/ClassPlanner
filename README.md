@@ -51,7 +51,6 @@ Sprint Goal: Student's should be able to choose their major, see their major req
 3. Plan Semester Classes
 
 #### Link to Class Diagram Sprint 2:
-//TODO
 ![Class Diagram](diagrams/ClassPlannerClassDiagram_2.jpg)
 
 #### Sequence Diagram Sprint 2:
