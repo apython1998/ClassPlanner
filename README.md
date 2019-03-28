@@ -54,6 +54,10 @@ Sprint Goal: Student's should be able to choose their major, see their major req
 //TODO
 
 #### Sequence Diagram Sprint 2:
-//TODO
+![Sequence Diagram](diagrams/viewGraduationPathsSequenceDiagramSprint2.jpg)
 
+This sequence diagram is for the Student's view graduation paths use case.
+The student logs in, tries to view graduation paths, and is then printed a report of all the classes they can take to graduate.
+This is very similar to the diagram for Sprint 1, but the methods have been updated. 
+There are no new updates to the classes used in this use case.
 
