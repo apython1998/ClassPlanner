@@ -35,7 +35,13 @@ public class StudentAPI {
         return directory.viewCurrentCourses(name);
     }
 
-    public List<Major.Requirement> viewMajorRequirment(String major){ return directory.getMajorDirectory().get(major).requirements; }
+    public List<Major.Requirement> viewMajorRequirment(String major){
+        return directory.getMajorDirectory().get(major).requirements;
+    }
+
+    public boolean validateMajor(String major){
+        return directory.getMajorDirectory().containsKey(major);
+    }
 
     public boolean addCurrentCourse(String name, Course course){
         return directory.addCurrentCourse(name, course);
@@ -57,6 +63,10 @@ public class StudentAPI {
 
     public boolean addFutureCourse(String name, Course course){
         return directory.addFutureCourse(name, course);
+    }
+
+    public void setStudentMajor(String student, String major){
+        directory.getStudents().get(student).changeMajor(directory.getMajorDirectory().get(major));
     }
 
     /****************************    GETTERS AND SETTERS     ****************************/

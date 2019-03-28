@@ -32,6 +32,7 @@ public class StudentUI {
         System.out.println("Thank you for taking time to register!");
         String username;
         String password;
+        String major;
         System.out.print("Please Enter a Username: ");
         username = scanner.next();
         while (username.trim().equals("")) {
@@ -46,7 +47,19 @@ public class StudentUI {
             System.out.print("Please Enter a Password: ");
             password = scanner.next();
         }
+        scanner.nextLine();
+
+        System.out.println("Please Enter a Major or 'None': ");
+        major = scanner.nextLine();
+        while (!studentAPI.validateMajor(major) && !major.toLowerCase().equals("none")){
+            System.out.println("Major does not exist!");
+            System.out.println("Please Enter a Major or 'None': ");
+            major = scanner.nextLine();
+        }
         boolean registered = studentAPI.register(username, password);
+        if(!major.toLowerCase().equals("none"))
+            studentAPI.setStudentMajor(username, major);
+
         if (registered) {
             System.out.println("Thank you for registering as a new Student " + username);
         } else {
@@ -130,12 +143,15 @@ public class StudentUI {
                 if (option == 1) {
                     //Currently student object has no major, so just using Computer Science for now
 
-                    //String majorString = student.getMajor().title;
-                    String majorString = "Computer Science";
-                    List<Major.Requirement> reqs = studentAPI.viewMajorRequirment(majorString);
-                    for(Major.Requirement req : reqs){
-                        System.out.println(req.toString());
+                    Major m = student.getMajor();
+                    if(m !=  null) {
+                        List<Major.Requirement> reqs = studentAPI.viewMajorRequirment(m.title);
+                        for (Major.Requirement req : reqs) {
+                            System.out.println(req.toString());
+                        }
                     }
+                    else
+                        System.out.println("You have not declared a major.");
                 } else if (option == 2) {
                     // TODO : Dylan View Courses
                     /*System.out.print("Please choose one:\n" +
