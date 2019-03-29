@@ -102,3 +102,4 @@ target/
 
 # Python Shit
 venv/
+chromedriver
