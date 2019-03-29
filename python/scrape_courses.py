@@ -4,7 +4,7 @@ import re
 import json # Use is json.dumps(object)
 
 valid_semesters = ['S', 'F', 'W', 'SUM']
-valid_frequency = ['IRR', 'Y', 'E']
+valid_frequency = ['IRR', 'Y', 'E', 'O']
 
 
 def scrape_department_links(url):
@@ -45,7 +45,19 @@ def scrape_courses(url, courses):
             elif data in valid_frequency:
                 course_frequency = data
         course_prereqs = []
-        course_prereqs_dirty =
+        course_choose_ones = []
+        course_prereqs_dirty = course_desc_block[course_desc_block.find('Prerequisites:')+len('Prerequisites: '):course_desc_block.rfind('(')]\
+            .strip().replace('.', '').replace(';', '')
+        course_prereqs_dirty = course_prereqs_dirty[0:course_prereqs_dirty.rfind('0')+1].split()
+        course_prereqs_parsed = ''
+        for i in range(len(course_prereqs_dirty)):
+            item = course_prereqs_dirty[i]
+            if i is 0:
+                course_prereqs_parsed += item
+            elif item.replace(',', '').isnumeric():
+                course_prereqs_parsed += item
+            else:
+                course_prereqs_parsed += ' ' + item
 
         # Put Data into the Dictionary
         course_json['department'] = course_dept # Department
