@@ -15,7 +15,7 @@ public class TranscriptEntryTest {
         TranscriptEntry myEntry = new TranscriptEntry();
         assertNotNull(myEntry);
         try {
-            myEntry = new TranscriptEntry("src/test/testResources/exTranscriptEntry.json");
+            myEntry = new TranscriptEntry("src/test/resources/exTranscriptEntry.json");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -37,7 +37,7 @@ public class TranscriptEntryTest {
     @Test
     public void parseCourseTest() {
         JSONParser jsonParser = new JSONParser();
-        try (FileReader reader = new FileReader("src/test/testResources/exTranscriptEntry.json")) {
+        try (FileReader reader = new FileReader("src/test/resources/exTranscriptEntry.json")) {
             Object obj = jsonParser.parse(reader);
 
             JSONObject entry = (JSONObject) obj;
