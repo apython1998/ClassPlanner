@@ -102,12 +102,29 @@ public class Directory {
         catch(ParseException e){e.printStackTrace();}
         majorDirectory.put(newMajor.title, newMajor);
     }
+
     public List<Course> viewCurrentCourses(String name){
         if (!students.containsKey(name)){
             throw new InvalidArgumentException("There is no account associated with that name");
         }
         User student = students.get(name);
         return ((Student) student).getCurrentCourses();
+    }
+
+    public List<Course> viewTakenCourses(String name){
+        if (!students.containsKey(name)){
+            throw new InvalidArgumentException("There is no account associated with that name");
+        }
+        User student = students.get(name);
+        return ((Student) student).getTakenCourses();
+    }
+
+    public List<Course> viewPlannedCourses(String name){
+        if (!students.containsKey(name)){
+            throw new InvalidArgumentException("There is no account associated with that name");
+        }
+        User student = students.get(name);
+        return ((Student) student).getPlannedCourses();
     }
 
     public boolean addCurrentCourse(String name, Course course){
@@ -123,7 +140,7 @@ public class Directory {
             throw new InvalidArgumentException("There is no account associated with that name");
         }
         User student = students.get(name);
-        return ((Student) student).addCoursesTaken(course);
+        return ((Student) student).addTakenCourses(course);
     }
 
     public boolean addFutureCourse(String name, Course course){
@@ -131,7 +148,7 @@ public class Directory {
             throw new InvalidArgumentException("There is no account associated with that name");
         }
         User student = students.get(name);
-        return ((Student) student).addCoursesPlanned(course);
+        return ((Student) student).addPlannedCourses(course);
     }
 
     /**************************** GETTERS AND SETTERS     ****************************/

@@ -34,6 +34,14 @@ public class StudentAPI {
         return directory.viewCurrentCourses(name);
     }
 
+    public List<Course> viewTakenCourses(String name){
+        return directory.viewTakenCourses(name);
+    }
+
+    public List<Course> viewPlannedCourses(String name){
+        return directory.viewPlannedCourses(name);
+    }
+
     public boolean addCurrentCourse(String name, Course course){
         return directory.addCurrentCourse(name, course);
     }
