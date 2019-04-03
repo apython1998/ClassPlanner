@@ -24,7 +24,7 @@ public class Plan {
      * @param startYear First year to generate
      */
     private void generatePlan(int numSemesters, float creditsPerSemester, Semester startSemester, Year startYear){
-
+        //TODO
     }
 
 }
