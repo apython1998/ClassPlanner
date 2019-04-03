@@ -1,4 +1,4 @@
-# Class Planner
+# Class Planner [![CircleCI](https://circleci.com/gh/apython1998/ClassPlanner.svg?style=svg)](https://circleci.com/gh/apython1998/ClassPlanner)
 ## Created by Joe Cleveland, Dan McCaffrey, Alex Python, and Dylan Shane
 
 #### Description:
@@ -51,7 +51,7 @@ Sprint Goal: Student's should be able to choose their major, see their major req
 3. Plan Semester Classes
 
 #### Link to Class Diagram Sprint 2:
-//TODO
+![Class Diagram](diagrams/ClassPlannerClassDiagram_2.jpg)
 
 #### Sequence Diagram Sprint 2:
 ![Sequence Diagram](diagrams/viewGraduationPathsSequenceDiagramSprint2.jpg)
