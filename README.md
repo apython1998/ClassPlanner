@@ -1,4 +1,4 @@
-# Class Planner
+# Class Planner [![CircleCI](https://circleci.com/gh/apython1998/ClassPlanner.svg?style=svg)](https://circleci.com/gh/apython1998/ClassPlanner)
 ## Created by Joe Cleveland, Dan McCaffrey, Alex Python, and Dylan Shane
 
 #### Description:
