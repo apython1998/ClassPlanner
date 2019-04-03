@@ -1,14 +1,12 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
-import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
-import ithacacollege.comp345.group4.classPlanner.model.Course;
-import ithacacollege.comp345.group4.classPlanner.model.Student;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class StudentTest {
 
@@ -16,9 +14,9 @@ public class StudentTest {
     void addPastCoursesTest(){
         Student student = new Student("test", "abc", null, null);
         List<Course> courseList = new ArrayList<>();
-        Course course1 = new Course("test1", 12345, 3.0, "TEST123", "FA17", null);
-        Course course2 = new Course("test2", 13465, 3.0, "TEST321", "FA17", null);
-        Course course3 = new Course("test1", 12345, 3.0, "TEST123", "FA17", null);
+        Course course1 = new Course("test1", 3.0, "TEST123", "FA17", null);
+        Course course2 = new Course("test2", 3.0, "TEST321", "FA17", null);
+        Course course3 = new Course("test1", 3.0, "TEST123", "FA17", null);
         courseList.add(course1);
         courseList.add(course2);
         courseList.add(course3);
@@ -42,9 +40,9 @@ public class StudentTest {
     void addCurrentCoursesTest(){
         Student student = new Student("test", "abc", null, null);
         List<Course> courseList = new ArrayList<>();
-        Course course1 = new Course("Software Engineering", 12345, 3.0, "COMP345", "FA17", null);
-        Course course2 = new Course("Machine Learning", 13465, 3.0, "COMP490", "FA17", null);
-        Course course3 = new Course("Probability", 12345, 3.0, "MATH316", "FA17", null);
+        Course course1 = new Course("Software Engineering", 3.0, "COMP345", "FA17", null);
+        Course course2 = new Course("Machine Learning", 3.0, "COMP490", "FA17", null);
+        Course course3 = new Course("Probability", 3.0, "MATH316", "FA17", null);
         courseList.add(course1);
         courseList.add(course2);
         courseList.add(course3);
@@ -67,9 +65,9 @@ public class StudentTest {
     void addPlannedCoursesTest(){
         Student student = new Student("test", "abc", null, null);
         List<Course> courseList = new ArrayList<>();
-        Course course1 = new Course("test1", 12345, 3.0, "TEST123", "FA17", null);
-        Course course2 = new Course("test2", 13465, 3.0, "TEST321", "FA17", null);
-        Course course3 = new Course("test1", 12345, 3.0, "TEST123", "FA17", null);
+        Course course1 = new Course("test1", 3.0, "TEST123", "FA17", null);
+        Course course2 = new Course("test2", 3.0, "TEST321", "FA17", null);
+        Course course3 = new Course("test1", 3.0, "TEST123", "FA17", null);
         courseList.add(course1);
         courseList.add(course2);
         courseList.add(course3);
@@ -92,9 +90,9 @@ public class StudentTest {
     void viewCoursesTest(){
         Student student = new Student("test", "abc", null, null);
         List<Course> courseList = new ArrayList<>();
-        Course course1 = new Course("Software Engineering", 12345, 3.0, "COMP345", "FA17", null);
-        Course course2 = new Course("Machine Learning", 13465, 3.0, "COMP490", "FA17", null);
-        Course course3 = new Course("Probability", 12345, 3.0, "MATH316", "FA17", null);
+        Course course1 = new Course("Software Engineering", 3.0, "COMP345", "FA17", null);
+        Course course2 = new Course("Machine Learning", 3.0, "COMP490", "FA17", null);
+        Course course3 = new Course("Probability", 3.0, "MATH316", "FA17", null);
         courseList.add(course1);
         courseList.add(course2);
         courseList.add(course3);

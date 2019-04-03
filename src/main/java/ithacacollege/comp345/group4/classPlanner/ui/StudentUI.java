@@ -5,7 +5,6 @@ import ithacacollege.comp345.group4.classPlanner.model.Course;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 import ithacacollege.comp345.group4.classPlanner.model.Transcript;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentUI {
@@ -184,13 +183,13 @@ public class StudentUI {
                     String preReq*/
                     switch (addOp) {
                         case 1:
-                            student.addCoursesTaken(new Course(name, CRN, credits, courseNum, semester, null));
+                            student.addCoursesTaken(new Course(name, credits, courseNum, semester, null));
                             break;
                         case 2:
-                            student.addCurrentCourses(new Course(name, CRN, credits, courseNum, semester, null));
+                            student.addCurrentCourses(new Course(name, credits, courseNum, semester, null));
                             break;
                         case 3:
-                            student.addCoursesPlanned(new Course(name, CRN, credits, courseNum, semester, null));
+                            student.addCoursesPlanned(new Course(name, credits, courseNum, semester, null));
                             break;
                     }
 

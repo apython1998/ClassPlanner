@@ -103,6 +103,18 @@ def main():
     for department_link in department_links:
         scrape_courses(department_link, courses)
         time.sleep(1)
+    for course in courses:  # For each course, verify the data
+        bad_prereqs = []
+        bad_choose_ones = []
+        for prereq in course['prereqs']:
+            if len(prereq) != 9:
+                bad_prereqs.append(prereq)
+        for choose_one in course['choose_ones']:
+            for prereq in choose_one:  # Get rid of bad prereqs in the choose ones
+                if len(prereq) != 9:
+                    choose_one.remove(prereq)
+            if len(choose_one) < 2:    # If the size of the choose one is less than 2 now, get rid of it
+                bad_choose_ones.append(choose_one)
     with open('../src/main/resources/course_catalog.json', 'w') as outfile:
         json.dump(courses, outfile)
 

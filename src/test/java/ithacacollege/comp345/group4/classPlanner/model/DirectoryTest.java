@@ -50,7 +50,7 @@ class DirectoryTest {
     @Test
     public void uploadMajorTest(){
         Directory d = new Directory();
-        d.uploadMajor("resources/TestMajorReqs.json");
+        d.uploadMajor("src/test/resources/TestMajorReqs.json");
 
         Major cs = d.getMajorDirectory().get("Computer Science");
 
@@ -72,7 +72,7 @@ class DirectoryTest {
         Directory directory = new Directory();
         directory.registerStudent("asdf", "asdf");
 
-        Course course1 = new Course("Software Engineering", 12345, 3.0, "COMP345", "FA17", null);
+        Course course1 = new Course("Software Engineering", 3.0, "COMP345", "FA17", null);
 
         directory.addCurrentCourse("asdf", course1);
 

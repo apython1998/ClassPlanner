@@ -24,7 +24,7 @@ public class TranscriptEntryTest {
 
     @Test
     public void toStringTest() {
-        TranscriptEntry myEntry = new TranscriptEntry(new Course("Principles of Comp Sci I", 24850, 4.0, "COMP17100", "F2019", null),
+        TranscriptEntry myEntry = new TranscriptEntry(new Course("Principles of Comp Sci I", 4.0, "COMP17100", "F2019", null),
                                                             "",
                                                             true,
                                                             false);
@@ -48,7 +48,6 @@ public class TranscriptEntryTest {
             assertEquals("COMP17100", thisCourse.getCourseDiscAndNum());
             assertEquals("F2019", thisCourse.getSemester());
             assertEquals(4.0, thisCourse.getCredits());
-            assertEquals(24850, thisCourse.getCrn());
             assertNull(thisCourse.getPreReqs());
         } catch (Exception e){
             e.printStackTrace();

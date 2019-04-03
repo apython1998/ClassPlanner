@@ -1,15 +1,12 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TranscriptEntry {
     private Course course;
@@ -90,7 +87,7 @@ public class TranscriptEntry {
         } else {
             coursePreReqs = null;
         }
-        return new Course(courseName, courseCRN, credits, courseDiscAndNum, courseSemester, coursePreReqs);
+        return new Course(courseName, credits, courseDiscAndNum, courseSemester, coursePreReqs);
     }
 
     public static TranscriptEntry parseEntry(JSONObject entry) {

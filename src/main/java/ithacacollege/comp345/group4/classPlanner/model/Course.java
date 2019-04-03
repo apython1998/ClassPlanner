@@ -1,29 +1,18 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDateTime;
 
 public class Course {
     private String name;
-    private int crn;
     private double credits;
     private String courseNum;
     private String semester;
     private List<Course> preReqs;
 
-    public Course() {
-        name = "";
-        crn = 0;
-        credits = 0.0;
-        courseNum = "";
-        semester = "";
-        preReqs = new ArrayList<Course>(0);
-    }
+    public Course() {}
 
-    public Course(String name, int crn, double credits, String courseDiscAndNum, String semester, List<Course> preReqs) {
+    public Course(String name, double credits, String courseDiscAndNum, String semester, List<Course> preReqs) {
         this.name = name;
-        this.crn = crn;
         this.credits = credits;
         this.courseNum = courseDiscAndNum;
         this.semester = semester;
@@ -36,14 +25,6 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getCrn() {
-        return crn;
-    }
-
-    public void setCrn(int crn) {
-        this.crn = crn;
     }
 
     public double getCredits() {

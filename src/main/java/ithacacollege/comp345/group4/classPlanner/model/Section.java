@@ -4,20 +4,19 @@ import java.util.List;
 
 public class Section extends Course {
     private int num;
+    private String crn;
     private String year;
     private List<CourseTimes> times;
 
 
     Section() {
         super();
-        num = 0;
-        times = null;
-        year = "";
     }
 
-    Section(String name, int crn, double credits, String courseDiscAndNum, String semester, List<Course> preReqs, int num, CourseTimes times, String year) {
-        super(name, crn, credits, courseDiscAndNum, semester, preReqs);
+    Section(String name, String crn, double credits, String courseDiscAndNum, String semester, List<Course> preReqs, int num, CourseTimes times, String year) {
+        super(name, credits, courseDiscAndNum, semester, preReqs);
         this.num = num;
+        this.crn = crn;
 //        this.times = times;
         this.year = year;
     }
