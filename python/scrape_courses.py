@@ -47,7 +47,7 @@ def scrape_courses(url, courses):
         course_prereqs = []
         course_choose_ones = []
         course_prereqs_dirty = course_desc_block[course_desc_block.find('Prerequisites:')+len('Prerequisites: '):course_desc_block.rfind('(')]\
-            .strip().replace('.', '').replace(';', '')
+            .strip().replace('.', '')
         course_prereqs_dirty = course_prereqs_dirty[0:course_prereqs_dirty.rfind('0')+1].split()
         course_prereqs_parsed = ''
         for i in range(len(course_prereqs_dirty)):
@@ -58,19 +58,30 @@ def scrape_courses(url, courses):
                 course_prereqs_parsed += item
             else:
                 course_prereqs_parsed += ' ' + item
-
+        requirements = course_prereqs_parsed.split(';')  # Split into separate requirements by ;
+        for requirement in requirements:
+            pass
         # Put Data into the Dictionary
-        course_json['department'] = course_dept # Department
-
-    browser.close()
+        course_json['department'] = course_dept              # Department
+        course_json['number'] = course_number                # Course Number
+        course_json['name'] = course_name                    # Name
+        course_json['credits'] = course_credits              # Credits
+        course_json['semesters_offered'] = course_semesters  # Semesters
+        course_json['frequency_offered'] = course_frequency  # Frequency
+        course_json['prereqs'] = course_prereqs              # Prereqs
+        course_json['choose_ones'] = course_choose_ones      # Choose Ones
+        courses.append(course_json)
+    browser.close()                                          # Close the browser
 
 
 def main():
     department_links = scrape_department_links('https://catalog.ithaca.edu/undergrad/coursesaz/')
     courses = []
-    for department_link in department_links:
+    for department_link in department_links[0:3]:
         scrape_courses(department_link, courses)
         time.sleep(2)
+    with open('../src/main/resources/course_catalog.txt', 'w') as outfile:
+        json.dump(courses, outfile)
 
 
 main()
