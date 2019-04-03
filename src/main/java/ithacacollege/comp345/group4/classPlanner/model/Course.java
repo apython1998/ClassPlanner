@@ -2,6 +2,7 @@ package ithacacollege.comp345.group4.classPlanner.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDateTime;
 
 public class Course {
     private String name;
