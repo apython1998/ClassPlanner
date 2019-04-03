@@ -3,20 +3,32 @@ package ithacacollege.comp345.group4.classPlanner.model;
 import java.util.List;
 
 public class Course {
+    private String courseNum;
     private String name;
     private double credits;
-    private String courseNum;
-    private String semester;
-    private List<Course> preReqs;
+    private List<SemestersOffered> semestersOffered;
+    private CourseFrequency frequencyOffered;
+    private List<String> prereqs;
+    private List<List<String>> chooseOnes;
 
     public Course() {}
 
-    public Course(String name, double credits, String courseDiscAndNum, String semester, List<Course> preReqs) {
+    public Course(String name, double credits, String courseNum, List<SemestersOffered> semestersOffered, CourseFrequency frequencyOffered, List<String> prereqs, List<List<String>> chooseOnes) {
         this.name = name;
         this.credits = credits;
-        this.courseNum = courseDiscAndNum;
-        this.semester = semester;
-        this.preReqs = preReqs;
+        this.courseNum = courseNum;
+        this.semestersOffered = semestersOffered;
+        this.frequencyOffered = frequencyOffered;
+        this.prereqs = prereqs;
+        this.chooseOnes = chooseOnes;
+    }
+
+    public String getCourseNum() {
+        return courseNum;
+    }
+
+    public void setCourseNum(String courseNum) {
+        this.courseNum = courseNum;
     }
 
     public String getName() {
@@ -35,31 +47,48 @@ public class Course {
         this.credits = credits;
     }
 
-    public String getCourseDiscAndNum() {
-        return courseNum;
+    public List<SemestersOffered> getSemestersOffered() {
+        return semestersOffered;
     }
 
-    public void setCourseDiscAndNum(String courseDiscAndNum) {
-        this.courseNum = courseDiscAndNum;
+    public void setSemestersOffered(List<SemestersOffered> semesters_offered) {
+        this.semestersOffered = semesters_offered;
     }
 
-    public String getSemester() {
-        return semester;
+    public CourseFrequency getFrequencyOffered() {
+        return frequencyOffered;
     }
 
-    public void setSemester(String semester) {
-        this.semester = semester;
+    public void setFrequencyOffered(CourseFrequency frequency_offered) {
+        this.frequencyOffered = frequency_offered;
     }
 
-    public List<Course> getPreReqs() {
-        return preReqs;
+    public List<String> getprereqs() {
+        return prereqs;
     }
 
-    public void setPreReqs(List<Course> preReqs) {
-        this.preReqs = preReqs;
+    public void setprereqs(List<String> preReqs) {
+        this.prereqs = preReqs;
     }
 
+    public List<List<String>> getChooseOnes() {
+        return chooseOnes;
+    }
+
+    public void setChooseOnes(List<List<String>> chooseOnes) {
+        this.chooseOnes = chooseOnes;
+    }
+
+    @Override
     public String toString() {
-        return this.courseNum + ": " + this.name + " " + this.credits + " credits";
+        return "Course{" +
+                "courseNum='" + courseNum + '\'' +
+                ", name='" + name + '\'' +
+                ", credits=" + credits +
+                ", semestersOffered=" + semestersOffered +
+                ", frequencyOffered=" + frequencyOffered +
+                ", prereqs=" + prereqs +
+                ", chooseOnes=" + chooseOnes +
+                '}';
     }
 }

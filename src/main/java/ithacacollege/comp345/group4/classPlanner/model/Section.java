@@ -13,8 +13,8 @@ public class Section extends Course {
         super();
     }
 
-    Section(String name, String crn, double credits, String courseDiscAndNum, String semester, List<Course> preReqs, int num, CourseTimes times, String year) {
-        super(name, credits, courseDiscAndNum, semester, preReqs);
+    Section(String name, String crn, double credits, String courseDiscAndNum, List<SemestersOffered> semesters_offered, CourseFrequency frequency_offered, List<String> preReqs, List<List<String>> chooseOnes, int num, CourseTimes times, String year) {
+        super(name, credits, courseDiscAndNum, semesters_offered, frequency_offered, preReqs, chooseOnes);
         this.num = num;
         this.crn = crn;
 //        this.times = times;

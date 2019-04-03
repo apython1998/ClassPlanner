@@ -85,14 +85,13 @@ def scrape_courses(url, courses):
             if len(prereq) != 9:
                 course_prereqs.remove(prereq)
         # Put Data into the Dictionary
-        course_json['department'] = course_dept              # Department
-        course_json['number'] = course_number                # Course Number
+        course_json['courseNum'] = course_dept+course_number # Department and Number (DEPT00000)
         course_json['name'] = course_name                    # Name
-        course_json['credits'] = course_credits              # Credits
-        course_json['semesters_offered'] = course_semesters  # Semesters
-        course_json['frequency_offered'] = course_frequency  # Frequency
-        course_json['prereqs'] = course_prereqs              # Prereqs
-        course_json['choose_ones'] = course_choose_ones      # Choose Ones
+        course_json['credits'] = course_credits              # Credits (0.0)
+        course_json['semestersOffered'] = course_semesters  # Semesters
+        course_json['frequencyOffered'] = course_frequency  # Frequency
+        course_json['prereqs'] = course_prereqs              # Prereqs [COMP171, COMP172]
+        course_json['chooseOnes'] = course_choose_ones      # Choose Ones
         courses.append(course_json)
     browser.close()                                          # Close the browser
 

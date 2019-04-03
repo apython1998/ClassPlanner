@@ -11,7 +11,7 @@ public class ChooseOne implements Requirement {
     public boolean fulfillsRequirment(Course c){
         boolean found = false;
         for(Course lc : courses){
-            if(lc.getCourseDiscAndNum().equals(c.getCourseDiscAndNum()))
+            if(lc.getCourseNum().equals(c.getCourseNum()))
                 found = true;
         }
         return found;

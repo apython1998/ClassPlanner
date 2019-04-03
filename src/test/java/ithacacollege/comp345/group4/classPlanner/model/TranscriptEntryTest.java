@@ -19,17 +19,17 @@ public class TranscriptEntryTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        assertEquals("Completed\tCOMP17100\tPrinciples of Comp Sci I\tA\t4.0\tF2019", myEntry.toString());
+        assertEquals("Completed\tCOMP17100\tPrinciples of Comp Sci I\tA\t4.0", myEntry.toString());
     }
 
     @Test
     public void toStringTest() {
-        TranscriptEntry myEntry = new TranscriptEntry(new Course("Principles of Comp Sci I", 4.0, "COMP17100", "F2019", null),
+        TranscriptEntry myEntry = new TranscriptEntry(new Course("Principles of Comp Sci I", 4.0, "COMP17100", null, null, null, null),
                                                             "",
                                                             true,
                                                             false);
         //System.out.println(myEntry.toString());
-        assertEquals("In Progress\tCOMP17100\tPrinciples of Comp Sci I\t\t4.0\tF2019", myEntry.toString());
+        assertEquals("In Progress\tCOMP17100\tPrinciples of Comp Sci I\t\t4.0", myEntry.toString());
         myEntry = new TranscriptEntry();
         assertEquals("", myEntry.toString());
     }
@@ -45,10 +45,9 @@ public class TranscriptEntryTest {
 
             Course thisCourse = TranscriptEntry.parseCourse(myCourse);
             assertEquals("Principles of Comp Sci I", thisCourse.getName());
-            assertEquals("COMP17100", thisCourse.getCourseDiscAndNum());
-            assertEquals("F2019", thisCourse.getSemester());
+            assertEquals("COMP17100", thisCourse.getCourseNum());
             assertEquals(4.0, thisCourse.getCredits());
-            assertNull(thisCourse.getPreReqs());
+            assertNull(thisCourse.getprereqs());
         } catch (Exception e){
             e.printStackTrace();
         }

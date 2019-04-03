@@ -5,7 +5,6 @@ import ithacacollege.comp345.group4.classPlanner.model.Course;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 import ithacacollege.comp345.group4.classPlanner.model.Transcript;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -215,20 +214,16 @@ public class StudentUI {
                     System.out.print("Enter the information for the course\n" +
                             "Name: ");
                     String name = scanner.next();
-                    System.out.print("CRN: ");
-                    int CRN = scanner.nextInt();
                     System.out.print("Credits: ");
                     double credits = scanner.nextDouble();
                     System.out.print("Department & Number: ");
                     String courseNum = scanner.next();
-                    System.out.print("Semester: ");
-                    String semester = scanner.next();
                     /*System.out.print("Does this course have any prerequisites?\n" +
                             "1. Yes\n" +
                             "2. No\n" +
                             "Enter Selection Here: ");
                     String preReq*/
-                    Course course = new Course(name, CRN, credits, courseNum, semester, null);
+                    Course course = new Course(name, credits, courseNum, null, null, null, null);
                     boolean success = false;
                     switch (addOp) {
                         case 1:

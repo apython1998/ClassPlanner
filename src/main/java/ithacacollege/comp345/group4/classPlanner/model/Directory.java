@@ -1,15 +1,14 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
-
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.*;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 public class Directory {
 
@@ -80,7 +79,7 @@ public class Directory {
             while (courseitr.hasNext()) {
                 String courseTitle = courseitr.next();
                 Course newCourse = new Course();
-                newCourse.setCourseDiscAndNum(courseTitle);
+                newCourse.setCourseNum(courseTitle);
                 newMajor.addCourse(newCourse);
             }
 
@@ -92,7 +91,7 @@ public class Directory {
                 List<Course> chooseCourseList = new ArrayList<>();
                 while(chooseCourseItr.hasNext()) {
                     Course c = new Course();
-                    c.setCourseDiscAndNum(chooseCourseItr.next());
+                    c.setCourseNum(chooseCourseItr.next());
                     chooseCourseList.add(c);
                 }
                 newMajor.addChooseOne(chooseCourseList);

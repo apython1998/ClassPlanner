@@ -58,15 +58,13 @@ public class TranscriptEntry {
             return inProgressString + //
                     courseCompleteString + //
                     "\t" + //
-                    course.getCourseDiscAndNum() + //
+                    course.getCourseNum() + //
                     "\t" + //
                     course.getName() + //
                     "\t" + //
                     grade + //
                     "\t" + //
-                    course.getCredits() + //
-                    "\t" + //
-                    course.getSemester();
+                    course.getCredits();
         }
     }
 
@@ -87,7 +85,7 @@ public class TranscriptEntry {
         } else {
             coursePreReqs = null;
         }
-        return new Course(courseName, credits, courseDiscAndNum, courseSemester, coursePreReqs);
+        return new Course(courseName, credits, courseDiscAndNum,null, null, null, null);
     }
 
     public static TranscriptEntry parseEntry(JSONObject entry) {

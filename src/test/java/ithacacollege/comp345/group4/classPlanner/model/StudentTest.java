@@ -13,8 +13,8 @@ public class StudentTest {
     void addPastCoursesTest(){
         Student student = new Student("test", "abc", null, null);
 
-        Course course1 = new Course("test1", 12345, 3.0, "TEST123", "FA17", null);
-        Course course2 = new Course("test2", 13465, 3.0, "TEST321", "FA17", null);
+        Course course1 = new Course("test1", 3.0, "TEST123", null, null, null, null);
+        Course course2 = new Course("test2", 3.0, "TEST321", null, null, null, null);
 
 
         assertTrue(student.addTakenCourses(course1)); //adding 1st course
@@ -33,8 +33,8 @@ public class StudentTest {
     void addCurrentCoursesTest(){
         Student student = new Student("test", "abc", null, null);
         List<Course> courseList = new ArrayList<>();
-        Course course1 = new Course("Software Engineering", 12345, 3.0, "COMP345", "FA17", null);
-        Course course2 = new Course("Machine Learning", 13465, 3.0, "COMP490", "FA17", null);
+        Course course1 = new Course("Software Engineering", 3.0, "COMP345", null, null, null, null);
+        Course course2 = new Course("Machine Learning", 3.0, "COMP490", null, null, null, null);
 
         assertTrue(student.addCurrentCourses(course1)); //adding 1st course
         assertFalse(student.addCurrentCourses(course1)); //adding the course again should not work
@@ -50,8 +50,8 @@ public class StudentTest {
     void addPlannedCoursesTest(){
         Student student = new Student("test", "abc", null, null);
         List<Course> courseList = new ArrayList<>();
-        Course course1 = new Course("test1", 12345, 3.0, "TEST123", "FA17", null);
-        Course course2 = new Course("test2", 13465, 3.0, "TEST321", "FA17", null);
+        Course course1 = new Course("test1", 3.0, "TEST123", null, null, null, null);
+        Course course2 = new Course("test2", 3.0, "TEST321", null, null, null, null);
 
         assertTrue(student.addPlannedCourses(course1)); //adding 1st course
         assertFalse(student.addPlannedCourses(course1)); //adding the course again should not work
@@ -66,8 +66,8 @@ public class StudentTest {
     @Test
     void viewCoursesTest(){
         Student student = new Student("test", "abc", null, null);
-        Course course1 = new Course("Software Engineering", 12345, 3.0, "COMP345", "FA17", null);
-        Course course2 = new Course("Machine Learning", 13465, 3.0, "COMP490", "FA17", null);
+        Course course1 = new Course("Software Engineering", 3.0, "COMP345", null, null, null, null);
+        Course course2 = new Course("Machine Learning", 3.0, "COMP490", null, null, null, null);
 
         assertTrue(student.addCurrentCourses(course1)); //adding 1st course
         assertFalse(student.addCurrentCourses(course1)); //adding the course again should not work

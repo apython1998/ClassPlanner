@@ -8,6 +8,6 @@ public class SingleCourse implements Requirement {
         course = c;
     }
     public boolean fulfillsRequirment(Course c){
-        return c.getCourseDiscAndNum().equals(course.getCourseDiscAndNum());
+        return c.getCourseNum().equals(course.getCourseNum());
     }
 }
