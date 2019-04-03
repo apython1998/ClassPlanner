@@ -1,6 +1,5 @@
 from selenium import webdriver
 import time
-import re
 import json # Use is json.dumps(object)
 
 valid_semesters = ['S', 'F', 'W', 'SUM']
@@ -46,21 +45,45 @@ def scrape_courses(url, courses):
                 course_frequency = data
         course_prereqs = []
         course_choose_ones = []
-        course_prereqs_dirty = course_desc_block[course_desc_block.find('Prerequisites:')+len('Prerequisites: '):course_desc_block.rfind('(')]\
-            .strip().replace('.', '')
-        course_prereqs_dirty = course_prereqs_dirty[0:course_prereqs_dirty.rfind('0')+1].split()
-        course_prereqs_parsed = ''
-        for i in range(len(course_prereqs_dirty)):
-            item = course_prereqs_dirty[i]
-            if i is 0:
-                course_prereqs_parsed += item
-            elif item.replace(',', '').isnumeric():
-                course_prereqs_parsed += item
-            else:
-                course_prereqs_parsed += ' ' + item
-        requirements = course_prereqs_parsed.split(';')  # Split into separate requirements by ;
-        for requirement in requirements:
-            pass
+        if 'Prerequisites: ' in course_desc_block:  # If the class has prereqs, try and parse it
+            course_prereqs_dirty = course_desc_block.split('Prerequisites: ')[1].strip()
+            course_prereqs_dirty = course_prereqs_dirty[:course_prereqs_dirty.find('(')].strip().replace('.', '')
+            course_prereqs_dirty = course_prereqs_dirty[0:course_prereqs_dirty.rfind('0')+1].split()
+            course_prereqs_parsed = ''
+            for i in range(len(course_prereqs_dirty)):
+                item = course_prereqs_dirty[i]
+                if i is 0:
+                    course_prereqs_parsed += item
+                elif item.replace(',', '').isnumeric():
+                    course_prereqs_parsed += item
+                else:
+                    course_prereqs_parsed += ' ' + item
+            requirements = course_prereqs_parsed.split(';')  # Split into separate requirements by ;
+            for requirement in requirements:
+                if 'One of the following: ' in requirement:
+                    requirement_clean = requirement.replace('One of the following:', '').strip()
+                    requirement_split = requirement_clean.split(',')
+                    for i in range(len(requirement_split)):
+                        requirement_split[i] = requirement_split[i].strip()
+                    course_choose_ones.append(requirement_split)
+                elif 'or' in requirement:
+                    requirement_split = requirement.split('or')
+                    for i in range(len(requirement_split)):
+                        requirement_split[i] = requirement_split[i].strip()
+                    course_choose_ones.append(requirement_split)
+                elif 'and' in requirement:
+                    requirement_split = requirement.split('and')
+                    for i in range(len(requirement_split)):
+                        requirement_split[i] = requirement_split[i].strip()
+                    for item in requirement_split:
+                        if len(item) == 9:
+                            course_prereqs.append(item)
+                else:
+                    if len(requirement) == 9:  # Length of Course DEPT+Number
+                        course_prereqs.append(requirement)
+        for prereq in course_prereqs:
+            if len(prereq) != 9:
+                course_prereqs.remove(prereq)
         # Put Data into the Dictionary
         course_json['department'] = course_dept              # Department
         course_json['number'] = course_number                # Course Number
@@ -77,10 +100,10 @@ def scrape_courses(url, courses):
 def main():
     department_links = scrape_department_links('https://catalog.ithaca.edu/undergrad/coursesaz/')
     courses = []
-    for department_link in department_links[0:3]:
+    for department_link in department_links:
         scrape_courses(department_link, courses)
-        time.sleep(2)
-    with open('../src/main/resources/course_catalog.txt', 'w') as outfile:
+        time.sleep(1)
+    with open('../src/main/resources/course_catalog.json', 'w') as outfile:
         json.dump(courses, outfile)
 
 
