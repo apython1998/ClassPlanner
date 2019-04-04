@@ -41,4 +41,8 @@ public class Section extends Course {
 ////            times.delDay(dayString.charAt(0));
 //        }
     }
+
+    public List<CourseTimes> getCourseTimes() {
+        return times;
+    }
 }
