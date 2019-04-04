@@ -10,7 +10,8 @@ public class SemesterPlan {
     private int year;
     private List<Course> courses;
 
-    public SemesterPlan(Semester semester, int year, List<SemesterPlan> previousSemesters, Major major, Transcript transcript) {
+    public SemesterPlan() {}
+    public SemesterPlan( Semester semester, int year, List<SemesterPlan> previousSemesters, Major major, Transcript transcript) {
         courses = new ArrayList<>();
         this.semester = semester;
         this.year = year;
@@ -19,24 +20,13 @@ public class SemesterPlan {
     /**
      * Generate a list of courses for current semester plan
      * in accordance with preReqs and degree reqs
+     * @param numCredits
      * @param previousSemesters List of previous semester plans in order to check preReqs
      * @param major Major to check degree requirements
      * @param transcript Transcript, also to check for preReqs
      */
-    public void generateSemesterPlan(List<SemesterPlan> previousSemesters, Major major, Transcript transcript){
+    public void generateSemesterPlan(float numCredits, List<SemesterPlan> previousSemesters, Major major, Transcript transcript){
         //TODO
-    }
-
-    /**
-     * Finds from the catalog a course not yet present in the schedule, previous schedules, or transcript
-     * And which has all preReqs
-     * @param previousSemesters List of all previous plans
-     * @param major The major, for degree requirments
-     * @param transcript The student's transcript
-     * @return Course to be added to plan
-     */
-    public Course findNewCourseInCatalog(List<SemesterPlan> previousSemesters, Major major, Transcript transcript){
-        return null;//TODO
     }
 
     /**
@@ -50,6 +40,29 @@ public class SemesterPlan {
     }
 
 
-    /* ----- Getters and Setters ------ */
-    public List<Course> getCourses() { return courses; }
+    /** ----- Getters and Setters ------ **/
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public Semester getSemester() {
+        return semester;
+    }
+
+    public void setSemester(Semester semester) {
+        this.semester = semester;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
 }

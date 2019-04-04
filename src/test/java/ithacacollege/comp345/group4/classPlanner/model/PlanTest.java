@@ -21,21 +21,19 @@ public class PlanTest {
     }
 
     @Test
-    public void findNewCourseInCatalogTest(){
-
-    }
-
-    @Test
     public void hasAllPreReqsTest(){
         Transcript exTranscript = new Transcript("src/test/resources/exTranscript.json");
         List<SemesterPlan> planList = new ArrayList<>();
         SemesterPlan exPrevSemPlan = null;
         SemesterPlan exCurrSemPlan = null;
         Course exCourse1 = new Course();
+        exCourse1.setCourseNum("COMP17200");
+        List<String> preReqs = new ArrayList<>();
+        preReqs.add("COMP17100");
+        exCourse1.setprereqs(preReqs);
         try {
             exPrevSemPlan = JsonUtil.fromJsonFile("src/test/resources/exPrevSemPlan.json", SemesterPlan.class);
             planList.add(exPrevSemPlan);
-            exCurrSemPlan = JsonUtil.fromJsonFile("src/test/resources/exCurrSemPlan.json", SemesterPlan.class);
 
         }catch(IOException e){ e.printStackTrace();}
 

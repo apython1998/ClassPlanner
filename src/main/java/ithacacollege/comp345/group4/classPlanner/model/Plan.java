@@ -8,9 +8,9 @@ public class Plan {
 
     private List<SemesterPlan> semesterPlans;
 
-    public Plan(int numSemesters, float creditsPerSemester, Semester startSemester, Year startYear){
+    public Plan(float creditsPerSemester, Semester startSemester, Year startYear, Transcript transcript, Major major){
         semesterPlans = new ArrayList<>();
-        generatePlan(numSemesters, creditsPerSemester, startSemester, startYear);
+        generatePlan(creditsPerSemester, startSemester, startYear, transcript, major);
     }
 
     /**
@@ -18,12 +18,11 @@ public class Plan {
      * This plan will be in accordance with the degree requirements and will not violate prerequisite rules.
      * Semesters alternate between Spring and Fall, and year increases every new spring semester.
      *
-     * @param numSemesters Number of semester plans to create
      * @param creditsPerSemester Number of credits per semester
      * @param startSemester First semester to generate
      * @param startYear First year to generate
      */
-    private void generatePlan(int numSemesters, float creditsPerSemester, Semester startSemester, Year startYear){
+    private void generatePlan(float creditsPerSemester, Semester startSemester, Year startYear, Transcript transcript, Major major){
         //TODO
     }
 
