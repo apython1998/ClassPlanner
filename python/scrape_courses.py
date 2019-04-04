@@ -85,14 +85,13 @@ def scrape_courses(url, courses):
             if len(prereq) != 9:
                 course_prereqs.remove(prereq)
         # Put Data into the Dictionary
-        course_json['department'] = course_dept              # Department
-        course_json['number'] = course_number                # Course Number
+        course_json['courseNum'] = course_dept+course_number # Department and Number (DEPT00000)
         course_json['name'] = course_name                    # Name
-        course_json['credits'] = course_credits              # Credits
-        course_json['semesters_offered'] = course_semesters  # Semesters
-        course_json['frequency_offered'] = course_frequency  # Frequency
-        course_json['prereqs'] = course_prereqs              # Prereqs
-        course_json['choose_ones'] = course_choose_ones      # Choose Ones
+        course_json['credits'] = course_credits              # Credits (0.0)
+        course_json['semestersOffered'] = course_semesters  # Semesters
+        course_json['frequencyOffered'] = course_frequency  # Frequency
+        course_json['prereqs'] = course_prereqs              # Prereqs [COMP171, COMP172]
+        course_json['chooseOnes'] = course_choose_ones      # Choose Ones
         courses.append(course_json)
     browser.close()                                          # Close the browser
 
@@ -103,7 +102,29 @@ def main():
     for department_link in department_links:
         scrape_courses(department_link, courses)
         time.sleep(1)
-    with open('../src/main/resources/course_catalog.json', 'w') as outfile:
+    for course in courses:  # For each course, verify the data
+        bad_prereqs = []
+        bad_choose_ones = []
+        if course['frequencyOffered'] is '':
+            course['frequencyOffered'] = 'IRR'
+        if '-' in course['credits']:
+            course['credits'] = course['credits'].split('-')[0]
+        elif ',' in course['credits']:
+            course['credits'] = course['credits'].split(',')[0]
+        for prereq in course['prereqs']:
+            if len(prereq) != 9 and ('TVR' not in prereq or 'RLS' not in prereq or 'ART' not in prereq):
+                bad_prereqs.append(prereq)
+        for choose_one in course['chooseOnes']:
+            for prereq in choose_one:  # Get rid of bad prereqs in the choose ones
+                if len(prereq) != 9 and 'TVR' not in prereq:
+                    choose_one.remove(prereq)
+            if len(choose_one) < 2:    # If the size of the choose one is less than 2 now, get rid of it
+                bad_choose_ones.append(choose_one)
+        for bad_prereq in bad_prereqs:
+            course['prereqs'].remove(bad_prereq)
+        for bad_choose_one in bad_choose_ones:
+            course['chooseOnes'].remove(bad_choose_one)
+    with open('../src/main/resources/courseCatalog.json', 'w') as outfile:
         json.dump(courses, outfile)
 
 

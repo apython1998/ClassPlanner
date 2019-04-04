@@ -1,24 +1,25 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
-
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.*;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+
 public class Directory {
 
     private Map<String, Major> majorDirectory;
     private Map<String, Student> students;
+    private Map<String, Course> courseCatalog;
 
     public Directory() {
-        this.students = new HashMap<>();
         this.majorDirectory = new HashMap<>();
+        this.students = new HashMap<>();
+        this.courseCatalog = new HashMap<>();
     }
 
     public Directory(Map<String, Student> users) {
@@ -80,7 +81,7 @@ public class Directory {
             while (courseitr.hasNext()) {
                 String courseTitle = courseitr.next();
                 Course newCourse = new Course();
-                newCourse.setCourseDiscAndNum(courseTitle);
+                newCourse.setCourseNum(courseTitle);
                 newMajor.addCourse(newCourse);
             }
 
@@ -92,7 +93,7 @@ public class Directory {
                 List<Course> chooseCourseList = new ArrayList<>();
                 while(chooseCourseItr.hasNext()) {
                     Course c = new Course();
-                    c.setCourseDiscAndNum(chooseCourseItr.next());
+                    c.setCourseNum(chooseCourseItr.next());
                     chooseCourseList.add(c);
                 }
                 newMajor.addChooseOne(chooseCourseList);
@@ -102,12 +103,29 @@ public class Directory {
         catch(ParseException e){e.printStackTrace();}
         majorDirectory.put(newMajor.title, newMajor);
     }
+
     public List<Course> viewCurrentCourses(String name){
         if (!students.containsKey(name)){
             throw new InvalidArgumentException("There is no account associated with that name");
         }
         User student = students.get(name);
         return ((Student) student).getCurrentCourses();
+    }
+
+    public List<Course> viewTakenCourses(String name){
+        if (!students.containsKey(name)){
+            throw new InvalidArgumentException("There is no account associated with that name");
+        }
+        User student = students.get(name);
+        return ((Student) student).getTakenCourses();
+    }
+
+    public List<Course> viewPlannedCourses(String name){
+        if (!students.containsKey(name)){
+            throw new InvalidArgumentException("There is no account associated with that name");
+        }
+        User student = students.get(name);
+        return ((Student) student).getPlannedCourses();
     }
 
     public boolean addCurrentCourse(String name, Course course){
@@ -123,7 +141,7 @@ public class Directory {
             throw new InvalidArgumentException("There is no account associated with that name");
         }
         User student = students.get(name);
-        return ((Student) student).addCoursesTaken(course);
+        return ((Student) student).addTakenCourses(course);
     }
 
     public boolean addFutureCourse(String name, Course course){
@@ -131,7 +149,7 @@ public class Directory {
             throw new InvalidArgumentException("There is no account associated with that name");
         }
         User student = students.get(name);
-        return ((Student) student).addCoursesPlanned(course);
+        return ((Student) student).addPlannedCourses(course);
     }
 
     /**************************** GETTERS AND SETTERS     ****************************/
@@ -139,6 +157,14 @@ public class Directory {
         return students;
     }
     public Map<String, Major> getMajorDirectory() { return majorDirectory; }
+
+    public Map<String, Course> getCourseCatalog() {
+        return courseCatalog;
+    }
+
+    public void setCourseCatalog(Map<String, Course> courseCatalog) {
+        this.courseCatalog = courseCatalog;
+    }
 
     public void setStudents(Map<String, Student> users) {
         this.students = users;

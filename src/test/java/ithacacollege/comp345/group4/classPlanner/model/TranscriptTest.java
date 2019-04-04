@@ -10,7 +10,7 @@ public class TranscriptTest {
         Transcript myTranscript = new Transcript();
         assertNotNull(myTranscript);
         myTranscript = new Transcript("src/test/resources/exTranscript");
-        assertEquals("Completed\tCOMP17100\tPrinciples of Comp Sci I\tA\t4.0\tF2019\n" +
-                "In Progress\tCOMP17200\tPrinciples of Comp Sci II\t\t4.0\tS2020", myTranscript.toString());
+        assertEquals("Completed\tCOMP17100\tPrinciples of Comp Sci I\tA\t4.0\n" +
+                "In Progress\tCOMP17200\tPrinciples of Comp Sci II\t\t4.0", myTranscript.toString());
     }
 }
