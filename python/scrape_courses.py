@@ -105,16 +105,26 @@ def main():
     for course in courses:  # For each course, verify the data
         bad_prereqs = []
         bad_choose_ones = []
+        if course['frequencyOffered'] is '':
+            course['frequencyOffered'] = 'IRR'
+        if '-' in course['credits']:
+            course['credits'] = course['credits'].split('-')[0]
+        elif ',' in course['credits']:
+            course['credits'] = course['credits'].split(',')[0]
         for prereq in course['prereqs']:
-            if len(prereq) != 9:
+            if len(prereq) != 9 and ('TVR' not in prereq or 'RLS' not in prereq or 'ART' not in prereq):
                 bad_prereqs.append(prereq)
-        for choose_one in course['choose_ones']:
+        for choose_one in course['chooseOnes']:
             for prereq in choose_one:  # Get rid of bad prereqs in the choose ones
-                if len(prereq) != 9:
+                if len(prereq) != 9 and 'TVR' not in prereq:
                     choose_one.remove(prereq)
             if len(choose_one) < 2:    # If the size of the choose one is less than 2 now, get rid of it
                 bad_choose_ones.append(choose_one)
-    with open('../src/main/resources/course_catalog.json', 'w') as outfile:
+        for bad_prereq in bad_prereqs:
+            course['prereqs'].remove(bad_prereq)
+        for bad_choose_one in bad_choose_ones:
+            course['chooseOnes'].remove(bad_choose_one)
+    with open('../src/main/resources/courseCatalog.json', 'w') as outfile:
         json.dump(courses, outfile)
 
 

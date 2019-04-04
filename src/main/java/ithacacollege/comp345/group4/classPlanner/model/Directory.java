@@ -14,10 +14,9 @@ public class Directory {
 
     private Map<String, Major> majorDirectory;
     private Map<String, Student> students;
+    private Map<String, Course> courseCatalog;
 
     public Directory() {
-        this.students = new HashMap<>();
-        this.majorDirectory = new HashMap<>();
     }
 
     public Directory(Map<String, Student> users) {
@@ -155,6 +154,14 @@ public class Directory {
         return students;
     }
     public Map<String, Major> getMajorDirectory() { return majorDirectory; }
+
+    public Map<String, Course> getCourseCatalog() {
+        return courseCatalog;
+    }
+
+    public void setCourseCatalog(Map<String, Course> courseCatalog) {
+        this.courseCatalog = courseCatalog;
+    }
 
     public void setStudents(Map<String, Student> users) {
         this.students = users;
