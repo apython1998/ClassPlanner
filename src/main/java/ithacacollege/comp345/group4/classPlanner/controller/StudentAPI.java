@@ -35,12 +35,21 @@ public class StudentAPI {
         return directory.viewCurrentCourses(name);
     }
 
+<<<<<<< HEAD
     public List<Major.Requirement> viewMajorRequirment(String major){
         return directory.getMajorDirectory().get(major).requirements;
     }
 
     public boolean validateMajor(String major){
         return directory.getMajorDirectory().containsKey(major);
+=======
+    public List<Course> viewTakenCourses(String name){
+        return directory.viewTakenCourses(name);
+    }
+
+    public List<Course> viewPlannedCourses(String name){
+        return directory.viewPlannedCourses(name);
+>>>>>>> master
     }
 
     public boolean addCurrentCourse(String name, Course course){

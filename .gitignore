@@ -99,3 +99,7 @@ Temporary Items
 
 # Maven files
 target/
+
+# Python Shit
+venv/
+chromedriver
