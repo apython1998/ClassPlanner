@@ -5,7 +5,7 @@ import ithacacollege.comp345.group4.classPlanner.model.Course;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 import ithacacollege.comp345.group4.classPlanner.model.Transcript;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class StudentUI {
@@ -83,6 +83,34 @@ public class StudentUI {
         return student;
     }
 
+    private String convertToLetterGrade(int numGrade){
+        if (numGrade >= 93){
+            return "A";
+        } else if (numGrade >= 90){
+            return "A-";
+        } else if (numGrade >= 87){
+            return "B+";
+        }  else if (numGrade >= 83){
+            return "B";
+        } else if (numGrade >= 80){
+            return "B-";
+        }  else if (numGrade >= 77){
+            return "C+";
+        } else if (numGrade >= 73){
+            return "C";
+        }  else if (numGrade >= 70){
+            return "C-";
+        } else if (numGrade >= 67){
+            return "D+";
+        }  else if (numGrade >= 63){
+            return "D";
+        } else if (numGrade >= 60){
+            return "D-";
+        } else {
+            return "F";
+        }
+    }
+
     public void run() {
         Integer option = Integer.MAX_VALUE;
         Student student = null;
@@ -129,33 +157,50 @@ public class StudentUI {
                     // TODO : Joe Major Requirements
                 } else if (option == 2) {
                     // TODO : Dylan View Courses
-                    /*System.out.print("Please choose one:\n" +
+                    System.out.print("Please choose one:\n" +
                             "1. View Past Courses\n" +
                             "2. View Current Courses\n" +
-                            "3. View Planned Courses\n"
-                            "Enter Selection Here: ");*/
-                    int courseOp = 2; //scanner.nextInt();
-                    /*
+                            "3. View Planned Courses\n" +
+                            "Enter Selection Here: ");
+                    int courseOp = scanner.nextInt();
+
                     while (courseOp < 0 || courseOp > 4) {
                         System.out.print("Invalid Selection\n" +
                                 "Please choose one:\n" +
                                 "1. View Past Courses\n" +
                                 "2. View Current Courses\n" +
-                                "3. View Planned Courses\n
-                                "Enter Selection Here: "");
-                    }*/
-                    
+                                "3. View Planned Courses\n" +
+                                "Enter Selection Here: ");
+                    }
+                    List<Course> viewCourses;
                     switch (courseOp){
-                        /*case 1:
-                            studentAPI.viewTakenCourses(student.getUsername());
-                            break;*/
-                        case 2:
-                            System.out.print("\nCurrent courses " + student.getUsername()
-                                    + " is enrolled in:\n" + studentAPI.viewCurrentCourses(student.getUsername())+"\n\n");
+                        case 1:
+                            viewCourses = studentAPI.viewTakenCourses(student.getUsername());
+                            if (viewCourses != null) {
+                                System.out.print("\nPast courses " + student.getUsername()
+                                        + " is enrolled in:\n" + viewCourses + "\n\n");
+                            } else {
+                                System.out.println("You do not have any past courses entered.");
+                            }
                             break;
-                        /*case 3:
-                            studentAPI.viewPlannedCourses(student.getUsername());
-                            break;*/
+                        case 2:
+                            viewCourses = studentAPI.viewCurrentCourses(student.getUsername());
+                            if (viewCourses != null) {
+                                System.out.print("\nCurrent courses " + student.getUsername()
+                                        + " is enrolled in:\n" + viewCourses + "\n\n");
+                            } else {
+                                System.out.println("You are not currently enrolled in any courses.");
+                            }
+                            break;
+                        case 3:
+                            viewCourses = studentAPI.viewPlannedCourses(student.getUsername());
+                            if (viewCourses != null) {
+                                System.out.print("\nFuture Courses " + student.getUsername()
+                                        + " is enrolled in:\n" + viewCourses + "\n\n");
+                            } else {
+                                System.out.println("You do not have any planned courses.");
+                            }
+                            break;
 
                     }
                 } else if (option == 3) {
@@ -169,30 +214,67 @@ public class StudentUI {
                     System.out.print("Enter the information for the course\n" +
                             "Name: ");
                     String name = scanner.next();
-                    System.out.print("CRN: ");
-                    int CRN = scanner.nextInt();
                     System.out.print("Credits: ");
                     double credits = scanner.nextDouble();
                     System.out.print("Department & Number: ");
                     String courseNum = scanner.next();
-                    System.out.print("Semester: ");
-                    String semester = scanner.next();
                     /*System.out.print("Does this course have any prerequisites?\n" +
                             "1. Yes\n" +
                             "2. No\n" +
                             "Enter Selection Here: ");
                     String preReq*/
+                    Course course = new Course(name, credits, courseNum, null, null, null, null);
+                    boolean success = false;
                     switch (addOp) {
                         case 1:
-                            student.addCoursesTaken(new Course(name, CRN, credits, courseNum, semester, null));
+                            success = student.addTakenCourses(course);
+                            if (success){
+                                boolean addTranscript;
+                                System.out.println("Successfully added this course to your profile.\n" +
+                                        "Enter the number grade you received for this course: ");
+                                int grade = scanner.nextInt();
+                                String letGrade = convertToLetterGrade(grade);
+                                if (grade >= 70){
+                                    addTranscript = student.addToTranscript(course, letGrade, false, true);
+                                } else {
+                                    addTranscript = student.addToTranscript(course, letGrade, false, false);
+                                }
+                                if (addTranscript) {
+                                    System.out.println("Course information has been added to your transcript.\n" +
+                                            student.getTranscript());
+                                } else {
+                                    System.out.println("There was a problem adding this course to your transcript.");
+                                }
+                            } else {
+                                System.out.println("There was a problem adding that course to your profile.");
+                            }
                             break;
                         case 2:
-                            student.addCurrentCourses(new Course(name, CRN, credits, courseNum, semester, null));
+                            success = student.addCurrentCourses(course);
+                            if (success){
+                                boolean addTranscript;
+                                System.out.println("Successfully added the course to your profile.");
+                                addTranscript = student.addToTranscript(course, "", true, false);
+                                if (addTranscript) {
+                                    System.out.println("Course information has been added to your transcript.\n" +
+                                            student.getTranscript());
+                                } else {
+                                    System.out.println("There was a problem adding this course to your transcript.");
+                                }
+                            } else {
+                                System.out.println("There was a problem adding that course to your profile.");
+                            }
                             break;
                         case 3:
-                            student.addCoursesPlanned(new Course(name, CRN, credits, courseNum, semester, null));
+                            success = student.addPlannedCourses(course);
+                            if (success) {
+                                System.out.println("Successfully added the course to your profile.");
+                            } else {
+                                System.out.println("There was a problem adding that course to your profile.");
+                            }
                             break;
                     }
+
 
                 } else if (option == 4) {
                     // TODO : Dan Input Transcript

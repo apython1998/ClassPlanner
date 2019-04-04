@@ -1,5 +1,9 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
+import ithacacollege.comp345.group4.classPlanner.model.requirements.ChooseOne;
+import ithacacollege.comp345.group4.classPlanner.model.requirements.Requirement;
+import ithacacollege.comp345.group4.classPlanner.model.requirements.SingleCourse;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,34 +24,5 @@ public class Major {
     public void addChooseOne(List<Course> courses){
         Requirement r = new ChooseOne(courses);
         requirements.add(r);
-    }
-
-    public interface Requirement {
-        boolean fulfillsRequirment(Course c);
-    }
-
-    public class SingleCourse implements Requirement {
-        private Course course;
-        public SingleCourse(Course c){
-            course = c;
-        }
-        public boolean fulfillsRequirment(Course c){
-            return c.getCourseDiscAndNum().equals(course.getCourseDiscAndNum());
-        }
-    }
-
-    public class ChooseOne implements Requirement {
-        private List<Course> courses;
-        public ChooseOne(List<Course> l){
-            courses = l;
-        }
-        public boolean fulfillsRequirment(Course c){
-            boolean found = false;
-            for(Course lc : courses){
-                if(lc.getCourseDiscAndNum().equals(c.getCourseDiscAndNum()))
-                    found = true;
-            }
-            return found;
-        }
     }
 }
