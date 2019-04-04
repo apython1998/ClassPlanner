@@ -25,10 +25,17 @@ def scrape_major(url):                                              # Scrape Dat
         for i in range(len(major_title_type_split[0:-1])):
             major_title_type_split[i] = major_title_type_split[i][0].upper() + major_title_type_split[i][1:]
         major_title = " ".join(major_title_type_split[0:-1])        # Generate the title of the major
-    # browser = webdriver.Chrome()
-    # browser.get(url)
-    # content_div = browser.find_element_by_id('content')
-    # browser.close()
+    browser = webdriver.Chrome()
+    browser.get(url)
+    content_div = browser.find_element_by_id('content')             # div that has the content for requirements
+    try:
+        requirements_table = content_div.find_elements_by_tag_name('table')[1]
+        requirement_rows = requirements_table.find_elements_by_tag_name('tr')
+        for requirement_row in requirement_rows:
+
+    except:
+        print('There are no major requirements listed for {} {}'.format(major_title, major_type))
+    browser.close()
     major['title'] = major_title.strip()                            # Populate the Dictionary
     major['type'] = major_type.strip()                              # ...
     major['courses'] = major_required_courses                       # ...
