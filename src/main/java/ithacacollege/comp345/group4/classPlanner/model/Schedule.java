@@ -9,6 +9,7 @@ public class Schedule {
 
     Schedule() {
         courses = new ArrayList<>();
+        suggestedCourses = new SemesterPlan();
     }
 
     Schedule(SemesterPlan suggestedCourses) {
@@ -17,6 +18,8 @@ public class Schedule {
 //
 //        }
     }
+
+
 
     public boolean checkAvailability(Section courseToAdd) {
         List<CourseTimes> timesList = courseToAdd.getCourseTimes();
@@ -41,7 +44,12 @@ public class Schedule {
     }
 
     public String display() {
-        String result = "";
-        return result;
+        String mondayString = "";
+        String tuesdayString = "";
+        String wednesdayString = "";
+        String thursdayString = "";
+        String fridayString = "";
+//        for (Section s: )
+        return mondayString;
     }
 }

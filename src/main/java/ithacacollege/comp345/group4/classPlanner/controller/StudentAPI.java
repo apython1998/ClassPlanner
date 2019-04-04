@@ -3,6 +3,7 @@ package ithacacollege.comp345.group4.classPlanner.controller;
 
 import ithacacollege.comp345.group4.classPlanner.model.Course;
 
+import ithacacollege.comp345.group4.classPlanner.model.Schedule;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 
 import ithacacollege.comp345.group4.classPlanner.model.Directory;
