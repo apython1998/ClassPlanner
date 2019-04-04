@@ -17,6 +17,9 @@ public class Directory {
     private Map<String, Course> courseCatalog;
 
     public Directory() {
+        this.majorDirectory = new HashMap<>();
+        this.students = new HashMap<>();
+        this.courseCatalog = new HashMap<>();
     }
 
     public Directory(Map<String, Student> users) {
