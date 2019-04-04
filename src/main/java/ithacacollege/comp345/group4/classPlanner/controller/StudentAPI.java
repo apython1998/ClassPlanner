@@ -1,6 +1,7 @@
 package ithacacollege.comp345.group4.classPlanner.controller;
 
 
+import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import ithacacollege.comp345.group4.classPlanner.model.Course;
 
 import ithacacollege.comp345.group4.classPlanner.model.Major;
@@ -37,11 +38,19 @@ public class StudentAPI {
     }
 
     public void setStudentMajor(String student, String major){
-        directory.getStudents().get(student).changeMajor(directory.getMajorDirectory().get(major));
+        if(!directory.getStudents().containsKey(student))
+            throw new InvalidArgumentException("Student does not exist.");
+        else if(!directory.getMajorDirectory().containsKey(major))
+            throw new InvalidArgumentException("Major does not exist.");
+        else
+            directory.getStudents().get(student).changeMajor(directory.getMajorDirectory().get(major));
     }
 
     public List<Requirement> viewMajorRequirements(String major){
-        return directory.getMajorDirectory().get(major).requirements;
+        if(!directory.getMajorDirectory().containsKey(major))
+            throw new InvalidArgumentException("Major does not exist.");
+        else
+            return directory.getMajorDirectory().get(major).requirements;
     }
 
     public boolean validateMajor(String major) {
