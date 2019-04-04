@@ -1,24 +1,25 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
-
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.*;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+
 public class Directory {
 
     private Map<String, Major> majorDirectory;
     private Map<String, Student> students;
+    private Map<String, Course> courseCatalog;
 
     public Directory() {
-        this.students = new HashMap<>();
         this.majorDirectory = new HashMap<>();
+        this.students = new HashMap<>();
+        this.courseCatalog = new HashMap<>();
     }
 
     public Directory(Map<String, Student> users) {
@@ -80,7 +81,7 @@ public class Directory {
             while (courseitr.hasNext()) {
                 String courseTitle = courseitr.next();
                 Course newCourse = new Course();
-                newCourse.setCourseDiscAndNum(courseTitle);
+                newCourse.setCourseNum(courseTitle);
                 newMajor.addCourse(newCourse);
             }
 
@@ -92,7 +93,7 @@ public class Directory {
                 List<Course> chooseCourseList = new ArrayList<>();
                 while(chooseCourseItr.hasNext()) {
                     Course c = new Course();
-                    c.setCourseDiscAndNum(chooseCourseItr.next());
+                    c.setCourseNum(chooseCourseItr.next());
                     chooseCourseList.add(c);
                 }
                 newMajor.addChooseOne(chooseCourseList);
@@ -156,6 +157,14 @@ public class Directory {
         return students;
     }
     public Map<String, Major> getMajorDirectory() { return majorDirectory; }
+
+    public Map<String, Course> getCourseCatalog() {
+        return courseCatalog;
+    }
+
+    public void setCourseCatalog(Map<String, Course> courseCatalog) {
+        this.courseCatalog = courseCatalog;
+    }
 
     public void setStudents(Map<String, Student> users) {
         this.students = users;

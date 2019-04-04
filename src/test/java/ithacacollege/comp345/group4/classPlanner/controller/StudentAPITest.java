@@ -33,7 +33,7 @@ public class StudentAPITest {
 
         studentAPI.register("asdf", "asdf");
 
-        Course course1 = new Course("Software Engineering", 12345, 3.0, "COMP345", "FA17", null);
+        Course course1 = new Course("Software Engineering", 3.0, "COMP345", null, null, null, null);
 
         studentAPI.addCurrentCourse("asdf", course1);
 
