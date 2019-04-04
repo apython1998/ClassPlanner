@@ -27,7 +27,7 @@ public class ClassPlannerMain {
         Directory directory = new Directory();
         directory.setCourseCatalog(courseCatalog);
         //Preload major JSON:
-        directory.uploadMajor("test/resources/TestMajorReqs.json");
+        directory.uploadMajor("src/test/resources/TestMajorReqs.json");
         StudentAPI studentAPI = new StudentAPI(directory);
         StudentUI studentUI = new StudentUI(studentAPI);
         studentUI.run();

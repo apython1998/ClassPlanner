@@ -16,4 +16,10 @@ public class ChooseOne implements Requirement {
         }
         return found;
     }
+    public String toString(){
+        String ret = "Choose One:\n";
+        for(Course c : courses)
+            ret += c.toString() + "\n";
+        return ret;
+    }
 }
