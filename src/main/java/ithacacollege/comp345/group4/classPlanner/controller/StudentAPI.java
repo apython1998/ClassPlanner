@@ -7,6 +7,7 @@ import ithacacollege.comp345.group4.classPlanner.model.Major;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 
 import ithacacollege.comp345.group4.classPlanner.model.Directory;
+import ithacacollege.comp345.group4.classPlanner.model.requirements.Requirement;
 
 import java.util.List;
 
@@ -35,21 +36,24 @@ public class StudentAPI {
         return directory.viewCurrentCourses(name);
     }
 
-<<<<<<< HEAD
-    public List<Major.Requirement> viewMajorRequirment(String major){
+    public void setStudentMajor(String student, String major){
+        directory.getStudents().get(student).changeMajor(directory.getMajorDirectory().get(major));
+    }
+
+    public List<Requirement> viewMajorRequirements(String major){
         return directory.getMajorDirectory().get(major).requirements;
     }
 
-    public boolean validateMajor(String major){
+    public boolean validateMajor(String major) {
         return directory.getMajorDirectory().containsKey(major);
-=======
+    }
+
     public List<Course> viewTakenCourses(String name){
         return directory.viewTakenCourses(name);
     }
 
     public List<Course> viewPlannedCourses(String name){
         return directory.viewPlannedCourses(name);
->>>>>>> master
     }
 
     public boolean addCurrentCourse(String name, Course course){
@@ -72,10 +76,6 @@ public class StudentAPI {
 
     public boolean addFutureCourse(String name, Course course){
         return directory.addFutureCourse(name, course);
-    }
-
-    public void setStudentMajor(String student, String major){
-        directory.getStudents().get(student).changeMajor(directory.getMajorDirectory().get(major));
     }
 
     /****************************    GETTERS AND SETTERS     ****************************/

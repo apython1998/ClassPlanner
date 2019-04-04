@@ -5,11 +5,8 @@ import ithacacollege.comp345.group4.classPlanner.model.Course;
 import ithacacollege.comp345.group4.classPlanner.model.Major;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 import ithacacollege.comp345.group4.classPlanner.model.Transcript;
+import ithacacollege.comp345.group4.classPlanner.model.requirements.Requirement;
 
-<<<<<<< HEAD
-import java.util.ArrayList;
-=======
->>>>>>> master
 import java.util.List;
 import java.util.Scanner;
 
@@ -176,8 +173,8 @@ public class StudentUI {
 
                     Major m = student.getMajor();
                     if(m !=  null) {
-                        List<Major.Requirement> reqs = studentAPI.viewMajorRequirment(m.title);
-                        for (Major.Requirement req : reqs) {
+                        List<Requirement> reqs = studentAPI.viewMajorRequirements(m.title);
+                        for (Requirement req : reqs) {
                             System.out.println(req.toString());
                         }
                     }
