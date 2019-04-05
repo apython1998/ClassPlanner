@@ -25,4 +25,9 @@ public class Major {
         Requirement r = new ChooseOne(courses);
         requirements.add(r);
     }
+
+    @Override
+    public boolean equals(Object m){
+        return this.title.equals(((Major)m).title);
+    }
 }
