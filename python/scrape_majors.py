@@ -32,7 +32,7 @@ def scrape_major(url):                                              # Scrape Dat
         requirements_table = content_div.find_elements_by_tag_name('table')[1]
         requirement_rows = requirements_table.find_elements_by_tag_name('tr')
         for requirement_row in requirement_rows:
-
+            pass # TODO: How should we handle a row in the requirements table
     except:
         print('There are no major requirements listed for {} {}'.format(major_title, major_type))
     browser.close()
