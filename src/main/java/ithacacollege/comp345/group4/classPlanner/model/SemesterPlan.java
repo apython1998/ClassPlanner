@@ -11,10 +11,11 @@ public class SemesterPlan {
     private List<Course> courses;
 
     public SemesterPlan() {}
-    public SemesterPlan( Semester semester, int year, List<SemesterPlan> previousSemesters, Major major, Transcript transcript) {
+    public SemesterPlan(double numCredits, Semester semester, int year, List<SemesterPlan> previousSemesters, Major major, Transcript transcript) {
         courses = new ArrayList<>();
         this.semester = semester;
         this.year = year;
+        generateSemesterPlan(numCredits, previousSemesters, major, transcript);
     }
 
     /**
@@ -25,7 +26,7 @@ public class SemesterPlan {
      * @param major Major to check degree requirements
      * @param transcript Transcript, also to check for preReqs
      */
-    public void generateSemesterPlan(float numCredits, List<SemesterPlan> previousSemesters, Major major, Transcript transcript){
+    private void generateSemesterPlan(double numCredits, List<SemesterPlan> previousSemesters, Major major, Transcript transcript){
         //TODO
     }
 

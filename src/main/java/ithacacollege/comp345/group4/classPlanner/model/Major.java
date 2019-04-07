@@ -26,6 +26,13 @@ public class Major {
         requirements.add(r);
     }
 
+    public boolean fulfillsRequirement(Course c){
+        boolean foundFulfillment = false;
+        for(Requirement r : requirements)
+            foundFulfillment = r.fulfillsRequirement(c) || foundFulfillment;
+        return foundFulfillment;
+    }
+
     @Override
     public boolean equals(Object m){
         return this.title.equals(((Major)m).title);
