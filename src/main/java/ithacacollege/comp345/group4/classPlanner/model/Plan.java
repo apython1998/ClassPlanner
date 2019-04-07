@@ -8,7 +8,7 @@ public class Plan {
 
     private List<SemesterPlan> semesterPlans;
 
-    public Plan(float creditsPerSemester, Semester startSemester, Year startYear, Transcript transcript, Major major){
+    public Plan(double creditsPerSemester, Semester startSemester, int startYear, Transcript transcript, Major major){
         semesterPlans = new ArrayList<>();
         generatePlan(creditsPerSemester, startSemester, startYear, transcript, major);
     }
@@ -22,8 +22,14 @@ public class Plan {
      * @param startSemester First semester to generate
      * @param startYear First year to generate
      */
-    private void generatePlan(float creditsPerSemester, Semester startSemester, Year startYear, Transcript transcript, Major major){
+    private void generatePlan(double creditsPerSemester, Semester startSemester, int startYear, Transcript transcript, Major major){
         //TODO
+    }
+
+    /** Getters and setters **/
+
+    public List<SemesterPlan> getSemesterPlans() {
+        return semesterPlans;
     }
 
 }
