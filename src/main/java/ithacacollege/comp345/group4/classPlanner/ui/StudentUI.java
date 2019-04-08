@@ -2,8 +2,10 @@ package ithacacollege.comp345.group4.classPlanner.ui;
 
 import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
 import ithacacollege.comp345.group4.classPlanner.model.Course;
+import ithacacollege.comp345.group4.classPlanner.model.Major;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 import ithacacollege.comp345.group4.classPlanner.model.Transcript;
+import ithacacollege.comp345.group4.classPlanner.model.requirements.Requirement;
 
 import java.util.List;
 import java.util.Scanner;
@@ -30,6 +32,7 @@ public class StudentUI {
         System.out.println("Thank you for taking time to register!");
         String username;
         String password;
+        String major;
         System.out.print("Please Enter a Username: ");
         username = scanner.next();
         while (username.trim().equals("")) {
@@ -44,7 +47,19 @@ public class StudentUI {
             System.out.print("Please Enter a Password: ");
             password = scanner.next();
         }
+        scanner.nextLine();
+
+        System.out.println("Please Enter a Major or 'None': ");
+        major = scanner.nextLine();
+        while (!studentAPI.validateMajor(major) && !major.toLowerCase().equals("none")){
+            System.out.println("Major does not exist!");
+            System.out.println("Please Enter a Major or 'None': ");
+            major = scanner.nextLine();
+        }
         boolean registered = studentAPI.register(username, password);
+        if(!major.toLowerCase().equals("none"))
+            studentAPI.setStudentMajor(username, major);
+
         if (registered) {
             System.out.println("Thank you for registering as a new Student " + username);
         } else {
@@ -154,7 +169,17 @@ public class StudentUI {
                     option = scanner.nextInt();
                 }
                 if (option == 1) {
-                    // TODO : Joe Major Requirements
+                    //Currently student object has no major, so just using Computer Science for now
+
+                    Major m = student.getMajor();
+                    if(m !=  null) {
+                        List<Requirement> reqs = studentAPI.viewMajorRequirements(m.title);
+                        for (Requirement req : reqs) {
+                            System.out.println(req.toString());
+                        }
+                    }
+                    else
+                        System.out.println("You have not declared a major.");
                 } else if (option == 2) {
                     // TODO : Dylan View Courses
                     System.out.print("Please choose one:\n" +

@@ -10,4 +10,7 @@ public class SingleCourse implements Requirement {
     public boolean fulfillsRequirment(Course c){
         return c.getCourseNum().equals(course.getCourseNum());
     }
+    public String toString(){
+        return "Single Course:\n" + course.toString();
+    }
 }
