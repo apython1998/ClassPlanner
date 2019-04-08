@@ -64,7 +64,7 @@ public class StudentTest {
     }
 
     @Test
-    void viewCoursesTest(){
+    void viewCoursesTest() {
         Student student = new Student("test", "abc", null, null);
         Course course1 = new Course("Software Engineering", 3.0, "COMP345", null, null, null, null);
         Course course2 = new Course("Machine Learning", 3.0, "COMP490", null, null, null, null);
