@@ -71,17 +71,26 @@ public class CourseTimes {
     }
 
     public static boolean isTimeValid(String time) {
-        if (time.length() > 5 || time.length() < 4 || time.indexOf(':') == -1) {
-            return false;
-        } else {
-            String[] subStringList = time.split(":");
-            if (subStringList.length > 2) {
+        String[] subString = time.split("-");
+        String currTime = "";
+        for (int i = 0; i < subString.length; i++) {
+            currTime = subString[i];
+
+            if (currTime.length() > 5 || currTime.length() < 4 || currTime.indexOf(':') == -1) {
                 return false;
+            } else {
+                String[] subStringList = currTime.split(":");
+                if (subStringList.length > 2) {
+                    return false;
+                }
+                int hours = Integer.parseInt(subStringList[0]);
+                int minutes = Integer.parseInt(subStringList[1]);
+                if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+                    return false;
+                }
             }
-            int hours = Integer.parseInt(subStringList[0]);
-            int minutes = Integer.parseInt(subStringList[1]);
-            return !(hours < 0 || hours > 23 || minutes < 0 || minutes > 59);
         }
+        return true;
     }
 
     public String toString() {

@@ -10,6 +10,7 @@ public class Student extends User {
     private List<Course> takenCourses;
     private List<Course> currentCourses;
     private List<Course> plannedCourses;
+    private Schedule nextSemesterSchedule;
 
     private Major major;
     private List<Major> minors;
