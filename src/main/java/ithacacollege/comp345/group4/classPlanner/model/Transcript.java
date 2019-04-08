@@ -37,4 +37,9 @@ public class Transcript {
         }
         return result;
     }
+
+    public boolean addEntry(Course course, String grade, boolean inProgress, boolean courseComplete){
+        TranscriptEntry newEntry = new TranscriptEntry(course, grade, inProgress, courseComplete);
+        return courseList.add(newEntry);
+    }
 }

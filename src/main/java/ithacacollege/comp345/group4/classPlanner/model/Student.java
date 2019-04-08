@@ -3,8 +3,8 @@ package ithacacollege.comp345.group4.classPlanner.model;
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Student extends User {
@@ -13,6 +13,8 @@ public class Student extends User {
     private List<Course> currentCourses;
     private List<Course> plannedCourses;
 
+    private Semester semester;
+    private int year;
 
     private Major major;
     private List<Major> minors;
@@ -30,6 +32,8 @@ public class Student extends User {
         this.plannedCourses = new ArrayList<>();
         this.major = major;
         this.minors = minors;
+        /*this.semester = semester;
+        this.year = year;*/
         this.transcript = new Transcript();
     }
 
@@ -105,9 +109,17 @@ public class Student extends User {
         }
     }
 
+    public boolean addTakenCourses(Course course) {
+        if (course == null || takenCourses.contains(course)) {
+            return false;
+        }
+        takenCourses.add(course);
+        return true;
+    }
+
     public List<Course> getTakenCourses() {
         if (takenCourses.isEmpty()) {
-            throw new InvalidArgumentException("No courses are entered");
+            return null;
         }
         return takenCourses;
     }
@@ -117,110 +129,55 @@ public class Student extends User {
      *
      * @param courses - list of courses the student intends on taking
      */
-    public void addCoursesPlanned(List<Course> courses) {
+    public boolean addPlannedCourses(List<Course> courses) {
         if (courses != null) {
             for (Course c : courses) {
                 if (c != null) {
                     if (!plannedCourses.contains(c)) {
                         this.plannedCourses.add(c);
                     }
-                } else {
-                    throw new InvalidArgumentException("Invalid Course");
                 }
             }
+            return true;
         } else {
-            throw new InvalidArgumentException("Invalid Course");
+            return false;
         }
     }
 
-    public boolean addCoursesPlanned(Course course) {
-        if (course == null) {
-            throw new InvalidArgumentException("Invalid course");
-        }
-        if (plannedCourses.contains(course)) {
+    public boolean addPlannedCourses(Course course) {
+        if (course == null || plannedCourses.contains(course)) {
             return false;
-        } else {
-            plannedCourses.add(course);
-            return true;
         }
+        plannedCourses.add(course);
+        return true;
     }
 
     public List<Course> getPlannedCourses() {
         if (plannedCourses.isEmpty()) {
-            throw new InvalidArgumentException("No courses are entered");
+            return null;
         }
         return plannedCourses;
     }
 
-    /**
-     * Adds the courses a Student is currently registered for
-     *
-     * @param courses - list of current courses the student is registered for
-     */
-    public void addCurrentCourses(List<Course> courses) {
-        if (courses != null) {
-            for (Course c : courses) {
-                if (c != null) {
-                    if (!currentCourses.contains(c)) {
-                        this.currentCourses.add(c);
-                    }
-                } else {
-                    throw new InvalidArgumentException("Invalid Course");
-                }
-            }
-        } else {
-            throw new InvalidArgumentException("Invalid Course");
-        }
-    }
-
     public boolean addCurrentCourses(Course course) {
-        if (course == null) {
-            throw new InvalidArgumentException("Invalid course");
-        }
-        if (currentCourses.contains(course)) {
+        if (course == null || currentCourses.contains(course)) {
             return false;
-        } else {
-            currentCourses.add(course);
-            return true;
         }
+        currentCourses.add(course);
+        return true;
+
     }
 
     public List<Course> getCurrentCourses() {
         if (currentCourses.isEmpty()) {
-            throw new InvalidArgumentException("No courses are entered");
+            return null;
         }
         return currentCourses;
     }
 
-    public List<Course> genCoursePlan(int creditsPerSemester){
-        List<Course> courseReqs = major.getRequirements();
-        removeCourseReqs(courseReqs, takenCourses);
-        removeCourseReqs(courseReqs, currentCourses);
-        addPlannedCourses(courseReqs);
-        Collections.sort(plannedCourses);
 
-
-
-        // TODO
-        // go through list adding each course to a hashmap(?) keys being semester title
-        // and the value would be a list of courses the student should take.
-        // list of courses would be at around under the credits per semester.
-        return courseReqs;
-    }
-
-    public void addPlannedCourses(List<Course> courses){
-        for (Course course: courses){
-            plannedCourses.add(course);
-        }
-    }
-
-    private void removeCourseReqs(List<Course> reqs, List<Course> courses){
-        for (int i = 0; i < courses.size(); i++) {
-            Course course = courses.get(i);
-            if (reqs.contains(course)){
-                reqs.remove(course);
-            }
-        }
+    public boolean addToTranscript(Course course, String grade, boolean inProgress, boolean courseComplete){
+        return transcript.addEntry(course, grade, inProgress, courseComplete);
     }
 
     public Transcript getTranscript() {

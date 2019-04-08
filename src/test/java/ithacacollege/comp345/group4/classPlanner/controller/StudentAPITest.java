@@ -2,6 +2,7 @@ package ithacacollege.comp345.group4.classPlanner.controller;
 
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import ithacacollege.comp345.group4.classPlanner.model.Course;
+import ithacacollege.comp345.group4.classPlanner.model.Directory;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +34,7 @@ public class StudentAPITest {
 
         studentAPI.register("asdf", "asdf");
 
-        Course course1 = new Course("Software Engineering", 12345, 3.0, "COMP345", "FA17", null);
+        Course course1 = new Course("Software Engineering", 3.0, "COMP345", null, null, null, null);
 
         studentAPI.addCurrentCourse("asdf", course1);
 
@@ -59,6 +60,43 @@ public class StudentAPITest {
         assertThrows(InvalidArgumentException.class, ()-> studentAPI.login("", "asdf"));
         assertThrows(InvalidArgumentException.class, ()-> studentAPI.login("asdf", ""));
         assertThrows(InvalidArgumentException.class, ()-> studentAPI.login(null, null));
+    }
+
+    @Test
+    void setStudentMajorTest(){
+        Directory d = new Directory();
+        d.uploadMajor("src/test/resources/TestMajorReqs.json");
+        StudentAPI studentAPI = new StudentAPI(d);
+        studentAPI.register("username", "password");
+
+        studentAPI.setStudentMajor("username", "Computer Science");
+        assertEquals(d.getStudents().get("username").getMajor(), d.getMajorDirectory().get("Computer Science"));
+
+        assertThrows(InvalidArgumentException.class, ()-> studentAPI.setStudentMajor("username", "Pole Vaulting"));
+        assertThrows(InvalidArgumentException.class, ()-> studentAPI.setStudentMajor("wrong name", "Computer Science"));
+    }
+
+    @Test
+    void viewMajorRequirementsTest(){
+        Directory d = new Directory();
+        d.uploadMajor("src/test/resources/TestMajorReqs.json");
+        StudentAPI studentAPI = new StudentAPI(d);
+        studentAPI.register("username", "password");
+        studentAPI.setStudentMajor("username", "Computer Science");
+
+
+        assertEquals(studentAPI.viewMajorRequirements("Computer Science"), d.getMajorDirectory().get("Computer Science").getRequirements());
+        assertThrows(InvalidArgumentException.class, ()-> studentAPI.viewMajorRequirements("Gator Wrangling"));
+    }
+
+    @Test
+    void validateMajorTest(){
+        Directory d = new Directory();
+        d.uploadMajor("src/test/resources/TestMajorReqs.json");
+        StudentAPI studentAPI = new StudentAPI(d);
+
+        assertTrue(studentAPI.validateMajor("Computer Science"));
+        assertFalse(studentAPI.validateMajor("Wine Tasting"));
     }
 
 }

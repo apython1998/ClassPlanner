@@ -1,11 +1,14 @@
 package ithacacollege.comp345.group4.classPlanner.controller;
 
 
+import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import ithacacollege.comp345.group4.classPlanner.model.Course;
 
+import ithacacollege.comp345.group4.classPlanner.model.Major;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 
 import ithacacollege.comp345.group4.classPlanner.model.Directory;
+import ithacacollege.comp345.group4.classPlanner.model.requirements.Requirement;
 
 import java.util.List;
 
@@ -32,6 +35,34 @@ public class StudentAPI {
 
     public List<Course> viewCurrentCourses(String name){
         return directory.viewCurrentCourses(name);
+    }
+
+    public void setStudentMajor(String student, String major){
+        if(!directory.getStudents().containsKey(student))
+            throw new InvalidArgumentException("Student does not exist.");
+        else if(!directory.getMajorDirectory().containsKey(major))
+            throw new InvalidArgumentException("Major does not exist.");
+        else
+            directory.getStudents().get(student).changeMajor(directory.getMajorDirectory().get(major));
+    }
+
+    public List<Course> viewMajorRequirements(String major){
+        if(!directory.getMajorDirectory().containsKey(major))
+            throw new InvalidArgumentException("Major does not exist.");
+        else
+            return directory.getMajorDirectory().get(major).getCourses();
+    }
+
+    public boolean validateMajor(String major) {
+        return directory.getMajorDirectory().containsKey(major);
+    }
+
+    public List<Course> viewTakenCourses(String name){
+        return directory.viewTakenCourses(name);
+    }
+
+    public List<Course> viewPlannedCourses(String name){
+        return directory.viewPlannedCourses(name);
     }
 
     public boolean addCurrentCourse(String name, Course course){

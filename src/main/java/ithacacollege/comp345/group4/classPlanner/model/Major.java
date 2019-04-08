@@ -1,19 +1,31 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
+import ithacacollege.comp345.group4.classPlanner.model.requirements.ChooseOne;
+import ithacacollege.comp345.group4.classPlanner.model.requirements.Requirement;
+import ithacacollege.comp345.group4.classPlanner.model.requirements.SingleCourse;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Major {
     private String title;
     private List<Course> requirements;
+    private List<List<Course>> chooseOnes;
 
-    public Major() {
-        requirements = new ArrayList<Course>();
-        title = "";
+    public Major() { }
+
+    public Major(String title, List<Course> requirements, List<List<Course>> chooseOnes) {
+        this.requirements = requirements;
+        this.chooseOnes = chooseOnes;
+        this.title = title;
     }
 
-    public List<Course> getRequirements() {
+    public List<Course> getCourses() {
         return requirements;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getTitle() {
@@ -28,32 +40,15 @@ public class Major {
         //TODO
     }
 
-    public interface Requirement {
-        boolean fulfillsRequirment(Course c);
-    }
+    /*public boolean fulfillsRequirement(Course c){
+        boolean foundFulfillment = false;
+        for(Course r : requirements)
+            foundFulfillment = r.fulfillsRequirement(c) || foundFulfillment;
+        return foundFulfillment;
+    }*/
 
-    public class SingleCourse implements Requirement {
-        private Course course;
-        public SingleCourse(Course c){
-            course = c;
-        }
-        public boolean fulfillsRequirment(Course c){
-            return c.getCourseDiscAndNum().equals(course.getCourseDiscAndNum());
-        }
-    }
-
-    public class ChooseOne implements Requirement {
-        private List<Course> courses;
-        public ChooseOne(List<Course> l){
-            courses = l;
-        }
-        public boolean fulfillsRequirment(Course c){
-            boolean found = false;
-            for(Course lc : courses){
-                if(lc.getCourseDiscAndNum().equals(c.getCourseDiscAndNum()))
-                    found = true;
-            }
-            return found;
-        }
+    @Override
+    public boolean equals(Object m){
+        return this.title.equals(((Major)m).title);
     }
 }

@@ -50,21 +50,21 @@ class DirectoryTest {
     @Test
     public void uploadMajorTest(){
         Directory d = new Directory();
-        d.uploadMajor("resources/TestMajorReqs.json");
+        d.uploadMajor("src/test/resources/TestMajorReqs.json");
 
         Major cs = d.getMajorDirectory().get("Computer Science");
 
         assertNotNull(cs);
 
         Course c = new Course();
-        c.setCourseDiscAndNum("COMP 11500");
-        assertTrue(cs.requirements.get(0).fulfillsRequirment(c));
-        c.setCourseDiscAndNum("COMP 17100");
-        assertTrue(cs.requirements.get(1).fulfillsRequirment(c));
-        c.setCourseDiscAndNum("COMP 32100");
-        assertTrue(cs.requirements.get(2).fulfillsRequirment(c));
-        c.setCourseDiscAndNum("ITAL 10100");
-        assertFalse(cs.requirements.get(2).fulfillsRequirment(c));
+        c.setCourseNum("COMP 11500");
+        assertTrue(cs.getRequirements().get(0).fulfillsRequirement(c));
+        c.setCourseNum("COMP 17100");
+        assertTrue(cs.getRequirements().get(1).fulfillsRequirement(c));
+        c.setCourseNum("COMP 32100");
+        assertTrue(cs.getRequirements().get(2).fulfillsRequirement(c));
+        c.setCourseNum("ITAL 10100");
+        assertFalse(cs.getRequirements().get(2).fulfillsRequirement(c));
     }
 
     @Test
@@ -72,7 +72,7 @@ class DirectoryTest {
         Directory directory = new Directory();
         directory.registerStudent("asdf", "asdf");
 
-        Course course1 = new Course("Software Engineering", 12345, 3.0, "COMP345", "FA17", null);
+        Course course1 = new Course("Software Engineering", 3.0, "COMP345", null, null, null, null);
 
         directory.addCurrentCourse("asdf", course1);
 
