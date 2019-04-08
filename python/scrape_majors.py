@@ -1,5 +1,6 @@
 from selenium import webdriver
 import time
+import re
 import json  # Use is json.dumps(object)
 
 
@@ -27,14 +28,25 @@ def scrape_major(url):                                              # Scrape Dat
         major_title = " ".join(major_title_type_split[0:-1])        # Generate the title of the major
     browser = webdriver.Chrome()
     browser.get(url)
-    content_div = browser.find_element_by_id('content')             # div that has the content for requirements
     try:
-        requirements_table = content_div.find_elements_by_tag_name('table')[1]
-        requirement_rows = requirements_table.find_elements_by_tag_name('tr')
-        for requirement_row in requirement_rows:
-            pass # TODO: How should we handle a row in the requirements table
+        content_div = browser.find_element_by_id('content')             # div that has the content for requirements
+        try:
+            requirements_table = content_div.find_elements_by_tag_name('table')[2]
+            requirement_rows = requirements_table.find_elements_by_tag_name('tr')
+            for requirement_row in requirement_rows:
+                row_text = requirement_row.text
+                if 'one of the following' in row_text:
+                    pass  # Not sure what to do yet
+                else:
+                    regexp = re.compile('^[A-Z]{4} [0-9]{5}')  # Of the form AAAA 10000
+                    result = regexp.search(row_text)
+                    if result is not None:
+                        reg_string = result.string[result.regs[0][0]:result.regs[0][1]]
+                        print(reg_string.replace(" ", ''))
+        except:
+            print('There are no major requirements listed for {} {}'.format(major_title, major_type))
     except:
-        print('There are no major requirements listed for {} {}'.format(major_title, major_type))
+        print('There is no site for {} {}'.format(major_title, major_type))
     browser.close()
     major['title'] = major_title.strip()                            # Populate the Dictionary
     major['type'] = major_type.strip()                              # ...
@@ -61,7 +73,7 @@ def scrape_major_urls(url):  # Scrape URLs for every Major
 def main():
     major_urls = scrape_major_urls('https://catalog.ithaca.edu/undergrad/programsaz/undergraduate-degree/')
     majors = []
-    for major_url in major_urls:
+    for major_url in major_urls[0:1]:
         majors.append(scrape_major(major_url))  # Add a dictionary representing major requirements
         # time.sleep(1)                           # Keep IP from getting blacklisted
     with open('../src/main/resources/majorCatalog.json', 'w') as outfile:
