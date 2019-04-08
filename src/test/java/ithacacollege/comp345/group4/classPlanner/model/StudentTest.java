@@ -1,8 +1,5 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
-import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
-import ithacacollege.comp345.group4.classPlanner.model.Course;
-import ithacacollege.comp345.group4.classPlanner.model.Student;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -28,10 +25,10 @@ public class StudentTest {
         List<Course> emptyList = new ArrayList<>();
 
         //check equals
-        assertEquals(courseList, student.getCoursesTaken());
+        assertEquals(courseList, student.getTakenCourses());
 
         //check not equals
-        assertNotEquals(emptyList, student.getCoursesTaken());
+        assertNotEquals(emptyList, student.getTakenCourses());
 
         //bad input
         //assertThrows(InvalidArgumentException.class, ()-> student.addCoursesTaken(null));
@@ -79,10 +76,10 @@ public class StudentTest {
         List<Course> emptyList = new ArrayList<>();
 
         //check equals
-        assertEquals(courseList, student.getCoursesPlanned());
+        assertEquals(courseList, student.getPlannedCourses());
 
         //check not equals
-        assertNotEquals(emptyList, student.getCoursesPlanned());
+        assertNotEquals(emptyList, student.getPlannedCourses());
 
         //bad input
         //assertThrows(InvalidArgumentException.class, ()-> student.addCoursesPlanned(null));
@@ -113,6 +110,11 @@ public class StudentTest {
 
         //bad input
         //assertThrows(InvalidArgumentException.class, ()-> student.addCoursesPlanned(null));
+    }
+
+    @Test
+    void genPlanTest(){
+        //TODO
     }
 
 }

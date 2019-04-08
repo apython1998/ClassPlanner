@@ -3,13 +3,16 @@ package ithacacollege.comp345.group4.classPlanner.model;
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Student extends User {
     private int ID;
-    private List<Course> coursesTaken;
+    private List<Course> takenCourses;
     private List<Course> currentCourses;
-    private List<Course> coursesPlanned;
+    private List<Course> plannedCourses;
+
 
     private Major major;
     private List<Major> minors;
@@ -22,9 +25,9 @@ public class Student extends User {
     public Student(String username, String password, Major major, List<Major> minors) {
         super(username, password);
         this.ID = ID;
-        this.coursesTaken = new ArrayList<>();
+        this.takenCourses = new ArrayList<>();
         this.currentCourses = new ArrayList<>();
-        this.coursesPlanned = new ArrayList<>();
+        this.plannedCourses = new ArrayList<>();
         this.major = major;
         this.minors = minors;
         this.transcript = new Transcript();
@@ -78,8 +81,8 @@ public class Student extends User {
         if (courses != null) {
             for (Course c : courses) {
                 if (c != null) {
-                    if (!coursesTaken.contains(c)) {
-                        this.coursesTaken.add(c);
+                    if (!takenCourses.contains(c)) {
+                        this.takenCourses.add(c);
                     }
                 } else {
                     throw new InvalidArgumentException("Invalid Course");
@@ -94,19 +97,19 @@ public class Student extends User {
         if (course == null) {
             throw new InvalidArgumentException("Invalid course");
         }
-        if (coursesTaken.contains(course)) {
+        if (takenCourses.contains(course)) {
             return false;
         } else {
-            coursesTaken.add(course);
+            takenCourses.add(course);
             return true;
         }
     }
 
-    public List<Course> getCoursesTaken() {
-        if (coursesTaken.isEmpty()) {
+    public List<Course> getTakenCourses() {
+        if (takenCourses.isEmpty()) {
             throw new InvalidArgumentException("No courses are entered");
         }
-        return coursesTaken;
+        return takenCourses;
     }
 
     /**
@@ -118,8 +121,8 @@ public class Student extends User {
         if (courses != null) {
             for (Course c : courses) {
                 if (c != null) {
-                    if (!coursesPlanned.contains(c)) {
-                        this.coursesPlanned.add(c);
+                    if (!plannedCourses.contains(c)) {
+                        this.plannedCourses.add(c);
                     }
                 } else {
                     throw new InvalidArgumentException("Invalid Course");
@@ -134,19 +137,19 @@ public class Student extends User {
         if (course == null) {
             throw new InvalidArgumentException("Invalid course");
         }
-        if (coursesPlanned.contains(course)) {
+        if (plannedCourses.contains(course)) {
             return false;
         } else {
-            coursesPlanned.add(course);
+            plannedCourses.add(course);
             return true;
         }
     }
 
-    public List<Course> getCoursesPlanned() {
-        if (coursesPlanned.isEmpty()) {
+    public List<Course> getPlannedCourses() {
+        if (plannedCourses.isEmpty()) {
             throw new InvalidArgumentException("No courses are entered");
         }
-        return coursesPlanned;
+        return plannedCourses;
     }
 
     /**
@@ -187,6 +190,37 @@ public class Student extends User {
             throw new InvalidArgumentException("No courses are entered");
         }
         return currentCourses;
+    }
+
+    public List<Course> genCoursePlan(int creditsPerSemester){
+        List<Course> courseReqs = major.getRequirements();
+        removeCourseReqs(courseReqs, takenCourses);
+        removeCourseReqs(courseReqs, currentCourses);
+        addPlannedCourses(courseReqs);
+        Collections.sort(plannedCourses);
+
+
+
+        // TODO
+        // go through list adding each course to a hashmap(?) keys being semester title
+        // and the value would be a list of courses the student should take.
+        // list of courses would be at around under the credits per semester.
+        return courseReqs;
+    }
+
+    public void addPlannedCourses(List<Course> courses){
+        for (Course course: courses){
+            plannedCourses.add(course);
+        }
+    }
+
+    private void removeCourseReqs(List<Course> reqs, List<Course> courses){
+        for (int i = 0; i < courses.size(); i++) {
+            Course course = courses.get(i);
+            if (reqs.contains(course)){
+                reqs.remove(course);
+            }
+        }
     }
 
     public Transcript getTranscript() {

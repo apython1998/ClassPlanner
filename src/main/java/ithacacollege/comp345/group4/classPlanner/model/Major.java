@@ -4,22 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Major {
-    public String title;
-    public List<Requirement> requirements;
+    private String title;
+    private List<Course> requirements;
 
     public Major() {
-        requirements = new ArrayList<Requirement>();
+        requirements = new ArrayList<Course>();
         title = "";
     }
 
+    public List<Course> getRequirements() {
+        return requirements;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
     public void addCourse(Course course){
-        Requirement r = new SingleCourse(course);
-        requirements.add(r);
+        requirements.add(course);
     }
 
     public void addChooseOne(List<Course> courses){
-        Requirement r = new ChooseOne(courses);
-        requirements.add(r);
+        //TODO
     }
 
     public interface Requirement {

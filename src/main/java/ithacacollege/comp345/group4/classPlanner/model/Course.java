@@ -1,9 +1,10 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public class Course {
+public class Course implements Comparable<Course> {
     private String name;
     private int crn;
     private double credits;
@@ -79,5 +80,17 @@ public class Course {
 
     public String toString() {
         return this.courseNum + ": " + this.name + " " + this.credits + " credits";
+    }
+
+    public int compareTo(Course b) {
+        String aNumStr = this.getCourseDiscAndNum();
+        aNumStr = aNumStr.substring(4);
+        int aNum = Integer.parseInt(aNumStr);
+
+        String bNumStr = b.getCourseDiscAndNum();
+        bNumStr = bNumStr.substring(4);
+        int bNum = Integer.parseInt(bNumStr);
+
+        return aNum - bNum;
     }
 }
