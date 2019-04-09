@@ -28,12 +28,9 @@ public class Major {
         //TODO
     }
 
-    /*public boolean fulfillsRequirement(Course c){
-        boolean foundFulfillment = false;
-        for(Course r : requirements)
-            foundFulfillment = r.fulfillsRequirement(c) || foundFulfillment;
-        return foundFulfillment;
-    }*/
+    public boolean fulfillsRequirement(Course c){
+        return requirements.contains(c);
+    }
 
     @Override
     public boolean equals(Object m){
@@ -65,7 +62,4 @@ public class Major {
     public void setChooseOnes(List<List<Course>> chooseOnes) {
         this.chooseOnes = chooseOnes;
     }
-
-
-
 }

@@ -50,7 +50,7 @@ public class StudentAPI {
         if(!directory.getMajorDirectory().containsKey(major))
             throw new InvalidArgumentException("Major does not exist.");
         else
-            return directory.getMajorDirectory().get(major).getCourses();
+            return directory.getMajorDirectory().get(major).getRequirements();
     }
 
     public boolean validateMajor(String major) {

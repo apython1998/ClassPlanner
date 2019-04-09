@@ -58,13 +58,13 @@ class DirectoryTest {
 
         Course c = new Course();
         c.setCourseNum("COMP 11500");
-        assertTrue(cs.getRequirements().get(0).fulfillsRequirement(c));
+        assertTrue(cs.fulfillsRequirement(cs.getRequirements().get(0)));
         c.setCourseNum("COMP 17100");
-        assertTrue(cs.getRequirements().get(1).fulfillsRequirement(c));
+        assertTrue(cs.fulfillsRequirement(cs.getRequirements().get(1)));
         c.setCourseNum("COMP 32100");
-        assertTrue(cs.getRequirements().get(2).fulfillsRequirement(c));
+        assertTrue(cs.fulfillsRequirement(cs.getRequirements().get(2)));
         c.setCourseNum("ITAL 10100");
-        assertFalse(cs.getRequirements().get(2).fulfillsRequirement(c));
+        assertFalse(cs.fulfillsRequirement(cs.getRequirements().get(2)));
     }
 
     @Test

@@ -169,7 +169,7 @@ public class Directory {
     public HashMap<String, List<Course>> genCoursePlan(String studentID, Semester semester, int year, int creditsPerSemester){
         Student student = students.get(studentID);
         Major major = student.getMajor();
-        List<Course> courseReqs = major.getCourses();
+        List<Course> courseReqs = major.getRequirements();
         addPreReqs(courseReqs); //gets all prerequisites for all course requirements
         removeCourseReqs(courseReqs, student.getTakenCourses()); // remove requirements already completed
         removeCourseReqs(courseReqs, student.getCurrentCourses()); // remove requirements currently being completed
