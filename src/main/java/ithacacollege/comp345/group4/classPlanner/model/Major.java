@@ -20,18 +20,6 @@ public class Major {
         this.title = title;
     }
 
-    public List<Course> getCourses() {
-        return requirements;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
     public void addCourse(Course course){
         requirements.add(course);
     }
@@ -51,4 +39,33 @@ public class Major {
     public boolean equals(Object m){
         return this.title.equals(((Major)m).title);
     }
+
+    /** ------------ getters and setters ---------------- **/
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List<Course> getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(List<Course> requirements) {
+        this.requirements = requirements;
+    }
+
+    public List<List<Course>> getChooseOnes() {
+        return chooseOnes;
+    }
+
+    public void setChooseOnes(List<List<Course>> chooseOnes) {
+        this.chooseOnes = chooseOnes;
+    }
+
+
+
 }
