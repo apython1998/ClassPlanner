@@ -4,7 +4,7 @@ import re
 import json  # Use is json.dumps(object)
 
 
-def scrape_major(url):                                              # Scrape Data for a Single Major
+def scrape_major(url, course_catalog):                               # Scrape Data for a Single Major
     major = dict()
     major_title = ''                                                # Title for Major
     major_type = ''                                                 # Type of Major
@@ -38,11 +38,13 @@ def scrape_major(url):                                              # Scrape Dat
                 if 'one of the following' in row_text:
                     pass  # Not sure what to do yet
                 else:
-                    regexp = re.compile('^[A-Z]{4} [0-9]{5}')  # Of the form AAAA 10000
+                    regexp = re.compile('^[A-Z]{3,4} [0-9]{5}')  # Of the form AAAA 10000
                     result = regexp.search(row_text)
                     if result is not None:
                         reg_string = result.string[result.regs[0][0]:result.regs[0][1]]
-                        print(reg_string.replace(" ", ''))
+                        reg_string = reg_string.replace(" ", '')
+                        if '\n' not in row_text and reg_string in course_catalog:  # This still includes first row before an OR in next row, but close enough
+                            major_required_courses.append(reg_string)
         except:
             print('There are no major requirements listed for {} {}'.format(major_title, major_type))
     except:
@@ -73,9 +75,15 @@ def scrape_major_urls(url):  # Scrape URLs for every Major
 def main():
     major_urls = scrape_major_urls('https://catalog.ithaca.edu/undergrad/programsaz/undergraduate-degree/')
     majors = []
-    for major_url in major_urls[0:1]:
-        majors.append(scrape_major(major_url))  # Add a dictionary representing major requirements
-        # time.sleep(1)                           # Keep IP from getting blacklisted
+    course_ids = []
+    with open('../src/main/resources/courseCatalog.json', 'r') as course_JSON:
+        course_catalog = json.load(course_JSON)
+    for course in course_catalog:
+        course_ids.append(course['courseNum'])
+    for major_url in major_urls:
+        # Scrape major is currently only getting the single course requirements, ORs and 'of the following' not counted
+        majors.append(scrape_major(major_url, course_ids))  # Add a dictionary representing major requirements
+        # time.sleep(1)                                         # Keep IP from getting blacklisted
     with open('../src/main/resources/majorCatalog.json', 'w') as outfile:
         json.dump(majors, outfile)
 
