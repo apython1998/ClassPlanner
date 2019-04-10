@@ -12,6 +12,7 @@ public class Student extends User {
     private List<Course> takenCourses;
     private List<Course> currentCourses;
     private List<Course> plannedCourses;
+    private Schedule nextSemesterSchedule;
 
     private Semester semester;
     private int year;
