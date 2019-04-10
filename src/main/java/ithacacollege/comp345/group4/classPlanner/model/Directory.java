@@ -173,13 +173,12 @@ public class Directory {
         addPreReqs(courseReqs); //gets all prerequisites for all course requirements
         removeCourseReqs(courseReqs, student.getTakenCourses()); // remove requirements already completed
         removeCourseReqs(courseReqs, student.getCurrentCourses()); // remove requirements currently being completed
-        student.addPlannedCourses(courseReqs); // add all requirements to planned courses
         Collections.sort(courseReqs); // sort courses lower lever -> higher level
         HashMap<String, List<Course>> plan = new HashMap<>();
         Semester nextSemester = getNextSemester(semester);
         int currentYear = year;
         while(!courseReqs.isEmpty()){
-            planSemester(nextSemester, currentYear, plan, courseReqs, creditsPerSemester); // plan for next semester
+            planSemester(nextSemester, currentYear, plan, courseReqs, creditsPerSemester, student); // plan for next semester
             nextSemester = getNextSemester(nextSemester); // forward the semester
             if (nextSemester == Semester.Spring){
                 currentYear++; // increment year if changed from fall to spring
@@ -236,7 +235,7 @@ public class Directory {
      * @param creditsPer - maximum credits the student expects to have per semester
      * @return - number of credits for that semester, double
      */
-    private double planSemester(Semester semster, int year, HashMap<String, List<Course>> plan,List<Course> courseReq, int creditsPer){
+    private double planSemester(Semester semster, int year, HashMap<String, List<Course>> plan,List<Course> courseReq, int creditsPer, Student student){
         double credits = 0;
         String semesterYear = semster + "" + year;
         List<Course> coursePlan = new ArrayList<>();
@@ -244,7 +243,7 @@ public class Directory {
         Iterator<Course> requirementItr = requirements.iterator();
         while (requirementItr.hasNext() && credits < creditsPer){
             Course course = requirementItr.next();
-            if (offeredThisSemester(semster, course)) {
+            if (offeredThisSemester(semster, course) && satisfyPreReq(course, student)) {
                 if (credits + course.getCredits() <= creditsPer) {
                     coursePlan.add(course);
                     courseReq.remove(course);
@@ -252,8 +251,26 @@ public class Directory {
                 }
             }
         }
+        for (Course course : coursePlan){
+            student.addPlannedCourses(course);
+        }
         plan.put(semesterYear, coursePlan);
         return credits;
+    }
+
+    public boolean satisfyPreReq(Course course, Student student){
+        List<String> preReqs = course.getprereqs();
+        for (String preReqStr : preReqs){
+            Course preReq = courseCatalog.get(preReqStr);
+            if (!student.getTakenCourses().contains(preReq)){
+                if (!student.getCurrentCourses().contains(preReq)){
+                    if (!student.getPlannedCourses().contains(preReq)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     /**
