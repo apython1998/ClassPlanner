@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Transcript {
-    List<TranscriptEntry> courseList;
+    private List<TranscriptEntry> courseList;
 
     public Transcript() {
         courseList = new ArrayList<>();
@@ -41,5 +41,9 @@ public class Transcript {
     public boolean addEntry(Course course, String grade, boolean inProgress, boolean courseComplete){
         TranscriptEntry newEntry = new TranscriptEntry(course, grade, inProgress, courseComplete);
         return courseList.add(newEntry);
+    }
+
+    public List<TranscriptEntry> getCourseList() {
+        return courseList;
     }
 }

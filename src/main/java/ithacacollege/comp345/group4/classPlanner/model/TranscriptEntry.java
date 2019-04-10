@@ -97,4 +97,16 @@ public class TranscriptEntry {
             boolean myCourseComplete = (boolean) entry.get("courseComplete");
             return new TranscriptEntry(course, myGrade, myInProgress, myCourseComplete);
     }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public boolean isInProgress() {
+        return inProgress;
+    }
+
+    public boolean isCourseComplete() {
+        return courseComplete;
+    }
 }
