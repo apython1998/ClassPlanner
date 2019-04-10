@@ -258,6 +258,14 @@ public class Directory {
         return credits;
     }
 
+    /**
+     * Checks if a student has fulfilled all of the prerequisites for a course. Checks against
+     * all past, current, or planned courses because in order to plan a upper level 300 course
+     * 3 semesters away, you have to check if they have planned on completing a prerequisite earlier.
+     * @param course - course to be checked
+     * @param student - student checking for course allowance
+     * @return - boolean true if they have satisfied the prerequisites
+     */
     public boolean satisfyPreReq(Course course, Student student){
         List<String> preReqs = course.getprereqs();
         for (String preReqStr : preReqs){
