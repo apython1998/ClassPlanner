@@ -107,7 +107,7 @@ public class StudentAPITest {
         d.registerStudent("dmccaffrey", "abcdef");
         StudentAPI api = new StudentAPI(d);
 
-        api.uploadTranscript("dmccaffrey", "src/test/resources/exTranscript");
+        api.uploadTranscript("dmccaffrey", "src/test/resources/exTranscript.json");
         assertEquals("Completed\tCOMP17100\tPrinciples of Comp Sci I\tA\t4.0\nIn Progress\tCOMP17200\tPrinciples of Comp Sci II\t\t4.0", d.getStudents().get("dmccaffrey").getTranscript().toString());
         assertThrows(InvalidArgumentException.class, ()-> api.uploadTranscript("apython", "src/test/resources/exTranscript"));
     }

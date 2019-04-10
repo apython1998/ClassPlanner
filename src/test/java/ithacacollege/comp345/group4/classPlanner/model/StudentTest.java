@@ -95,7 +95,7 @@ public class StudentTest {
     @Test
     void updateDataTest() {
         Student student = new Student("test", "abc", null, null);
-        Transcript transcript = new Transcript("src/test/resources/exTranscript");
+        Transcript transcript = new Transcript("src/test/resources/exTranscript.json");
 
         student.setTranscript(transcript);
 
