@@ -201,6 +201,7 @@ public class Directory {
                 toReturn += courses.get(i).getCourseNum() + ", ";
                 credits += courses.get(i).getCredits();
             }
+            credits += courses.get(courses.size() - 1).getCredits();
             toReturn += courses.get(courses.size() - 1).getCourseNum() + ". Credits: " + credits + "\n";
             totalCredits += credits;
         }
