@@ -2,6 +2,13 @@ package ithacacollege.comp345.group4.classPlanner.model;
 
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DirectoryTest {
@@ -57,14 +64,14 @@ class DirectoryTest {
         assertNotNull(cs);
 
         Course c = new Course();
-        c.setCourseNum("COMP 11500");
-        assertTrue(cs.requirements.get(0).fulfillsRequirment(c));
-        c.setCourseNum("COMP 17100");
-        assertTrue(cs.requirements.get(1).fulfillsRequirment(c));
-        c.setCourseNum("COMP 32100");
-        assertTrue(cs.requirements.get(2).fulfillsRequirment(c));
-        c.setCourseNum("ITAL 10100");
-        assertFalse(cs.requirements.get(2).fulfillsRequirment(c));
+        c.setCourseNum("COMP11500");
+        assertTrue(cs.fulfillsRequirement(c));
+        c.setCourseNum("COMP17100");
+        assertTrue(cs.fulfillsRequirement(c));
+        c.setCourseNum("COMP32100");
+        assertTrue(cs.fulfillsRequirement(c));
+        c.setCourseNum("ITAL10100");
+        assertFalse(cs.fulfillsRequirement(c));
     }
 
     @Test
@@ -77,5 +84,39 @@ class DirectoryTest {
         directory.addCurrentCourse("asdf", course1);
 
         System.out.println(directory.viewCurrentCourses("asdf"));
+    }
+
+    @Test
+    void genCoursePlanTest() throws IOException {
+        Directory d = new Directory();
+        List<Course> allCourses = JsonUtil.listFromJsonFile("src/main/resources/courseCatalog.json", Course.class);
+        Map<String, Course> courseCatalog = new HashMap<>();
+        for (Course course : allCourses) {
+            courseCatalog.put(course.getCourseNum(), course);
+        }
+
+        d.setCourseCatalog(courseCatalog);
+        Major fakeMajor = new Major();
+        fakeMajor.setTitle("Computer Science");
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP17100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP17200"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP11500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP22000"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP10500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP20500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP21000"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP37500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP11000"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH11100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH11200"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH21100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH21600"));
+
+        d.registerStudent("jon", "shmon");
+        Student s = d.getStudents().get("jon");
+        s.changeMajor(fakeMajor);
+        String plan = d.genCoursePlan("jon", Semester.Fall, 2019, 15);
+        System.out.println(plan);
+
     }
 }

@@ -46,11 +46,11 @@ public class StudentAPI {
             directory.getStudents().get(student).changeMajor(directory.getMajorDirectory().get(major));
     }
 
-    public List<Requirement> viewMajorRequirements(String major){
+    public List<Course> viewMajorRequirements(String major){
         if(!directory.getMajorDirectory().containsKey(major))
             throw new InvalidArgumentException("Major does not exist.");
         else
-            return directory.getMajorDirectory().get(major).requirements;
+            return directory.getMajorDirectory().get(major).getRequirements();
     }
 
     public boolean validateMajor(String major) {

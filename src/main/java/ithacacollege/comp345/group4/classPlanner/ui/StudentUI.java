@@ -173,8 +173,8 @@ public class StudentUI {
 
                     Major m = student.getMajor();
                     if(m !=  null) {
-                        List<Requirement> reqs = studentAPI.viewMajorRequirements(m.title);
-                        for (Requirement req : reqs) {
+                        List<Course> reqs = studentAPI.viewMajorRequirements(m.getTitle());
+                        for (Course req : reqs) {
                             System.out.println(req.toString());
                         }
                     }
