@@ -64,14 +64,14 @@ class DirectoryTest {
         assertNotNull(cs);
 
         Course c = new Course();
-        c.setCourseNum("COMP 11500");
-        assertTrue(cs.fulfillsRequirement(cs.getRequirements().get(0)));
-        c.setCourseNum("COMP 17100");
-        assertTrue(cs.fulfillsRequirement(cs.getRequirements().get(1)));
-        c.setCourseNum("COMP 32100");
-        assertTrue(cs.fulfillsRequirement(cs.getRequirements().get(2)));
-        c.setCourseNum("ITAL 10100");
-        assertFalse(cs.fulfillsRequirement(cs.getRequirements().get(2)));
+        c.setCourseNum("COMP11500");
+        assertTrue(cs.fulfillsRequirement(c));
+        c.setCourseNum("COMP17100");
+        assertTrue(cs.fulfillsRequirement(c));
+        c.setCourseNum("COMP32100");
+        assertTrue(cs.fulfillsRequirement(c));
+        c.setCourseNum("ITAL10100");
+        assertFalse(cs.fulfillsRequirement(c));
     }
 
     @Test

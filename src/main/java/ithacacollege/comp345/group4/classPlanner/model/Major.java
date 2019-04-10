@@ -32,7 +32,15 @@ public class Major {
     }
 
     public boolean fulfillsRequirement(Course c){
-        return requirements.contains(c);
+        boolean fulfilled = requirements.contains(c);
+        for(Course rc : requirements)
+            fulfilled |= c.getCourseNum().equals(rc.getCourseNum());
+        if(!fulfilled) {
+            for (List<Course> l : chooseOnes)
+                for(Course rc : l)
+                    fulfilled |= c.getCourseNum().equals(rc.getCourseNum());
+        }
+        return fulfilled;
     }
 
     @Override
