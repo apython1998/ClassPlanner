@@ -12,7 +12,10 @@ public class Major {
     private List<Course> requirements;
     private List<List<Course>> chooseOnes;
 
-    public Major() { }
+    public Major() {
+        requirements = new ArrayList<>();
+        chooseOnes = new ArrayList<List<Course>>();
+    }
 
     public Major(String title, List<Course> requirements, List<List<Course>> chooseOnes) {
         this.requirements = requirements;
@@ -25,7 +28,7 @@ public class Major {
     }
 
     public void addChooseOne(List<Course> courses){
-        //TODO
+        chooseOnes.add(courses);
     }
 
     public boolean fulfillsRequirement(Course c){

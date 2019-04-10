@@ -13,7 +13,11 @@ public class Course implements Comparable<Course> {
     private List<String> prereqs;
     private List<List<String>> chooseOnes;
 
-    public Course() {}
+    public Course() {
+        semestersOffered = new ArrayList<>();
+        prereqs = new ArrayList<>();
+        chooseOnes = new ArrayList<>();
+    }
 
     public Course(String name, double credits, String courseNum, List<SemestersOffered> semestersOffered, CourseFrequency frequencyOffered, List<String> prereqs, List<List<String>> chooseOnes) {
         this.name = name;

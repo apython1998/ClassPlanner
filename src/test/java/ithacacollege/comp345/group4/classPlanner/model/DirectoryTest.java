@@ -2,6 +2,13 @@ package ithacacollege.comp345.group4.classPlanner.model;
 
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DirectoryTest {
@@ -77,5 +84,28 @@ class DirectoryTest {
         directory.addCurrentCourse("asdf", course1);
 
         System.out.println(directory.viewCurrentCourses("asdf"));
+    }
+
+    @Test
+    void genCoursePlanTest() throws IOException {
+        Directory d = new Directory();
+        List<Course> allCourses = JsonUtil.listFromJsonFile("src/main/resources/courseCatalog.json", Course.class);
+        Map<String, Course> courseCatalog = new HashMap<>();
+        for (Course course : allCourses) {
+            courseCatalog.put(course.getCourseNum(), course);
+        }
+
+        d.setCourseCatalog(courseCatalog);
+        Major fakeMajor = new Major();
+        fakeMajor.setTitle("Computer Science");
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP17100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP11500"));
+
+        d.registerStudent("jon", "shmon");
+        Student s = d.getStudents().get("jon");
+        s.changeMajor(fakeMajor);
+        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 15);
+        System.out.println(plan);
+
     }
 }

@@ -118,9 +118,9 @@ public class Student extends User {
     }
 
     public List<Course> getTakenCourses() {
-        if (takenCourses.isEmpty()) {
-            return null;
-        }
+        //if (takenCourses.isEmpty()) {
+        //    return null;
+        //} !------------ This is causing null pointer exceptions. It should be okay to return an empty list.
         return takenCourses;
     }
 
@@ -169,9 +169,9 @@ public class Student extends User {
     }
 
     public List<Course> getCurrentCourses() {
-        if (currentCourses.isEmpty()) {
-            return null;
-        }
+        //if (currentCourses.isEmpty()) {
+        //    return null;
+        //}!------------ This is also causing null pointer exceptions.
         return currentCourses;
     }
 
