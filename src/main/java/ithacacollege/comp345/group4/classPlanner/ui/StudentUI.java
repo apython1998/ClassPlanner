@@ -311,13 +311,8 @@ public class StudentUI {
                 else if (option == 5) {
                     System.out.println("Enter the number of credits: ");
                     int numCred = scanner.nextInt();
-                    HashMap<String, List<Course>> plan = studentAPI.generateCoursePlan(student.getUsername(), 2019, Semester.Fall, numCred);
-                    for(Map.Entry<String, List<Course>> semester : plan.entrySet()){
-                        System.out.println("Courses planned for " + semester.getKey() + "\n");
-                        for(Course c : semester.getValue()){
-                            System.out.println(c.getCourseNum() + " for " + c.getCredits() + " credits\n");
-                        }
-                    }
+                    String plan = studentAPI.generateCoursePlan(student.getUsername(), 2019, Semester.Fall, numCred);
+                    System.out.println(plan);
                 }
             }
         }

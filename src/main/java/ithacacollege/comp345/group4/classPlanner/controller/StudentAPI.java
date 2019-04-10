@@ -50,7 +50,7 @@ public class StudentAPI {
             return directory.getMajorDirectory().get(major).getRequirements();
     }
 
-    public HashMap<String, List<Course>> generateCoursePlan(String student, int year, Semester semester, int numCredits) {
+    public String generateCoursePlan(String student, int year, Semester semester, int numCredits) {
         return directory.genCoursePlan(student, semester, year, numCredits);
     }
 
