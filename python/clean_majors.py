@@ -23,8 +23,8 @@ def main():
             for course in choose_one:
                 new_choose_one.append(course_lookup_table[course])
             new_major_choose_ones.append(new_choose_one)
-        new_major['courses'] = new_major_courses
-        new_major['grouping'] = new_major_choose_ones
+        new_major['requirements'] = new_major_courses
+        new_major['chooseOnes'] = new_major_choose_ones
         major_catalog_with_actual_course_dicts.append(new_major)
     with open('../src/main/resources/majorCatalogWithCourseObjects.json', 'w') as out_file:
         json.dump(major_catalog_with_actual_course_dicts, out_file)

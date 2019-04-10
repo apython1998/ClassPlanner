@@ -29,10 +29,15 @@ public class ClassPlannerMain {
             courseCatalog.put(course.getCourseNum(), course);
         }
         List<Major> allMajors = JsonUtil.listFromJsonFile("src/main/resources/majorCatalogWithCourseObjects.json", Major.class);
+        Map<String, Major> majorCatalog = new HashMap<>();
+        for (Major major : allMajors) {
+            majorCatalog.put(major.getTitle() + " " + major.getType(), major);
+        }
         Directory directory = new Directory();
         directory.setCourseCatalog(courseCatalog);
-        //Preload major JSON:
-        directory.uploadMajor("src/test/resources/TestMajorReqs.json");
+        directory.setMajorDirectory(majorCatalog);
+//        Preload major JSON:
+//        directory.uploadMajor("src/test/resources/TestMajorReqs.json");
         StudentAPI studentAPI = new StudentAPI(directory);
         StudentUI studentUI = new StudentUI(studentAPI);
         studentUI.run();
