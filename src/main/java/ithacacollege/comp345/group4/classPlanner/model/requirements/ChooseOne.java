@@ -8,7 +8,7 @@ public class ChooseOne implements Requirement {
     public ChooseOne(List<Course> l){
         courses = l;
     }
-    public boolean fulfillsRequirment(Course c){
+    public boolean fulfillsRequirement(Course c){
         boolean found = false;
         for(Course lc : courses){
             if(lc.getCourseNum().equals(c.getCourseNum()))
@@ -16,6 +16,12 @@ public class ChooseOne implements Requirement {
         }
         return found;
     }
+
+    public Course getCourse(){
+        //FIX THIS
+        return courses.get(0);
+    }
+
     public String toString(){
         String ret = "Choose One:\n";
         for(Course c : courses)

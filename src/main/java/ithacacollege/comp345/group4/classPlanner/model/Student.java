@@ -3,6 +3,8 @@ package ithacacollege.comp345.group4.classPlanner.model;
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Student extends User {
@@ -11,6 +13,9 @@ public class Student extends User {
     private List<Course> currentCourses;
     private List<Course> plannedCourses;
     private Schedule nextSemesterSchedule;
+
+    private Semester semester;
+    private int year;
 
     private Major major;
     private List<Major> minors;
@@ -28,6 +33,8 @@ public class Student extends User {
         this.plannedCourses = new ArrayList<>();
         this.major = major;
         this.minors = minors;
+        /*this.semester = semester;
+        this.year = year;*/
         this.transcript = new Transcript();
     }
 
@@ -70,6 +77,39 @@ public class Student extends User {
         return minors.remove(minor);
     }
 
+    /**
+     * Adds the courses a Student has already taken
+     *
+     * @param courses - list of courses the student has already taken
+     */
+    public void addCoursesTaken(List<Course> courses) {
+        if (courses != null) {
+            for (Course c : courses) {
+                if (c != null) {
+                    if (!takenCourses.contains(c)) {
+                        this.takenCourses.add(c);
+                    }
+                } else {
+                    throw new InvalidArgumentException("Invalid Course");
+                }
+            }
+        } else {
+            throw new InvalidArgumentException("Invalid Course");
+        }
+    }
+
+    public boolean addCoursesTaken(Course course) {
+        if (course == null) {
+            throw new InvalidArgumentException("Invalid course");
+        }
+        if (takenCourses.contains(course)) {
+            return false;
+        } else {
+            takenCourses.add(course);
+            return true;
+        }
+    }
+
     public boolean addTakenCourses(Course course) {
         if (course == null || takenCourses.contains(course)) {
             return false;
@@ -79,12 +119,31 @@ public class Student extends User {
     }
 
     public List<Course> getTakenCourses() {
-        if (takenCourses.isEmpty()) {
-            return null;
-        }
+        //if (takenCourses.isEmpty()) {
+        //    return null;
+        //} !------------ This is causing null pointer exceptions. It should be okay to return an empty list.
         return takenCourses;
     }
 
+    /**
+     * Adds the courses a Student plans on taking
+     *
+     * @param courses - list of courses the student intends on taking
+     */
+    public boolean addPlannedCourses(List<Course> courses) {
+        if (courses != null) {
+            for (Course c : courses) {
+                if (c != null) {
+                    if (!plannedCourses.contains(c)) {
+                        this.plannedCourses.add(c);
+                    }
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public boolean addPlannedCourses(Course course) {
         if (course == null || plannedCourses.contains(course)) {
@@ -92,13 +151,9 @@ public class Student extends User {
         }
         plannedCourses.add(course);
         return true;
-
     }
 
     public List<Course> getPlannedCourses() {
-        if (plannedCourses.isEmpty()) {
-            return null;
-        }
         return plannedCourses;
     }
 
@@ -112,11 +167,12 @@ public class Student extends User {
     }
 
     public List<Course> getCurrentCourses() {
-        if (currentCourses.isEmpty()) {
-            return null;
-        }
+        //if (currentCourses.isEmpty()) {
+        //    return null;
+        //}!------------ This is also causing null pointer exceptions.
         return currentCourses;
     }
+
 
     public boolean addToTranscript(Course course, String grade, boolean inProgress, boolean courseComplete){
         return transcript.addEntry(course, grade, inProgress, courseComplete);
