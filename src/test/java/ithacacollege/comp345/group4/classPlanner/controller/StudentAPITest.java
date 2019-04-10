@@ -6,6 +6,8 @@ import ithacacollege.comp345.group4.classPlanner.model.Directory;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StudentAPITest {
@@ -97,6 +99,17 @@ public class StudentAPITest {
 
         assertTrue(studentAPI.validateMajor("Computer Science"));
         assertFalse(studentAPI.validateMajor("Wine Tasting"));
+    }
+
+    @Test
+    void uploadTranscript() {
+        Directory d = new Directory();
+        d.registerStudent("dmccaffrey", "abcdef");
+        StudentAPI api = new StudentAPI(d);
+
+        api.uploadTranscript("dmccaffrey", "src/test/resources/exTranscript");
+        assertEquals("Completed\tCOMP17100\tPrinciples of Comp Sci I\tA\t4.0\nIn Progress\tCOMP17200\tPrinciples of Comp Sci II\t\t4.0", d.getStudents().get("dmccaffrey").getTranscript().toString());
+        assertThrows(InvalidArgumentException.class, ()-> api.uploadTranscript("apython", "src/test/resources/exTranscript"));
     }
 
 }

@@ -22,10 +22,10 @@ public class Student extends User {
 
     private void updateData() {
         for (TranscriptEntry t: transcript.getCourseList()) {
-            if (t.isInProgress()) {
+            if (t.isInProgress() && !currentCourses.contains(t.getCourse())) {
                 currentCourses.add(t.getCourse());
             }
-            if (t.isCourseComplete()) {
+            if (t.isCourseComplete() && !takenCourses.contains(t.getCourse())) {
                 takenCourses.add(t.getCourse());
             }
         }

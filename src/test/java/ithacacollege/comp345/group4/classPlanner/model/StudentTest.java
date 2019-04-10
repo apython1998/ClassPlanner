@@ -91,6 +91,13 @@ public class StudentTest {
         assertEquals("Course{courseNum='COMP17100', name='Principles of Comp Sci I', credits=4.0, semestersOffered=null, frequencyOffered=null, prereqs=null, chooseOnes=null}", student.getTakenCourses().get(0).toString());
         assertEquals("Course{courseNum='COMP17200', name='Principles of Comp Sci II', credits=4.0, semestersOffered=null, frequencyOffered=null, prereqs=null, chooseOnes=null}", student.getCurrentCourses().get(0).toString());
 
+        student.setTranscript(transcript);
+
+        assertEquals("Course{courseNum='COMP17100', name='Principles of Comp Sci I', credits=4.0, semestersOffered=null, frequencyOffered=null, prereqs=null, chooseOnes=null}", student.getTakenCourses().get(0).toString());
+        assertEquals("Course{courseNum='COMP17200', name='Principles of Comp Sci II', credits=4.0, semestersOffered=null, frequencyOffered=null, prereqs=null, chooseOnes=null}", student.getCurrentCourses().get(0).toString());
+
+        assertThrows(IndexOutOfBoundsException.class, ()-> student.getCurrentCourses().get(1));
+        assertThrows(IndexOutOfBoundsException.class, ()-> student.getTakenCourses().get(1));
     }
 
 }
