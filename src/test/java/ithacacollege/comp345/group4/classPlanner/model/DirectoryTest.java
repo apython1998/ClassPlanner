@@ -99,7 +99,12 @@ class DirectoryTest {
         Major fakeMajor = new Major();
         fakeMajor.setTitle("Computer Science");
         fakeMajor.addCourse(d.getCourseCatalog().get("COMP17100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP17200"));
         fakeMajor.addCourse(d.getCourseCatalog().get("COMP11500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP22000"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP10500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP20500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP11000"));
 
         d.registerStudent("jon", "shmon");
         Student s = d.getStudents().get("jon");
