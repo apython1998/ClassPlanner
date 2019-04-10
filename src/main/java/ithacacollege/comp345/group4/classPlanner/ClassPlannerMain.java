@@ -28,7 +28,7 @@ public class ClassPlannerMain {
         for (Course course : allCourses) {
             courseCatalog.put(course.getCourseNum(), course);
         }
-        List<Major> allMajors = JsonUtil.listFromJsonFile("src/main/resources/majorCatalog.json", Major.class);
+        List<Major> allMajors = JsonUtil.listFromJsonFile("src/main/resources/majorCatalogWithCourseObjects.json", Major.class);
         Directory directory = new Directory();
         directory.setCourseCatalog(courseCatalog);
         //Preload major JSON:
