@@ -65,6 +65,7 @@ public class TranscriptEntry {
                     grade + //
                     "\t" + //
                     course.getCredits();
+
         }
     }
 

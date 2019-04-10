@@ -1,10 +1,10 @@
 {
     "title" : "Computer Science",
     "type" : "BA",
-    "courses" : ["COMP 11500", "COMP 17100"],
+    "courses" : ["COMP11500", "COMP17100"],
     "grouping" : [[
-        "COMP 32100",
-        "COMP 32500"
+        "COMP32100",
+        "COMP32500"
       ]
     ]
 }

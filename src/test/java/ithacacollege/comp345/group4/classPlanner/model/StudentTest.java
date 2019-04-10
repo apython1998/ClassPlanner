@@ -19,10 +19,13 @@ public class StudentTest {
 
         assertTrue(student.addTakenCourses(course1)); //adding 1st course
         assertFalse(student.addTakenCourses(course1)); //adding the course again should not work
+        //check equals
+        //assertEquals(courseList, student.getTakenCourses());
 
+        //check not equals
+        //assertNotEquals(emptyList, student.getTakenCourses());
         assertTrue(student.addTakenCourses(course2));
         assertFalse(student.addTakenCourses(course2)); //adding the course again should not work
-
 
         //bad input
         //assertThrows(InvalidArgumentException.class, ()-> student.addCoursesTaken(null));
@@ -56,6 +59,13 @@ public class StudentTest {
         assertTrue(student.addPlannedCourses(course1)); //adding 1st course
         assertFalse(student.addPlannedCourses(course1)); //adding the course again should not work
 
+        courseList.add(course1);
+
+        //check equals
+        assertEquals(courseList, student.getPlannedCourses());
+
+        //check not equals
+        //assertNotEquals(emptyList, student.getPlannedCourses());
         assertTrue(student.addPlannedCourses(course2));
         assertFalse(student.addPlannedCourses(course2)); //adding the course again should not work
 
@@ -81,6 +91,7 @@ public class StudentTest {
         //assertThrows(InvalidArgumentException.class, ()-> student.addCoursesPlanned(null));
     }
 
+
     @Test
     void updateDataTest() {
         Student student = new Student("test", "abc", null, null);
@@ -99,5 +110,6 @@ public class StudentTest {
         assertThrows(IndexOutOfBoundsException.class, ()-> student.getCurrentCourses().get(1));
         assertThrows(IndexOutOfBoundsException.class, ()-> student.getTakenCourses().get(1));
     }
+
 
 }

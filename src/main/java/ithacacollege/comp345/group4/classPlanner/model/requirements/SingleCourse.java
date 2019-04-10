@@ -7,7 +7,12 @@ public class SingleCourse implements Requirement {
     public SingleCourse(Course c){
         course = c;
     }
-    public boolean fulfillsRequirment(Course c){
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public boolean fulfillsRequirement(Course c){
         return c.getCourseNum().equals(course.getCourseNum());
     }
     public String toString(){

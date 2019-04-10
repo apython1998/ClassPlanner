@@ -87,7 +87,7 @@ public class StudentAPITest {
         studentAPI.setStudentMajor("username", "Computer Science");
 
 
-        assertEquals(studentAPI.viewMajorRequirements("Computer Science"), d.getMajorDirectory().get("Computer Science").requirements);
+        assertEquals(studentAPI.viewMajorRequirements("Computer Science"), d.getMajorDirectory().get("Computer Science").getRequirements());
         assertThrows(InvalidArgumentException.class, ()-> studentAPI.viewMajorRequirements("Gator Wrangling"));
     }
 

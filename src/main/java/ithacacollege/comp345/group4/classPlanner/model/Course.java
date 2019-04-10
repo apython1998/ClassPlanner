@@ -1,8 +1,10 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public class Course {
+public class Course implements Comparable<Course> {
     private String courseNum;
     private String name;
     private double credits;
@@ -11,7 +13,11 @@ public class Course {
     private List<String> prereqs;
     private List<List<String>> chooseOnes;
 
-    public Course() {}
+    public Course() {
+        semestersOffered = new ArrayList<>();
+        prereqs = new ArrayList<>();
+        chooseOnes = new ArrayList<>();
+    }
 
     public Course(String name, double credits, String courseNum, List<SemestersOffered> semestersOffered, CourseFrequency frequencyOffered, List<String> prereqs, List<List<String>> chooseOnes) {
         this.name = name;
@@ -90,5 +96,17 @@ public class Course {
                 ", prereqs=" + prereqs +
                 ", chooseOnes=" + chooseOnes +
                 '}';
+    }
+
+    public int compareTo(Course b) {
+        String aNumStr = this.getCourseNum();
+        aNumStr = aNumStr.substring(4);
+        int aNum = Integer.parseInt(aNumStr);
+
+        String bNumStr = b.getCourseNum();
+        bNumStr = bNumStr.substring(4);
+        int bNum = Integer.parseInt(bNumStr);
+
+        return aNum - bNum;
     }
 }
