@@ -243,6 +243,8 @@ public class Directory {
      */
     private boolean offeredThisSemester(Semester semester, Course course){
         List<SemestersOffered> offered = course.getSemestersOffered();
+        if(offered.isEmpty())
+            throw new IllegalStateException("Course object is missing SemestersOffered data.");
         for (int i = 0; i < offered.size(); i++) {
             SemestersOffered sem = offered.get(i);
             if (semester.equals(convertSemesterOfferedtoSemester(sem))){
