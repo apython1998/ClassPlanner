@@ -81,9 +81,6 @@ def scrape_courses(url, courses):
                 else:
                     if len(requirement) == 9:  # Length of Course DEPT+Number
                         course_prereqs.append(requirement)
-        for prereq in course_prereqs:
-            if len(prereq) != 9:
-                course_prereqs.remove(prereq)
         # Put Data into the Dictionary
         course_json['courseNum'] = course_dept+course_number # Department and Number (DEPT00000)
         course_json['name'] = course_name                    # Name
@@ -116,7 +113,7 @@ def main():
                 bad_prereqs.append(prereq)
         for choose_one in course['chooseOnes']:
             for prereq in choose_one:  # Get rid of bad prereqs in the choose ones
-                if len(prereq) != 9 and 'TVR' not in prereq:
+                if len(prereq) != 9 and ('TVR' not in prereq or 'RLS' not in prereq or 'ART' not in prereq):
                     choose_one.remove(prereq)
             if len(choose_one) < 2:    # If the size of the choose one is less than 2 now, get rid of it
                 bad_choose_ones.append(choose_one)

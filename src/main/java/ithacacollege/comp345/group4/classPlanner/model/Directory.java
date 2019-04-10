@@ -1,7 +1,6 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
-import ithacacollege.comp345.group4.classPlanner.model.requirements.Requirement;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -391,5 +390,7 @@ public class Directory {
         this.students = users;
     }
 
-
+    public void setMajorDirectory(Map<String, Major> majorDirectory) {
+        this.majorDirectory = majorDirectory;
+    }
 }

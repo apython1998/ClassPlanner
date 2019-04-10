@@ -1,14 +1,11 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
-import ithacacollege.comp345.group4.classPlanner.model.requirements.ChooseOne;
-import ithacacollege.comp345.group4.classPlanner.model.requirements.Requirement;
-import ithacacollege.comp345.group4.classPlanner.model.requirements.SingleCourse;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Major {
     private String title;
+    private String type;
     private List<Course> requirements;
     private List<List<Course>> chooseOnes;
 
@@ -72,5 +69,13 @@ public class Major {
 
     public void setChooseOnes(List<List<Course>> chooseOnes) {
         this.chooseOnes = chooseOnes;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
