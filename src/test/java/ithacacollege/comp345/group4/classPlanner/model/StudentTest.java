@@ -58,6 +58,9 @@ public class StudentTest {
 
         assertTrue(student.addPlannedCourses(course1)); //adding 1st course
         assertFalse(student.addPlannedCourses(course1)); //adding the course again should not work
+
+        courseList.add(course1);
+
         //check equals
         assertEquals(courseList, student.getPlannedCourses());
 
@@ -87,10 +90,4 @@ public class StudentTest {
         //bad input
         //assertThrows(InvalidArgumentException.class, ()-> student.addCoursesPlanned(null));
     }
-
-    @Test
-    void genPlanTest(){
-        //TODO
-    }
-
 }

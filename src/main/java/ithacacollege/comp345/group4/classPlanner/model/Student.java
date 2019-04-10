@@ -153,9 +153,6 @@ public class Student extends User {
     }
 
     public List<Course> getPlannedCourses() {
-        if (plannedCourses.isEmpty()) {
-            return null;
-        }
         return plannedCourses;
     }
 

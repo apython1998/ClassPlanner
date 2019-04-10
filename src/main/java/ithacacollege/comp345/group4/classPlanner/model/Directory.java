@@ -166,27 +166,47 @@ public class Directory {
      * @return - hashmap of Semester & Year to a list of courses.
      *           For example: key- Fall2019 would return a list of courses the student should take Fall 2019
      */
-    public HashMap<String, List<Course>> genCoursePlan(String studentID, Semester semester, int year, int creditsPerSemester){
+    public String genCoursePlan(String studentID, Semester semester, int year, int creditsPerSemester){
         Student student = students.get(studentID);
         Major major = student.getMajor();
         List<Course> courseReqs = major.getRequirements();
         addPreReqs(courseReqs); //gets all prerequisites for all course requirements
         removeCourseReqs(courseReqs, student.getTakenCourses()); // remove requirements already completed
         removeCourseReqs(courseReqs, student.getCurrentCourses()); // remove requirements currently being completed
-        student.addPlannedCourses(courseReqs); // add all requirements to planned courses
         Collections.sort(courseReqs); // sort courses lower lever -> higher level
         HashMap<String, List<Course>> plan = new HashMap<>();
         Semester nextSemester = getNextSemester(semester);
         int currentYear = year;
         while(!courseReqs.isEmpty()){
-            planSemester(nextSemester, currentYear, plan, courseReqs, creditsPerSemester); // plan for next semester
+            planSemester(nextSemester, currentYear, plan, courseReqs, creditsPerSemester, student); // plan for next semester
             nextSemester = getNextSemester(nextSemester); // forward the semester
             if (nextSemester == Semester.Spring){
                 currentYear++; // increment year if changed from fall to spring
             }
         }
-        return plan;
+        String planStr = scheduleToStr(plan);
+        return planStr;
     }
+
+    private String scheduleToStr(HashMap<String, List<Course>> plan){
+        String toReturn = "";
+        Set<String> semesters = plan.keySet();
+        double totalCredits = 0;
+        for (String semester : semesters){
+            toReturn += semester + ": ";
+            List<Course> courses = plan.get(semester);
+            double credits = 0;
+            for (int i = 0; i < courses.size() - 1; i++){
+                toReturn += courses.get(i).getCourseNum() + ", ";
+                credits += courses.get(i).getCredits();
+            }
+            credits += courses.get(courses.size() - 1).getCredits();
+            toReturn += courses.get(courses.size() - 1).getCourseNum() + ". Credits: " + credits + "\n";
+            totalCredits += credits;
+        }
+        return toReturn + "Total Credits: " + totalCredits + "\n";
+    }
+
 
     /**
      * Returns the semester following the passed semester
@@ -215,7 +235,7 @@ public class Directory {
      * @param creditsPer - maximum credits the student expects to have per semester
      * @return - number of credits for that semester, double
      */
-    private double planSemester(Semester semster, int year, HashMap<String, List<Course>> plan,List<Course> courseReq, int creditsPer){
+    private double planSemester(Semester semster, int year, HashMap<String, List<Course>> plan,List<Course> courseReq, int creditsPer, Student student){
         double credits = 0;
         String semesterYear = semster + "" + year;
         List<Course> coursePlan = new ArrayList<>();
@@ -223,7 +243,7 @@ public class Directory {
         Iterator<Course> requirementItr = requirements.iterator();
         while (requirementItr.hasNext() && credits < creditsPer){
             Course course = requirementItr.next();
-            if (offeredThisSemester(semster, course)) {
+            if (offeredThisSemester(semster, course) && satisfyPreReq(course, student)) {
                 if (credits + course.getCredits() <= creditsPer) {
                     coursePlan.add(course);
                     courseReq.remove(course);
@@ -231,8 +251,34 @@ public class Directory {
                 }
             }
         }
+        for (Course course : coursePlan){
+            student.addPlannedCourses(course);
+        }
         plan.put(semesterYear, coursePlan);
         return credits;
+    }
+
+    /**
+     * Checks if a student has fulfilled all of the prerequisites for a course. Checks against
+     * all past, current, or planned courses because in order to plan a upper level 300 course
+     * 3 semesters away, you have to check if they have planned on completing a prerequisite earlier.
+     * @param course - course to be checked
+     * @param student - student checking for course allowance
+     * @return - boolean true if they have satisfied the prerequisites
+     */
+    public boolean satisfyPreReq(Course course, Student student){
+        List<String> preReqs = course.getprereqs();
+        for (String preReqStr : preReqs){
+            Course preReq = courseCatalog.get(preReqStr);
+            if (!student.getTakenCourses().contains(preReq)){
+                if (!student.getCurrentCourses().contains(preReq)){
+                    if (!student.getPlannedCourses().contains(preReq)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     /**
@@ -243,6 +289,8 @@ public class Directory {
      */
     private boolean offeredThisSemester(Semester semester, Course course){
         List<SemestersOffered> offered = course.getSemestersOffered();
+        if(offered.isEmpty())
+            throw new IllegalStateException("Course object is missing SemestersOffered data.");
         for (int i = 0; i < offered.size(); i++) {
             SemestersOffered sem = offered.get(i);
             if (semester.equals(convertSemesterOfferedtoSemester(sem))){

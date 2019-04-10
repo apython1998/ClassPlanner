@@ -64,14 +64,14 @@ class DirectoryTest {
         assertNotNull(cs);
 
         Course c = new Course();
-        c.setCourseNum("COMP 11500");
-        assertTrue(cs.fulfillsRequirement(cs.getRequirements().get(0)));
-        c.setCourseNum("COMP 17100");
-        assertTrue(cs.fulfillsRequirement(cs.getRequirements().get(1)));
-        c.setCourseNum("COMP 32100");
-        assertTrue(cs.fulfillsRequirement(cs.getRequirements().get(2)));
-        c.setCourseNum("ITAL 10100");
-        assertFalse(cs.fulfillsRequirement(cs.getRequirements().get(2)));
+        c.setCourseNum("COMP11500");
+        assertTrue(cs.fulfillsRequirement(c));
+        c.setCourseNum("COMP17100");
+        assertTrue(cs.fulfillsRequirement(c));
+        c.setCourseNum("COMP32100");
+        assertTrue(cs.fulfillsRequirement(c));
+        c.setCourseNum("ITAL10100");
+        assertFalse(cs.fulfillsRequirement(c));
     }
 
     @Test
@@ -99,12 +99,23 @@ class DirectoryTest {
         Major fakeMajor = new Major();
         fakeMajor.setTitle("Computer Science");
         fakeMajor.addCourse(d.getCourseCatalog().get("COMP17100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP17200"));
         fakeMajor.addCourse(d.getCourseCatalog().get("COMP11500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP22000"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP10500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP20500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP21000"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP37500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP11000"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH11100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH11200"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH21100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH21600"));
 
         d.registerStudent("jon", "shmon");
         Student s = d.getStudents().get("jon");
         s.changeMajor(fakeMajor);
-        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 15);
+        String plan = d.genCoursePlan("jon", Semester.Fall, 2019, 15);
         System.out.println(plan);
 
     }
