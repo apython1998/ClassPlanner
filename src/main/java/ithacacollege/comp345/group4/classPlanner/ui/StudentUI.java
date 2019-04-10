@@ -1,13 +1,12 @@
 package ithacacollege.comp345.group4.classPlanner.ui;
 
 import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
-import ithacacollege.comp345.group4.classPlanner.model.Course;
-import ithacacollege.comp345.group4.classPlanner.model.Major;
-import ithacacollege.comp345.group4.classPlanner.model.Student;
-import ithacacollege.comp345.group4.classPlanner.model.Transcript;
+import ithacacollege.comp345.group4.classPlanner.model.*;
 import ithacacollege.comp345.group4.classPlanner.model.requirements.Requirement;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class StudentUI {
@@ -136,7 +135,8 @@ public class StudentUI {
                 " 1 - See Major Requirements\n" +
                 " 2 - View Courses\n" +
                 " 3 - Add Courses\n" +
-                " 4 - Input Transcript\n";
+                " 4 - Input Transcript\n" +
+                " 5 - Generate Future Course Plan\n";
         System.out.println("Welcome to Class Planner\n");
         while (option != 0) {
             if (student == null) {
@@ -161,7 +161,7 @@ public class StudentUI {
                         loggedInOptions +
                         "Enter Selection Here: ");
                 option = scanner.nextInt();
-                while (option < 0 || option > 4) {
+                while (option < 0 || option > 5) {
                     System.out.print("Invalid Selection\n" +
                             "Please Choose One\n" +
                             loggedInOptions +
@@ -307,6 +307,17 @@ public class StudentUI {
                     String file = scanner.next();
                     student.setTranscript(new Transcript(file));
                     System.out.println(student.getTranscript().toString());
+                }
+                else if (option == 5) {
+                    System.out.println("Enter the number of credits: ");
+                    int numCred = scanner.nextInt();
+                    HashMap<String, List<Course>> plan = studentAPI.generateCoursePlan(student.getUsername(), 2019, Semester.Fall, numCred);
+                    for(Map.Entry<String, List<Course>> semester : plan.entrySet()){
+                        System.out.println("Courses planned for " + semester.getKey() + "\n");
+                        for(Course c : semester.getValue()){
+                            System.out.println(c.getCourseNum() + " for " + c.getCredits() + " credits\n");
+                        }
+                    }
                 }
             }
         }

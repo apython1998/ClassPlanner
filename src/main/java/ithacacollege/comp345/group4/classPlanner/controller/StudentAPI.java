@@ -2,14 +2,11 @@ package ithacacollege.comp345.group4.classPlanner.controller;
 
 
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
-import ithacacollege.comp345.group4.classPlanner.model.Course;
+import ithacacollege.comp345.group4.classPlanner.model.*;
 
-import ithacacollege.comp345.group4.classPlanner.model.Major;
-import ithacacollege.comp345.group4.classPlanner.model.Student;
-
-import ithacacollege.comp345.group4.classPlanner.model.Directory;
 import ithacacollege.comp345.group4.classPlanner.model.requirements.Requirement;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class StudentAPI {
@@ -51,6 +48,10 @@ public class StudentAPI {
             throw new InvalidArgumentException("Major does not exist.");
         else
             return directory.getMajorDirectory().get(major).getRequirements();
+    }
+
+    public HashMap<String, List<Course>> generateCoursePlan(String student, int year, Semester semester, int numCredits) {
+        return directory.genCoursePlan(student, semester, year, numCredits);
     }
 
     public boolean validateMajor(String major) {
