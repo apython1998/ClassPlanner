@@ -192,15 +192,19 @@ public class Directory {
     private String scheduleToStr(HashMap<String, List<Course>> plan){
         String toReturn = "";
         Set<String> semesters = plan.keySet();
+        double totalCredits = 0;
         for (String semester : semesters){
             toReturn += semester + ": ";
             List<Course> courses = plan.get(semester);
+            double credits = 0;
             for (int i = 0; i < courses.size() - 1; i++){
-                toReturn += courses.get(i).getCourseNum() + " - " + courses.get(i).getCredits() + " credits, ";
+                toReturn += courses.get(i).getCourseNum() + ", ";
+                credits += courses.get(i).getCredits();
             }
-            toReturn += courses.get(courses.size() - 1).getCourseNum() + " - " + courses.get(courses.size() - 1).getCredits() + " credits.\n";
+            toReturn += courses.get(courses.size() - 1).getCourseNum() + ". Credits: " + credits + "\n";
+            totalCredits += credits;
         }
-        return toReturn;
+        return toReturn + "Total Credits: " + totalCredits + "\n";
     }
 
 
