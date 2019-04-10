@@ -104,7 +104,7 @@ class DirectoryTest {
         d.registerStudent("jon", "shmon");
         Student s = d.getStudents().get("jon");
         s.changeMajor(fakeMajor);
-        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 15);
+        String plan = d.genCoursePlan("jon", Semester.Fall, 2019, 15);
         System.out.println(plan);
 
     }

@@ -166,7 +166,7 @@ public class Directory {
      * @return - hashmap of Semester & Year to a list of courses.
      *           For example: key- Fall2019 would return a list of courses the student should take Fall 2019
      */
-    public HashMap<String, List<Course>> genCoursePlan(String studentID, Semester semester, int year, int creditsPerSemester){
+    public String genCoursePlan(String studentID, Semester semester, int year, int creditsPerSemester){
         Student student = students.get(studentID);
         Major major = student.getMajor();
         List<Course> courseReqs = major.getRequirements();
@@ -185,8 +185,25 @@ public class Directory {
                 currentYear++; // increment year if changed from fall to spring
             }
         }
-        return plan;
+        String planStr = scheduleToStr(plan);
+        return planStr;
     }
+
+    private String scheduleToStr(HashMap<String, List<Course>> plan){
+        String toReturn = "";
+        Set<String> semesters = plan.keySet();
+        for (String semester : semesters){
+            toReturn += semester + ": ";
+            List<Course> courses = plan.get(semester);
+            for (int i = 0; i < courses.size() - 1; i++){
+                toReturn += courses.get(i).getCourseNum() + " - " + courses.get(i).getCredits() + " credits, ";
+            }
+            toReturn += courses.get(courses.size() - 1).getCourseNum() + " - " + courses.get(courses.size() - 1).getCredits() + " credits.\n";
+        }
+
+        return toReturn;
+    }
+
 
     /**
      * Returns the semester following the passed semester
