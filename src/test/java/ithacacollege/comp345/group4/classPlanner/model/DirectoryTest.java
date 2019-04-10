@@ -104,7 +104,13 @@ class DirectoryTest {
         fakeMajor.addCourse(d.getCourseCatalog().get("COMP22000"));
         fakeMajor.addCourse(d.getCourseCatalog().get("COMP10500"));
         fakeMajor.addCourse(d.getCourseCatalog().get("COMP20500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP21000"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP37500"));
         fakeMajor.addCourse(d.getCourseCatalog().get("COMP11000"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH11100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH11200"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH21100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH21600"));
 
         d.registerStudent("jon", "shmon");
         Student s = d.getStudents().get("jon");

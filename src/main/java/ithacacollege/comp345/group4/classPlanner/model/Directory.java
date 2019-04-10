@@ -200,7 +200,6 @@ public class Directory {
             }
             toReturn += courses.get(courses.size() - 1).getCourseNum() + " - " + courses.get(courses.size() - 1).getCredits() + " credits.\n";
         }
-
         return toReturn;
     }
 
