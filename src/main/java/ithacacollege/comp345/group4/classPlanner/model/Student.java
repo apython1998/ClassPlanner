@@ -20,6 +20,17 @@ public class Student extends User {
     public Student() {
     }
 
+    private void updateData() {
+        for (TranscriptEntry t: transcript.getCourseList()) {
+            if (t.isInProgress()) {
+                currentCourses.add(t.getCourse());
+            }
+            if (t.isCourseComplete()) {
+                takenCourses.add(t.getCourse());
+            }
+        }
+    }
+
     public Student(String username, String password, Major major, List<Major> minors) {
         super(username, password);
         this.ID = ID;
@@ -128,5 +139,6 @@ public class Student extends User {
 
     public void setTranscript(Transcript transcriptIn) {
         transcript = transcriptIn;
+        updateData();
     }
 }
