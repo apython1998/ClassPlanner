@@ -7,6 +7,7 @@ import ithacacollege.comp345.group4.classPlanner.model.Course;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 import ithacacollege.comp345.group4.classPlanner.model.Directory;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class StudentAPI {
@@ -50,7 +51,7 @@ public class StudentAPI {
             return directory.getMajorDirectory().get(major).getRequirements();
     }
 
-    public String generateCoursePlan(String student, int year, Semester semester, int numCredits) {
+    public HashMap<String, List<Course>> generateCoursePlan(String student, int year, Semester semester, int numCredits) {
         return directory.genCoursePlan(student, semester, year, numCredits);
     }
 

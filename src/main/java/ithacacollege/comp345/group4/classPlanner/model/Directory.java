@@ -195,7 +195,7 @@ public class Directory {
         return plan;
     }
 
-    public String scheduleToStr(HashMap<String, List<Course>> plan){
+    public static String scheduleToStr(HashMap<String, List<Course>> plan){
         String toReturn = "";
         Set<String> semesters = plan.keySet();
         double totalCredits = 0;
