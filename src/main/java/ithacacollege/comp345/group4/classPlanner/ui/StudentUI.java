@@ -2,7 +2,11 @@ package ithacacollege.comp345.group4.classPlanner.ui;
 
 import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
 import ithacacollege.comp345.group4.classPlanner.model.*;
-import ithacacollege.comp345.group4.classPlanner.model.requirements.Requirement;
+import ithacacollege.comp345.group4.classPlanner.model.Course;
+import ithacacollege.comp345.group4.classPlanner.model.Major;
+import ithacacollege.comp345.group4.classPlanner.model.Student;
+import ithacacollege.comp345.group4.classPlanner.model.Transcript;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -173,7 +177,7 @@ public class StudentUI {
 
                     Major m = student.getMajor();
                     if(m !=  null) {
-                        List<Course> reqs = studentAPI.viewMajorRequirements(m.getTitle());
+                        List<Course> reqs = studentAPI.viewMajorRequirements(m.getTitle() + " " + m.getType());
                         for (Course req : reqs) {
                             System.out.println(req.toString());
                         }

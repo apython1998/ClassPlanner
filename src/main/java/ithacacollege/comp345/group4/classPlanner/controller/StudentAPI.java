@@ -6,6 +6,7 @@ import ithacacollege.comp345.group4.classPlanner.model.*;
 import ithacacollege.comp345.group4.classPlanner.model.Course;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 import ithacacollege.comp345.group4.classPlanner.model.Directory;
+
 import java.util.List;
 
 public class StudentAPI {
@@ -76,6 +77,15 @@ public class StudentAPI {
      */
     public Student login(String username, String password) {
         return directory.loginStudent(username, password);
+    }
+
+    public void uploadTranscript(String studentName, String filename) {
+        if (directory.getStudents().containsKey(studentName)) {
+            Student student = directory.getStudents().get(studentName);
+            student.setTranscript(new Transcript(filename));
+        } else {
+            throw new InvalidArgumentException("Student does not exist");
+        }
     }
 
 

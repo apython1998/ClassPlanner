@@ -90,4 +90,26 @@ public class StudentTest {
         //bad input
         //assertThrows(InvalidArgumentException.class, ()-> student.addCoursesPlanned(null));
     }
+
+
+    @Test
+    void updateDataTest() {
+        Student student = new Student("test", "abc", null, null);
+        Transcript transcript = new Transcript("src/test/resources/exTranscript.json");
+
+        student.setTranscript(transcript);
+
+        assertEquals("Course{courseNum='COMP17100', name='Principles of Comp Sci I', credits=4.0, semestersOffered=null, frequencyOffered=null, prereqs=null, chooseOnes=null}", student.getTakenCourses().get(0).toString());
+        assertEquals("Course{courseNum='COMP17200', name='Principles of Comp Sci II', credits=4.0, semestersOffered=null, frequencyOffered=null, prereqs=null, chooseOnes=null}", student.getCurrentCourses().get(0).toString());
+
+        student.setTranscript(transcript);
+
+        assertEquals("Course{courseNum='COMP17100', name='Principles of Comp Sci I', credits=4.0, semestersOffered=null, frequencyOffered=null, prereqs=null, chooseOnes=null}", student.getTakenCourses().get(0).toString());
+        assertEquals("Course{courseNum='COMP17200', name='Principles of Comp Sci II', credits=4.0, semestersOffered=null, frequencyOffered=null, prereqs=null, chooseOnes=null}", student.getCurrentCourses().get(0).toString());
+
+        assertThrows(IndexOutOfBoundsException.class, ()-> student.getCurrentCourses().get(1));
+        assertThrows(IndexOutOfBoundsException.class, ()-> student.getTakenCourses().get(1));
+    }
+
+
 }
