@@ -45,6 +45,8 @@ The student logs in, tries to view graduation paths, and is then printed a repor
 #### Sprint 2:
 Sprint Goal: Student's should be able to choose their major, see their major requirements, request a schedule for next semester, and have the directory populated with Ithaca College's majors and courses.
 
+Sprint 2 Review Agenda: https://docs.google.com/document/d/1a_Y0_6udft_gEIrPjkRS0pap7eIkrr9nPWeq7tun_RI/edit?usp=sharing
+
 #### Use Cases/Narratives to Develop Sprint 2:
 1. View Graduation Paths
 2. Recommend Semester Classes
