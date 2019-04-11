@@ -251,7 +251,7 @@ public class StudentUI {
                         name = scanner.next();
                     }
                     Course course = catalog.get(name);
-                    boolean success = false;
+                    boolean success;
                     switch (addOp) {
                         case 1:
                             success = student.addTakenCourses(course);
