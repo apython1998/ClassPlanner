@@ -109,4 +109,23 @@ public class Course implements Comparable<Course> {
 
         return aNum - bNum;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (!Course.class.isAssignableFrom(obj.getClass())) {
+            return false;
+        }
+
+        final Course other = (Course) obj;
+
+        if ((this.name == null) ? (other.name != null) : !this.name.equals(other.name)) {
+            return false;
+        }
+
+        return true;
+    }
 }

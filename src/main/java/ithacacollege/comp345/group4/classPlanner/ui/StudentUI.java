@@ -233,26 +233,17 @@ public class StudentUI {
 
                     }
                 } else if (option == 3) {
-                    // TODO : Dylan Add Course
                     System.out.print("Please choose one:\n" +
                             "1. Add Past Courses\n" +
                             "2. Add Current Courses\n" +
                             "3. Add Planned Courses\n" +
                             "Enter Selection Here: ");
                     int addOp = scanner.nextInt();
-                    System.out.print("Enter the information for the course\n" +
-                            "Name: ");
+                    System.out.print("Enter the department and course number for the course\n" +
+                            "Example Format: MATH11100\n " +
+                            "Department & Number: ");
                     String name = scanner.next();
-                    System.out.print("Credits: ");
-                    double credits = scanner.nextDouble();
-                    System.out.print("Department & Number: ");
-                    String courseNum = scanner.next();
-                    /*System.out.print("Does this course have any prerequisites?\n" +
-                            "1. Yes\n" +
-                            "2. No\n" +
-                            "Enter Selection Here: ");
-                    String preReq*/
-                    Course course = new Course(name, credits, courseNum, null, null, null, null);
+                    Course course = studentAPI.getDirectory().getCourseCatalog().get(name);
                     boolean success = false;
                     switch (addOp) {
                         case 1:
@@ -303,8 +294,6 @@ public class StudentUI {
                             }
                             break;
                     }
-
-
                 } else if (option == 4) {
                     // TODO : Dan Input Transcript
                     System.out.println("Please enter file path: ");

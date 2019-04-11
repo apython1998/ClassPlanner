@@ -236,22 +236,22 @@ public class Directory {
      * If the course is offered, and won't pass the restriction, add it to an arraylist of
      * courses and remove it from the list of requirements. continue until you have added all of
      * the requirements or reached maximum credits.
-     * @param semster - semester to be planned
+     * @param semester - semester to be planned
      * @param year - year of semester being planned
      * @param plan - hashmap that will store the list of courses for the associated semester/year
      * @param courseReq - list of course requirements
      * @param creditsPer - maximum credits the student expects to have per semester
      * @return - number of credits for that semester, double
      */
-    private double planSemester(Semester semster, int year, HashMap<String, List<Course>> plan,List<Course> courseReq, int creditsPer, Student student){
+    private double planSemester(Semester semester, int year, HashMap<String, List<Course>> plan,List<Course> courseReq, int creditsPer, Student student){
         double credits = 0;
-        String semesterYear = semster + "" + year;
+        String semesterYear = semester + "" + year;
         List<Course> coursePlan = new ArrayList<>();
         List<Course> requirements = new ArrayList<>(courseReq);
         Iterator<Course> requirementItr = requirements.iterator();
         while (requirementItr.hasNext() && credits < creditsPer){
             Course course = requirementItr.next();
-            if (offeredThisSemester(semster, course) && satisfyPreReq(course, student)) {
+            if (offeredThisSemester(semester, course) && satisfyPreReq(course, student)) {
                 if (credits + course.getCredits() <= creditsPer) {
                     coursePlan.add(course);
                     courseReq.remove(course);
@@ -331,7 +331,8 @@ public class Directory {
      * @param courseReq
      */
     private void addPreReqs(List<Course> courseReq){
-        for (Course course : courseReq){
+        List<Course> courses = new ArrayList<>(courseReq);
+        for (Course course: courses){
             addPreReqCourses(course, courseReq);
         }
     }
@@ -344,10 +345,10 @@ public class Directory {
     private void addPreReqCourses(Course course, List<Course> courseReq){
         List<String> prereqs = course.getprereqs();
         if (prereqs.size() == 0){
-            if (!courseReq.contains(course)){
-                courseReq.add(course);
+            if (courseReq.contains(course)){
+                return;
             }
-            return;
+            courseReq.add(course);
         }
         for (int i = 0; i < prereqs.size(); i++) {
             Course preReq = courseCatalog.get(prereqs.get(i));

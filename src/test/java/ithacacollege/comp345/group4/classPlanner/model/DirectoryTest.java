@@ -52,28 +52,6 @@ class DirectoryTest {
         assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent(null, null));
     }
 
-
-
-    @Test
-    public void uploadMajorTest(){
-        Directory d = new Directory();
-        d.uploadMajor("src/test/resources/TestMajorReqs.json");
-
-        Major cs = d.getMajorDirectory().get("Computer Science");
-
-        assertNotNull(cs);
-
-        Course c = new Course();
-        c.setCourseNum("COMP11500");
-        assertTrue(cs.fulfillsRequirement(c));
-        c.setCourseNum("COMP17100");
-        assertTrue(cs.fulfillsRequirement(c));
-        c.setCourseNum("COMP32100");
-        assertTrue(cs.fulfillsRequirement(c));
-        c.setCourseNum("ITAL10100");
-        assertFalse(cs.fulfillsRequirement(c));
-    }
-
     @Test
     void viewCurrentCourses(){
         Directory directory = new Directory();
