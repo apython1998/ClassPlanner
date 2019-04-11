@@ -240,10 +240,17 @@ public class StudentUI {
                             "Enter Selection Here: ");
                     int addOp = scanner.nextInt();
                     System.out.print("Enter the department and course number for the course\n" +
-                            "Example Format: MATH11100\n " +
+                            "Example Format: MATH11100\n" +
                             "Department & Number: ");
                     String name = scanner.next();
-                    Course course = studentAPI.getDirectory().getCourseCatalog().get(name);
+                    Map<String, Course> catalog = studentAPI.getDirectory().getCourseCatalog();
+                    while (!catalog.containsKey(name)) {
+                        System.out.print("Course not found.\nEnter the department and course number for the course\n" +
+                                "Example Format: MATH11100\n" +
+                                "Department & Number: ");
+                        name = scanner.next();
+                    }
+                    Course course = catalog.get(name);
                     boolean success = false;
                     switch (addOp) {
                         case 1:

@@ -207,9 +207,13 @@ public class Directory {
                 toReturn += courses.get(i).getCourseNum() + ", ";
                 credits += courses.get(i).getCredits();
             }
-            credits += courses.get(courses.size() - 1).getCredits();
-            toReturn += courses.get(courses.size() - 1).getCourseNum() +
-                    ". Credits: " + credits + "\n";
+            if (courses.size() > 0) {
+                credits += courses.get(courses.size() - 1).getCredits();
+                toReturn += courses.get(courses.size() - 1).getCourseNum() +
+                        ". Credits: " + credits + "\n";
+            } else {
+                toReturn += "\n";
+            }
             totalCredits += credits;
         }
         return toReturn + "Total Credits: " + totalCredits + "\n";
