@@ -11,6 +11,9 @@ In the Python directory: <b>
    
    
 ## Directory Implementation Notes
+* Directory is saved on shutdown and loaded on start-up
+   * NOTE: If you have to reset the directory -> Uncomment ClassPlannerMain through ```directory.setMajorDirectory()```
+   
 * Students are identified by username which is provided at point of registration
 * Courses are identified by their DEPT+Number combination
    * Ex.) COMP345000

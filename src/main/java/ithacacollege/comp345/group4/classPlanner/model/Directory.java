@@ -390,6 +390,14 @@ public class Directory {
         this.students = users;
     }
 
+    public Map<String, List<Section>> getSectionCatalog() {
+        return sectionCatalog;
+    }
+
+    public void setSectionCatalog(Map<String, List<Section>> sectionCatalog) {
+        this.sectionCatalog = sectionCatalog;
+    }
+
     public void setMajorDirectory(Map<String, Major> majorDirectory) {
         this.majorDirectory = majorDirectory;
     }
