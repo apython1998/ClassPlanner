@@ -16,11 +16,13 @@ public class Directory {
     private Map<String, Major> majorDirectory;
     private Map<String, Student> students;
     private Map<String, Course> courseCatalog;
+    private Map<String, List<Section>> sectionCatalog;
 
     public Directory() {
         this.majorDirectory = new HashMap<>();
         this.students = new HashMap<>();
         this.courseCatalog = new HashMap<>();
+        this.sectionCatalog = new HashMap<>();
     }
 
     public Directory(Map<String, Student> users) {
