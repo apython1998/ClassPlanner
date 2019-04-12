@@ -14,7 +14,7 @@ public class Schedule {
     Schedule(Map<String, List<Section>> sections, List<Course> courses) {
         this.courses = new ArrayList<>();
         for (Course c: courses) {
-            String name = c.getName();
+            String name = c.getCourseNum();
             this.courses.add(sections.get(name).get(0));
         }
     }

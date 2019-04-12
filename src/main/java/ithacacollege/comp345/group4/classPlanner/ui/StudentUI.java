@@ -305,8 +305,9 @@ public class StudentUI {
                     student.setTranscript(new Transcript(file));
                     System.out.println(student.getTranscript().toString());
                 } else if (option == 5) {
-                    student.setSchedule(studentAPI.genSchedule(student.getUsername()));
-                    student.getSchedule().display();
+                    Schedule schedule = studentAPI.genSchedule(student.getUsername());
+                    student.setSchedule(schedule);
+                    System.out.println(student.getSchedule().display());
                 }
             }
         }
