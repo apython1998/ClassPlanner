@@ -314,7 +314,7 @@ public class StudentUI {
                     student.setSchedule(schedule);
                     System.out.println(student.getSchedule().display());
                 }
-                else if (option == 5) {
+                else if (option == 6) {
                     System.out.println("Enter the number of credits: ");
                     int numCred = scanner.nextInt();
                     HashMap<String, List<Course>> plan = studentAPI.generateCoursePlan(student.getUsername(), 2019, Semester.Fall, numCred);
