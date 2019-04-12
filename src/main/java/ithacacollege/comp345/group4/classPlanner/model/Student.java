@@ -2,10 +2,7 @@ package ithacacollege.comp345.group4.classPlanner.model;
 
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Student extends User {
     private int ID;
@@ -196,5 +193,13 @@ public class Student extends User {
     public void setTranscript(Transcript transcriptIn) {
         transcript = transcriptIn;
         updateData();
+    }
+
+    public void setSchedule(Schedule schedule) {
+        nextSemesterSchedule = schedule;
+    }
+
+    public Schedule getSchedule() {
+        return nextSemesterSchedule;
     }
 }

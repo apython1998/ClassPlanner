@@ -195,6 +195,11 @@ public class Directory {
         return plan;
     }
 
+    public Schedule genSchedule(String studentID) {
+        HashMap<String, List<Course>> plan = genCoursePlan(studentID, Semester.Spring, 2019, 12);
+        return new Schedule(sectionCatalog, plan.get("Fall2019"));
+    }
+
     public String scheduleToStr(HashMap<String, List<Course>> plan){
         String toReturn = "";
         Set<String> semesters = plan.keySet();
@@ -207,9 +212,13 @@ public class Directory {
                 toReturn += courses.get(i).getCourseNum() + ", ";
                 credits += courses.get(i).getCredits();
             }
-            credits += courses.get(courses.size() - 1).getCredits();
-            toReturn += courses.get(courses.size() - 1).getCourseNum() +
-                    ". Credits: " + credits + "\n";
+            if (courses.size() > 0) {
+                credits += courses.get(courses.size() - 1).getCredits();
+                toReturn += courses.get(courses.size() - 1).getCourseNum() +
+                        ". Credits: " + credits + "\n";
+            } else {
+                toReturn += "\n";
+            }
             totalCredits += credits;
         }
         return toReturn + "Total Credits: " + totalCredits + "\n";
@@ -331,7 +340,8 @@ public class Directory {
      * @param courseReq
      */
     private void addPreReqs(List<Course> courseReq){
-        for (Course course : courseReq){
+        List<Course> courses = new ArrayList<>(courseReq);
+        for (Course course: courses){
             addPreReqCourses(course, courseReq);
         }
     }
@@ -344,10 +354,10 @@ public class Directory {
     private void addPreReqCourses(Course course, List<Course> courseReq){
         List<String> prereqs = course.getprereqs();
         if (prereqs.size() == 0){
-            if (!courseReq.contains(course)){
-                courseReq.add(course);
+            if (courseReq.contains(course)){
+                return;
             }
-            return;
+            courseReq.add(course);
         }
         for (int i = 0; i < prereqs.size(); i++) {
             Course preReq = courseCatalog.get(prereqs.get(i));
@@ -400,5 +410,9 @@ public class Directory {
 
     public void setMajorDirectory(Map<String, Major> majorDirectory) {
         this.majorDirectory = majorDirectory;
+    }
+
+    public void addSection(String courseNum, int id, String classTimes) {
+
     }
 }

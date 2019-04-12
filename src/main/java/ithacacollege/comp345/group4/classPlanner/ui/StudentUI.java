@@ -1,10 +1,7 @@
 package ithacacollege.comp345.group4.classPlanner.ui;
 
 import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
-import ithacacollege.comp345.group4.classPlanner.model.Course;
-import ithacacollege.comp345.group4.classPlanner.model.Major;
-import ithacacollege.comp345.group4.classPlanner.model.Student;
-import ithacacollege.comp345.group4.classPlanner.model.Transcript;
+import ithacacollege.comp345.group4.classPlanner.model.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -135,7 +132,8 @@ public class StudentUI {
                 " 1 - See Major Requirements\n" +
                 " 2 - View Courses\n" +
                 " 3 - Add Courses\n" +
-                " 4 - Input Transcript\n";
+                " 4 - Input Transcript\n" +
+                " 5 - Generate schedule\n";
         System.out.println("Welcome to Class Planner\n");
         while (option != 0) {
             if (student == null) {
@@ -160,7 +158,7 @@ public class StudentUI {
                         loggedInOptions +
                         "Enter Selection Here: ");
                 option = scanner.nextInt();
-                while (option < 0 || option > 4) {
+                while (option < 0 || option > 5) {
                     System.out.print("Invalid Selection\n" +
                             "Please Choose One\n" +
                             loggedInOptions +
@@ -306,6 +304,10 @@ public class StudentUI {
                     String file = scanner.next();
                     student.setTranscript(new Transcript(file));
                     System.out.println(student.getTranscript().toString());
+                } else if (option == 5) {
+                    Schedule schedule = studentAPI.genSchedule(student.getUsername());
+                    student.setSchedule(schedule);
+                    System.out.println(student.getSchedule().display());
                 }
             }
         }
