@@ -179,6 +179,8 @@ public class Directory {
         Major major = student.getMajor();
         List<Course> courseReqs = major.getRequirements();
         addPreReqs(courseReqs); //gets all prerequisites for all course requirements
+        addCourses(courseReqs, student.getPlannedCourses());
+        student.clearPlannedCourses();
         removeCourseReqs(courseReqs, student.getTakenCourses()); // remove requirements already completed
         removeCourseReqs(courseReqs, student.getCurrentCourses()); // remove requirements currently being completed
         Collections.sort(courseReqs); // sort courses lower lever -> higher level
@@ -193,6 +195,14 @@ public class Directory {
             }
         }
         return plan;
+    }
+
+    private void addCourses(List<Course> courses, List<Course> plannedCourses){
+        for (Course course: plannedCourses){
+            if (!courses.contains(course)){
+                courses.add(course);
+            }
+        }
     }
 
     public Schedule genSchedule(String studentID) {

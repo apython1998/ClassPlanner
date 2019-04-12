@@ -195,6 +195,8 @@ public class Student extends User {
         updateData();
     }
 
+    public void clearPlannedCourses(){ plannedCourses.clear(); }
+
     public void setSchedule(Schedule schedule) {
         nextSemesterSchedule = schedule;
     }
