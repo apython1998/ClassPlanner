@@ -9243,20 +9243,7 @@
       "chooseOnes" : [ ]
     }
   },
-  "students" : {
-    "asdf" : {
-      "id" : 0,
-      "username" : "asdf",
-      "passwordHash" : "$2a$10$z9gpFWjBPa7aW3aMKGCWLOTLU/C7l75HLaSEXGJqiactsYoCcEYb6",
-      "takenCourses" : [ ],
-      "currentCourses" : [ ],
-      "plannedCourses" : [ ],
-      "major" : null,
-      "transcript" : {
-        "courseList" : [ ]
-      }
-    }
-  },
+  "students" : { },
   "courseCatalog" : {
     "ART35000" : {
       "courseNum" : "ART35000",
@@ -33073,5 +33060,117 @@
       "chooseOnes" : [ ]
     }
   },
-  "sectionCatalog" : { }
+  "sectionCatalog" : {
+    "COMP11500" : [ {
+      "courseNum" : "COMP11500",
+      "name" : "Discrete Structures for Computer Science",
+      "credits" : 4.0,
+      "semestersOffered" : [ "S" ],
+      "frequencyOffered" : "Y",
+      "prereqs" : [ ],
+      "chooseOnes" : [ ],
+      "num" : 1,
+      "crn" : "40309",
+      "year" : "Spring2019",
+      "times" : [ {
+        "days" : [ "M", "W", "F" ],
+        "time" : "11:00-11:50"
+      }, {
+        "days" : [ "R" ],
+        "time" : "10:50-11:40"
+      } ]
+    }, {
+      "courseNum" : "COMP11500",
+      "name" : "Discrete Structures for Computer Science",
+      "credits" : 4.0,
+      "semestersOffered" : [ "S" ],
+      "frequencyOffered" : "Y",
+      "prereqs" : [ ],
+      "chooseOnes" : [ ],
+      "num" : 2,
+      "crn" : "40310",
+      "year" : "Spring2019",
+      "times" : [ {
+        "days" : [ "M", "W", "F" ],
+        "time" : "1:00-1:50"
+      }, {
+        "days" : [ "R" ],
+        "time" : "1:10-2:00"
+      } ]
+    } ],
+    "MATH11100" : [ ],
+    "MATH14400" : [ {
+      "courseNum" : "MATH14400",
+      "name" : "Statistics for Business, Economics and Management",
+      "credits" : 4.0,
+      "semestersOffered" : [ "F", "S" ],
+      "frequencyOffered" : "Y",
+      "prereqs" : [ ],
+      "chooseOnes" : [ ],
+      "num" : 1,
+      "crn" : "40300",
+      "year" : "Spring2019",
+      "times" : [ {
+        "days" : [ "M", "W", "F" ],
+        "time" : "9:00-9:50"
+      }, {
+        "days" : [ "R" ],
+        "time" : "9:25-11:40"
+      } ]
+    }, {
+      "courseNum" : "MATH14400",
+      "name" : "Statistics for Business, Economics and Management",
+      "credits" : 4.0,
+      "semestersOffered" : [ "F", "S" ],
+      "frequencyOffered" : "Y",
+      "prereqs" : [ ],
+      "chooseOnes" : [ ],
+      "num" : 2,
+      "crn" : "41892",
+      "year" : "Spring2019",
+      "times" : [ {
+        "days" : [ "M", "W", "F" ],
+        "time" : "11:00-11:50"
+      }, {
+        "days" : [ "R" ],
+        "time" : "10:50-12:05"
+      } ]
+    }, {
+      "courseNum" : "MATH11100",
+      "name" : "Calculus I",
+      "credits" : 4.0,
+      "semestersOffered" : [ "F", "S" ],
+      "frequencyOffered" : "Y",
+      "prereqs" : [ ],
+      "chooseOnes" : [ ],
+      "num" : 1,
+      "crn" : "40313",
+      "year" : "Spring2019",
+      "times" : [ {
+        "days" : [ "M", "W", "F" ],
+        "time" : "8:00-8:50"
+      }, {
+        "days" : [ "R" ],
+        "time" : "8:25-9:15"
+      } ]
+    }, {
+      "courseNum" : "MATH11100",
+      "name" : "Calculus I",
+      "credits" : 4.0,
+      "semestersOffered" : [ "F", "S" ],
+      "frequencyOffered" : "Y",
+      "prereqs" : [ ],
+      "chooseOnes" : [ ],
+      "num" : 2,
+      "crn" : "40314",
+      "year" : "Spring2019",
+      "times" : [ {
+        "days" : [ "M", "W", "F" ],
+        "time" : "9:00-9:50"
+      }, {
+        "days" : [ "R" ],
+        "time" : "9:25-10:50"
+      } ]
+    } ]
+  }
 }

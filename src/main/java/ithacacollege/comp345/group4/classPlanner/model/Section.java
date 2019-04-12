@@ -9,6 +9,37 @@ public class Section extends Course {
     private String year;
     private List<CourseTimes> times;
 
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public String getCrn() {
+        return crn;
+    }
+
+    public void setCrn(String crn) {
+        this.crn = crn;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public List<CourseTimes> getTimes() {
+        return times;
+    }
+
+    public void setTimes(List<CourseTimes> times) {
+        this.times = times;
+    }
 
     Section() {
         super();
@@ -38,6 +69,39 @@ public class Section extends Course {
             this.times.add(new CourseTimes(currStringList[0], currStringList[1]));
         }
         this.year = year;
+    }
+
+//    Section(int num, String crn, String year, String courseTimes) {
+//        super();
+//        this.num = num;
+//        this.crn = crn;
+//        this.times = new ArrayList<>();
+//        String[] subString = courseTimes.split(",");
+//        for (String s: subString) {
+//            String[] currStringList = s.split(" ");
+//            this.times.add(new CourseTimes(currStringList[0], currStringList[1]));
+//        }
+//        this.year = year;
+//    }
+
+    Section(Course course, int num, String crn, String year, List<CourseTimes> courseTimes) {
+        super(course.getName(), course.getCredits(), course.getCourseNum(), course.getSemestersOffered(), course.getFrequencyOffered(), course.getprereqs(), course.getChooseOnes());
+        this.num = num;
+        this.crn = crn;
+        this.times = courseTimes;
+        this.year = year;
+    }
+
+    Section(int num, String crn, String year, List<CourseTimes> times) {
+        super();
+        this.num = num;
+        this.crn = crn;
+        this.times = times;
+        this.year = year;
+    }
+
+    public Section setCourse(Course course) {
+        return new Section(course, num, crn, year, times);
     }
 
     public void addCourseTimes(String courseTimes) {
@@ -71,9 +135,5 @@ public class Section extends Course {
             }
         }
         return sb.toString();
-    }
-
-    public List<CourseTimes> getCourseTimes() {
-        return times;
     }
 }

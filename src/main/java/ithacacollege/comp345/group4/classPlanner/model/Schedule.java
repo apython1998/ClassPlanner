@@ -2,21 +2,21 @@ package ithacacollege.comp345.group4.classPlanner.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Schedule {
     private List<Section> courses;
-    private SemesterPlan suggestedCourses;
 
     Schedule() {
         courses = new ArrayList<>();
-        suggestedCourses = new SemesterPlan();
     }
 
-    Schedule(SemesterPlan suggestedCourses) {
-//        courses = new ArrayList();
-//        for (Course c: suggestedCourses.getCourses()) {
-//
-//        }
+    Schedule(Map<String, List<Section>> sections, List<Course> courses) {
+        this.courses = new ArrayList<>();
+        for (Course c: courses) {
+            String name = c.getName();
+            this.courses.add(sections.get(name).get(0));
+        }
     }
 
 
@@ -27,20 +27,20 @@ public class Schedule {
      * @return true if no time conflicts
      */
     public boolean checkAvailability(Section courseToAdd) {
-        List<CourseTimes> timesList = courseToAdd.getCourseTimes();
+        List<CourseTimes> timesList = courseToAdd.getTimes();
         //getting each section in list
         for (Section s: courses) {
             //index of section's course times
             int j = 0;
             for (CourseTimes t : timesList) {
                 //iterate over each day in each course time
-                for (int i = 0; i < s.getCourseTimes().get(j).getDays().size(); i++) {
+                for (int i = 0; i < s.getTimes().get(j).getDays().size(); i++) {
                     //stops i from going out of bounds
                     if (!(i > t.getDays().size() - 1)) {
                         char currDayToAdd = t.getDay(i);
-                        char currDay = s.getCourseTimes().get(j).getDay(i);
+                        char currDay = s.getTimes().get(j).getDay(i);
                         String currTimeToAdd = t.getTime();
-                        String currTime = s.getCourseTimes().get(j).getTime();
+                        String currTime = s.getTimes().get(j).getTime();
                         if (currDay == currDayToAdd && currTime.equals(currTimeToAdd)) {
                             return false;
                         }
@@ -82,8 +82,8 @@ public class Schedule {
         String thursdayString = "Thursday: \n";
         String fridayString = "Friday: \n";
         for (Section s: courses) {
-            for (int i = 0; i < s.getCourseTimes().size(); i++) {
-                CourseTimes currTime = s.getCourseTimes().get(i);
+            for (int i = 0; i < s.getTimes().size(); i++) {
+                CourseTimes currTime = s.getTimes().get(i);
                 if (currTime.getDays().contains('M')) {
                     mondayString += currTime.getTime() + " " + s.getCourseNum() + "\n";
                 }
