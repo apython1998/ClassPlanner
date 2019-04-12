@@ -24,6 +24,7 @@ This is an effective break down of the system because the pairs will each have m
 Sprint Goal: Allow students to upload their transcript and view their graduation requirements (on the way to getting semester schedules).
 
 Sprint 1 Review Agenda: https://docs.google.com/document/d/1bdwsNKYNy78iPnmrDw8bjLgYCWM1s2EtdD01Kj5EsLY/edit?usp=sharing
+
 Sprint 1 Retrospective: https://docs.google.com/document/d/1oXoySuA57THElxI3NhtHu9jUS7e0WjkKYyz740Xx4TM/edit?usp=sharing
 
 #### Use Cases/Narratives to Develop Sprint 1:
@@ -46,6 +47,8 @@ The student logs in, tries to view graduation paths, and is then printed a repor
 Sprint Goal: Student's should be able to choose their major, see their major requirements, request a schedule for next semester, and have the directory populated with Ithaca College's majors and courses.
 
 Sprint 2 Review Agenda: https://docs.google.com/document/d/1a_Y0_6udft_gEIrPjkRS0pap7eIkrr9nPWeq7tun_RI/edit?usp=sharing
+
+Sprint 2 Retrospective: https://docs.google.com/document/d/130LkDCbLg2kLLI24JujwtvUoDxpiMJidxsntrlXQ1Bw/edit?usp=sharing 
 
 #### Use Cases/Narratives to Develop Sprint 2:
 1. View Graduation Paths
