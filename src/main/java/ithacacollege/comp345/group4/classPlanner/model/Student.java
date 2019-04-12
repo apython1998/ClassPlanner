@@ -9,6 +9,7 @@ public class Student extends User {
     private List<Course> takenCourses;
     private List<Course> currentCourses;
     private List<Course> plannedCourses;
+    private HashMap<String, List<Course>> plan = null;
     private Schedule nextSemesterSchedule;
 
     private Semester semester;
@@ -201,5 +202,13 @@ public class Student extends User {
 
     public Schedule getSchedule() {
         return nextSemesterSchedule;
+    }
+
+    public void setPlan(HashMap<String, List<Course>> plan) {
+        this.plan = plan;
+    }
+
+    public HashMap<String, List<Course>> getPlan() {
+        return plan;
     }
 }

@@ -25,95 +25,7 @@
     "Computer Science Major BS" : {
       "title" : "Computer Science Major",
       "type" : "BS",
-      "requirements" : [ {
-        "courseNum" : "COMP11500",
-        "name" : "Discrete Structures for Computer Science",
-        "credits" : 4.0,
-        "semestersOffered" : [ "S" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ ],
-        "chooseOnes" : [ ]
-      }, {
-        "courseNum" : "COMP17100",
-        "name" : "Principles of Computing Science I",
-        "credits" : 4.0,
-        "semestersOffered" : [ "F", "S" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ ],
-        "chooseOnes" : [ ]
-      }, {
-        "courseNum" : "COMP17200",
-        "name" : "Principles of Computer Science II",
-        "credits" : 4.0,
-        "semestersOffered" : [ "F", "S" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ "COMP17100" ],
-        "chooseOnes" : [ ]
-      }, {
-        "courseNum" : "COMP21000",
-        "name" : "Introduction to Computer Organization and Systems",
-        "credits" : 4.0,
-        "semestersOffered" : [ "S" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ "COMP22000" ],
-        "chooseOnes" : [ ]
-      }, {
-        "courseNum" : "COMP22000",
-        "name" : "Introduction to Data Structures",
-        "credits" : 4.0,
-        "semestersOffered" : [ "F" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ ],
-        "chooseOnes" : [ [ "COMP11500", "MATH11100" ] ]
-      }, {
-        "courseNum" : "COMP31100",
-        "name" : "Algorithms and Data Structures",
-        "credits" : 4.0,
-        "semestersOffered" : [ "S" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ "COMP22000", "COMP11500" ],
-        "chooseOnes" : [ ]
-      }, {
-        "courseNum" : "COMP32100",
-        "name" : "Programming Languages",
-        "credits" : 4.0,
-        "semestersOffered" : [ "F" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ "COMP21000", "COMP22000" ],
-        "chooseOnes" : [ ]
-      }, {
-        "courseNum" : "COMP34500",
-        "name" : "Introduction to Software Engineering",
-        "credits" : 4.0,
-        "semestersOffered" : [ "S" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ "COMP22000" ],
-        "chooseOnes" : [ ]
-      }, {
-        "courseNum" : "MATH11100",
-        "name" : "Calculus I",
-        "credits" : 4.0,
-        "semestersOffered" : [ "F", "S" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ ],
-        "chooseOnes" : [ ]
-      }, {
-        "courseNum" : "MATH11200",
-        "name" : "Calculus II",
-        "credits" : 4.0,
-        "semestersOffered" : [ "F", "S" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ "MATH11100" ],
-        "chooseOnes" : [ ]
-      }, {
-        "courseNum" : "MATH14400",
-        "name" : "Statistics for Business, Economics and Management",
-        "credits" : 4.0,
-        "semestersOffered" : [ "F", "S" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ ],
-        "chooseOnes" : [ ]
-      } ],
+      "requirements" : [ ],
       "chooseOnes" : [ ]
     },
     "Writing Film Tv Em Major BFA" : {
@@ -9243,7 +9155,265 @@
       "chooseOnes" : [ ]
     }
   },
-  "students" : { },
+  "students" : {
+    "dmccaffrey" : {
+      "id" : 0,
+      "username" : "dmccaffrey",
+      "passwordHash" : "$2a$10$as2DmL9kL2Fai7w9/qcIsO0IVbGgbPToJfqjulD0Pi0Ce1ohSsIhi",
+      "takenCourses" : [ ],
+      "currentCourses" : [ ],
+      "plannedCourses" : [ {
+        "courseNum" : "MATH11100",
+        "name" : "Calculus I",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "MATH14400",
+        "name" : "Statistics for Business, Economics and Management",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "COMP17100",
+        "name" : "Principles of Computing Science I",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "MATH11200",
+        "name" : "Calculus II",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "MATH11100" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "COMP11500",
+        "name" : "Discrete Structures for Computer Science",
+        "credits" : 4.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "COMP17200",
+        "name" : "Principles of Computer Science II",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "COMP17100" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "COMP22000",
+        "name" : "Introduction to Data Structures",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "COMP11500", "MATH11100" ] ]
+      }, {
+        "courseNum" : "COMP21000",
+        "name" : "Introduction to Computer Organization and Systems",
+        "credits" : 4.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "COMP22000" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "COMP31100",
+        "name" : "Algorithms and Data Structures",
+        "credits" : 4.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "COMP22000", "COMP11500" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "COMP34500",
+        "name" : "Introduction to Software Engineering",
+        "credits" : 4.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "COMP22000" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "COMP32100",
+        "name" : "Programming Languages",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "COMP21000", "COMP22000" ],
+        "chooseOnes" : [ ]
+      } ],
+      "plan" : {
+        "Fall2019" : [ {
+          "courseNum" : "MATH11100",
+          "name" : "Calculus I",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "MATH14400",
+          "name" : "Statistics for Business, Economics and Management",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP17100",
+          "name" : "Principles of Computing Science I",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        } ],
+        "Fall2020" : [ {
+          "courseNum" : "COMP22000",
+          "name" : "Introduction to Data Structures",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ [ "COMP11500", "MATH11100" ] ]
+        } ],
+        "Spring2020" : [ {
+          "courseNum" : "MATH11200",
+          "name" : "Calculus II",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "MATH11100" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP11500",
+          "name" : "Discrete Structures for Computer Science",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP17200",
+          "name" : "Principles of Computer Science II",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP17100" ],
+          "chooseOnes" : [ ]
+        } ],
+        "Spring2021" : [ {
+          "courseNum" : "COMP21000",
+          "name" : "Introduction to Computer Organization and Systems",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP22000" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP31100",
+          "name" : "Algorithms and Data Structures",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP22000", "COMP11500" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP34500",
+          "name" : "Introduction to Software Engineering",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP22000" ],
+          "chooseOnes" : [ ]
+        } ],
+        "Fall2021" : [ {
+          "courseNum" : "COMP32100",
+          "name" : "Programming Languages",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP21000", "COMP22000" ],
+          "chooseOnes" : [ ]
+        } ]
+      },
+      "major" : {
+        "title" : "Computer Science Major",
+        "type" : "BS",
+        "requirements" : [ ],
+        "chooseOnes" : [ ]
+      },
+      "transcript" : {
+        "courseList" : [ ]
+      },
+      "schedule" : {
+        "courses" : [ {
+          "courseNum" : "MATH11100",
+          "name" : "Calculus I",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ],
+          "num" : 1,
+          "crn" : "40313",
+          "year" : "Spring2019",
+          "times" : [ {
+            "days" : [ "M", "W", "F" ],
+            "time" : "8:00-8:50"
+          }, {
+            "days" : [ "R" ],
+            "time" : "8:25-9:15"
+          } ]
+        }, {
+          "courseNum" : "MATH14400",
+          "name" : "Statistics for Business, Economics and Management",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ],
+          "num" : 1,
+          "crn" : "40300",
+          "year" : "Spring2019",
+          "times" : [ {
+            "days" : [ "M", "W", "F" ],
+            "time" : "9:00-9:50"
+          }, {
+            "days" : [ "R" ],
+            "time" : "9:25-10:40"
+          } ]
+        }, {
+          "courseNum" : "COMP17100",
+          "name" : "Principles of Computing Science I",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ],
+          "num" : 1,
+          "crn" : "40300",
+          "year" : "Spring2019",
+          "times" : [ {
+            "days" : [ "M", "W", "F" ],
+            "time" : "11:00-11:50"
+          }, {
+            "days" : [ "R" ],
+            "time" : "10:50-12:05"
+          } ]
+        } ]
+      }
+    }
+  },
   "courseCatalog" : {
     "ART35000" : {
       "courseNum" : "ART35000",
@@ -33098,44 +33268,7 @@
         "time" : "1:10-2:00"
       } ]
     } ],
-    "MATH11100" : [ ],
-    "MATH14400" : [ {
-      "courseNum" : "MATH14400",
-      "name" : "Statistics for Business, Economics and Management",
-      "credits" : 4.0,
-      "semestersOffered" : [ "F", "S" ],
-      "frequencyOffered" : "Y",
-      "prereqs" : [ ],
-      "chooseOnes" : [ ],
-      "num" : 1,
-      "crn" : "40300",
-      "year" : "Spring2019",
-      "times" : [ {
-        "days" : [ "M", "W", "F" ],
-        "time" : "9:00-9:50"
-      }, {
-        "days" : [ "R" ],
-        "time" : "9:25-11:40"
-      } ]
-    }, {
-      "courseNum" : "MATH14400",
-      "name" : "Statistics for Business, Economics and Management",
-      "credits" : 4.0,
-      "semestersOffered" : [ "F", "S" ],
-      "frequencyOffered" : "Y",
-      "prereqs" : [ ],
-      "chooseOnes" : [ ],
-      "num" : 2,
-      "crn" : "41892",
-      "year" : "Spring2019",
-      "times" : [ {
-        "days" : [ "M", "W", "F" ],
-        "time" : "11:00-11:50"
-      }, {
-        "days" : [ "R" ],
-        "time" : "10:50-12:05"
-      } ]
-    }, {
+    "MATH11100" : [ {
       "courseNum" : "MATH11100",
       "name" : "Calculus I",
       "credits" : 4.0,
@@ -33170,6 +33303,80 @@
       }, {
         "days" : [ "R" ],
         "time" : "9:25-10:50"
+      } ]
+    } ],
+    "MATH14400" : [ {
+      "courseNum" : "MATH14400",
+      "name" : "Statistics for Business, Economics and Management",
+      "credits" : 4.0,
+      "semestersOffered" : [ "F", "S" ],
+      "frequencyOffered" : "Y",
+      "prereqs" : [ ],
+      "chooseOnes" : [ ],
+      "num" : 1,
+      "crn" : "40300",
+      "year" : "Spring2019",
+      "times" : [ {
+        "days" : [ "M", "W", "F" ],
+        "time" : "9:00-9:50"
+      }, {
+        "days" : [ "R" ],
+        "time" : "9:25-10:40"
+      } ]
+    }, {
+      "courseNum" : "MATH14400",
+      "name" : "Statistics for Business, Economics and Management",
+      "credits" : 4.0,
+      "semestersOffered" : [ "F", "S" ],
+      "frequencyOffered" : "Y",
+      "prereqs" : [ ],
+      "chooseOnes" : [ ],
+      "num" : 2,
+      "crn" : "41892",
+      "year" : "Spring2019",
+      "times" : [ {
+        "days" : [ "M", "W", "F" ],
+        "time" : "11:00-11:50"
+      }, {
+        "days" : [ "R" ],
+        "time" : "10:50-12:05"
+      } ]
+    } ],
+    "COMP17100" : [ {
+      "courseNum" : "COMP17100",
+      "name" : "Principles of Computing Science I",
+      "credits" : 4.0,
+      "semestersOffered" : [ "F", "S" ],
+      "frequencyOffered" : "Y",
+      "prereqs" : [ ],
+      "chooseOnes" : [ ],
+      "num" : 1,
+      "crn" : "40300",
+      "year" : "Spring2019",
+      "times" : [ {
+        "days" : [ "M", "W", "F" ],
+        "time" : "11:00-11:50"
+      }, {
+        "days" : [ "R" ],
+        "time" : "10:50-12:05"
+      } ]
+    }, {
+      "courseNum" : "COMP17100",
+      "name" : "Principles of Computing Science I",
+      "credits" : 4.0,
+      "semestersOffered" : [ "F", "S" ],
+      "frequencyOffered" : "Y",
+      "prereqs" : [ ],
+      "chooseOnes" : [ ],
+      "num" : 2,
+      "crn" : "41892",
+      "year" : "Spring2019",
+      "times" : [ {
+        "days" : [ "M", "W", "F" ],
+        "time" : "9:00-9:50"
+      }, {
+        "days" : [ "R" ],
+        "time" : "9:25-12:05"
       } ]
     } ]
   }

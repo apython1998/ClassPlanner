@@ -196,8 +196,12 @@ public class Directory {
     }
 
     public Schedule genSchedule(String studentID) {
-        HashMap<String, List<Course>> plan = genCoursePlan(studentID, Semester.Spring, 2019, 12);
-        return new Schedule(sectionCatalog, plan.get("Fall2019"));
+        Student currStudent = students.get(studentID);
+        if (currStudent.getPlan() == null) {
+            HashMap<String, List<Course>> plan = genCoursePlan(studentID, Semester.Spring, 2019, 12);
+            currStudent.setPlan(plan);
+        }
+        return new Schedule(sectionCatalog, currStudent.getPlan().get("Fall2019"));
     }
 
     public static String scheduleToStr(HashMap<String, List<Course>> plan){
