@@ -6,11 +6,7 @@ import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
 import ithacacollege.comp345.group4.classPlanner.model.*;
 import ithacacollege.comp345.group4.classPlanner.ui.StudentUI;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class ClassPlannerMain {
 
@@ -18,7 +14,7 @@ public class ClassPlannerMain {
      * Main to run ClassPlanner
      * @param args
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 //        /**
 //         * Load the Courses from a JSON file using JSONUtil
 //         */
@@ -74,6 +70,9 @@ public class ClassPlannerMain {
         StudentUI studentUI = new StudentUI(studentAPI);
         studentUI.run();
         JsonUtil.toJsonFile("src/main/resources/savedDirectory.json", directory);
+        System.out.println("Saving System....");
+        TimeUnit.SECONDS.sleep(3);
+        System.out.println("Goodbye!");
     }
 
 }
