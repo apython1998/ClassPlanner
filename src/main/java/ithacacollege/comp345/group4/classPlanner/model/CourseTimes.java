@@ -58,6 +58,10 @@ public class CourseTimes {
         return days;
     }
 
+    public void setDays(List<Character> days) {
+        this.days = days;
+    }
+
     public char getDay(int index) {
         return days.get(index);
     }

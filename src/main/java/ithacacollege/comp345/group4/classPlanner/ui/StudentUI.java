@@ -6,6 +6,7 @@ import ithacacollege.comp345.group4.classPlanner.model.Course;
 import ithacacollege.comp345.group4.classPlanner.model.Major;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 import ithacacollege.comp345.group4.classPlanner.model.Transcript;
+import ithacacollege.comp345.group4.classPlanner.model.*;
 
 
 import java.util.HashMap;
@@ -140,7 +141,8 @@ public class StudentUI {
                 " 2 - View Courses\n" +
                 " 3 - Add Courses\n" +
                 " 4 - Input Transcript\n" +
-                " 5 - Generate Future Course Plan\n";
+                " 5 - Generate schedule\n" +
+                " 6 - Generate Future Course Plan\n";
         System.out.println("Welcome to Class Planner\n");
         while (option != 0) {
             if (student == null) {
@@ -165,7 +167,7 @@ public class StudentUI {
                         loggedInOptions +
                         "Enter Selection Here: ");
                 option = scanner.nextInt();
-                while (option < 0 || option > 5) {
+                while (option < 0 || option > 6) {
                     System.out.print("Invalid Selection\n" +
                             "Please Choose One\n" +
                             loggedInOptions +
@@ -307,6 +309,10 @@ public class StudentUI {
                     String file = scanner.next();
                     student.setTranscript(new Transcript(file));
                     System.out.println(student.getTranscript().toString());
+                } else if (option == 5) {
+                    Schedule schedule = studentAPI.genSchedule(student.getUsername());
+                    student.setSchedule(schedule);
+                    System.out.println(student.getSchedule().display());
                 }
                 else if (option == 5) {
                     System.out.println("Enter the number of credits: ");

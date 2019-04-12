@@ -195,6 +195,11 @@ public class Directory {
         return plan;
     }
 
+    public Schedule genSchedule(String studentID) {
+        HashMap<String, List<Course>> plan = genCoursePlan(studentID, Semester.Spring, 2019, 12);
+        return new Schedule(sectionCatalog, plan.get("Fall2019"));
+    }
+
     public static String scheduleToStr(HashMap<String, List<Course>> plan){
         String toReturn = "";
         Set<String> semesters = plan.keySet();
@@ -395,7 +400,19 @@ public class Directory {
         this.students = users;
     }
 
+    public Map<String, List<Section>> getSectionCatalog() {
+        return sectionCatalog;
+    }
+
+    public void setSectionCatalog(Map<String, List<Section>> sectionCatalog) {
+        this.sectionCatalog = sectionCatalog;
+    }
+
     public void setMajorDirectory(Map<String, Major> majorDirectory) {
         this.majorDirectory = majorDirectory;
+    }
+
+    public void addSection(String courseNum, int id, String classTimes) {
+
     }
 }
