@@ -1,6 +1,8 @@
 # Class Planner [![CircleCI](https://circleci.com/gh/apython1998/ClassPlanner.svg?style=svg)](https://circleci.com/gh/apython1998/ClassPlanner)
 ## Created by Joe Cleveland, Dan McCaffrey, Alex Python, and Dylan Shane
 
+Product Goal: The purpose of this product is to allow students to better plan their classes, and allow faculty to better organize classes based on student’s interest. 
+
 #### Description:
 Class Planner is intended to expand on functionality offered by Degree Works. 
 It is a way for students to view more robust information regarding their future classes at Ithaca College, and create a better plan. 
@@ -66,3 +68,5 @@ The student logs in, tries to view graduation paths, and is then printed a repor
 This is very similar to the diagram for Sprint 1, but the methods have been updated. 
 There are no new updates to the classes used in this use case.
 
+#### Sprint 3:
+Sprint Goal: Add support for faculty, fix bugs, and improve student functionality.
