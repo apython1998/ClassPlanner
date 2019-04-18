@@ -14,12 +14,14 @@ public class Directory {
 
     private Map<String, Major> majorDirectory;
     private Map<String, Student> students;
+    private Map<String, Faculty> faculty;
     private Map<String, Course> courseCatalog;
     private Map<String, List<Section>> sectionCatalog;
 
     public Directory() {
         this.majorDirectory = new HashMap<>();
         this.students = new HashMap<>();
+        this.faculty = new HashMap<>();
         this.courseCatalog = new HashMap<>();
         this.sectionCatalog = new HashMap<>();
     }
@@ -42,6 +44,25 @@ public class Directory {
         } else {
             Student newUser = new Student(username, password, null, null);
             students.put(newUser.getUsername(), newUser);
+            return true;
+        }
+    }
+
+    /**
+     * Registers a new faculty member to the directory
+     * @param username
+     * @param password
+     * @return
+     * @throws InvalidArgumentException
+     */
+    public boolean registerFaculty(String username, String password) throws InvalidArgumentException {
+        if (username == null || username.trim().equals("") || password == null || password.trim().equals("")) {
+            throw new InvalidArgumentException("Invalid String Used");
+        } else if (faculty.containsKey(username)) {
+            return false;
+        } else {
+            Faculty newFaculty = new Faculty(username, password);
+            faculty.put(newFaculty.getUsername(), newFaculty);
             return true;
         }
     }
@@ -420,6 +441,14 @@ public class Directory {
 
     public void setMajorDirectory(Map<String, Major> majorDirectory) {
         this.majorDirectory = majorDirectory;
+    }
+
+    public Map<String, Faculty> getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Map<String, Faculty> faculty) {
+        this.faculty = faculty;
     }
 
     public void addSection(String courseNum, int id, String classTimes) {
