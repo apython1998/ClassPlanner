@@ -1,8 +1,11 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
+import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 public class Schedule {
     private List<Section> courses;
@@ -12,10 +15,41 @@ public class Schedule {
     }
 
     Schedule(Map<String, List<Section>> sections, List<Course> courses) {
+        if (sections == null) {
+            throw new InvalidArgumentException("ERROR: Section catalog does not exist");
+        }
+        if (courses == null) {
+            throw new InvalidArgumentException("ERROR: Please generate Plan before creating schedule");
+        }
         this.courses = new ArrayList<>();
         for (Course c: courses) {
             String name = c.getCourseNum();
-            this.courses.add(sections.get(name).get(0));
+            if (!sections.containsKey(name)) {
+                throw new NoSuchElementException("ERROR: Course not found in section catalog");
+            }
+            Section currSection = null;
+            for (Section s: sections.get(name)) {
+                currSection = s;
+                if (checkAvailability(s)) {
+                    this.courses.add(s);
+                    break;
+                }
+            }
+            if (currSection != null && !checkAvailability(currSection)) {
+                throw new IllegalArgumentException("ERROR: Could not find a free section for given course");
+            }
+//            int i = 0;
+//            boolean available;
+//            Section s;
+//            do {
+//                s = sections.get(name).get(i);
+//                available = checkAvailability(s);
+//                i++;
+//            } while (!available || i < sections.values().size());
+//            if (!checkAvailability(s)) {
+//                throw new IllegalArgumentException("Could not find a free section for given course");
+//            }
+//            this.courses.add(s);
         }
     }
 
