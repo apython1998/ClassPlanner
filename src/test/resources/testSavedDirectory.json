@@ -9655,7 +9655,7 @@
     "asdf" : {
       "id" : 0,
       "username" : "asdf",
-      "passwordHash" : "$2a$10$xPlvxQUjC2lWzvCMwThciu.oUYklqn8lpPGoZUhD7Ee5hRxizAgCa",
+      "passwordHash" : "$2a$10$IgbvV9c54bdG3f32kQCXNe96PYuf/4wOI6gh7CJTnkOVrQyMIWDVu",
       "takenCourses" : [ ],
       "currentCourses" : [ ],
       "plannedCourses" : [ ],
@@ -9799,6 +9799,7 @@
       "schedule" : null
     }
   },
+  "faculty" : { },
   "courseCatalog" : {
     "ART35000" : {
       "courseNum" : "ART35000",
