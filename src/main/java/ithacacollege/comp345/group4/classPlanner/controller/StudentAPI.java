@@ -31,6 +31,16 @@ public class StudentAPI {
         return directory.registerStudent(username, password);
     }
 
+    /**
+     * Takes a login attempt information and checks if its authenticated
+     * @param username
+     * @param password
+     * @return Student if login is successful, otherwise null
+     */
+    public Student login(String username, String password) {
+        return directory.loginStudent(username, password);
+    }
+
     public List<Course> viewCurrentCourses(String name){
         return directory.viewCurrentCourses(name);
     }
@@ -76,15 +86,6 @@ public class StudentAPI {
 
     public boolean addCurrentCourse(String name, Course course){
         return directory.addCurrentCourse(name, course);
-    }
-    /**
-     * Takes a login attempt information and checks if its authenticated
-     * @param username
-     * @param password
-     * @return Student if login is successful, otherwise null
-     */
-    public Student login(String username, String password) {
-        return directory.loginStudent(username, password);
     }
 
     public void uploadTranscript(String studentName, String filename) {
