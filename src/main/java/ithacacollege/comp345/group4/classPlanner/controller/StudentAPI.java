@@ -51,6 +51,13 @@ public class StudentAPI {
             return directory.getMajorDirectory().get(major).getRequirements();
     }
 
+    public List<List<Course>> viewMajorChooseOnes(String major){
+        if(!directory.getMajorDirectory().containsKey(major))
+            throw new InvalidArgumentException("Major does not exist.");
+        else
+            return directory.getMajorDirectory().get(major).getChooseOnes();
+    }
+
     public HashMap<String, List<Course>> generateCoursePlan(String student, int year, Semester semester, int numCredits) {
         return directory.genCoursePlan(student, semester, year, numCredits);
     }

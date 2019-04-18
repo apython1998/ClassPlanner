@@ -1,9 +1,9 @@
 package ithacacollege.comp345.group4.classPlanner;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
-import ithacacollege.comp345.group4.classPlanner.model.*;
+import ithacacollege.comp345.group4.classPlanner.model.Directory;
+import ithacacollege.comp345.group4.classPlanner.model.JsonUtil;
 import ithacacollege.comp345.group4.classPlanner.ui.StudentUI;
 
 import java.util.concurrent.TimeUnit;
