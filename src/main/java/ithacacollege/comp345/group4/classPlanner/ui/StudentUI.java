@@ -138,7 +138,6 @@ public class StudentUI {
                 " 4 - Input Transcript\n" +
                 " 5 - Generate schedule\n" +
                 " 6 - Generate Future Course Plan\n";
-        System.out.println("Welcome to Class Planner\n");
         while (option != 0) {
             if (student == null) {
                 System.out.print("Please choose one\n" +
