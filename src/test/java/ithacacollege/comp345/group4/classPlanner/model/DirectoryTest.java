@@ -35,6 +35,23 @@ class DirectoryTest {
     }
 
     @Test
+    void loginStudentTest() {
+        Directory directory = new Directory();
+        directory.registerStudent("asdf", "asdf"); //Populate directory with a student
+
+        assertNotNull(directory.loginStudent("asdf", "asdf")); // Should login successfully
+        assertNull(directory.loginStudent("asdf", "badPassword")); // Should fail w/ incorrect pw
+        assertNull(directory.loginStudent("badUsername", "asdf")); // Should fail w/ incorrect user
+
+        //Bad Input Checks
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginStudent(null, "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginStudent("asdf", null));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginStudent("", "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginStudent("asdf", ""));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginStudent(null, null));
+    }
+
+    @Test
     void registerFaculty() {
         Directory directory = new Directory();
 
@@ -53,20 +70,20 @@ class DirectoryTest {
     }
 
     @Test
-    void loginStudentTest() {
+    void loginFaculty() {
         Directory directory = new Directory();
-        directory.registerStudent("asdf", "asdf"); //Populate directory with a student
+        directory.registerFaculty("faculty", "asdf"); //Populate directory with a student
 
-        assertNotNull(directory.loginStudent("asdf", "asdf")); // Should login successfully
-        assertNull(directory.loginStudent("asdf", "badPassword")); // Should fail w/ incorrect pw
-        assertNull(directory.loginStudent("badUsername", "asdf")); // Should fail w/ incorrect user
+        assertNotNull(directory.loginFaculty("faculty", "asdf")); // Should login successfully
+        assertNull(directory.loginFaculty("faculty", "badPassword")); // Should fail w/ incorrect pw
+        assertNull(directory.loginFaculty("badUsername", "asdf")); // Should fail w/ incorrect user
 
         //Bad Input Checks
-        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent(null, "asdf"));
-        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("asdf", null));
-        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("", "asdf"));
-        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("asdf", ""));
-        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent(null, null));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginFaculty(null, "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginFaculty("asdf", null));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginFaculty("", "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginFaculty("asdf", ""));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginFaculty(null, null));
     }
 
     @Test

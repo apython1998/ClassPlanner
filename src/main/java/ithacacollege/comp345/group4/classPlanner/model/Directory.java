@@ -49,6 +49,29 @@ public class Directory {
     }
 
     /**
+     * Authenticates a student's attempt to login if username and password exist in Student directory
+     * @param username String of student's username
+     * @param password String of student's attempted password entry
+     * @return Student that is logged in if authenticated, else return null
+     */
+    public Student loginStudent(String username, String password) throws InvalidArgumentException {
+        if (username == null || username.trim().equals("") || password == null || password.trim().equals("")) {
+            throw new InvalidArgumentException("Invalid String Used for Username or Password");
+        } else {
+            Student userAttempt = students.get(username);
+            if (userAttempt != null) {
+                if (userAttempt.authenticate(password)) {
+                    return userAttempt;
+                } else {
+                    return null;
+                }
+            } else {
+                return null;
+            }
+        }
+    }
+
+    /**
      * Registers a new faculty member to the directory
      * @param username
      * @param password
@@ -68,16 +91,16 @@ public class Directory {
     }
 
     /**
-     * Authenticates a student's attempt to login if username and password exist in Student directory
-     * @param username String of student's username
-     * @param password String of student's attempted password entry
-     * @return Student that is logged in if authenticated, else return null
+     * Logs in new faculty member
+     * @param username
+     * @param password
+     * @return
      */
-    public Student loginStudent(String username, String password) {
+    public Faculty loginFaculty(String username, String password) {
         if (username == null || username.trim().equals("") || password == null || password.trim().equals("")) {
             throw new InvalidArgumentException("Invalid String Used for Username or Password");
         } else {
-            Student userAttempt = students.get(username);
+            Faculty userAttempt = faculty.get(username);
             if (userAttempt != null) {
                 if (userAttempt.authenticate(password)) {
                     return userAttempt;
