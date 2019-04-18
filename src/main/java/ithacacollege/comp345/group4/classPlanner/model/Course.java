@@ -1,7 +1,6 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class Course implements Comparable<Course> {
@@ -85,17 +84,27 @@ public class Course implements Comparable<Course> {
         this.chooseOnes = chooseOnes;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Course{" +
+//                "courseNum='" + courseNum + '\'' +
+//                ", name='" + name + '\'' +
+//                ", credits=" + credits +
+//                ", semestersOffered=" + semestersOffered +
+//                ", frequencyOffered=" + frequencyOffered +
+//                ", prereqs=" + prereqs +
+//                ", chooseOnes=" + chooseOnes +
+//                '}';
+//    }
+
     @Override
     public String toString() {
-        return "Course{" +
-                "courseNum='" + courseNum + '\'' +
-                ", name='" + name + '\'' +
-                ", credits=" + credits +
-                ", semestersOffered=" + semestersOffered +
-                ", frequencyOffered=" + frequencyOffered +
-                ", prereqs=" + prereqs +
-                ", chooseOnes=" + chooseOnes +
-                '}';
+        if (semestersOffered != null) {
+            return courseNum + ": " + name + " (" + semestersOffered.toString() + ", " + credits + ")";
+        } else {
+            return courseNum + ": " + name + " (" + credits + ")";
+        }
+
     }
 
     public int compareTo(Course b) {

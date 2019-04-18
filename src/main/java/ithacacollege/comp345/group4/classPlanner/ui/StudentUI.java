@@ -1,13 +1,8 @@
 package ithacacollege.comp345.group4.classPlanner.ui;
 
+import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
 import ithacacollege.comp345.group4.classPlanner.model.*;
-import ithacacollege.comp345.group4.classPlanner.model.Course;
-import ithacacollege.comp345.group4.classPlanner.model.Major;
-import ithacacollege.comp345.group4.classPlanner.model.Student;
-import ithacacollege.comp345.group4.classPlanner.model.Transcript;
-import ithacacollege.comp345.group4.classPlanner.model.*;
-
 
 import java.util.HashMap;
 import java.util.List;
@@ -175,13 +170,25 @@ public class StudentUI {
                     option = scanner.nextInt();
                 }
                 if (option == 1) {
-                    //Currently student object has no major, so just using Computer Science for now
-
                     Major m = student.getMajor();
                     if(m !=  null) {
-                        List<Course> reqs = studentAPI.viewMajorRequirements(m.getTitle() + " " + m.getType());
-                        for (Course req : reqs) {
-                            System.out.println(req.toString());
+                        try {
+                            List<Course> reqs = studentAPI.viewMajorRequirements(m.getTitle() + " " + m.getType());
+                            List<List<Course>> chooseOnes = studentAPI.viewMajorChooseOnes(m.getTitle() + " " + m.getType());
+                            System.out.println("Requirements for " + m.getTitle() + " " + m.getType() + ":");
+                            for (Course req : reqs) {
+                                System.out.println("\t" + req.toString());
+                            }
+                            System.out.println();
+                            for (List<Course> chooseOne: chooseOnes) {
+                                System.out.println("\tSelect one of the Following:");
+                                for (Course req: chooseOne) {
+                                    System.out.println("\t\t" + req.toString());
+                                }
+                            }
+                            System.out.println();
+                        } catch (InvalidArgumentException e) {
+                            System.out.println(e.getMessage());
                         }
                     }
                     else

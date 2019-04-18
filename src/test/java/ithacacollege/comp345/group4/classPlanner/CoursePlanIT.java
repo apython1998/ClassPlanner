@@ -108,8 +108,80 @@ public class CoursePlanIT {
                     assertTrue(plannedCourses.contains(courseCatalog.get(preReqsStr.get(k))));
                 }
             }
-
         }
+    }
+
+
+    @Test
+    void differentCreditTest() throws IOException {
+        Directory d = new Directory();
+        List<Course> allCourses = JsonUtil.listFromJsonFile("src/main/resources/courseCatalog.json", Course.class);
+        Map<String, Course> courseCatalog = new HashMap<>();
+        for (Course course : allCourses) {
+            courseCatalog.put(course.getCourseNum(), course);
+        }
+
+        d.setCourseCatalog(courseCatalog);
+        Major fakeMajor = new Major();
+        fakeMajor.setTitle("Computer Science");
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP17100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP17200"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP11500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP22000"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP10500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP20500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP21000"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP37500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP11000"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH11100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH11200"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH21100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH21600"));
+
+        d.registerStudent("jon", "shmon");
+        Student s = d.getStudents().get("jon");
+        s.changeMajor(fakeMajor);
+
+        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 18);
+        HashMap<String, List<Course>> plan2 =  d.genCoursePlan("jon", Semester.Fall, 2019, 12);
+
+        assertNotEquals(plan, plan2);
+    }
+
+    @Test
+    void checkMajorReqsTest() throws IOException{
+        Directory d = new Directory();
+        List<Course> allCourses = JsonUtil.listFromJsonFile("src/main/resources/courseCatalog.json", Course.class);
+        Map<String, Course> courseCatalog = new HashMap<>();
+        for (Course course : allCourses) {
+            courseCatalog.put(course.getCourseNum(), course);
+        }
+
+        d.setCourseCatalog(courseCatalog);
+        Major fakeMajor = new Major();
+        fakeMajor.setTitle("Computer Science");
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP17100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP17200"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP11500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP22000"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP10500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP20500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP21000"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP37500"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("COMP11000"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH11100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH11200"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH21100"));
+        fakeMajor.addCourse(d.getCourseCatalog().get("MATH21600"));
+
+        List<Course> coursesPreGeneration = fakeMajor.getRequirements();
+
+        d.registerStudent("jon", "shmon");
+        Student s = d.getStudents().get("jon");
+        s.changeMajor(fakeMajor);
+
+        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 18);
+        assertEquals(coursesPreGeneration, fakeMajor.getRequirements());
 
     }
 }

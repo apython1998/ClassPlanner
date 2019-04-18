@@ -74,14 +74,6 @@
         "prereqs" : [ "COMP22000", "COMP11500" ],
         "chooseOnes" : [ ]
       }, {
-        "courseNum" : "COMP32100",
-        "name" : "Programming Languages",
-        "credits" : 4.0,
-        "semestersOffered" : [ "F" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ "COMP21000", "COMP22000" ],
-        "chooseOnes" : [ ]
-      }, {
         "courseNum" : "COMP34500",
         "name" : "Introduction to Software Engineering",
         "credits" : 4.0,
@@ -105,7 +97,32 @@
         "frequencyOffered" : "Y",
         "prereqs" : [ "MATH11100" ],
         "chooseOnes" : [ ]
+      } ],
+      "chooseOnes" : [ [ {
+        "courseNum" : "CMST11000",
+        "name" : "Public Communication",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
       }, {
+        "courseNum" : "CMST11500",
+        "name" : "Business & Professional Comm",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "CMST14000",
+        "name" : "Small Group Communication",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      } ], [ {
         "courseNum" : "MATH14400",
         "name" : "Statistics for Business, Economics and Management",
         "credits" : 4.0,
@@ -113,8 +130,47 @@
         "frequencyOffered" : "Y",
         "prereqs" : [ ],
         "chooseOnes" : [ ]
-      } ],
-      "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "MATH21600",
+        "name" : "Statistical Analysis",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "better,", "MATH11100" ] ]
+      } ], [ {
+        "courseNum" : "COMP32100",
+        "name" : "Programming Languages",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "COMP21000", "COMP22000" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "COMP32500",
+        "name" : "HCI: User Interface Design and Development",
+        "credits" : 4.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "COMP36500",
+        "name" : "Computer Networks",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "O",
+        "prereqs" : [ "COMP11500", "COMP21000" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "COMP37500",
+        "name" : "Database Systems",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "E",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "COMP20500", "COMP22000", "COMP22500" ] ]
+      } ] ]
     },
     "Writing Film Tv Em Major BFA" : {
       "title" : "Writing Film Tv Em Major",
@@ -698,6 +754,55 @@
         "prereqs" : [ "COMP22000", "COMP11500" ],
         "chooseOnes" : [ ]
       }, {
+        "courseNum" : "COMP34500",
+        "name" : "Introduction to Software Engineering",
+        "credits" : 4.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "COMP22000" ],
+        "chooseOnes" : [ ]
+      } ],
+      "chooseOnes" : [ [ {
+        "courseNum" : "MATH11100",
+        "name" : "Calculus I",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "MATH14400",
+        "name" : "Statistics for Business, Economics and Management",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      } ], [ {
+        "courseNum" : "CMST11000",
+        "name" : "Public Communication",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "CMST11500",
+        "name" : "Business & Professional Comm",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "CMST14000",
+        "name" : "Small Group Communication",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      } ], [ {
         "courseNum" : "COMP32100",
         "name" : "Programming Languages",
         "credits" : 4.0,
@@ -706,23 +811,30 @@
         "prereqs" : [ "COMP21000", "COMP22000" ],
         "chooseOnes" : [ ]
       }, {
-        "courseNum" : "COMP34500",
-        "name" : "Introduction to Software Engineering",
+        "courseNum" : "COMP32500",
+        "name" : "HCI: User Interface Design and Development",
         "credits" : 4.0,
         "semestersOffered" : [ "S" ],
         "frequencyOffered" : "Y",
-        "prereqs" : [ "COMP22000" ],
-        "chooseOnes" : [ ]
-      }, {
-        "courseNum" : "MATH11100",
-        "name" : "Calculus I",
-        "credits" : 4.0,
-        "semestersOffered" : [ "F", "S" ],
-        "frequencyOffered" : "Y",
         "prereqs" : [ ],
         "chooseOnes" : [ ]
-      } ],
-      "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "COMP36500",
+        "name" : "Computer Networks",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "O",
+        "prereqs" : [ "COMP11500", "COMP21000" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "COMP37500",
+        "name" : "Database Systems",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "E",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "COMP20500", "COMP22000", "COMP22500" ] ]
+      } ] ]
     },
     "Exercise Science Major Clinical Exercise Wellness Concentration BS" : {
       "title" : "Exercise Science Major Clinical Exercise Wellness Concentration",
@@ -966,14 +1078,6 @@
         "prereqs" : [ "MATH11200" ],
         "chooseOnes" : [ ]
       }, {
-        "courseNum" : "MATH21600",
-        "name" : "Statistical Analysis",
-        "credits" : 3.0,
-        "semestersOffered" : [ "F" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ ],
-        "chooseOnes" : [ [ "better,", "MATH11100" ] ]
-      }, {
         "courseNum" : "MATH23100",
         "name" : "Linear Algebra",
         "credits" : 3.0,
@@ -1150,7 +1254,23 @@
         "prereqs" : [ ],
         "chooseOnes" : [ ]
       } ],
-      "chooseOnes" : [ ]
+      "chooseOnes" : [ [ {
+        "courseNum" : "MATH21600",
+        "name" : "Statistical Analysis",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "better,", "MATH11100" ] ]
+      }, {
+        "courseNum" : "MATH24600",
+        "name" : "Intermediate Statistics",
+        "credits" : 3.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      } ] ]
     },
     "Theatre Arts Management Major BA" : {
       "title" : "Theatre Arts Management Major",
@@ -2822,6 +2942,12 @@
       } ],
       "chooseOnes" : [ ]
     },
+    "Legal Studies Major BA" : {
+      "title" : "Legal Studies Major",
+      "type" : "BA",
+      "requirements" : [ ],
+      "chooseOnes" : [ ]
+    },
     "German Major Teaching Option BA" : {
       "title" : "German Major Teaching Option",
       "type" : "BA",
@@ -3716,7 +3842,31 @@
         "prereqs" : [ ],
         "chooseOnes" : [ ]
       } ],
-      "chooseOnes" : [ ]
+      "chooseOnes" : [ [ {
+        "courseNum" : "BIOL22300",
+        "name" : "Biology of Oceanic Islands",
+        "credits" : 3.0,
+        "semestersOffered" : [ ],
+        "frequencyOffered" : "IRR",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "BIOL12000", "BIOL12200" ] ]
+      }, {
+        "courseNum" : "BIOL22800",
+        "name" : "The Evolution of Adaptations",
+        "credits" : 3.0,
+        "semestersOffered" : [ ],
+        "frequencyOffered" : "IRR",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "BIOL32400",
+        "name" : "Wonderful Life: Genes, Evolution, and Biodiversity",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "E",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "BIOL22700", "BIOL27100" ] ]
+      } ] ]
     },
     "Environmental Science Major BS" : {
       "title" : "Environmental Science Major",
@@ -4020,7 +4170,23 @@
         "prereqs" : [ ],
         "chooseOnes" : [ ]
       } ],
-      "chooseOnes" : [ ]
+      "chooseOnes" : [ [ {
+        "courseNum" : "ASTR37200",
+        "name" : "Astrophysics",
+        "credits" : 3.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "O",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "PHYS32600",
+        "name" : "Analog Electronics",
+        "credits" : 3.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "E",
+        "prereqs" : [ "PHYS22500" ],
+        "chooseOnes" : [ ]
+      } ] ]
     },
     "Health Education Major Bs TEACHING" : {
       "title" : "Health Education Major Bs",
@@ -4634,14 +4800,6 @@
         "prereqs" : [ "CHEM22500" ],
         "chooseOnes" : [ ]
       }, {
-        "courseNum" : "CHEM33100",
-        "name" : "Physical Chemistry: Thermodynamics and Kinetics",
-        "credits" : 3.0,
-        "semestersOffered" : [ "F" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ ],
-        "chooseOnes" : [ [ "PHYS10200", "PHYS11800" ] ]
-      }, {
         "courseNum" : "CHEM34200",
         "name" : "Inorganic Chemistry",
         "credits" : 3.0,
@@ -4706,7 +4864,23 @@
         "prereqs" : [ "MATH11100" ],
         "chooseOnes" : [ ]
       } ],
-      "chooseOnes" : [ ]
+      "chooseOnes" : [ [ {
+        "courseNum" : "CHEM33100",
+        "name" : "Physical Chemistry: Thermodynamics and Kinetics",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "PHYS10200", "PHYS11800" ] ]
+      }, {
+        "courseNum" : "CHEM33200",
+        "name" : "Physical Chemistry: Quantum Chemistry and Spectroscopy",
+        "credits" : 3.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "CHEM23200" ],
+        "chooseOnes" : [ ]
+      } ] ]
     },
     "Occupational Therapy Major MS" : {
       "title" : "Occupational Therapy Major",
@@ -5098,7 +5272,55 @@
         "prereqs" : [ "ECON39200" ],
         "chooseOnes" : [ ]
       } ],
-      "chooseOnes" : [ ]
+      "chooseOnes" : [ [ {
+        "courseNum" : "MATH10800",
+        "name" : "Calculus for Decision Making",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "IRR",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "MATH11100",
+        "name" : "Calculus I",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      } ], [ {
+        "courseNum" : "MATH14400",
+        "name" : "Statistics for Business, Economics and Management",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "MATH14500",
+        "name" : "Statistics for the Health, Life, and Social Sciences",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "MATH21600",
+        "name" : "Statistical Analysis",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "better,", "MATH11100" ] ]
+      }, {
+        "courseNum" : "MATH31600",
+        "name" : "Probability",
+        "credits" : 3.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "MATH21100" ],
+        "chooseOnes" : [ ]
+      } ] ]
     },
     "Music Theory Major BM" : {
       "title" : "Music Theory Major",
@@ -5406,12 +5628,6 @@
         "prereqs" : [ "ENVS27500" ],
         "chooseOnes" : [ ]
       } ],
-      "chooseOnes" : [ ]
-    },
-    "Legalstudies Major BA" : {
-      "title" : "Legalstudies Major",
-      "type" : "BA",
-      "requirements" : [ ],
       "chooseOnes" : [ ]
     },
     "Art Major BA" : {
@@ -6563,7 +6779,8 @@
         "frequencyOffered" : "Y",
         "prereqs" : [ "BIOC35300", "BIOC35400" ],
         "chooseOnes" : [ [ "WRTG10600", "ICSM 11800-11899" ] ]
-      }, {
+      } ],
+      "chooseOnes" : [ [ {
         "courseNum" : "BIOC39000",
         "name" : "Independent Research in Biochemistry",
         "credits" : 3.0,
@@ -6571,8 +6788,39 @@
         "frequencyOffered" : "Y",
         "prereqs" : [ ],
         "chooseOnes" : [ ]
-      } ],
-      "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "BIOC41000",
+        "name" : "Experimental Biochemistry",
+        "credits" : 3.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      } ], [ {
+        "courseNum" : "BIOL34500",
+        "name" : "Developmental Biology",
+        "credits" : 4.0,
+        "semestersOffered" : [ ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "BIOL22700" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "BIOL35200",
+        "name" : "Microbiology",
+        "credits" : 4.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "O",
+        "prereqs" : [ "BIOL22700" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "BIOL35400",
+        "name" : "Cell Biology",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "BIOL22700", "CHEM22100" ],
+        "chooseOnes" : [ ]
+      } ] ]
     },
     "Performance Major BM" : {
       "title" : "Performance Major",
@@ -7484,7 +7732,71 @@
         "prereqs" : [ ],
         "chooseOnes" : [ ]
       } ],
-      "chooseOnes" : [ ]
+      "chooseOnes" : [ [ {
+        "courseNum" : "BIOL22300",
+        "name" : "Biology of Oceanic Islands",
+        "credits" : 3.0,
+        "semestersOffered" : [ ],
+        "frequencyOffered" : "IRR",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "BIOL12000", "BIOL12200" ] ]
+      }, {
+        "courseNum" : "BIOL22800",
+        "name" : "The Evolution of Adaptations",
+        "credits" : 3.0,
+        "semestersOffered" : [ ],
+        "frequencyOffered" : "IRR",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "BIOL32400",
+        "name" : "Wonderful Life: Genes, Evolution, and Biodiversity",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "E",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "BIOL22700", "BIOL27100" ] ]
+      } ], [ {
+        "courseNum" : "BIOL31500",
+        "name" : "Neurobiology",
+        "credits" : 4.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "BIOL34500",
+        "name" : "Developmental Biology",
+        "credits" : 4.0,
+        "semestersOffered" : [ ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "BIOL22700" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "BIOL35200",
+        "name" : "Microbiology",
+        "credits" : 4.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "O",
+        "prereqs" : [ "BIOL22700" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "BIOL35400",
+        "name" : "Cell Biology",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "BIOL22700", "CHEM22100" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "BIOL37300",
+        "name" : "Plant Physiology",
+        "credits" : 4.0,
+        "semestersOffered" : [ ],
+        "frequencyOffered" : "IRR",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      } ] ]
     },
     "Clinical Health Studies Major BS" : {
       "title" : "Clinical Health Studies Major",
@@ -7672,7 +7984,79 @@
         "prereqs" : [ ],
         "chooseOnes" : [ ]
       } ],
-      "chooseOnes" : [ ]
+      "chooseOnes" : [ [ {
+        "courseNum" : "BIOL22300",
+        "name" : "Biology of Oceanic Islands",
+        "credits" : 3.0,
+        "semestersOffered" : [ ],
+        "frequencyOffered" : "IRR",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "BIOL12000", "BIOL12200" ] ]
+      }, {
+        "courseNum" : "BIOL22800",
+        "name" : "The Evolution of Adaptations",
+        "credits" : 3.0,
+        "semestersOffered" : [ ],
+        "frequencyOffered" : "IRR",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "BIOL32400",
+        "name" : "Wonderful Life: Genes, Evolution, and Biodiversity",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "E",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "BIOL22700", "BIOL27100" ] ]
+      }, {
+        "courseNum" : "BIOL27100",
+        "name" : "General Ecology",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "BIOL12000", "BIOL12200" ] ]
+      } ], [ {
+        "courseNum" : "BIOL31500",
+        "name" : "Neurobiology",
+        "credits" : 4.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "BIOL34500",
+        "name" : "Developmental Biology",
+        "credits" : 4.0,
+        "semestersOffered" : [ ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "BIOL22700" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "BIOL35200",
+        "name" : "Microbiology",
+        "credits" : 4.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "O",
+        "prereqs" : [ "BIOL22700" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "BIOL35400",
+        "name" : "Cell Biology",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "BIOL22700", "CHEM22100" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "BIOL37300",
+        "name" : "Plant Physiology",
+        "credits" : 4.0,
+        "semestersOffered" : [ ],
+        "frequencyOffered" : "IRR",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      } ] ]
     },
     "Jazz Studies Major BM" : {
       "title" : "Jazz Studies Major",
@@ -7746,28 +8130,12 @@
         "prereqs" : [ ],
         "chooseOnes" : [ [ "MATH11200", "MATH18500" ] ]
       }, {
-        "courseNum" : "MATH21600",
-        "name" : "Statistical Analysis",
-        "credits" : 3.0,
-        "semestersOffered" : [ "F" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ ],
-        "chooseOnes" : [ [ "better,", "MATH11100" ] ]
-      }, {
         "courseNum" : "MATH23100",
         "name" : "Linear Algebra",
         "credits" : 3.0,
         "semestersOffered" : [ "F", "S" ],
         "frequencyOffered" : "Y",
         "prereqs" : [ "MATH11200" ],
-        "chooseOnes" : [ ]
-      }, {
-        "courseNum" : "MATH30300",
-        "name" : "Abstract Algebra",
-        "credits" : 4.0,
-        "semestersOffered" : [ "F" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ ],
         "chooseOnes" : [ ]
       }, {
         "courseNum" : "MATH39700",
@@ -7794,7 +8162,39 @@
         "prereqs" : [ "MATH49800" ],
         "chooseOnes" : [ ]
       } ],
-      "chooseOnes" : [ ]
+      "chooseOnes" : [ [ {
+        "courseNum" : "MATH21600",
+        "name" : "Statistical Analysis",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "better,", "MATH11100" ] ]
+      }, {
+        "courseNum" : "MATH24600",
+        "name" : "Intermediate Statistics",
+        "credits" : 3.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      } ], [ {
+        "courseNum" : "MATH30300",
+        "name" : "Abstract Algebra",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "MATH30500",
+        "name" : "Introduction to Analysis",
+        "credits" : 4.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      } ] ]
     },
     "Sports Media BS" : {
       "title" : "Sports Media",
@@ -8032,14 +8432,6 @@
         "prereqs" : [ ],
         "chooseOnes" : [ [ "MATH11200", "MATH18500" ] ]
       }, {
-        "courseNum" : "MATH21600",
-        "name" : "Statistical Analysis",
-        "credits" : 3.0,
-        "semestersOffered" : [ "F" ],
-        "frequencyOffered" : "Y",
-        "prereqs" : [ ],
-        "chooseOnes" : [ [ "better,", "MATH11100" ] ]
-      }, {
         "courseNum" : "MATH23100",
         "name" : "Linear Algebra",
         "credits" : 3.0,
@@ -8064,7 +8456,23 @@
         "prereqs" : [ "MATH49800" ],
         "chooseOnes" : [ ]
       } ],
-      "chooseOnes" : [ ]
+      "chooseOnes" : [ [ {
+        "courseNum" : "MATH21600",
+        "name" : "Statistical Analysis",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ [ "better,", "MATH11100" ] ]
+      }, {
+        "courseNum" : "MATH24600",
+        "name" : "Intermediate Statistics",
+        "credits" : 3.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      } ] ]
     },
     "Anthropology Major BA" : {
       "title" : "Anthropology Major",
@@ -9247,7 +9655,7 @@
     "asdf" : {
       "id" : 0,
       "username" : "asdf",
-      "passwordHash" : "$2a$10$XGFtekisco4CDhrr.5V6/OKTH.orFGf5wVgXk4jSbgEY0A0MBET92",
+      "passwordHash" : "$2a$10$esIdDNFMzJ32gRI5Q6.lWehZ56yIKKPpu476t6SxGVNDJPkV8cyde",
       "takenCourses" : [ ],
       "currentCourses" : [ ],
       "plannedCourses" : [ ],
@@ -9303,6 +9711,55 @@
           "prereqs" : [ "COMP22000", "COMP11500" ],
           "chooseOnes" : [ ]
         }, {
+          "courseNum" : "COMP34500",
+          "name" : "Introduction to Software Engineering",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP22000" ],
+          "chooseOnes" : [ ]
+        } ],
+        "chooseOnes" : [ [ {
+          "courseNum" : "MATH11100",
+          "name" : "Calculus I",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "MATH14400",
+          "name" : "Statistics for Business, Economics and Management",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        } ], [ {
+          "courseNum" : "CMST11000",
+          "name" : "Public Communication",
+          "credits" : 3.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "CMST11500",
+          "name" : "Business & Professional Comm",
+          "credits" : 3.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "CMST14000",
+          "name" : "Small Group Communication",
+          "credits" : 3.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        } ], [ {
           "courseNum" : "COMP32100",
           "name" : "Programming Languages",
           "credits" : 4.0,
@@ -9311,29 +9768,38 @@
           "prereqs" : [ "COMP21000", "COMP22000" ],
           "chooseOnes" : [ ]
         }, {
-          "courseNum" : "COMP34500",
-          "name" : "Introduction to Software Engineering",
+          "courseNum" : "COMP32500",
+          "name" : "HCI: User Interface Design and Development",
           "credits" : 4.0,
           "semestersOffered" : [ "S" ],
           "frequencyOffered" : "Y",
-          "prereqs" : [ "COMP22000" ],
-          "chooseOnes" : [ ]
-        }, {
-          "courseNum" : "MATH11100",
-          "name" : "Calculus I",
-          "credits" : 4.0,
-          "semestersOffered" : [ "F", "S" ],
-          "frequencyOffered" : "Y",
           "prereqs" : [ ],
           "chooseOnes" : [ ]
-        } ],
-        "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP36500",
+          "name" : "Computer Networks",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "O",
+          "prereqs" : [ "COMP11500", "COMP21000" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP37500",
+          "name" : "Database Systems",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "E",
+          "prereqs" : [ ],
+          "chooseOnes" : [ [ "COMP20500", "COMP22000", "COMP22500" ] ]
+        } ] ]
       },
       "transcript" : {
         "courseList" : [ ]
-      }
+      },
+      "schedule" : null
     }
   },
+  "faculty" : { },
   "courseCatalog" : {
     "ART35000" : {
       "courseNum" : "ART35000",

@@ -31,6 +31,16 @@ public class StudentAPI {
         return directory.registerStudent(username, password);
     }
 
+    /**
+     * Takes a login attempt information and checks if its authenticated
+     * @param username
+     * @param password
+     * @return Student if login is successful, otherwise null
+     */
+    public Student login(String username, String password) {
+        return directory.loginStudent(username, password);
+    }
+
     public List<Course> viewCurrentCourses(String name){
         return directory.viewCurrentCourses(name);
     }
@@ -51,6 +61,13 @@ public class StudentAPI {
             return directory.getMajorDirectory().get(major).getRequirements();
     }
 
+    public List<List<Course>> viewMajorChooseOnes(String major){
+        if(!directory.getMajorDirectory().containsKey(major))
+            throw new InvalidArgumentException("Major does not exist.");
+        else
+            return directory.getMajorDirectory().get(major).getChooseOnes();
+    }
+
     public HashMap<String, List<Course>> generateCoursePlan(String student, int year, Semester semester, int numCredits) {
         return directory.genCoursePlan(student, semester, year, numCredits);
     }
@@ -69,15 +86,6 @@ public class StudentAPI {
 
     public boolean addCurrentCourse(String name, Course course){
         return directory.addCurrentCourse(name, course);
-    }
-    /**
-     * Takes a login attempt information and checks if its authenticated
-     * @param username
-     * @param password
-     * @return Student if login is successful, otherwise null
-     */
-    public Student login(String username, String password) {
-        return directory.loginStudent(username, password);
     }
 
     public void uploadTranscript(String studentName, String filename) {

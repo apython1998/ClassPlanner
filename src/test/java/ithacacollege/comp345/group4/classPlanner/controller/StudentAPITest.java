@@ -6,8 +6,6 @@ import ithacacollege.comp345.group4.classPlanner.model.Directory;
 import ithacacollege.comp345.group4.classPlanner.model.Student;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StudentAPITest {
@@ -43,6 +41,7 @@ public class StudentAPITest {
         System.out.println(studentAPI.viewCurrentCourses("asdf"));
     }
 
+    @Test
     void loginTest() {
         StudentAPI studentAPI = new StudentAPI();
         studentAPI.register("username", "password"); // Create a user account
