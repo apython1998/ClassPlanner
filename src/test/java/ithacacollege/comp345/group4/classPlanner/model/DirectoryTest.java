@@ -106,17 +106,18 @@ class DirectoryTest {
         d.registerStudent("greg", "pegleg");
         Student s = d.getStudents().get("greg");
         s.changeMajor(d.getMajorDirectory().get("Computer Science Major BS"));
-        s.addTakenCourses(d.getCourseCatalog().get("MATH 11100"));
-        s.addTakenCourses(d.getCourseCatalog().get("MATH 11200"));
-        s.addTakenCourses(d.getCourseCatalog().get("COMP 22000"));
+        s.addTakenCourses(d.getCourseCatalog().get("MATH11100"));
+        s.addTakenCourses(d.getCourseCatalog().get("MATH11200"));
+        s.addTakenCourses(d.getCourseCatalog().get("COMP22000"));
         List<Course> reqs = d.searchMajorReqs("greg", "Mathematics Major BS");
+        System.out.println(reqs);
         boolean hasLinAlg = false;
         for(Course c : reqs){
-            assertNotEquals(c.getCourseNum(), "MATH 11100");//A class they should have, in both majors
-            assertNotEquals(c.getCourseNum(), "MATH 11200");//Another class they should have in both majors
-            assertNotEquals(c.getCourseNum(), "COMP 22000");//A class they shouldn't need but have taken
-            assertNotEquals(c.getCourseNum(), "COMP 31100");//A class they shouldn't need and has not taken
-            if(c.getCourseNum().equals("MATH 23100"))//A class that should be in the new list of reqs
+            assertNotEquals(c.getCourseNum(), "MATH11100");//A class they should have, in both majors
+            assertNotEquals(c.getCourseNum(), "MATH11200");//Another class they should have in both majors
+            assertNotEquals(c.getCourseNum(), "COMP22000");//A class they shouldn't need but have taken
+            assertNotEquals(c.getCourseNum(), "COMP31100");//A class they shouldn't need and has not taken
+            if(c.getCourseNum().equals("MATH23100"))//A class that should be in the new list of reqs
                 hasLinAlg = true;
         }
         assertTrue(hasLinAlg);

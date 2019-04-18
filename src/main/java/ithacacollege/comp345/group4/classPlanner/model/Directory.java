@@ -168,9 +168,16 @@ public class Directory {
      * @return List of courses in major which they still need to complete
      */
     public List<Course> searchMajorReqs(String name, String major){
-        Student s = students.get(name);
-        Major m = majorDirectory.get(major);
-        return null;
+        Student student = students.get(name);
+        Major newMajor = majorDirectory.get(major);
+        List<Course> courseList = new ArrayList<>(newMajor.getRequirements());
+        for(int i = 0; i < courseList.size(); i++){
+            if(student.getTakenCourses().contains(courseList.get(i))) {
+                courseList.remove(i);
+                i--;//To prevent skipping an element after removal
+            }
+        }
+        return courseList;
     }
 
     /**
