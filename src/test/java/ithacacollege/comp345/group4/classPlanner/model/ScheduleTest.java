@@ -3,18 +3,25 @@ package ithacacollege.comp345.group4.classPlanner.model;
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ScheduleTest {
 
     @Test
-    public void constructorTest() {
+    public void constructorTest() throws IOException {
         Schedule schedule = new Schedule();
         assertNotNull(schedule);
+        final Map<String, List<Section>> sectionList = null;
+        final List<Course> courses = null;
+        assertThrows(InvalidArgumentException.class, ()-> new Schedule(sectionList, courses));
+        Directory d = JsonUtil.fromJsonFile("src/main/resources/savedDirectory.json", Directory.class);
+        final Map<String, List<Section>> sectionList2 = d.getSectionCatalog();
+        final List<Course> courses2 = new ArrayList<>(d.getCourseCatalog().values());
+        assertThrows(NoSuchElementException.class, ()-> new Schedule(sectionList2, courses));
     }
 
     @Test
