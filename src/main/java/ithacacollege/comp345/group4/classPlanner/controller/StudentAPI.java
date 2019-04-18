@@ -89,8 +89,11 @@ public class StudentAPI {
         }
     }
 
-    public Schedule genSchedule(String name) { return directory.genSchedule(name); }
+    public List<Course> searchMajorRequirements(String major){
+        return null;
+    }
 
+    public Schedule genSchedule(String name) { return directory.genSchedule(name); }
 
     public boolean addPastCourse(String name, Course course){
         return directory.addPastCourse(name, course);
