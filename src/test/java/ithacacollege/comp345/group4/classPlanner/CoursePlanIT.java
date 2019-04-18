@@ -181,7 +181,6 @@ public class CoursePlanIT {
         s.changeMajor(fakeMajor);
 
         HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 18);
-    
         assertEquals(coursesPreGeneration, fakeMajor.getRequirements());
 
     }
