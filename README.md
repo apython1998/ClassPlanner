@@ -1,6 +1,8 @@
 # Class Planner [![CircleCI](https://circleci.com/gh/apython1998/ClassPlanner.svg?style=svg)](https://circleci.com/gh/apython1998/ClassPlanner)
 ## Created by Joe Cleveland, Dan McCaffrey, Alex Python, and Dylan Shane
 
+Product Goal: The purpose of this product is to allow students to better plan their classes, and allow faculty to better organize classes based on student’s interest. 
+
 #### Description:
 Class Planner is intended to expand on functionality offered by Degree Works. 
 It is a way for students to view more robust information regarding their future classes at Ithaca College, and create a better plan. 
@@ -24,6 +26,7 @@ This is an effective break down of the system because the pairs will each have m
 Sprint Goal: Allow students to upload their transcript and view their graduation requirements (on the way to getting semester schedules).
 
 Sprint 1 Review Agenda: https://docs.google.com/document/d/1bdwsNKYNy78iPnmrDw8bjLgYCWM1s2EtdD01Kj5EsLY/edit?usp=sharing
+
 Sprint 1 Retrospective: https://docs.google.com/document/d/1oXoySuA57THElxI3NhtHu9jUS7e0WjkKYyz740Xx4TM/edit?usp=sharing
 
 #### Use Cases/Narratives to Develop Sprint 1:
@@ -47,6 +50,8 @@ Sprint Goal: Student's should be able to choose their major, see their major req
 
 Sprint 2 Review Agenda: https://docs.google.com/document/d/1a_Y0_6udft_gEIrPjkRS0pap7eIkrr9nPWeq7tun_RI/edit?usp=sharing
 
+Sprint 2 Retrospective: https://docs.google.com/document/d/130LkDCbLg2kLLI24JujwtvUoDxpiMJidxsntrlXQ1Bw/edit?usp=sharing 
+
 #### Use Cases/Narratives to Develop Sprint 2:
 1. View Graduation Paths
 2. Recommend Semester Classes
@@ -63,3 +68,5 @@ The student logs in, tries to view graduation paths, and is then printed a repor
 This is very similar to the diagram for Sprint 1, but the methods have been updated. 
 There are no new updates to the classes used in this use case.
 
+#### Sprint 3:
+Sprint Goal: Add support for faculty, fix bugs, and improve student functionality.
