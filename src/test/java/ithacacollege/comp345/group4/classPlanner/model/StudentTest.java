@@ -130,6 +130,7 @@ public class StudentTest {
 
         student.addToTranscript(course1, "", true, false);
         student.addToTranscript(course2, "", true, false);
+        assertFalse(student.addToTranscript(course1, "", true, false));
 
         for (Course c: student.getPlannedCourses()) {
             assertTrue(!c.equals(course1));
