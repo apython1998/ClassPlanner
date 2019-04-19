@@ -1,7 +1,9 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
+import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,6 +111,34 @@ public class StudentTest {
 
         assertThrows(IndexOutOfBoundsException.class, ()-> student.getCurrentCourses().get(1));
         assertThrows(IndexOutOfBoundsException.class, ()-> student.getTakenCourses().get(1));
+    }
+
+    @Test
+    public void addToTranscriptTest() throws IOException {
+        Directory d = JsonUtil.fromJsonFile("src/main/resources/savedDirectory.json", Directory.class);
+
+        Student student = new Student("test", "abc", null, null);
+        Transcript transcript = new Transcript("src/test/resources/exTranscript.json");
+
+        student.setTranscript(transcript);
+
+        Course course1 = d.getCourseCatalog().get("COMP34500");
+        Course course2 = d.getCourseCatalog().get("COMP31100");
+
+        student.addPlannedCourses(course1);
+        student.addPlannedCourses(course2);
+
+        student.addToTranscript(course1, "", true, false);
+        student.addToTranscript(course2, "", true, false);
+
+        for (Course c: student.getPlannedCourses()) {
+            assertTrue(!c.equals(course1));
+            assertTrue(!c.equals(course2));
+        }
+
+        assertThrows(InvalidArgumentException.class, ()-> student.addToTranscript(null, "", true, false));
+        assertThrows(InvalidArgumentException.class, ()-> student.addToTranscript(course1, null, true, false));
+        assertThrows(InvalidArgumentException.class, ()-> student.addToTranscript(null, null, true, false));
     }
 
 
