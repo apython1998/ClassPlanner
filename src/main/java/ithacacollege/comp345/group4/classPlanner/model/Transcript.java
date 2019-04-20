@@ -4,6 +4,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ public class Transcript {
         courseList = new ArrayList<>();
     }
 
-    public Transcript(String filename) {
+    public Transcript(String filename) throws FileNotFoundException {
         courseList = new ArrayList<>();
         JSONParser jsonParser = new JSONParser();
         try (FileReader reader = new FileReader(filename)) {
@@ -25,7 +26,7 @@ public class Transcript {
                 courseList.add(TranscriptEntry.parseEntry((JSONObject) o));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new FileNotFoundException("Could not find file specified");
         }
     }
 

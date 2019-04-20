@@ -97,20 +97,26 @@ public class StudentTest {
     @Test
     void updateDataTest() {
         Student student = new Student("test", "abc", null, null);
-        Transcript transcript = new Transcript("src/test/resources/exTranscript.json");
+        try {
+            Transcript transcript = new Transcript("src/test/resources/exTranscript.json");
 
-        student.setTranscript(transcript);
+            student.setTranscript(transcript);
 
-        assertEquals("COMP17100: Principles of Comp Sci I (4.0)", student.getTakenCourses().get(0).toString());
-        assertEquals("COMP17200: Principles of Comp Sci II (4.0)", student.getCurrentCourses().get(0).toString());
+            assertEquals("COMP17100: Principles of Comp Sci I (4.0)", student.getTakenCourses().get(0).toString());
+            assertEquals("COMP17200: Principles of Comp Sci II (4.0)", student.getCurrentCourses().get(0).toString());
 
-        student.setTranscript(transcript);
+            student.setTranscript(transcript);
 
-        assertEquals("COMP17100: Principles of Comp Sci I (4.0)", student.getTakenCourses().get(0).toString());
-        assertEquals("COMP17200: Principles of Comp Sci II (4.0)", student.getCurrentCourses().get(0).toString());
+            assertEquals("COMP17100: Principles of Comp Sci I (4.0)", student.getTakenCourses().get(0).toString());
+            assertEquals("COMP17200: Principles of Comp Sci II (4.0)", student.getCurrentCourses().get(0).toString());
 
-        assertThrows(IndexOutOfBoundsException.class, ()-> student.getCurrentCourses().get(1));
-        assertThrows(IndexOutOfBoundsException.class, ()-> student.getTakenCourses().get(1));
+            assertThrows(IndexOutOfBoundsException.class, ()-> student.getCurrentCourses().get(1));
+            assertThrows(IndexOutOfBoundsException.class, ()-> student.getTakenCourses().get(1));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     @Test
