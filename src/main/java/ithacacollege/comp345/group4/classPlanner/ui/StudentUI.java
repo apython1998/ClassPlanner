@@ -316,9 +316,13 @@ public class StudentUI {
                     student.setTranscript(new Transcript(file));
                     System.out.println(student.getTranscript().toString());
                 } else if (option == 5) {
-                    Schedule schedule = studentAPI.genSchedule(student.getUsername());
-                    student.setSchedule(schedule);
-                    System.out.println(student.getSchedule().display());
+                    try {
+                        Schedule schedule = studentAPI.genSchedule(student.getUsername());
+                        student.setSchedule(schedule);
+                        System.out.println(student.getSchedule().display());
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
                 else if (option == 6) {
                     System.out.println("Enter the number of credits: ");
