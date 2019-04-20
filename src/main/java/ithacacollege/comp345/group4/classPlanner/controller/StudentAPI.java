@@ -91,7 +91,11 @@ public class StudentAPI {
     public void uploadTranscript(String studentName, String filename) {
         if (directory.getStudents().containsKey(studentName)) {
             Student student = directory.getStudents().get(studentName);
-            student.setTranscript(new Transcript(filename));
+            try {
+                student.setTranscript(new Transcript(filename));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             throw new InvalidArgumentException("Student does not exist");
         }
