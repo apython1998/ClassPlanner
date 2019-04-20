@@ -89,7 +89,6 @@ public class FacultyUI {
                 " 2 - Register\n";
         String loggedInOptions = " 0 - Quit\n" +
                 " 1 - Say Hello to Yourself!\n";
-        System.out.println("Welcome to Class Planner\n");
         while (option != 0) {
             if (faculty == null) {
                 System.out.print("Please choose one\n" +
@@ -126,11 +125,6 @@ public class FacultyUI {
             }
             System.out.println("Thank you for using Class Planner");
         }
-    }
-
-    public static void main(String[] args) {
-        FacultyUI facultyUI = new FacultyUI();
-        facultyUI.run();
     }
 
 }
