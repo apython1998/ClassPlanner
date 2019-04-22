@@ -9247,7 +9247,7 @@
     "asdf" : {
       "id" : 0,
       "username" : "asdf",
-      "passwordHash" : "$2a$10$XGFtekisco4CDhrr.5V6/OKTH.orFGf5wVgXk4jSbgEY0A0MBET92",
+      "passwordHash" : "$2a$10$ZiRMzmHmNPT07RB9uC5eWupqbjuJi43ddH4PXV1IiTr/VYHnbFXum",
       "takenCourses" : [ ],
       "currentCourses" : [ ],
       "plannedCourses" : [ ],
@@ -9331,7 +9331,8 @@
       },
       "transcript" : {
         "courseList" : [ ]
-      }
+      },
+      "schedule" : null
     }
   },
   "courseCatalog" : {

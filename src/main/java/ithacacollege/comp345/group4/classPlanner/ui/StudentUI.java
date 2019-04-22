@@ -142,7 +142,9 @@ public class StudentUI {
                 " 3 - Add Courses\n" +
                 " 4 - Input Transcript\n" +
                 " 5 - Generate schedule\n" +
-                " 6 - Generate Future Course Plan\n";
+                " 6 - Generate Future Course Plan\n" +
+                " 7 - View Prospective Major Requirements\n";
+        final int NUM_OPTIONS = 7;
         System.out.println("Welcome to Class Planner\n");
         while (option != 0) {
             if (student == null) {
@@ -167,7 +169,7 @@ public class StudentUI {
                         loggedInOptions +
                         "Enter Selection Here: ");
                 option = scanner.nextInt();
-                while (option < 0 || option > 6) {
+                while (option < 0 || option > NUM_OPTIONS) {
                     System.out.print("Invalid Selection\n" +
                             "Please Choose One\n" +
                             loggedInOptions +
@@ -319,6 +321,22 @@ public class StudentUI {
                     int numCred = scanner.nextInt();
                     HashMap<String, List<Course>> plan = studentAPI.generateCoursePlan(student.getUsername(), 2019, Semester.Fall, numCred);
                     System.out.println(Directory.scheduleToStr(plan));
+                }
+                else if(option == 7) {
+                    System.out.println("Enter a prospective major: ");
+                    scanner.nextLine();//Scanner needs to throw away a newline
+                    String newMajor;
+                    newMajor = scanner.nextLine();
+                    while (!studentAPI.validateMajor(newMajor)){
+                        System.out.println("Major does not exist!");
+                        System.out.println("Please Enter a Major: ");
+                        newMajor = scanner.nextLine();
+                    }
+
+                    List<Course> courses = studentAPI.searchMajorRequirements(student.getUsername(), newMajor);
+                    System.out.println("Courses you need to complete in this major:");
+                    for(Course c : courses)
+                        System.out.println(c);
                 }
             }
         }

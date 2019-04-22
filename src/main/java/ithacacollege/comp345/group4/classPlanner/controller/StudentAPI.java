@@ -89,8 +89,8 @@ public class StudentAPI {
         }
     }
 
-    public List<Course> searchMajorRequirements(String major){
-        return null;
+    public List<Course> searchMajorRequirements(String username, String major){
+        return directory.searchMajorReqs(username, major);
     }
 
     public Schedule genSchedule(String name) { return directory.genSchedule(name); }
