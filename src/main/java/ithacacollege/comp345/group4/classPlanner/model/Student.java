@@ -183,7 +183,21 @@ public class Student extends User {
 
 
     public boolean addToTranscript(Course course, String grade, boolean inProgress, boolean courseComplete){
-        return transcript.addEntry(course, grade, inProgress, courseComplete);
+        if (course == null || grade == null) {
+            throw new InvalidArgumentException("Course or grade must not be null");
+        }
+        boolean found = false;
+        for (TranscriptEntry e: transcript.getCourseList()) {
+            if (e.getCourse().equals(course)) {
+                found = true;
+            }
+        }
+        plannedCourses.remove(course);
+        if (!found) {
+            return transcript.addEntry(course, grade, inProgress, courseComplete);
+        } else {
+            return false;
+        }
     }
 
     public Transcript getTranscript() {
@@ -194,6 +208,8 @@ public class Student extends User {
         transcript = transcriptIn;
         updateData();
     }
+
+    public void clearPlannedCourses(){ plannedCourses.clear(); }
 
     public void setSchedule(Schedule schedule) {
         nextSemesterSchedule = schedule;

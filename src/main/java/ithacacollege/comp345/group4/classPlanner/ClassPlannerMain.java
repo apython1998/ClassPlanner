@@ -1,10 +1,9 @@
 package ithacacollege.comp345.group4.classPlanner;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
-import ithacacollege.comp345.group4.classPlanner.model.*;
-import ithacacollege.comp345.group4.classPlanner.ui.StudentUI;
+import ithacacollege.comp345.group4.classPlanner.model.Directory;
+import ithacacollege.comp345.group4.classPlanner.model.JsonUtil;
+import ithacacollege.comp345.group4.classPlanner.ui.CombinedUI;
 
 import java.util.concurrent.TimeUnit;
 
@@ -66,9 +65,8 @@ public class ClassPlannerMain {
 //        directory.setMajorDirectory(majorCatalog);
 //        directory.setSectionCatalog(sectionCatalog);
         Directory directory = JsonUtil.fromJsonFile("src/main/resources/savedDirectory.json", Directory.class);
-        StudentAPI studentAPI = new StudentAPI(directory);
-        StudentUI studentUI = new StudentUI(studentAPI);
-        studentUI.run();
+        CombinedUI combinedUI = new CombinedUI(directory);
+        combinedUI.run();
         JsonUtil.toJsonFile("src/main/resources/savedDirectory.json", directory);
         System.out.println("Saving System....");
         TimeUnit.SECONDS.sleep(3);

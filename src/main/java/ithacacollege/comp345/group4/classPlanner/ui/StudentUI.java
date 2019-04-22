@@ -1,14 +1,10 @@
 package ithacacollege.comp345.group4.classPlanner.ui;
 
+import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
 import ithacacollege.comp345.group4.classPlanner.model.*;
-import ithacacollege.comp345.group4.classPlanner.model.Course;
-import ithacacollege.comp345.group4.classPlanner.model.Major;
-import ithacacollege.comp345.group4.classPlanner.model.Student;
-import ithacacollege.comp345.group4.classPlanner.model.Transcript;
-import ithacacollege.comp345.group4.classPlanner.model.*;
 
-
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -146,6 +142,7 @@ public class StudentUI {
                 " 7 - View Prospective Major Requirements\n";
         final int NUM_OPTIONS = 7;
         System.out.println("Welcome to Class Planner\n");
+
         while (option != 0) {
             if (student == null) {
                 System.out.print("Please choose one\n" +
@@ -177,13 +174,25 @@ public class StudentUI {
                     option = scanner.nextInt();
                 }
                 if (option == 1) {
-                    //Currently student object has no major, so just using Computer Science for now
-
                     Major m = student.getMajor();
                     if(m !=  null) {
-                        List<Course> reqs = studentAPI.viewMajorRequirements(m.getTitle() + " " + m.getType());
-                        for (Course req : reqs) {
-                            System.out.println(req.toString());
+                        try {
+                            List<Course> reqs = studentAPI.viewMajorRequirements(m.getTitle() + " " + m.getType());
+                            List<List<Course>> chooseOnes = studentAPI.viewMajorChooseOnes(m.getTitle() + " " + m.getType());
+                            System.out.println("Requirements for " + m.getTitle() + " " + m.getType() + ":");
+                            for (Course req : reqs) {
+                                System.out.println("\t" + req.toString());
+                            }
+                            System.out.println();
+                            for (List<Course> chooseOne: chooseOnes) {
+                                System.out.println("\tSelect one of the Following:");
+                                for (Course req: chooseOne) {
+                                    System.out.println("\t\t" + req.toString());
+                                }
+                            }
+                            System.out.println();
+                        } catch (InvalidArgumentException e) {
+                            System.out.println(e.getMessage());
                         }
                     }
                     else
@@ -306,15 +315,23 @@ public class StudentUI {
                             break;
                     }
                 } else if (option == 4) {
-                    // TODO : Dan Input Transcript
                     System.out.println("Please enter file path: ");
                     String file = scanner.next();
-                    student.setTranscript(new Transcript(file));
-                    System.out.println(student.getTranscript().toString());
+                    try {
+                        Transcript transcript = new Transcript(file);
+                        student.setTranscript(transcript);
+                        System.out.println(student.getTranscript().toString());
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Could not find file. Please try again");
+                    }
                 } else if (option == 5) {
-                    Schedule schedule = studentAPI.genSchedule(student.getUsername());
-                    student.setSchedule(schedule);
-                    System.out.println(student.getSchedule().display());
+                    try {
+                        Schedule schedule = studentAPI.genSchedule(student.getUsername());
+                        student.setSchedule(schedule);
+                        System.out.println(student.getSchedule().display());
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
                 else if (option == 6) {
                     System.out.println("Enter the number of credits: ");
