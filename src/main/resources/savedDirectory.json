@@ -9813,6 +9813,344 @@
         "courseList" : [ ]
       },
       "schedule" : null
+    },
+    "dylan" : {
+      "id" : 0,
+      "username" : "dylan",
+      "passwordHash" : "$2a$10$ZQkVRBnu.olo8QJoLQBK8eqkHUh6xj35O.hqrDuqQ0bRPN9RfGQ56",
+      "takenCourses" : [ ],
+      "currentCourses" : [ ],
+      "plannedCourses" : [ {
+        "courseNum" : "MATH11100",
+        "name" : "Calculus I",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "PHYS11800",
+        "name" : "Principles of Physics II: Electricity and Magnetism",
+        "credits" : 4.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "PHYS12000",
+        "name" : "Introductory Applied Physics Laboratory",
+        "credits" : 3.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "COMP17100",
+        "name" : "Principles of Computing Science I",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "MATH11200",
+        "name" : "Calculus II",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "MATH11100" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "PHYS11700",
+        "name" : "Principles of Physics I: Mechanics",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "MATH11100" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "PHYS21700",
+        "name" : "Principles of Physics III: Waves, Optics and Thermodynamics",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "PHYS22500",
+        "name" : "DC and AC Circuits",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "MATH21100",
+        "name" : "Calculus III",
+        "credits" : 4.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "MATH11200" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "MATH21400",
+        "name" : "Differential Equations",
+        "credits" : 3.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "MATH11200" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "PHYS21800",
+        "name" : "Principles of Physics IV: Modern Physics",
+        "credits" : 4.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "PHYS21700" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "MATH23100",
+        "name" : "Linear Algebra",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F", "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "MATH11200" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "PHYS32000",
+        "name" : "Thermodynamics",
+        "credits" : 3.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "PHYS21700" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "PHYS30100",
+        "name" : "Mathematical Methods of Physics",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "PHYS30500",
+        "name" : "Electromagnetism",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "PHYS42100",
+        "name" : "Quantum Mechanics",
+        "credits" : 3.0,
+        "semestersOffered" : [ "F" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "MATH21200",
+        "name" : "Calculus IV",
+        "credits" : 3.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "MATH21100" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "PHYS31100",
+        "name" : "Analytical Mechanics",
+        "credits" : 3.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "MATH21400", "MATH23100" ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "PHYS36000",
+        "name" : "Advanced Physics Laboratory",
+        "credits" : 3.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ ],
+        "chooseOnes" : [ ]
+      }, {
+        "courseNum" : "PHYS48900",
+        "name" : "Review of Undergraduate Physics",
+        "credits" : 1.0,
+        "semestersOffered" : [ "S" ],
+        "frequencyOffered" : "Y",
+        "prereqs" : [ "PHYS21800" ],
+        "chooseOnes" : [ ]
+      } ],
+      "major" : {
+        "title" : "Physics Major",
+        "type" : "BS",
+        "requirements" : [ {
+          "courseNum" : "PHYS11700",
+          "name" : "Principles of Physics I: Mechanics",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "MATH11100" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "PHYS11800",
+          "name" : "Principles of Physics II: Electricity and Magnetism",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "PHYS12000",
+          "name" : "Introductory Applied Physics Laboratory",
+          "credits" : 3.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "PHYS21700",
+          "name" : "Principles of Physics III: Waves, Optics and Thermodynamics",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "PHYS21800",
+          "name" : "Principles of Physics IV: Modern Physics",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "PHYS21700" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "PHYS22500",
+          "name" : "DC and AC Circuits",
+          "credits" : 3.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "PHYS30100",
+          "name" : "Mathematical Methods of Physics",
+          "credits" : 3.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "PHYS30500",
+          "name" : "Electromagnetism",
+          "credits" : 3.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "PHYS31100",
+          "name" : "Analytical Mechanics",
+          "credits" : 3.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "MATH21400", "MATH23100" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "PHYS32000",
+          "name" : "Thermodynamics",
+          "credits" : 3.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "PHYS21700" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "PHYS36000",
+          "name" : "Advanced Physics Laboratory",
+          "credits" : 3.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "PHYS42100",
+          "name" : "Quantum Mechanics",
+          "credits" : 3.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "PHYS48900",
+          "name" : "Review of Undergraduate Physics",
+          "credits" : 1.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "PHYS21800" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "MATH11100",
+          "name" : "Calculus I",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "MATH11200",
+          "name" : "Calculus II",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "MATH11100" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "MATH21100",
+          "name" : "Calculus III",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "MATH11200" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "MATH21200",
+          "name" : "Calculus IV",
+          "credits" : 3.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "MATH21100" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP17100",
+          "name" : "Principles of Computing Science I",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        } ],
+        "chooseOnes" : [ [ {
+          "courseNum" : "ASTR37200",
+          "name" : "Astrophysics",
+          "credits" : 3.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "O",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "PHYS32600",
+          "name" : "Analog Electronics",
+          "credits" : 3.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "E",
+          "prereqs" : [ "PHYS22500" ],
+          "chooseOnes" : [ ]
+        } ] ]
+      },
+      "transcript" : {
+        "courseList" : [ ]
+      },
+      "schedule" : null
     }
   },
   "courseCatalog" : {

@@ -12,7 +12,6 @@ public class CoursePlanIT {
 
     @Test
     void checkPlanCreditsTest() throws IOException {
-        //TODO
         Directory d = new Directory();
         List<Course> allCourses = JsonUtil.listFromJsonFile("src/main/resources/courseCatalog.json", Course.class);
         Map<String, Course> courseCatalog = new HashMap<>();
@@ -182,6 +181,5 @@ public class CoursePlanIT {
 
         HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 18);
         assertEquals(coursesPreGeneration, fakeMajor.getRequirements());
-
     }
 }

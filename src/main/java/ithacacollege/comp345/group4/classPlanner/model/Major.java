@@ -78,4 +78,9 @@ public class Major {
     public void setType(String type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return this.title +  " " + this.type;
+    }
 }

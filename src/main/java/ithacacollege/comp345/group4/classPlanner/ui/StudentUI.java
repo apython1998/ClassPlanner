@@ -4,6 +4,7 @@ import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
 import ithacacollege.comp345.group4.classPlanner.model.*;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -133,11 +134,12 @@ public class StudentUI {
                 " 2 - Register\n";
         String loggedInOptions = " 0 - Quit\n" +
                 " 1 - See Major Requirements\n" +
-                " 2 - View Courses\n" +
-                " 3 - Add Courses\n" +
-                " 4 - Input Transcript\n" +
-                " 5 - Generate schedule\n" +
-                " 6 - Generate Future Course Plan\n";
+                " 2 - Change Major\n" +
+                " 3 - View Courses\n" +
+                " 4 - Add Courses\n" +
+                " 5 - Input Transcript\n" +
+                " 6 - Generate schedule\n" +
+                " 7 - Generate Future Course Plan\n";
         System.out.println("Welcome to Class Planner\n");
         while (option != 0) {
             if (student == null) {
@@ -162,7 +164,7 @@ public class StudentUI {
                         loggedInOptions +
                         "Enter Selection Here: ");
                 option = scanner.nextInt();
-                while (option < 0 || option > 6) {
+                while (option < 0 || option > 7) {
                     System.out.print("Invalid Selection\n" +
                             "Please Choose One\n" +
                             loggedInOptions +
@@ -194,6 +196,21 @@ public class StudentUI {
                     else
                         System.out.println("You have not declared a major.");
                 } else if (option == 2) {
+                    scanner.nextLine(); //clear buffer
+
+                    System.out.println("You're currently enrolled in the " + student.getMajor() + " program.\n" +
+                            "Please enter your desired major here: ");
+                    String major = scanner.nextLine();
+                    while (!studentAPI.validateMajor(major) && !major.toLowerCase().equals("quit")){
+                        System.out.println("I'm sorry. That major is not currently supported.");
+                        System.out.println("Please Enter a different Major or 'Quit': ");
+                        major = scanner.nextLine();
+                    }
+                    if(!major.toLowerCase().equals("quit")) {
+                        studentAPI.setStudentMajor(student.getUsername(), major);
+                        System.out.println("You're now enrolled in the " + major + " program.");
+                    }
+                } else if (option == 3) {
                     // TODO : Dylan View Courses
                     System.out.print("Please choose one:\n" +
                             "1. View Past Courses\n" +
@@ -241,7 +258,7 @@ public class StudentUI {
                             break;
 
                     }
-                } else if (option == 3) {
+                } else if (option == 4) {
                     System.out.print("Please choose one:\n" +
                             "1. Add Past Courses\n" +
                             "2. Add Current Courses\n" +
@@ -310,18 +327,18 @@ public class StudentUI {
                             }
                             break;
                     }
-                } else if (option == 4) {
+                } else if (option == 5) {
                     // TODO : Dan Input Transcript
                     System.out.println("Please enter file path: ");
                     String file = scanner.next();
                     student.setTranscript(new Transcript(file));
                     System.out.println(student.getTranscript().toString());
-                } else if (option == 5) {
+                } else if (option == 6) {
                     Schedule schedule = studentAPI.genSchedule(student.getUsername());
                     student.setSchedule(schedule);
                     System.out.println(student.getSchedule().display());
                 }
-                else if (option == 6) {
+                else if (option == 7) {
                     System.out.println("Enter the number of credits: ");
                     int numCred = scanner.nextInt();
                     HashMap<String, List<Course>> plan = studentAPI.generateCoursePlan(student.getUsername(), 2019, Semester.Fall, numCred);
