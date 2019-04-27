@@ -4,7 +4,7 @@ import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
 import ithacacollege.comp345.group4.classPlanner.model.*;
 
-
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -331,12 +331,21 @@ public class StudentUI {
                     // TODO : Dan Input Transcript
                     System.out.println("Please enter file path: ");
                     String file = scanner.next();
-                    student.setTranscript(new Transcript(file));
-                    System.out.println(student.getTranscript().toString());
+                    try {
+                        Transcript transcript = new Transcript(file);
+                        student.setTranscript(transcript);
+                        System.out.println(student.getTranscript().toString());
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Could not find file. Please try again");
+                    }
                 } else if (option == 6) {
-                    Schedule schedule = studentAPI.genSchedule(student.getUsername());
-                    student.setSchedule(schedule);
-                    System.out.println(student.getSchedule().display());
+                    try {
+                        Schedule schedule = studentAPI.genSchedule(student.getUsername());
+                        student.setSchedule(schedule);
+                        System.out.println(student.getSchedule().display());
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
                 else if (option == 7) {
                     System.out.println("Enter the number of credits: ");

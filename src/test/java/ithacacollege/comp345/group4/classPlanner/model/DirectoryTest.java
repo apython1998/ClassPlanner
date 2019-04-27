@@ -4,7 +4,6 @@ import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DirectoryTest {
 
     @Test
-    void register() {
+    void registerStudent() {
         Directory directory = new Directory();
 
         //Add someone to the directory
@@ -45,11 +44,46 @@ class DirectoryTest {
         assertNull(directory.loginStudent("badUsername", "asdf")); // Should fail w/ incorrect user
 
         //Bad Input Checks
-        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent(null, "asdf"));
-        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("asdf", null));
-        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("", "asdf"));
-        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent("asdf", ""));
-        assertThrows(InvalidArgumentException.class, ()-> directory.registerStudent(null, null));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginStudent(null, "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginStudent("asdf", null));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginStudent("", "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginStudent("asdf", ""));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginStudent(null, null));
+    }
+
+    @Test
+    void registerFaculty() {
+        Directory directory = new Directory();
+
+        assertEquals(0, directory.getFaculty().size());
+        assertTrue(directory.registerFaculty("faculty", "asdf"));
+
+        //Check that faculty is added
+        assertEquals(1, directory.getFaculty().size());
+
+        //Make sure you cant add same person twice
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerFaculty(null, "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerFaculty("asdf", null));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerFaculty("", "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerFaculty("asdf", ""));
+        assertThrows(InvalidArgumentException.class, ()-> directory.registerFaculty(null, null));
+    }
+
+    @Test
+    void loginFaculty() {
+        Directory directory = new Directory();
+        directory.registerFaculty("faculty", "asdf"); //Populate directory with a student
+
+        assertNotNull(directory.loginFaculty("faculty", "asdf")); // Should login successfully
+        assertNull(directory.loginFaculty("faculty", "badPassword")); // Should fail w/ incorrect pw
+        assertNull(directory.loginFaculty("badUsername", "asdf")); // Should fail w/ incorrect user
+
+        //Bad Input Checks
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginFaculty(null, "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginFaculty("asdf", null));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginFaculty("", "asdf"));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginFaculty("asdf", ""));
+        assertThrows(InvalidArgumentException.class, ()-> directory.loginFaculty(null, null));
     }
 
     @Test

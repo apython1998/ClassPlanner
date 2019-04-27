@@ -14,12 +14,14 @@ public class Directory {
 
     private Map<String, Major> majorDirectory;
     private Map<String, Student> students;
+    private Map<String, Faculty> faculty;
     private Map<String, Course> courseCatalog;
     private Map<String, List<Section>> sectionCatalog;
 
     public Directory() {
         this.majorDirectory = new HashMap<>();
         this.students = new HashMap<>();
+        this.faculty = new HashMap<>();
         this.courseCatalog = new HashMap<>();
         this.sectionCatalog = new HashMap<>();
     }
@@ -52,11 +54,53 @@ public class Directory {
      * @param password String of student's attempted password entry
      * @return Student that is logged in if authenticated, else return null
      */
-    public Student loginStudent(String username, String password) {
+    public Student loginStudent(String username, String password) throws InvalidArgumentException {
         if (username == null || username.trim().equals("") || password == null || password.trim().equals("")) {
             throw new InvalidArgumentException("Invalid String Used for Username or Password");
         } else {
             Student userAttempt = students.get(username);
+            if (userAttempt != null) {
+                if (userAttempt.authenticate(password)) {
+                    return userAttempt;
+                } else {
+                    return null;
+                }
+            } else {
+                return null;
+            }
+        }
+    }
+
+    /**
+     * Registers a new faculty member to the directory
+     * @param username
+     * @param password
+     * @return
+     * @throws InvalidArgumentException
+     */
+    public boolean registerFaculty(String username, String password) throws InvalidArgumentException {
+        if (username == null || username.trim().equals("") || password == null || password.trim().equals("")) {
+            throw new InvalidArgumentException("Invalid String Used");
+        } else if (faculty.containsKey(username)) {
+            return false;
+        } else {
+            Faculty newFaculty = new Faculty(username, password);
+            faculty.put(newFaculty.getUsername(), newFaculty);
+            return true;
+        }
+    }
+
+    /**
+     * Logs in new faculty member
+     * @param username
+     * @param password
+     * @return
+     */
+    public Faculty loginFaculty(String username, String password) {
+        if (username == null || username.trim().equals("") || password == null || password.trim().equals("")) {
+            throw new InvalidArgumentException("Invalid String Used for Username or Password");
+        } else {
+            Faculty userAttempt = faculty.get(username);
             if (userAttempt != null) {
                 if (userAttempt.authenticate(password)) {
                     return userAttempt;
@@ -420,6 +464,14 @@ public class Directory {
 
     public void setMajorDirectory(Map<String, Major> majorDirectory) {
         this.majorDirectory = majorDirectory;
+    }
+
+    public Map<String, Faculty> getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Map<String, Faculty> faculty) {
+        this.faculty = faculty;
     }
 
     public void addSection(String courseNum, int id, String classTimes) {
