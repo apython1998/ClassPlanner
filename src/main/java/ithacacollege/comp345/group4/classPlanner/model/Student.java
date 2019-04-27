@@ -9,6 +9,10 @@ public class Student extends User {
     private List<Course> takenCourses;
     private List<Course> currentCourses;
     private List<Course> plannedCourses;
+
+    private List<String> friendsList;
+    private List<String> friendRequestList;
+
     private Schedule nextSemesterSchedule;
 
     private Semester semester;
@@ -44,6 +48,8 @@ public class Student extends User {
         /*this.semester = semester;
         this.year = year;*/
         this.transcript = new Transcript();
+        this.friendRequestList = new ArrayList<>();
+        this.friendsList = new ArrayList<>();
     }
 
     public int getID() {
@@ -174,6 +180,14 @@ public class Student extends User {
 
     }
 
+    public boolean addFriend(String friendID) {
+        return false;
+    }
+
+    public void acceptFriendRequest(String friendID, boolean confirm) {
+
+    }
+
     public List<Course> getCurrentCourses() {
         //if (currentCourses.isEmpty()) {
         //    return null;
@@ -217,5 +231,22 @@ public class Student extends User {
 
     public Schedule getSchedule() {
         return nextSemesterSchedule;
+    }
+
+    public List<String> getFriendsList() {
+        return friendsList;
+    }
+
+    public List<String> getFriendRequestList() {
+        return friendRequestList;
+    }
+
+    public String friendRequestListToString() {
+        StringBuilder sb = new StringBuilder();
+        for (String s: friendRequestList) {
+            sb.append(s);
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 }

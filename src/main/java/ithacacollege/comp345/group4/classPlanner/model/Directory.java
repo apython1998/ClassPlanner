@@ -436,6 +436,12 @@ public class Directory {
         }
     }
 
+    public void addFriend(String student, String friend) {
+        if (students.containsKey(student)) {
+
+        }
+    }
+
     /**************************** GETTERS AND SETTERS     ****************************/
     public Map<String, Student> getStudents() {
         return students;
