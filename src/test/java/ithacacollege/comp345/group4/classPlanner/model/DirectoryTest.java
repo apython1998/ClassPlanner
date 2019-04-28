@@ -142,7 +142,7 @@ class DirectoryTest {
 
         d.addFriend("dmccaffrey", "apython");
 
-        assertEquals("dmccaffrey", d.getStudents().get("dmccaffrey").getFriendRequestList().get(0));
+        assertEquals("dmccaffrey", d.getStudents().get("apython").getFriendRequestList().get(0));
 
         assertThrows(NoSuchElementException.class, ()-> d.addFriend("dmccaffrey", "dshane"));
         assertThrows(NoSuchElementException.class, ()-> d.addFriend("dshane", "dmccaffrey"));
