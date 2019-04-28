@@ -51,13 +51,13 @@ public class StudentUI {
 
         System.out.println("Please Enter a Major or 'None': ");
         major = scanner.nextLine();
-        while (!studentAPI.validateMajor(major) && !major.toLowerCase().equals("none")){
+        while (!studentAPI.validateMajor(major) && !major.toLowerCase().equals("none")) {
             System.out.println("Major does not exist!");
             System.out.println("Please Enter a Major or 'None': ");
             major = scanner.nextLine();
         }
         boolean registered = studentAPI.register(username, password);
-        if(!major.toLowerCase().equals("none"))
+        if (!major.toLowerCase().equals("none"))
             studentAPI.setStudentMajor(username, major);
 
         if (registered) {
@@ -98,28 +98,28 @@ public class StudentUI {
         return student;
     }
 
-    private String convertToLetterGrade(int numGrade){
-        if (numGrade >= 93){
+    private String convertToLetterGrade(int numGrade) {
+        if (numGrade >= 93) {
             return "A";
-        } else if (numGrade >= 90){
+        } else if (numGrade >= 90) {
             return "A-";
-        } else if (numGrade >= 87){
+        } else if (numGrade >= 87) {
             return "B+";
-        }  else if (numGrade >= 83){
+        } else if (numGrade >= 83) {
             return "B";
-        } else if (numGrade >= 80){
+        } else if (numGrade >= 80) {
             return "B-";
-        }  else if (numGrade >= 77){
+        } else if (numGrade >= 77) {
             return "C+";
-        } else if (numGrade >= 73){
+        } else if (numGrade >= 73) {
             return "C";
-        }  else if (numGrade >= 70){
+        } else if (numGrade >= 70) {
             return "C-";
-        } else if (numGrade >= 67){
+        } else if (numGrade >= 67) {
             return "D+";
-        }  else if (numGrade >= 63){
+        } else if (numGrade >= 63) {
             return "D";
-        } else if (numGrade >= 60){
+        } else if (numGrade >= 60) {
             return "D-";
         } else {
             return "F";
@@ -171,7 +171,7 @@ public class StudentUI {
                 }
                 if (option == 1) {
                     Major m = student.getMajor();
-                    if(m !=  null) {
+                    if (m != null) {
                         try {
                             List<Course> reqs = studentAPI.viewMajorRequirements(m.getTitle() + " " + m.getType());
                             List<List<Course>> chooseOnes = studentAPI.viewMajorChooseOnes(m.getTitle() + " " + m.getType());
@@ -180,9 +180,9 @@ public class StudentUI {
                                 System.out.println("\t" + req.toString());
                             }
                             System.out.println();
-                            for (List<Course> chooseOne: chooseOnes) {
+                            for (List<Course> chooseOne : chooseOnes) {
                                 System.out.println("\tSelect one of the Following:");
-                                for (Course req: chooseOne) {
+                                for (Course req : chooseOne) {
                                     System.out.println("\t\t" + req.toString());
                                 }
                             }
@@ -190,8 +190,7 @@ public class StudentUI {
                         } catch (InvalidArgumentException e) {
                             System.out.println(e.getMessage());
                         }
-                    }
-                    else
+                    } else
                         System.out.println("You have not declared a major.");
                 } else if (option == 2) {
                     // TODO : Dylan View Courses
@@ -211,7 +210,7 @@ public class StudentUI {
                                 "Enter Selection Here: ");
                     }
                     List<Course> viewCourses;
-                    switch (courseOp){
+                    switch (courseOp) {
                         case 1:
                             viewCourses = studentAPI.viewTakenCourses(student.getUsername());
                             if (viewCourses != null) {
@@ -264,13 +263,13 @@ public class StudentUI {
                     switch (addOp) {
                         case 1:
                             success = student.addTakenCourses(course);
-                            if (success){
+                            if (success) {
                                 boolean addTranscript;
                                 System.out.println("Successfully added this course to your profile.\n" +
                                         "Enter the number grade you received for this course: ");
                                 int grade = scanner.nextInt();
                                 String letGrade = convertToLetterGrade(grade);
-                                if (grade >= 70){
+                                if (grade >= 70) {
                                     addTranscript = student.addToTranscript(course, letGrade, false, true);
                                 } else {
                                     addTranscript = student.addToTranscript(course, letGrade, false, false);
@@ -287,7 +286,7 @@ public class StudentUI {
                             break;
                         case 2:
                             success = student.addCurrentCourses(course);
-                            if (success){
+                            if (success) {
                                 boolean addTranscript;
                                 System.out.println("Successfully added the course to your profile.");
                                 addTranscript = student.addToTranscript(course, "", true, false);
@@ -328,11 +327,10 @@ public class StudentUI {
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
-                }
-                else if (option == 6) {
+                } else if (option == 6) {
                     System.out.println("Enter the number of credits: ");
                     int numCred = scanner.nextInt();
-                    HashMap<String, List<Course>> plan = studentAPI.generateCoursePlan(student.getUsername(), 2019, Semester.Fall, numCred);
+                    HashMap<String, List<Course>> plan = studentAPI.generateCoursePlan(student.getUsername(), 2019, Semester.Spring, numCred);
                     System.out.println(Directory.scheduleToStr(plan));
                 }
             }
