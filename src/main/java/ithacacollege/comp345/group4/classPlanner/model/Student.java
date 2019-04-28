@@ -1,7 +1,9 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
+import ithacacollege.comp345.group4.classPlanner.AlreadyFriendsException;
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 
+import javax.management.InstanceAlreadyExistsException;
 import java.util.*;
 
 public class Student extends User {
@@ -180,12 +182,35 @@ public class Student extends User {
 
     }
 
-    public boolean addFriend(String friendID) {
-        return false;
+    public boolean addFriend(Student friend) {
+        if (friendRequestList.contains(friend.getUsername())) {
+            friendsList.add(friend.getUsername());
+            friend.friendsList.add(getUsername());
+            friendRequestList.remove(friend.getUsername());
+            return false;
+        }
+        if (friend.friendRequestList.contains(getUsername())) {
+            throw new InvalidArgumentException("Request is pending");
+        }
+        if (friendsList.contains(friend.getUsername())) {
+            throw new AlreadyFriendsException("You are already friends!");
+        }
+        if (friend == this) {
+            throw new IllegalArgumentException("You can't friend yourself!");
+        }
+        friend.friendRequestList.add(getUsername());
+        return true;
     }
 
-    public void acceptFriendRequest(String friendID, boolean confirm) {
-
+    public void acceptFriendRequest(Student friend, boolean confirm) {
+        if (!friendRequestList.contains(friend.getUsername())) {
+            throw new InvalidArgumentException("There is no friend request for this student");
+        }
+        friendRequestList.remove(friend.getUsername());
+        if (confirm) {
+            friendsList.add(friend.getUsername());
+            friend.friendsList.add(getUsername());
+        }
     }
 
     public List<Course> getCurrentCourses() {
@@ -244,6 +269,15 @@ public class Student extends User {
     public String friendRequestListToString() {
         StringBuilder sb = new StringBuilder();
         for (String s: friendRequestList) {
+            sb.append(s);
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    public String friendsListToString() {
+        StringBuilder sb = new StringBuilder();
+        for (String s: friendsList) {
             sb.append(s);
             sb.append("\n");
         }
