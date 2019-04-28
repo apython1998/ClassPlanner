@@ -436,11 +436,21 @@ public class Directory {
         }
     }
 
-    public void addFriend(String studentName, String friendName) {
+    public boolean addFriend(String studentName, String friendName) {
         if (students.containsKey(studentName) && students.containsKey(friendName)) {
             Student student = students.get(studentName);
             Student friend = students.get(friendName);
-            student.addFriend(friend);
+            return student.addFriend(friend);
+        } else {
+            throw new NoSuchElementException("That student is not in the directory");
+        }
+    }
+
+    public void acceptFriendRequest(String studentName, String friendName, boolean confirm) {
+        if (students.containsKey(studentName) && students.containsKey(friendName)) {
+            Student student = students.get(studentName);
+            Student friend = students.get(friendName);
+            student.acceptFriendRequest(friend, confirm);
         } else {
             throw new NoSuchElementException("That student is not in the directory");
         }

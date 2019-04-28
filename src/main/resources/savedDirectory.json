@@ -9659,6 +9659,340 @@
       "takenCourses" : [ ],
       "currentCourses" : [ ],
       "plannedCourses" : [ ],
+      "friendsList" : null,
+      "friendRequestList" : null,
+      "major" : {
+        "title" : "Computer Science Major",
+        "type" : "BS",
+        "requirements" : [ {
+          "courseNum" : "COMP11500",
+          "name" : "Discrete Structures for Computer Science",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP17100",
+          "name" : "Principles of Computing Science I",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP17200",
+          "name" : "Principles of Computer Science II",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP17100" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP21000",
+          "name" : "Introduction to Computer Organization and Systems",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP22000" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP22000",
+          "name" : "Introduction to Data Structures",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ [ "COMP11500", "MATH11100" ] ]
+        }, {
+          "courseNum" : "COMP31100",
+          "name" : "Algorithms and Data Structures",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP22000", "COMP11500" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP34500",
+          "name" : "Introduction to Software Engineering",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP22000" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "MATH11100",
+          "name" : "Calculus I",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "MATH11200",
+          "name" : "Calculus II",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "MATH11100" ],
+          "chooseOnes" : [ ]
+        } ],
+        "chooseOnes" : [ [ {
+          "courseNum" : "CMST11000",
+          "name" : "Public Communication",
+          "credits" : 3.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "CMST11500",
+          "name" : "Business & Professional Comm",
+          "credits" : 3.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "CMST14000",
+          "name" : "Small Group Communication",
+          "credits" : 3.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        } ], [ {
+          "courseNum" : "MATH14400",
+          "name" : "Statistics for Business, Economics and Management",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "MATH21600",
+          "name" : "Statistical Analysis",
+          "credits" : 3.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ [ "better,", "MATH11100" ] ]
+        } ], [ {
+          "courseNum" : "COMP32100",
+          "name" : "Programming Languages",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP21000", "COMP22000" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP32500",
+          "name" : "HCI: User Interface Design and Development",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP36500",
+          "name" : "Computer Networks",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "O",
+          "prereqs" : [ "COMP11500", "COMP21000" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP37500",
+          "name" : "Database Systems",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "E",
+          "prereqs" : [ ],
+          "chooseOnes" : [ [ "COMP20500", "COMP22000", "COMP22500" ] ]
+        } ] ]
+      },
+      "transcript" : {
+        "courseList" : [ ]
+      },
+      "schedule" : null
+    },
+    "dmccaffrey" : {
+      "id" : 0,
+      "username" : "dmccaffrey",
+      "passwordHash" : "$2a$10$8LPt3toJvH//t5Rak/tG2uP/T3iq1G6MKnQDtbSOBbpd6Dxo9Sw2u",
+      "takenCourses" : [ ],
+      "currentCourses" : [ ],
+      "plannedCourses" : [ ],
+      "friendsList" : [ "dshane", "apython" ],
+      "friendRequestList" : [ ],
+      "major" : {
+        "title" : "Performance Major",
+        "type" : "BM",
+        "requirements" : [ ],
+        "chooseOnes" : [ ]
+      },
+      "transcript" : {
+        "courseList" : [ ]
+      },
+      "schedule" : null
+    },
+    "apython" : {
+      "id" : 0,
+      "username" : "apython",
+      "passwordHash" : "$2a$10$yEsy90D8pOt.H6MHudoEFueKTzlftyfNLl0GdHzYdVKRJpZJTzoCC",
+      "takenCourses" : [ ],
+      "currentCourses" : [ ],
+      "plannedCourses" : [ ],
+      "friendsList" : [ "dmccaffrey" ],
+      "friendRequestList" : [ ],
+      "major" : {
+        "title" : "Computer Science Major",
+        "type" : "BA",
+        "requirements" : [ {
+          "courseNum" : "COMP11500",
+          "name" : "Discrete Structures for Computer Science",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP17100",
+          "name" : "Principles of Computing Science I",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP17200",
+          "name" : "Principles of Computer Science II",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP17100" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP21000",
+          "name" : "Introduction to Computer Organization and Systems",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP22000" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP22000",
+          "name" : "Introduction to Data Structures",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ [ "COMP11500", "MATH11100" ] ]
+        }, {
+          "courseNum" : "COMP31100",
+          "name" : "Algorithms and Data Structures",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP22000", "COMP11500" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP34500",
+          "name" : "Introduction to Software Engineering",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP22000" ],
+          "chooseOnes" : [ ]
+        } ],
+        "chooseOnes" : [ [ {
+          "courseNum" : "MATH11100",
+          "name" : "Calculus I",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "MATH14400",
+          "name" : "Statistics for Business, Economics and Management",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        } ], [ {
+          "courseNum" : "CMST11000",
+          "name" : "Public Communication",
+          "credits" : 3.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "CMST11500",
+          "name" : "Business & Professional Comm",
+          "credits" : 3.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "CMST14000",
+          "name" : "Small Group Communication",
+          "credits" : 3.0,
+          "semestersOffered" : [ "F", "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        } ], [ {
+          "courseNum" : "COMP32100",
+          "name" : "Programming Languages",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ "COMP21000", "COMP22000" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP32500",
+          "name" : "HCI: User Interface Design and Development",
+          "credits" : 4.0,
+          "semestersOffered" : [ "S" ],
+          "frequencyOffered" : "Y",
+          "prereqs" : [ ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP36500",
+          "name" : "Computer Networks",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "O",
+          "prereqs" : [ "COMP11500", "COMP21000" ],
+          "chooseOnes" : [ ]
+        }, {
+          "courseNum" : "COMP37500",
+          "name" : "Database Systems",
+          "credits" : 4.0,
+          "semestersOffered" : [ "F" ],
+          "frequencyOffered" : "E",
+          "prereqs" : [ ],
+          "chooseOnes" : [ [ "COMP20500", "COMP22000", "COMP22500" ] ]
+        } ] ]
+      },
+      "transcript" : {
+        "courseList" : [ ]
+      },
+      "schedule" : null
+    },
+    "dshane" : {
+      "id" : 0,
+      "username" : "dshane",
+      "passwordHash" : "$2a$10$wgC5I4IAhZbn4iBBvt6dLucQPHOenrmElJon05k9Ph/sRkmEAr9Uq",
+      "takenCourses" : [ ],
+      "currentCourses" : [ ],
+      "plannedCourses" : [ ],
+      "friendsList" : [ "dmccaffrey" ],
+      "friendRequestList" : [ ],
       "major" : {
         "title" : "Computer Science Major",
         "type" : "BS",
