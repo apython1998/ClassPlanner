@@ -103,6 +103,14 @@ public class StudentAPI {
 
     public Schedule genSchedule(String name) { return directory.genSchedule(name); }
 
+    public boolean addFriend(String studentName, String friendName) {
+        return directory.addFriend(studentName, friendName);
+    }
+
+    public void acceptFriendRequest(String studentName, String friendName, boolean confirm) {
+        directory.acceptFriendRequest(studentName, friendName, confirm);
+    }
+
 
     public boolean addPastCourse(String name, Course course){
         return directory.addPastCourse(name, course);

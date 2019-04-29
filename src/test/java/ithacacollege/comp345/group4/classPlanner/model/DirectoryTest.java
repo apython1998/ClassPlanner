@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -132,5 +133,19 @@ class DirectoryTest {
         String planStr = d.scheduleToStr(plan);
         System.out.println(planStr);
 
+    }
+
+    @Test
+    void addFriendTest() {
+        Directory d = new Directory();
+        d.registerStudent("dmccaffrey", "asdf");
+        d.registerStudent("apython", "asdf");
+
+        d.addFriend("dmccaffrey", "apython");
+
+        assertEquals("dmccaffrey", d.getStudents().get("apython").getFriendRequestList().get(0));
+
+        assertThrows(NoSuchElementException.class, ()-> d.addFriend("dmccaffrey", "dshane"));
+        assertThrows(NoSuchElementException.class, ()-> d.addFriend("dshane", "dmccaffrey"));
     }
 }

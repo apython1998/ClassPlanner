@@ -454,6 +454,26 @@ public class Directory {
         }
     }
 
+    public boolean addFriend(String studentName, String friendName) {
+        if (students.containsKey(studentName) && students.containsKey(friendName)) {
+            Student student = students.get(studentName);
+            Student friend = students.get(friendName);
+            return student.addFriend(friend);
+        } else {
+            throw new NoSuchElementException("That student is not in the directory");
+        }
+    }
+
+    public void acceptFriendRequest(String studentName, String friendName, boolean confirm) {
+        if (students.containsKey(studentName) && students.containsKey(friendName)) {
+            Student student = students.get(studentName);
+            Student friend = students.get(friendName);
+            student.acceptFriendRequest(friend, confirm);
+        } else {
+            throw new NoSuchElementException("That student is not in the directory");
+        }
+    }
+
     /**************************** GETTERS AND SETTERS     ****************************/
     public Map<String, Student> getStudents() {
         return students;

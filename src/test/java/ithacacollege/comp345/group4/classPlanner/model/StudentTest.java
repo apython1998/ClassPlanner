@@ -1,8 +1,10 @@
 package ithacacollege.comp345.group4.classPlanner.model;
 
+import ithacacollege.comp345.group4.classPlanner.AlreadyFriendsException;
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import org.junit.jupiter.api.Test;
 
+import javax.management.InstanceAlreadyExistsException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -146,6 +148,84 @@ public class StudentTest {
         assertThrows(InvalidArgumentException.class, ()-> student.addToTranscript(null, "", true, false));
         assertThrows(InvalidArgumentException.class, ()-> student.addToTranscript(course1, null, true, false));
         assertThrows(InvalidArgumentException.class, ()-> student.addToTranscript(null, null, true, false));
+    }
+
+    @Test
+    void addFriendsTest() {
+        Student student1 = new Student("dmccaffrey", "123450", null, null);
+        Student student2 = new Student("apython", "asdf", null, null);
+
+        //student2 should get a friend request
+        student1.addFriend(student2);
+        assertEquals("dmccaffrey", student2.getFriendRequestList().get(0));
+
+        //throws when request is pending
+        assertThrows(InvalidArgumentException.class, ()-> student1.addFriend(student2));
+
+        //both students should be on each others friend list
+        student2.addFriend(student1);
+        assertEquals("apython", student1.getFriendsList().get(0));
+        assertEquals("dmccaffrey", student2.getFriendsList().get(0));
+
+        //throws when students are already friends
+        assertThrows(AlreadyFriendsException.class, ()-> student2.addFriend(student1));
+
+        //throws when student tries to friend themself
+        assertThrows(IllegalArgumentException.class, ()-> student1.addFriend(student1));
+    }
+
+    @Test
+    void acceptFriendRequestTest() {
+        Student student1 = new Student("dmccaffrey", "123450", null, null);
+        Student student2 = new Student("apython", "asdf", null, null);
+        Student student3 = new Student("jcleveland", "asdf", null, null);
+
+        //both students should be friends
+        student1.addFriend(student2);
+        student2.acceptFriendRequest(student1, true);
+        assertEquals("dmccaffrey", student2.getFriendsList().get(0));
+        assertEquals("apython", student1.getFriendsList().get(0));
+
+        //student3 should be deleted from student1 friend request list
+        Student student4 = new Student("dshane", "qwerty", null, null);
+        student4.addFriend(student1);
+        student1.acceptFriendRequest(student4, false);
+        assertTrue(student1.getFriendRequestList().isEmpty());
+
+        //throws when student is not in friend request list
+        assertThrows(InvalidArgumentException.class, ()-> student1.acceptFriendRequest(student3, true));
+    }
+
+    @Test
+    void friendRequestListToStringTest() {
+        Student student1 = new Student("dmccaffrey", "123450", null, null);
+        Student student2 = new Student("apython", "123450", null, null);
+        Student student3 = new Student("dshane", "123450", null, null);
+        Student student4 = new Student("jcleveland", "123450", null, null);
+
+        student2.addFriend(student1);
+        student3.addFriend(student1);
+        student4.addFriend(student1);
+
+        assertEquals("apython\ndshane\njcleveland\n", student1.friendRequestListToString());
+    }
+
+    @Test
+    void friendsListToString() {
+        Student student1 = new Student("dmccaffrey", "123450", null, null);
+        Student student2 = new Student("apython", "123450", null, null);
+        Student student3 = new Student("dshane", "123450", null, null);
+        Student student4 = new Student("jcleveland", "123450", null, null);
+
+        student2.addFriend(student1);
+        student3.addFriend(student1);
+        student4.addFriend(student1);
+
+        student1.acceptFriendRequest(student2, true);
+        student1.acceptFriendRequest(student3, true);
+        student1.acceptFriendRequest(student4, true);
+
+        assertEquals("apython\ndshane\njcleveland\n", student1.friendsListToString());
     }
 
 

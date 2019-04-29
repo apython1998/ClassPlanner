@@ -151,8 +151,12 @@ public class StudentUI {
                 " 2 - View Courses\n" +
                 " 3 - Add Courses\n" +
                 " 4 - Input Transcript\n" +
-                " 5 - Generate schedule\n" +
-                " 6 - Generate Future Course Plan\n";
+                " 5 - Generate Schedule\n" +
+                " 6 - Generate Future Course Plan\n" +
+                " 7 - Send a Friend Request\n" +
+                " 8 - Accept a Friend Request\n" +
+                " 9 - View Friends List\n" +
+                " 10 - View Pending Friend Requests\n";
         while (option != 0) {
             if (student == null) {
                 System.out.print("Please choose one\n" +
@@ -176,7 +180,7 @@ public class StudentUI {
                         loggedInOptions +
                         "Enter Selection Here: ");
                 option = scanner.nextInt();
-                while (option < 0 || option > 6) {
+                while (option < 0 || option > 10) {
                     System.out.print("Invalid Selection\n" +
                             "Please Choose One\n" +
                             loggedInOptions +
@@ -347,6 +351,71 @@ public class StudentUI {
                     int numCred = scanner.nextInt();
                     HashMap<String, List<Course>> plan = studentAPI.generateCoursePlan(student.getUsername(), 2019, Semester.Spring, numCred, chooseOnes);
                     System.out.println(Directory.scheduleToStr(plan));
+                } else if (option == 7) {
+                    System.out.println(student.friendsListToString());
+                    System.out.println("Enter username:");
+                    boolean exists = false;
+                    String friendName = "";
+                    while (!exists) {
+                        friendName = scanner.next();
+                        if (!studentAPI.getDirectory().getStudents().containsKey(friendName)) {
+                            System.out.println("Not a valid username. Try again:");
+                        } else {
+                            exists = true;
+                        }
+                    }
+                    try {
+                        boolean requestSent = studentAPI.addFriend(student.getUsername(), friendName);
+                        if (requestSent) {
+                            System.out.println("Friend request sent!");
+                        } else {
+                            System.out.println("Friend has been added!");
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                } else if (option == 8) {
+                    System.out.println(student.friendsListToString());
+                    System.out.println("Enter username:");
+                    boolean exists = false;
+                    String friendName = "";
+                    while (!exists) {
+                        friendName = scanner.next();
+                        if (!studentAPI.getDirectory().getStudents().containsKey(friendName)) {
+                            System.out.println("Not a valid username. Try again:");
+                        } else {
+                            exists = true;
+                        }
+                    }
+                    System.out.println("Would you like to accept (y/n):");
+                    String confirm = "";
+                    while (!confirm.equalsIgnoreCase("y") && !confirm.equalsIgnoreCase("n")) {
+                        confirm = scanner.next();
+                        if(!confirm.equalsIgnoreCase("y") && !confirm.equalsIgnoreCase("n")) {
+                            System.out.println("Not a valid selection. Try again (y/n):");
+                        }
+                    }
+                    if (confirm.equals("y")) {
+                        studentAPI.acceptFriendRequest(student.getUsername(), friendName, true);
+                        System.out.println("Friend added!");
+                    } else {
+                        studentAPI.acceptFriendRequest(student.getUsername(), friendName, false);
+                        System.out.println("Request declined.");
+                    }
+                } else if (option == 9) {
+                    String list = student.friendsListToString();
+                    if (list.equals("")) {
+                        System.out.println("Oh no! So lonely...");
+                    } else {
+                        System.out.println(list);
+                    }
+                } else if (option == 10) {
+                    String list = student.friendRequestListToString();
+                    if (list.equals("")) {
+                        System.out.println("No pending requests");
+                    } else {
+                        System.out.println(list);
+                    }
                 }
             }
         }
