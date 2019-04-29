@@ -140,6 +140,11 @@ public class StudentUI {
         return returnCourses;
     }
 
+    protected int getInteger(int lowerBound, int upperBound){
+        //TODO
+        return -1;
+    }
+
     public void run() {
         Integer option = Integer.MAX_VALUE;
         Student student = null;
