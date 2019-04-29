@@ -68,8 +68,8 @@ public class StudentAPI {
             return directory.getMajorDirectory().get(major).getChooseOnes();
     }
 
-    public HashMap<String, List<Course>> generateCoursePlan(String student, int year, Semester semester, int numCredits) {
-        return directory.genCoursePlan(student, semester, year, numCredits);
+    public HashMap<String, List<Course>> generateCoursePlan(String student, int year, Semester semester, int numCredits, List<Course> chooseOnes) {
+        return directory.genCoursePlan(student, semester, year, numCredits, chooseOnes);
     }
 
     public boolean validateMajor(String major) {

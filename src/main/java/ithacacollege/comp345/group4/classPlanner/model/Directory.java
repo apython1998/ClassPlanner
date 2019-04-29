@@ -218,16 +218,14 @@ public class Directory {
      * @return - hashmap of Semester & Year to a list of courses.
      *           For example: key- Fall2019 would return a list of courses the student should take Fall 2019
      */
-    public HashMap<String, List<Course>> genCoursePlan(String studentID, Semester semester, int year, int creditsPerSemester){
+    public HashMap<String, List<Course>> genCoursePlan(String studentID, Semester semester, int year, int creditsPerSemester, List<Course> chooseOnes){
         Student student = students.get(studentID);
         Major major = student.getMajor();
         List<Course> courseReqs = new ArrayList<>(major.getRequirements());
-        List<List<Course>> chooseOnes = major.getChooseOnes();
         addPreReqs(courseReqs); //gets all prerequisites for all course requirements
         addCourses(courseReqs, student.getPlannedCourses());
         student.clearPlannedCourses();
-        List<Course> chooseOnesToAdd = addChooseOnes(chooseOnes);
-        addCourses(courseReqs, chooseOnesToAdd);
+        addCourses(courseReqs, chooseOnes);
         removeCourseReqs(courseReqs, student.getTakenCourses()); // remove requirements already completed
         removeCourseReqs(courseReqs, student.getCurrentCourses()); // remove requirements currently being completed
         Collections.sort(courseReqs); // sort courses lower lever -> higher level
@@ -270,7 +268,7 @@ public class Directory {
     }
 
     public Schedule genSchedule(String studentID) {
-        HashMap<String, List<Course>> plan = genCoursePlan(studentID, Semester.Spring, 2019, 12);
+        HashMap<String, List<Course>> plan = genCoursePlan(studentID, Semester.Spring, 2019, 12, new ArrayList<Course>());
         return new Schedule(sectionCatalog, plan.get("Fall2019"));
     }
 

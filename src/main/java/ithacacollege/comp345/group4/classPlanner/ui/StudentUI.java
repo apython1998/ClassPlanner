@@ -5,10 +5,7 @@ import ithacacollege.comp345.group4.classPlanner.controller.StudentAPI;
 import ithacacollege.comp345.group4.classPlanner.model.*;
 
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class StudentUI {
 
@@ -124,6 +121,23 @@ public class StudentUI {
         } else {
             return "F";
         }
+    }
+
+    public List<Course> addChooseOnes(List<List<Course>> chooseOnes){
+        List<Course> returnCourses = new ArrayList<>();
+        System.out.println("There are " + chooseOnes.size() + " sets of courses that are your choice.");
+        Scanner in = new Scanner(System.in);
+        for (List<Course> chooseOne : chooseOnes) {
+            System.out.println("\tSelect one of the Following:");
+            for (int i = 0; i < chooseOne.size(); i++){
+                System.out.println("\t\t" + (i + 1) + ". " +  chooseOne.get(i).toString());
+            }
+            System.out.print("Selection: ");
+            int choiceIdx = in.nextInt() - 1;
+            returnCourses.add(chooseOne.get(choiceIdx));
+            System.out.println();
+        }
+        return returnCourses;
     }
 
     public void run() {
@@ -328,9 +342,10 @@ public class StudentUI {
                         System.out.println(e.getMessage());
                     }
                 } else if (option == 6) {
+                    List<Course> chooseOnes = addChooseOnes(student.getMajor().getChooseOnes());
                     System.out.println("Enter the number of credits: ");
                     int numCred = scanner.nextInt();
-                    HashMap<String, List<Course>> plan = studentAPI.generateCoursePlan(student.getUsername(), 2019, Semester.Spring, numCred);
+                    HashMap<String, List<Course>> plan = studentAPI.generateCoursePlan(student.getUsername(), 2019, Semester.Spring, numCred, chooseOnes);
                     System.out.println(Directory.scheduleToStr(plan));
                 }
             }

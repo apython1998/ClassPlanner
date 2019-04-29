@@ -41,7 +41,7 @@ public class CoursePlanIT {
         Student s = d.getStudents().get("jon");
         s.changeMajor(fakeMajor);
         int maxCredits = 16;
-        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, maxCredits);
+        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, maxCredits, new ArrayList<Course>());
         String planStr = d.scheduleToStr(plan);
         System.out.println(planStr);
 
@@ -87,7 +87,7 @@ public class CoursePlanIT {
         Student s = d.getStudents().get("jon");
         s.changeMajor(fakeMajor);
 
-        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 15);
+        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 15, new ArrayList<Course>());
 
         String[] semesters = new String[4];
 
@@ -142,8 +142,8 @@ public class CoursePlanIT {
         Student s = d.getStudents().get("jon");
         s.changeMajor(fakeMajor);
 
-        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 18);
-        HashMap<String, List<Course>> plan2 =  d.genCoursePlan("jon", Semester.Fall, 2019, 12);
+        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 18, new ArrayList<Course>());
+        HashMap<String, List<Course>> plan2 =  d.genCoursePlan("jon", Semester.Fall, 2019, 12, new ArrayList<Course>());
 
         assertNotEquals(plan, plan2);
     }
@@ -180,7 +180,7 @@ public class CoursePlanIT {
         Student s = d.getStudents().get("jon");
         s.changeMajor(fakeMajor);
 
-        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 18);
+        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 18, new ArrayList<Course>());
         assertEquals(coursesPreGeneration, fakeMajor.getRequirements());
 
     }
