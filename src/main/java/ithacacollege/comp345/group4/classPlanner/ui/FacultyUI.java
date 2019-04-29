@@ -1,7 +1,9 @@
 package ithacacollege.comp345.group4.classPlanner.ui;
 
 import ithacacollege.comp345.group4.classPlanner.controller.FacultyAPI;
+import ithacacollege.comp345.group4.classPlanner.model.Course;
 import ithacacollege.comp345.group4.classPlanner.model.Faculty;
+import ithacacollege.comp345.group4.classPlanner.model.Student;
 
 import java.util.Scanner;
 
@@ -88,7 +90,7 @@ public class FacultyUI {
                 " 1 - Login\n" +
                 " 2 - Register\n";
         String loggedInOptions = " 0 - Quit\n" +
-                " 1 - Say Hello to Yourself!\n";
+                " 1 - Invite student to course\n";
         while (option != 0) {
             if (faculty == null) {
                 System.out.print("Please choose one\n" +
@@ -120,7 +122,25 @@ public class FacultyUI {
                     option = scanner.nextInt();
                 }
                 if (option == 1) {
-                    System.out.println("Hello yourself!");
+                    System.out.println("Enter the username of a student to invite:");
+                    String studentUsername;
+                    Student s = null;
+                    while(s == null) {
+                        studentUsername = scanner.next();
+                        s = facultyAPI.getDirectory().getStudents().get(studentUsername);
+                        if(s == null)
+                            System.out.println("This student does not exist. Please enter another:");
+                    }
+                    System.out.println("Enter a course to invite them to:");
+                    String courseNum;
+                    Course c = null;
+                    while(c == null){
+                        courseNum = scanner.next();
+                        c = facultyAPI.getDirectory().getCourseCatalog().get(courseNum);
+                        if(c == null)
+                            System.out.println("This course does not exist. PLease enter another:");
+                    }
+                    facultyAPI.inviteStudentToCourse(faculty.getUsername(), s, c);
                 }
             }
             System.out.println("Thank you for using Class Planner");

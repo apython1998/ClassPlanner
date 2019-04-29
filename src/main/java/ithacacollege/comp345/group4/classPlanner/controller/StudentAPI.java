@@ -111,6 +111,14 @@ public class StudentAPI {
         directory.acceptFriendRequest(studentName, friendName, confirm);
     }
 
+    public void acceptCourseInvitation(String name, Course c){
+        directory.getStudents().get(name).removeInvitation(c);
+        directory.getStudents().get(name).addPlannedCourses(c);
+    }
+
+    public void declineCourseInvitation(String name, Course c){
+        directory.getStudents().get(name).removeInvitation(c);
+    }
 
     public boolean addPastCourse(String name, Course course){
         return directory.addPastCourse(name, course);

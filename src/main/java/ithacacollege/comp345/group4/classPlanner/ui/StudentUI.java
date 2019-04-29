@@ -142,7 +142,8 @@ public class StudentUI {
                 " 7 - Send a Friend Request\n" +
                 " 8 - Accept a Friend Request\n" +
                 " 9 - View Friends List\n" +
-                " 10 - View Pending Friend Requests\n";
+                " 10 - View Pending Friend Requests\n" +
+                " 11 - View Course Invitations";
         while (option != 0) {
             if (student == null) {
                 System.out.print("Please choose one\n" +
@@ -166,7 +167,7 @@ public class StudentUI {
                         loggedInOptions +
                         "Enter Selection Here: ");
                 option = scanner.nextInt();
-                while (option < 0 || option > 10) {
+                while (option < 0 || option > 11) {
                     System.out.print("Invalid Selection\n" +
                             "Please Choose One\n" +
                             loggedInOptions +
@@ -402,6 +403,37 @@ public class StudentUI {
                         System.out.println("No pending requests");
                     } else {
                         System.out.println(list);
+                    }
+                } else if (option == 11){
+                    List<Course> invitations = student.getInvitations();
+                    if(invitations.size() == 0)
+                        System.out.println("You have no invitations!");
+                    else {
+                        for (int i = 0; i < invitations.size(); i++) {
+                            System.out.print(i + ": ");
+                            System.out.println(invitations.get(i));
+                        }
+                        System.out.println("Select an invitation:");
+                        int inv = scanner.nextInt();
+                        while(inv < 0 || inv >= invitations.size()) {
+                            System.out.println("That is not a valid invitation number, select again:");
+                            inv = scanner.nextInt();
+                        }
+                        Course invitedCourse = invitations.get(inv);
+                        System.out.println("Would you like to accept this invitation? (y/n):");
+                        String confirm = "";
+                        while (!confirm.equalsIgnoreCase("y") && !confirm.equalsIgnoreCase("n")) {
+                            confirm = scanner.next();
+                            if (!confirm.equalsIgnoreCase("y") && !confirm.equalsIgnoreCase("n")) {
+                                System.out.println("Not a valid selection. Try again (y/n):");
+                            }
+                        }
+                        if (confirm.equals("y")) {
+                            studentAPI.acceptCourseInvitation(student.getUsername(), invitedCourse);
+                        } else {
+                            studentAPI.declineCourseInvitation(student.getUsername(), invitedCourse);
+                            System.out.println("Invitation declined.");
+                        }
                     }
                 }
             }

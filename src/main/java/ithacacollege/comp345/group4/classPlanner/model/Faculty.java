@@ -21,6 +21,9 @@ public class Faculty extends User {
         this.coursesTeaching = coursesTeaching;
     }
 
+    public void inviteStudent(Student s, Course c){
+        s.addInvitation(c);
+    }
 
 
     /**********************************   GETTERS & SETTERS *****************************/

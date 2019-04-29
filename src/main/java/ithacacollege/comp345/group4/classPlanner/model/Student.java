@@ -25,6 +25,8 @@ public class Student extends User {
 
     private Transcript transcript;
 
+    private List<Course> invitations;
+
     public Student() {
     }
 
@@ -52,6 +54,7 @@ public class Student extends User {
         this.transcript = new Transcript();
         this.friendRequestList = new ArrayList<>();
         this.friendsList = new ArrayList<>();
+        this.invitations = new ArrayList<>();
     }
 
     public int getID() {
@@ -282,5 +285,17 @@ public class Student extends User {
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+    public void addInvitation(Course c){
+        invitations.add(c);
+    }
+
+    public void removeInvitation(Course c){
+        invitations.remove(c);
+    }
+
+    public List<Course> getInvitations(){
+        return invitations;
     }
 }
