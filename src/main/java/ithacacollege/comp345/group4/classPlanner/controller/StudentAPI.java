@@ -68,8 +68,8 @@ public class StudentAPI {
             return directory.getMajorDirectory().get(major).getChooseOnes();
     }
 
-    public HashMap<String, List<Course>> generateCoursePlan(String student, int year, Semester semester, int numCredits) {
-        return directory.genCoursePlan(student, semester, year, numCredits);
+    public HashMap<String, List<Course>> generateCoursePlan(String student, int year, Semester semester, int numCredits, List<Course> chooseOnes) {
+        return directory.genCoursePlan(student, semester, year, numCredits, chooseOnes);
     }
 
     public boolean validateMajor(String major) {
@@ -102,6 +102,14 @@ public class StudentAPI {
     }
 
     public Schedule genSchedule(String name) { return directory.genSchedule(name); }
+
+    public boolean addFriend(String studentName, String friendName) {
+        return directory.addFriend(studentName, friendName);
+    }
+
+    public void acceptFriendRequest(String studentName, String friendName, boolean confirm) {
+        directory.acceptFriendRequest(studentName, friendName, confirm);
+    }
 
 
     public boolean addPastCourse(String name, Course course){

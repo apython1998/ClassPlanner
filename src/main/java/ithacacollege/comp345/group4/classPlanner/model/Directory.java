@@ -218,13 +218,14 @@ public class Directory {
      * @return - hashmap of Semester & Year to a list of courses.
      *           For example: key- Fall2019 would return a list of courses the student should take Fall 2019
      */
-    public HashMap<String, List<Course>> genCoursePlan(String studentID, Semester semester, int year, int creditsPerSemester){
+    public HashMap<String, List<Course>> genCoursePlan(String studentID, Semester semester, int year, int creditsPerSemester, List<Course> chooseOnes){
         Student student = students.get(studentID);
         Major major = student.getMajor();
         List<Course> courseReqs = new ArrayList<>(major.getRequirements());
         addPreReqs(courseReqs); //gets all prerequisites for all course requirements
         //addCourses(courseReqs, student.getPlannedCourses()); // add planned courses
         student.clearPlannedCourses();
+        addCourses(courseReqs, chooseOnes);
         removeCourseReqs(courseReqs, student.getTakenCourses()); // remove requirements already completed
         removeCourseReqs(courseReqs, student.getCurrentCourses()); // remove requirements currently being completed
         Collections.sort(courseReqs); // sort courses lower lever -> higher level
@@ -241,6 +242,23 @@ public class Directory {
         return plan;
     }
 
+    public List<Course> addChooseOnes(List<List<Course>> chooseOnes){
+        List<Course> returnCourses = new ArrayList<>();
+        System.out.println("There are " + chooseOnes.size() + " sets of courses that are your choice.");
+        Scanner in = new Scanner(System.in);
+        for (List<Course> chooseOne : chooseOnes) {
+            System.out.println("\tSelect one of the Following:");
+            for (int i = 0; i < chooseOne.size(); i++){
+                System.out.println("\t\t" + (i + 1) + ". " +  chooseOne.get(i).toString());
+            }
+            System.out.print("Selection: ");
+            int choiceIdx = in.nextInt() - 1;
+            returnCourses.add(chooseOne.get(choiceIdx));
+            System.out.println();
+        }
+        return returnCourses;
+    }
+
     private void addCourses(List<Course> courses, List<Course> plannedCourses){
         for (Course course: plannedCourses){
             if (!courses.contains(course)){
@@ -250,7 +268,7 @@ public class Directory {
     }
 
     public Schedule genSchedule(String studentID) {
-        HashMap<String, List<Course>> plan = genCoursePlan(studentID, Semester.Spring, 2019, 12);
+        HashMap<String, List<Course>> plan = genCoursePlan(studentID, Semester.Spring, 2019, 12, new ArrayList<Course>());
         return new Schedule(sectionCatalog, plan.get("Fall2019"));
     }
 
@@ -433,6 +451,26 @@ public class Directory {
             if (reqs.contains(course)) {
                 reqs.remove(course);
             }
+        }
+    }
+
+    public boolean addFriend(String studentName, String friendName) {
+        if (students.containsKey(studentName) && students.containsKey(friendName)) {
+            Student student = students.get(studentName);
+            Student friend = students.get(friendName);
+            return student.addFriend(friend);
+        } else {
+            throw new NoSuchElementException("That student is not in the directory");
+        }
+    }
+
+    public void acceptFriendRequest(String studentName, String friendName, boolean confirm) {
+        if (students.containsKey(studentName) && students.containsKey(friendName)) {
+            Student student = students.get(studentName);
+            Student friend = students.get(friendName);
+            student.acceptFriendRequest(friend, confirm);
+        } else {
+            throw new NoSuchElementException("That student is not in the directory");
         }
     }
 

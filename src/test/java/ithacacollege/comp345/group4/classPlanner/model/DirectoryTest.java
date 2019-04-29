@@ -4,9 +4,11 @@ import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -127,9 +129,23 @@ class DirectoryTest {
         d.registerStudent("jon", "shmon");
         Student s = d.getStudents().get("jon");
         s.changeMajor(fakeMajor);
-        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 15);
+        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 15, new ArrayList<Course>());
         String planStr = d.scheduleToStr(plan);
         System.out.println(planStr);
 
+    }
+
+    @Test
+    void addFriendTest() {
+        Directory d = new Directory();
+        d.registerStudent("dmccaffrey", "asdf");
+        d.registerStudent("apython", "asdf");
+
+        d.addFriend("dmccaffrey", "apython");
+
+        assertEquals("dmccaffrey", d.getStudents().get("apython").getFriendRequestList().get(0));
+
+        assertThrows(NoSuchElementException.class, ()-> d.addFriend("dmccaffrey", "dshane"));
+        assertThrows(NoSuchElementException.class, ()-> d.addFriend("dshane", "dmccaffrey"));
     }
 }
