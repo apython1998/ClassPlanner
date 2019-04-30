@@ -161,34 +161,14 @@ public class StudentUI {
         System.out.println("Welcome to Class Planner\n");
         while (option != 0) {
             if (student == null) {
-                System.out.print("Please choose one\n" +
-                        nullStudentOptions +
-                        "Enter Selection Here: ");
-                option = scanner.nextInt();
-                while (option < 0 || option > 2) {
-                    System.out.print("Invalid Selection\n" +
-                            "Please choose one\n" +
-                            nullStudentOptions +
-                            "Enter Selection Here: ");
-                    option = scanner.nextInt();
-                }
+                option = uiUtils.getIntOption(scanner, nullStudentOptions, 0, 2);
                 if (option == 1) {
                     student = login();
                 } else if (option == 2) {
                     register();
                 }
             } else {
-                System.out.print("Please choose one\n" +
-                        loggedInOptions +
-                        "Enter Selection Here: ");
-                option = scanner.nextInt();
-                while (option < 0 || option > 11) {
-                    System.out.print("Invalid Selection\n" +
-                            "Please Choose One\n" +
-                            loggedInOptions +
-                            "Enter Selection Here: ");
-                    option = scanner.nextInt();
-                }
+                option = uiUtils.getIntOption(scanner, loggedInOptions, 0, 11);
                 if (option == 1) {
                     Major m = student.getMajor();
                     if (m != null) {
@@ -228,22 +208,11 @@ public class StudentUI {
                         System.out.println("You're now enrolled in the " + major + " program.");
                     }
                 } else if (option == 3) {
-                    // TODO : Dylan View Courses
-                    System.out.print("Please choose one:\n" +
-                            "1. View Past Courses\n" +
+                    String courseOptionsString = "1. View Past Courses\n" +
                             "2. View Current Courses\n" +
-                            "3. View Planned Courses\n" +
-                            "Enter Selection Here: ");
-                    int courseOp = scanner.nextInt();
-
-                    while (courseOp < 0 || courseOp > 4) {
-                        System.out.print("Invalid Selection\n" +
-                                "Please choose one:\n" +
-                                "1. View Past Courses\n" +
-                                "2. View Current Courses\n" +
-                                "3. View Planned Courses\n" +
-                                "Enter Selection Here: ");
-                    }
+                            "3. View Planned Courses\n";
+                    // TODO : Dylan View Courses
+                    int courseOp = uiUtils.getIntOption(scanner, courseOptionsString, 1, 3);
                     List<Course> viewCourses;
                     switch (courseOp) {
                         case 1:
@@ -276,12 +245,10 @@ public class StudentUI {
 
                     }
                 } else if (option == 4) {
-                    System.out.print("Please choose one:\n" +
-                            "1. Add Past Courses\n" +
+                    String addCourseOptionsString =  "1. Add Past Courses\n" +
                             "2. Add Current Courses\n" +
-                            "3. Add Planned Courses\n" +
-                            "Enter Selection Here: ");
-                    int addOp = scanner.nextInt();
+                            "3. Add Planned Courses\n";
+                    int addOp = uiUtils.getIntOption(scanner, addCourseOptionsString, 1, 3);
                     System.out.print("Enter the department and course number for the course\n" +
                             "Example Format: MATH11100\n" +
                             "Department & Number: ");
@@ -300,9 +267,9 @@ public class StudentUI {
                             success = student.addTakenCourses(course);
                             if (success) {
                                 boolean addTranscript;
-                                System.out.println("Successfully added this course to your profile.\n" +
-                                        "Enter the number grade you received for this course: ");
-                                int grade = scanner.nextInt();
+                                System.out.println("Successfully added this course to your profile");
+                                String enterGradeString = "Enter the number grade you received for this course: ";
+                                int grade = uiUtils.getGrade(scanner, enterGradeString, 0, 100);
                                 String letGrade = convertToLetterGrade(grade);
                                 if (grade >= 70) {
                                     addTranscript = student.addToTranscript(course, letGrade, false, true);
@@ -365,8 +332,8 @@ public class StudentUI {
                     }
                 } else if (option == 7) {
                     List<Course> chooseOnes = addChooseOnes(student.getMajor().getChooseOnes());
-                    System.out.println("Enter the number of credits: ");
-                    int numCred = scanner.nextInt();
+                    String creditsString = "Enter the number of credits: ";
+                    int numCred = uiUtils.getIntCredits(scanner, creditsString, 0, Integer.MAX_VALUE);
                     HashMap<String, List<Course>> plan = studentAPI.generateCoursePlan(student.getUsername(), 2019, Semester.Spring, numCred, chooseOnes);
                     System.out.println(Directory.scheduleToStr(plan));
                 } else if (option == 8) {

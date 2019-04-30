@@ -91,17 +91,7 @@ public class FacultyUI {
                 " 1 - Say Hello to Yourself!\n";
         while (option != 0) {
             if (faculty == null) {
-                System.out.print("Please choose one\n" +
-                        nullFacultyOptions +
-                        "Enter Selection Here: ");
-                option = scanner.nextInt();
-                while (option < 0 || option > 2) {
-                    System.out.print("Invalid Selection\n" +
-                            "Please choose one\n" +
-                            nullFacultyOptions +
-                            "Enter Selection Here: ");
-                    option = scanner.nextInt();
-                }
+                option = uiUtils.getIntOption(scanner, nullFacultyOptions, 0, 2);
                 if (option == 1) {
                     faculty = login();
                 } else if (option == 2) {
@@ -111,14 +101,7 @@ public class FacultyUI {
                 System.out.print("Please choose one\n" +
                         loggedInOptions +
                         "Enter Selection Here: ");
-                option = scanner.nextInt();
-                while (option < 0 || option > 6) {
-                    System.out.print("Invalid Selection\n" +
-                            "Please Choose One\n" +
-                            loggedInOptions +
-                            "Enter Selection Here: ");
-                    option = scanner.nextInt();
-                }
+                option = uiUtils.getIntOption(scanner, loggedInOptions, 0, 1);
                 if (option == 1) {
                     System.out.println("Hello yourself!");
                 }
