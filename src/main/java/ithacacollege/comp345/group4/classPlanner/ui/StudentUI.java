@@ -158,7 +158,8 @@ public class StudentUI {
                 " 10 - View Friends List\n" +
                 " 11 - View Pending Friend Requests\n" +
                 " 12 - View Course Invitations\n" +
-                " 13 - Search Major Reqs";
+                " 13 - Search Major Reqs" +
+                " 14 - View Friend's Schedule";
         System.out.println("Welcome to Class Planner\n");
 
         while (option != 0) {
@@ -170,7 +171,7 @@ public class StudentUI {
                     register();
                 }
             } else {
-                option = uiUtils.getIntOption(scanner, loggedInOptions, 0, 11);
+                option = uiUtils.getIntOption(scanner, loggedInOptions, 0, 14);
 
                 if (option == 1) {
                     Major m = student.getMajor();
@@ -446,7 +447,7 @@ public class StudentUI {
                     System.out.println("Courses you need to complete in this major:");
                     for(Course c : courses)
                         System.out.println(c);
-                } else if (option == 12) {
+                } else if (option == 14) {
                     System.out.println(student.friendsListToString());
                     System.out.println("Enter username:");
                     boolean exists = false;
