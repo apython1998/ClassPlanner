@@ -29,16 +29,9 @@ public class CombinedUI {
         System.out.println("Welcome to Class Planner\n");
         while (option != 0) {
             System.out.println("Are you a Student or a Faculty Member?");
-            System.out.print("Please Choose one\n" +
-                    startupOptions +
-                    "Enter Selection Here: ");
-            option = scanner.nextInt();
+            option = uiUtils.getIntOption(scanner, startupOptions, 0, 2);
             while (option < 0 || option > 2) {
-                System.out.print("Invalid Selection\n" +
-                        "Please choose one\n" +
-                        startupOptions +
-                        "Enter Selection Here: ");
-                option = scanner.nextInt();
+                option = uiUtils.getIntOption(scanner, startupOptions, 0, 2);
             }
             if (option == 1) {
                 StudentAPI studentAPI = new StudentAPI(directory);
@@ -51,10 +44,6 @@ public class CombinedUI {
             }
         }
     }
-
-
-
-
 
     /************************** GETTERS & SETTERS ************************/
     public Directory getDirectory() {
