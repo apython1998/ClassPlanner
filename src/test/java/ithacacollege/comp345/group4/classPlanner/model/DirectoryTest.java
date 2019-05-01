@@ -4,6 +4,7 @@ import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -128,7 +129,7 @@ class DirectoryTest {
         d.registerStudent("jon", "shmon");
         Student s = d.getStudents().get("jon");
         s.changeMajor(fakeMajor);
-        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 15);
+        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 15, new ArrayList<Course>());
         String planStr = d.scheduleToStr(plan);
         System.out.println(planStr);
 

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import javax.management.InstanceAlreadyExistsException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -148,6 +149,29 @@ public class StudentTest {
         assertThrows(InvalidArgumentException.class, ()-> student.addToTranscript(null, "", true, false));
         assertThrows(InvalidArgumentException.class, ()-> student.addToTranscript(course1, null, true, false));
         assertThrows(InvalidArgumentException.class, ()-> student.addToTranscript(null, null, true, false));
+    }
+
+    @Test
+    void changeMajorTest() throws IOException  {
+        Student student = new Student("test", "abc", null, null);
+        List<Major> allMajors = JsonUtil.listFromJsonFile("src/main/resources/majorCatalogWithCourseObjects.json", Major.class);
+        HashMap<String, Major> majorCatalog = new HashMap<>();
+        for (Major major : allMajors) {
+            majorCatalog.put(major.getTitle() + " " + major.getType(), major);
+        }
+
+        Major cs = majorCatalog.get("Computer Science Major BS");
+        Major physics = majorCatalog.get("Physics Major BS");
+
+        student.changeMajor(cs);
+
+        assertEquals(student.getMajor(), cs);
+
+        student.changeMajor(physics);
+
+        assertNotEquals(student.getMajor(), cs);
+
+        assertEquals(student.getMajor(), physics);
     }
 
     @Test
