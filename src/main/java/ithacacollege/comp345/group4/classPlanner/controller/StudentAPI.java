@@ -101,6 +101,10 @@ public class StudentAPI {
         }
     }
 
+    public List<Course> searchMajorRequirements(String username, String major){
+        return directory.searchMajorReqs(username, major);
+    }
+
     public Schedule genSchedule(String name) { return directory.genSchedule(name); }
 
     public boolean addFriend(String studentName, String friendName) {

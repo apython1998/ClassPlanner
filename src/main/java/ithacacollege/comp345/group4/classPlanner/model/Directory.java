@@ -206,6 +206,25 @@ public class Directory {
     }
 
     /**
+     * Gets a list of courses needed for a user to complete a major.
+     * @param name The username of the user
+     * @param major The major they want data on
+     * @return List of courses in major which they still need to complete
+     */
+    public List<Course> searchMajorReqs(String name, String major){
+        Student student = students.get(name);
+        Major newMajor = majorDirectory.get(major);
+        List<Course> courseList = new ArrayList<>(newMajor.getRequirements());
+        for(int i = 0; i < courseList.size(); i++){
+            if(student.getTakenCourses().contains(courseList.get(i))) {
+                courseList.remove(i);
+                i--;//To prevent skipping an element after removal
+            }
+        }
+        return courseList;
+    }
+
+    /**
      * Algorithm for generating a course plan for College based on a major:
      * Get the student, and then their major. Add the course requirements from that major to a list
      * of Courses, courseReqs. Add all of the prerequisites for the courses in courseReqs. Once accumulated
@@ -488,6 +507,7 @@ public class Directory {
         }
         return count;
     }
+
 
     /**************************** GETTERS AND SETTERS     ****************************/
     public Map<String, Student> getStudents() {
