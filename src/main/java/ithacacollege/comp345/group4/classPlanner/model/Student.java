@@ -55,6 +55,7 @@ public class Student extends User {
         this.transcript = new Transcript();
         this.friendRequestList = new ArrayList<>();
         this.friendsList = new ArrayList<>();
+        this.invitations = new ArrayList<>();
     }
 
     public int getID() {
