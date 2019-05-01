@@ -114,26 +114,8 @@ public class StudentAPITest {
         d.setMajorDirectory(majorCatalog);
         StudentAPI studentAPI = new StudentAPI(d);
 
-        assertTrue(studentAPI.validateMajor("computer science major ba"));
-        assertTrue(studentAPI.validateMajor("Computer science major ba"));
-        assertTrue(studentAPI.validateMajor("computer Science major ba"));
-        assertTrue(studentAPI.validateMajor("Computer Science major ba"));
-        assertTrue(studentAPI.validateMajor("computer science major Ba"));
-        assertTrue(studentAPI.validateMajor("Computer science major Ba"));
-        assertTrue(studentAPI.validateMajor("computer Science major Ba"));
-        assertTrue(studentAPI.validateMajor("Computer Science major Ba"));
-        assertTrue(studentAPI.validateMajor("computer science major bA"));
-        assertTrue(studentAPI.validateMajor("Computer science major bA"));
-        assertTrue(studentAPI.validateMajor("computer Science major bA"));
-        assertTrue(studentAPI.validateMajor("Computer Science major bA"));
-        assertTrue(studentAPI.validateMajor("computer science major BA"));
-        assertTrue(studentAPI.validateMajor("Computer science major BA"));
-        assertTrue(studentAPI.validateMajor("computer Science major BA"));
-        assertTrue(studentAPI.validateMajor("Computer Science major BA"));
+        assertTrue(studentAPI.validateMajor("Computer Science Major BA"));
         assertFalse(studentAPI.validateMajor("Wine Tasting"));
-
-        assertThrows(InvalidArgumentException.class, ()->studentAPI.validateMajor(null));
-        assertThrows(InvalidArgumentException.class, ()->studentAPI.validateMajor(" "));
     }
 
     @Test

@@ -86,4 +86,23 @@ public class uiUtils {
         }
     }
 
+    public static String cleanMajorString(String major) {
+        if (major == null || major.trim().equals("")) {
+            throw new InvalidArgumentException("Major to check must not be null or empty!");
+        }
+        major = major.toLowerCase();
+        String[] majorTokenized = major.trim().split(" ");
+        String cleanMajor = major;
+        try {
+            for (int i=0; i < majorTokenized.length-1; i++) {
+                majorTokenized[i] = Character.toUpperCase(majorTokenized[i].charAt(0)) + majorTokenized[i].substring(1);
+            }
+            majorTokenized[majorTokenized.length-1] = majorTokenized[majorTokenized.length-1].toUpperCase();
+            cleanMajor = String.join(" ", majorTokenized);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("");
+        }
+        return cleanMajor;
+    }
+
 }
