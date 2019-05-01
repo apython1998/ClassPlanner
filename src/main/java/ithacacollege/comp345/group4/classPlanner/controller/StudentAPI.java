@@ -111,6 +111,9 @@ public class StudentAPI {
         directory.acceptFriendRequest(studentName, friendName, confirm);
     }
 
+    public String getFriendsSchedule(String studentName, String friendName) {
+        return directory.getFriendsSchedule(studentName, friendName);
+    }
 
     public boolean addPastCourse(String name, Course course){
         return directory.addPastCourse(name, course);
