@@ -512,6 +512,13 @@ public class Directory {
         this.faculty = faculty;
     }
 
+    public String getFriendsSchedule(String studentName, String friendName) {
+        if (!students.containsKey(studentName) || !students.containsKey(friendName)) {
+            throw new IllegalArgumentException("There is no such student in the directory");
+        }
+        return null;
+    }
+
     public void addSection(String courseNum, int id, String classTimes) {
 
     }
