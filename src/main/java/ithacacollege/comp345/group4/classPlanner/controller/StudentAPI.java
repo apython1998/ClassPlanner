@@ -115,6 +115,9 @@ public class StudentAPI {
         directory.acceptFriendRequest(studentName, friendName, confirm);
     }
 
+    public String getFriendsSchedule(String studentName, String friendName) {
+        return directory.getFriendsSchedule(studentName, friendName);
+    }
     public void acceptCourseInvitation(String name, Course c){
         directory.getStudents().get(name).removeInvitation(c);
         directory.getStudents().get(name).addPlannedCourses(c);

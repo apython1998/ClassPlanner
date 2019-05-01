@@ -58,7 +58,7 @@ public class Section extends Course {
         this.year = year;
     }
 
-    Section(Course course, int num, String crn, String year, String courseTimes) {
+    public Section(Course course, int num, String crn, String year, String courseTimes) {
         super(course.getName(), course.getCredits(), course.getCourseNum(), course.getSemestersOffered(), course.getFrequencyOffered(), course.getprereqs(), course.getChooseOnes());
         this.num = num;
         this.crn = crn;

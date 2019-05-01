@@ -25,7 +25,7 @@ public class ScheduleTest {
         //throws exception when courses passed in doesn't have a section associated with it
         final Map<String, List<Section>> sectionList2 = d.getSectionCatalog();
         final List<Course> courses2 = new ArrayList<>(d.getCourseCatalog().values());
-        assertThrows(NoSuchElementException.class, ()-> new Schedule(sectionList2, courses2));
+        assertThrows(IllegalArgumentException.class, ()-> new Schedule(sectionList2, courses2));
 
         //throws exception when all sections of a course conflicts has a time conflict
         final Map<String, List<Section>> sectionList3 = new HashMap<>();

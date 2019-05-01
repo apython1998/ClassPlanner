@@ -25,16 +25,18 @@ public class Schedule {
                 throw new NoSuchElementException("ERROR: Course not found in section catalog");
             }
             Section currSection = null;
+            boolean availability = false;
             List<Section> sectionList = sections.get(name);
             Collections.shuffle(sectionList);
             for (Section s: sectionList) {
                 currSection = s;
                 if (checkAvailability(s)) {
                     this.courses.add(s);
+                    availability = true;
                     break;
                 }
             }
-            if (currSection != null && !checkAvailability(currSection)) {
+            if (currSection == null || !availability) {
                 throw new IllegalArgumentException("ERROR: Could not find a free section for given course");
             }
 //            int i = 0;
