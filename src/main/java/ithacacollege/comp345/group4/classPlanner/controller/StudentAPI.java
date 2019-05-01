@@ -118,6 +118,14 @@ public class StudentAPI {
     public String getFriendsSchedule(String studentName, String friendName) {
         return directory.getFriendsSchedule(studentName, friendName);
     }
+    public void acceptCourseInvitation(String name, Course c){
+        directory.getStudents().get(name).removeInvitation(c);
+        directory.getStudents().get(name).addPlannedCourses(c);
+    }
+
+    public void declineCourseInvitation(String name, Course c){
+        directory.getStudents().get(name).removeInvitation(c);
+    }
 
     public boolean addPastCourse(String name, Course course){
         return directory.addPastCourse(name, course);

@@ -26,6 +26,8 @@ public class Student extends User {
 
     private Transcript transcript;
 
+    private List<Course> invitations;
+
     public Student() {
     }
 
@@ -291,5 +293,17 @@ public class Student extends User {
 
     public void setPlan(Map<String, List<Course>> plan) {
         this.plan = plan;
+    }
+
+    public void addInvitation(Course c){
+        invitations.add(c);
+    }
+
+    public void removeInvitation(Course c){
+        invitations.remove(c);
+    }
+
+    public List<Course> getInvitations(){
+        return invitations;
     }
 }
