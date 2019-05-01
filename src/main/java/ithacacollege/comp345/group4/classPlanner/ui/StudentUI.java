@@ -158,8 +158,8 @@ public class StudentUI {
                 " 10 - View Friends List\n" +
                 " 11 - View Pending Friend Requests\n" +
                 " 12 - View Course Invitations\n" +
-                " 13 - Search Major Reqs" +
-                " 14 - View Friend's Schedule";
+                " 13 - Search Major Reqs\n" +
+                " 14 - View Friend's Schedule\n";
         System.out.println("Welcome to Class Planner\n");
 
         while (option != 0) {
