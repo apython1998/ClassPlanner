@@ -147,7 +147,7 @@ public class Directory {
         }
         catch(IOException e){e.printStackTrace();}
         catch(ParseException e){e.printStackTrace();}
-        majorDirectory.put(newMajor.getTitle(), newMajor);
+        majorDirectory.put(newMajor.getTitle() + " " + newMajor.getType(), newMajor);
     }
 
     public List<Course> viewCurrentCourses(String name){

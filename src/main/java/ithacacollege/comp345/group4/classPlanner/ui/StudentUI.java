@@ -48,6 +48,7 @@ public class StudentUI {
 
         System.out.println("Please Enter a Major or 'None': ");
         major = scanner.nextLine();
+        major = uiUtils.cleanMajorString(major);
         while (!studentAPI.validateMajor(major) && !major.toLowerCase().equals("none")) {
             System.out.println("Major does not exist!");
             System.out.println("Please Enter a Major or 'None': ");
@@ -202,10 +203,12 @@ public class StudentUI {
                     System.out.println("You're currently enrolled in the " + student.getMajor() + " program.\n" +
                             "Please enter your desired major here: ");
                     String major = scanner.nextLine();
+                    major = uiUtils.cleanMajorString(major);
                     while (!studentAPI.validateMajor(major) && !major.toLowerCase().equals("quit")){
                         System.out.println("I'm sorry. That major is not currently supported.");
                         System.out.println("Please Enter a different Major or 'Quit': ");
                         major = scanner.nextLine();
+                        major = uiUtils.cleanMajorString(major);
                     }
                     if(!major.toLowerCase().equals("quit")) {
                         studentAPI.setStudentMajor(student.getUsername(), major);
@@ -437,10 +440,12 @@ public class StudentUI {
                     scanner.nextLine();//Scanner needs to throw away a newline
                     String newMajor;
                     newMajor = scanner.nextLine();
+                    newMajor = uiUtils.cleanMajorString(newMajor);
                     while (!studentAPI.validateMajor(newMajor)){
                         System.out.println("Major does not exist!");
                         System.out.println("Please Enter a Major: ");
                         newMajor = scanner.nextLine();
+                        newMajor = uiUtils.cleanMajorString(newMajor);
                     }
 
                     List<Course> courses = studentAPI.searchMajorRequirements(student.getUsername(), newMajor);
