@@ -9655,10 +9655,12 @@
     "asdf" : {
       "id" : 0,
       "username" : "asdf",
-      "passwordHash" : "$2a$10$esIdDNFMzJ32gRI5Q6.lWehZ56yIKKPpu476t6SxGVNDJPkV8cyde",
+      "passwordHash" : "$2a$10$r816daxtJFq/IGRP.ZY0QeqM/ifsliUMS/cOmqnB3MENCYKWU3GqK",
       "takenCourses" : [ ],
       "currentCourses" : [ ],
       "plannedCourses" : [ ],
+      "friendsList" : [ ],
+      "friendRequestList" : [ ],
       "major" : {
         "title" : "Computer Science Major",
         "type" : "BA",

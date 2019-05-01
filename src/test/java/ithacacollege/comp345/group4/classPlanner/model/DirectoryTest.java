@@ -4,9 +4,11 @@ import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -127,14 +129,14 @@ class DirectoryTest {
         d.registerStudent("jon", "shmon");
         Student s = d.getStudents().get("jon");
         s.changeMajor(fakeMajor);
-        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 15);
+        HashMap<String, List<Course>> plan = d.genCoursePlan("jon", Semester.Fall, 2019, 15, new ArrayList<Course>());
         String planStr = d.scheduleToStr(plan);
         System.out.println(planStr);
 
     }
 
     @Test
-    public void searchMajorReqsTest() throws IOException{
+    public void searchMajorReqsTest() throws IOException {
         Directory d = JsonUtil.fromJsonFile("src/main/resources/savedDirectory.json", Directory.class);
 
         d.registerStudent("greg", "pegleg");
@@ -146,14 +148,28 @@ class DirectoryTest {
         List<Course> reqs = d.searchMajorReqs("greg", "Mathematics Major BS");
         System.out.println(reqs);
         boolean hasLinAlg = false;
-        for(Course c : reqs){
+        for (Course c : reqs) {
             assertNotEquals(c.getCourseNum(), "MATH11100");//A class they should have, in both majors
             assertNotEquals(c.getCourseNum(), "MATH11200");//Another class they should have in both majors
             assertNotEquals(c.getCourseNum(), "COMP22000");//A class they shouldn't need but have taken
             assertNotEquals(c.getCourseNum(), "COMP31100");//A class they shouldn't need and has not taken
-            if(c.getCourseNum().equals("MATH23100"))//A class that should be in the new list of reqs
+            if (c.getCourseNum().equals("MATH23100"))//A class that should be in the new list of reqs
                 hasLinAlg = true;
         }
         assertTrue(hasLinAlg);
+    }
+
+    void addFriendTest() {
+        Directory d = new Directory();
+        d.registerStudent("dmccaffrey", "asdf");
+        d.registerStudent("apython", "asdf");
+
+        d.addFriend("dmccaffrey", "apython");
+
+        assertEquals("dmccaffrey", d.getStudents().get("apython").getFriendRequestList().get(0));
+
+        assertThrows(NoSuchElementException.class, ()-> d.addFriend("dmccaffrey", "dshane"));
+        assertThrows(NoSuchElementException.class, ()-> d.addFriend("dshane", "dmccaffrey"));
+
     }
 }
