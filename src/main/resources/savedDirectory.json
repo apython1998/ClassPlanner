@@ -10319,6 +10319,8 @@
         "prereqs" : [ "PHYS21800" ],
         "chooseOnes" : [ ]
       } ],
+      "friendsList" : null,
+      "friendRequestList" : null,
       "major" : {
         "title" : "Physics Major",
         "type" : "BS",

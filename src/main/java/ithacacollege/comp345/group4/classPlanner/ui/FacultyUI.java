@@ -90,37 +90,18 @@ public class FacultyUI {
                 " 1 - Login\n" +
                 " 2 - Register\n";
         String loggedInOptions = " 0 - Quit\n" +
-                " 1 - Invite student to course\n";
+                " 1 - Invite student to course\n" +
+                " 2 - View interest in course\n";
         while (option != 0) {
             if (faculty == null) {
-                System.out.print("Please choose one\n" +
-                        nullFacultyOptions +
-                        "Enter Selection Here: ");
-                option = scanner.nextInt();
-                while (option < 0 || option > 2) {
-                    System.out.print("Invalid Selection\n" +
-                            "Please choose one\n" +
-                            nullFacultyOptions +
-                            "Enter Selection Here: ");
-                    option = scanner.nextInt();
-                }
+                option = uiUtils.getIntOption(scanner, nullFacultyOptions, 0, 2);
                 if (option == 1) {
                     faculty = login();
                 } else if (option == 2) {
                     register();
                 }
             } else {
-                System.out.print("Please choose one\n" +
-                        loggedInOptions +
-                        "Enter Selection Here: ");
-                option = scanner.nextInt();
-                while (option < 0 || option > 6) {
-                    System.out.print("Invalid Selection\n" +
-                            "Please Choose One\n" +
-                            loggedInOptions +
-                            "Enter Selection Here: ");
-                    option = scanner.nextInt();
-                }
+                option = uiUtils.getIntOption(scanner, loggedInOptions, 0, 2);
                 if (option == 1) {
                     System.out.println("Enter the username of a student to invite:");
                     String studentUsername;
@@ -141,6 +122,19 @@ public class FacultyUI {
                             System.out.println("This course does not exist. PLease enter another:");
                     }
                     facultyAPI.inviteStudentToCourse(faculty.getUsername(), s, c);
+                }
+                else if(option == 2){
+                    System.out.println("Enter a course to view interest on:");
+                    String courseNum;
+                    Course c = null;
+                    while(c == null){
+                        courseNum = scanner.next();
+                        c = facultyAPI.getDirectory().getCourseCatalog().get(courseNum);
+                        if(c == null)
+                            System.out.println("This course does not exist. PLease enter another:");
+                    }
+                    int interestCount = facultyAPI.viewCourseInterest(c);
+                    System.out.println(interestCount + " students have shown interest in this course.");
                 }
             }
             System.out.println("Thank you for using Class Planner");

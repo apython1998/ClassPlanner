@@ -474,6 +474,21 @@ public class Directory {
         }
     }
 
+    /**
+     * Returns the number of times the given course is present in student course plans.
+     * This is used for faculty to glean course interest
+     * @param course The course to check
+     * @return The number of times this course is found in plans
+     */
+    public int courseIsPlannedCount(Course course){
+        int count = 0;
+        for(Student s : getStudents().values()){
+            if(s.getPlannedCourses().contains(course))
+                count++;
+        }
+        return count;
+    }
+
     /**************************** GETTERS AND SETTERS     ****************************/
     public Map<String, Student> getStudents() {
         return students;

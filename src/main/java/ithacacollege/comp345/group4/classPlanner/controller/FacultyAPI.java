@@ -20,6 +20,9 @@ public class FacultyAPI {
         f.inviteStudent(student, course);
     }
 
+    public int viewCourseInterest(Course course){
+        return directory.courseIsPlannedCount(course);
+    }
     /**
      * Takes info from UI and creates a faculty account
      * @param username
