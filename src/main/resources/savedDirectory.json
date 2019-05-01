@@ -9814,6 +9814,7 @@
       "transcript" : {
         "courseList" : [ ]
       },
+      "invitations" : null,
       "schedule" : null
     },
     "dmccaffrey" : {
@@ -9834,6 +9835,7 @@
       "transcript" : {
         "courseList" : [ ]
       },
+      "invitations" : null,
       "schedule" : null
     },
     "apython" : {
@@ -9982,6 +9984,7 @@
       "transcript" : {
         "courseList" : [ ]
       },
+      "invitations" : null,
       "schedule" : null
     },
     "dshane" : {
@@ -10146,6 +10149,7 @@
       "transcript" : {
         "courseList" : [ ]
       },
+      "invitations" : null,
       "schedule" : null
     },
     "dylan" : {
@@ -10489,7 +10493,14 @@
       "schedule" : null
     }
   },
-  "faculty" : { },
+  "faculty" : {
+    "q" : {
+      "id" : 0,
+      "username" : "q",
+      "passwordHash" : "$2a$10$CciYID2GcMtb.RmS0G8Z5.Syj399F5og3UqKYQClfS.m5bFqxBxa.",
+      "coursesTeaching" : [ ]
+    }
+  },
   "courseCatalog" : {
     "ART35000" : {
       "courseNum" : "ART35000",
