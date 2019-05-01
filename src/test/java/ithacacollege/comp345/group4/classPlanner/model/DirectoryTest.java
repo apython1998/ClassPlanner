@@ -156,10 +156,10 @@ class DirectoryTest {
         Map<String, Course> courseMap = new HashMap<>();
         Map<String, List<Section>> sectionMap = new HashMap<>();
 
-        String courseTimes1 = "MWF 9:00-9:50, TR 8:00-9:15";
-        String courseTimes2 = "MWF 10:00-10:50, TR 9:25-10:40";
-        String courseTimes3 = "MWF 11:00-11:50, TR 10:50-12:05";
-        String courseTimes4 = "MWF 12:00-12:50, TR 2:35-3:50";
+        String courseTimes1 = "MWF 9:00-9:50,TR 8:00-9:15";
+        String courseTimes2 = "MWF 10:00-10:50,TR 9:25-10:40";
+        String courseTimes3 = "MWF 11:00-11:50,TR 10:50-12:05";
+        String courseTimes4 = "MWF 12:00-12:50,TR 2:35-3:50";
         for (Course c: allCourses) {
             List<Section> thisSectionList = new ArrayList<>();
             courseMap.put(c.getCourseNum(), c);
@@ -176,14 +176,17 @@ class DirectoryTest {
             sectionMap.put(c.getCourseNum(), thisSectionList);
         }
 
-        List<Major> allMajors = JsonUtil.listFromJsonFile("src/main/resources/majorCatalog.json", Major.class);
+        List<Major> allMajors = JsonUtil.listFromJsonFile("src/main/resources/majorCatalogWithCourseObjects.json", Major.class);
         Map<String, Major> majorMap = new HashMap<>();
         for (Major m: allMajors) {
-            majorMap.put(m.getTitle(), m);
+            majorMap.put(m.getTitle() + " " + m.getType(), m);
         }
 
         d.setCourseCatalog(courseMap);
         d.setMajorDirectory(majorMap);
+
+        List<Course> choosesOne = new ArrayList<>();
+        choosesOne.add(d.getCourseCatalog().get("MATH11100"));
 
         Student student1 = new Student("dmccaffrey", "asdf", d.getMajorDirectory().get("Computer Science Major BS"), null);
         Student student2 = new Student("apython", "asdf", d.getMajorDirectory().get("Computer Science Major BA"), null);
@@ -195,17 +198,20 @@ class DirectoryTest {
 
         d.getStudents().put("apython", student2);
 
-        //throws when student hasn't yet created a schedule
-        assertThrows(NullPointerException.class, ()-> d.getFriendsSchedule("dmccaffrey", "apython"));
-
-        d.genCoursePlan("dmccaffrey", Semester.Fall, 2019, 15, null);
-        student1.setSchedule(d.genSchedule("dmccaffrey"));
-
         //throws when students aren't friends
         assertThrows(IllegalArgumentException.class, ()-> d.getFriendsSchedule("dmccaffrey", "apython"));
 
         d.addFriend("dmccaffrey", "apython");
         d.addFriend("apython", "dmccaffrey");
+        d.setSectionCatalog(sectionMap);
+
+        //throws when student hasn't yet created a schedule
+        assertThrows(NullPointerException.class, ()-> d.getFriendsSchedule("dmccaffrey", "apython"));
+
+        student1.changeMajor(d.getMajorDirectory().get("Computer Science Major BS"));
+        student1.setPlan(d.genCoursePlan("dmccaffrey", Semester.Fall, 2019, 15, choosesOne));
+        student1.setSchedule(d.genSchedule("dmccaffrey"));
+
 
         System.out.println(d.getFriendsSchedule("apython", "dmccaffrey"));
     }

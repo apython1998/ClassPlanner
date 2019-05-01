@@ -19,6 +19,7 @@ public class Student extends User {
 
     private Semester semester;
     private int year;
+    private Map<String, List<Course>> plan;
 
     private Major major;
     private List<Major> minors;
@@ -282,5 +283,13 @@ public class Student extends User {
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+    public Map<String, List<Course>> getPlan() {
+        return plan;
+    }
+
+    public void setPlan(Map<String, List<Course>> plan) {
+        this.plan = plan;
     }
 }

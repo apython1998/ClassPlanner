@@ -268,8 +268,12 @@ public class Directory {
     }
 
     public Schedule genSchedule(String studentID) {
-        HashMap<String, List<Course>> plan = genCoursePlan(studentID, Semester.Spring, 2019, 12, new ArrayList<Course>());
-        return new Schedule(sectionCatalog, plan.get("Fall2019"));
+        Student student = students.get(studentID);
+        if (student.getPlan() == null) {
+            HashMap<String, List<Course>> plan = genCoursePlan(studentID, Semester.Spring, 2019, 12, new ArrayList<Course>());
+            return new Schedule(sectionCatalog, plan.get("Fall2019"));
+        }
+        return new Schedule(sectionCatalog, student.getPlan().get("Fall2019"));
     }
 
     public static String scheduleToStr(HashMap<String, List<Course>> plan){
@@ -514,9 +518,17 @@ public class Directory {
 
     public String getFriendsSchedule(String studentName, String friendName) {
         if (!students.containsKey(studentName) || !students.containsKey(friendName)) {
-            throw new IllegalArgumentException("There is no such student in the directory");
+            throw new NoSuchElementException("There is no such student in the directory");
         }
-        return null;
+        Student student = students.get(studentName);
+        Student friend = students.get(friendName);
+        if (!student.getFriendsList().contains(friendName)) {
+            throw new IllegalArgumentException("You are not friends with that student");
+        }
+        if (friend.getSchedule() == null) {
+            throw new NullPointerException("Student hasn't yet created a schedule");
+        }
+        return friend.getSchedule().display();
     }
 
     public void addSection(String courseNum, int id, String classTimes) {
