@@ -126,14 +126,13 @@ public class StudentUI {
     public List<Course> addChooseOnes(List<List<Course>> chooseOnes){
         List<Course> returnCourses = new ArrayList<>();
         System.out.println("There are " + chooseOnes.size() + " sets of courses that are your choice.");
-        Scanner in = new Scanner(System.in);
         for (List<Course> chooseOne : chooseOnes) {
-            System.out.println("\tSelect one of the Following:");
+            String optionsText = "\tSelect one of the Following:\n";
             for (int i = 0; i < chooseOne.size(); i++){
-                System.out.println("\t\t" + (i + 1) + ". " +  chooseOne.get(i).toString());
+                optionsText += ("\t\t" + (i + 1) + ". " +  chooseOne.get(i).toString()) + "\n";
             }
-            System.out.print("Selection: ");
-            int choiceIdx = in.nextInt() - 1;
+            optionsText += ("Selection: ");
+            int choiceIdx = uiUtils.getIntOption(scanner, optionsText, 1, chooseOne.size()) - 1;
             returnCourses.add(chooseOne.get(choiceIdx));
             System.out.println();
         }
