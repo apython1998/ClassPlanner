@@ -9655,12 +9655,13 @@
     "asdf" : {
       "id" : 0,
       "username" : "asdf",
-      "passwordHash" : "$2a$10$r816daxtJFq/IGRP.ZY0QeqM/ifsliUMS/cOmqnB3MENCYKWU3GqK",
+      "passwordHash" : "$2a$10$aKKX4ZtRft7NNpG1oThOCeKWLb7dQ1ah4j47rgWFoaa3IWjobC5IW",
       "takenCourses" : [ ],
       "currentCourses" : [ ],
       "plannedCourses" : [ ],
       "friendsList" : [ ],
       "friendRequestList" : [ ],
+      "plan" : null,
       "major" : {
         "title" : "Computer Science Major",
         "type" : "BA",
@@ -9798,6 +9799,7 @@
       "transcript" : {
         "courseList" : [ ]
       },
+      "invitations" : null,
       "schedule" : null
     }
   },

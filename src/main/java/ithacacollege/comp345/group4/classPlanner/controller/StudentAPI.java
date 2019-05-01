@@ -72,6 +72,11 @@ public class StudentAPI {
         return directory.genCoursePlan(student, semester, year, numCredits, chooseOnes);
     }
 
+    /**
+     * Converts the string to camel case no matter what, but keeps BS/BA/BFA/etc. capitalized
+     * @param major
+     * @return
+     */
     public boolean validateMajor(String major) {
         return directory.getMajorDirectory().containsKey(major);
     }
