@@ -2,10 +2,7 @@ package ithacacollege.comp345.group4.classPlanner.model;
 
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class Schedule {
     private List<Section> courses;
@@ -28,7 +25,9 @@ public class Schedule {
                 throw new NoSuchElementException("ERROR: Course not found in section catalog");
             }
             Section currSection = null;
-            for (Section s: sections.get(name)) {
+            List<Section> sectionList = sections.get(name);
+            Collections.shuffle(sectionList);
+            for (Section s: sectionList) {
                 currSection = s;
                 if (checkAvailability(s)) {
                     this.courses.add(s);
