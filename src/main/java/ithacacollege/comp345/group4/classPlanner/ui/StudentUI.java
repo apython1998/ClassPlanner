@@ -400,6 +400,24 @@ public class StudentUI {
                     } else {
                         System.out.println(list);
                     }
+                } else if (option == 12) {
+                    System.out.println(student.friendsListToString());
+                    System.out.println("Enter username:");
+                    boolean exists = false;
+                    String friendName = "";
+                    while (!exists) {
+                        friendName = scanner.next();
+                        if (!studentAPI.getDirectory().getStudents().containsKey(friendName)) {
+                            System.out.println("Not a valid username. Try again:");
+                        } else {
+                            exists = true;
+                        }
+                    }
+                    try {
+                        System.out.println(studentAPI.getFriendsSchedule(student.getUsername(), friendName));
+                    } catch (Exception e) {
+                        e.getMessage();
+                    }
                 }
             }
         }
