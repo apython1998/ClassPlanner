@@ -2,6 +2,7 @@ package ithacacollege.comp345.group4.classPlanner.controller;
 
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
 import ithacacollege.comp345.group4.classPlanner.model.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -12,6 +13,20 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StudentAPITest {
+
+    Map<String, Major> majorCatalog;
+
+    @BeforeEach
+    void setup() throws IOException {
+        /**
+         * Load the Majors from a JSON file using JSONUtil
+         */
+        List<Major> allMajors = JsonUtil.listFromJsonFile("src/main/resources/majorCatalogWithCourseObjects.json", Major.class);
+        majorCatalog = new HashMap<>();
+        for (Major major : allMajors) {
+            majorCatalog.put(major.getTitle() + " " + major.getType(), major);
+        }
+    }
 
     @Test
     void registerTest() {
@@ -69,12 +84,12 @@ public class StudentAPITest {
     @Test
     void setStudentMajorTest(){
         Directory d = new Directory();
-        d.uploadMajor("src/test/resources/TestMajorReqs.json");
+        d.setMajorDirectory(majorCatalog);
         StudentAPI studentAPI = new StudentAPI(d);
         studentAPI.register("username", "password");
 
-        studentAPI.setStudentMajor("username", "Computer Science");
-        assertEquals(d.getStudents().get("username").getMajor(), d.getMajorDirectory().get("Computer Science"));
+        studentAPI.setStudentMajor("username", "Computer Science Major BA");
+        assertEquals(d.getStudents().get("username").getMajor(), d.getMajorDirectory().get("Computer Science Major BA"));
 
         assertThrows(InvalidArgumentException.class, ()-> studentAPI.setStudentMajor("username", "Pole Vaulting"));
         assertThrows(InvalidArgumentException.class, ()-> studentAPI.setStudentMajor("wrong name", "Computer Science"));
@@ -83,23 +98,18 @@ public class StudentAPITest {
     @Test
     void viewMajorRequirementsTest(){
         Directory d = new Directory();
-        d.uploadMajor("src/test/resources/TestMajorReqs.json");
+        d.setMajorDirectory(majorCatalog);
         StudentAPI studentAPI = new StudentAPI(d);
         studentAPI.register("username", "password");
-        studentAPI.setStudentMajor("username", "Computer Science");
+        studentAPI.setStudentMajor("username", "Computer Science Major BA");
 
 
-        assertEquals(studentAPI.viewMajorRequirements("Computer Science"), d.getMajorDirectory().get("Computer Science").getRequirements());
+        assertEquals(studentAPI.viewMajorRequirements("Computer Science Major BA"), d.getMajorDirectory().get("Computer Science Major BA").getRequirements());
         assertThrows(InvalidArgumentException.class, ()-> studentAPI.viewMajorRequirements("Gator Wrangling"));
     }
 
     @Test
     void validateMajorTest() throws IOException {
-        List<Major> allMajors = JsonUtil.listFromJsonFile("src/main/resources/majorCatalogWithCourseObjects.json", Major.class);
-        Map<String, Major> majorCatalog = new HashMap<>();
-        for (Major major : allMajors) {
-            majorCatalog.put(major.getTitle() + " " + major.getType(), major);
-        }
         Directory d = new Directory();
         d.setMajorDirectory(majorCatalog);
         StudentAPI studentAPI = new StudentAPI(d);
