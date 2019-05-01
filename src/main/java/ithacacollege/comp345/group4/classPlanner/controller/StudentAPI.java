@@ -72,8 +72,27 @@ public class StudentAPI {
         return directory.genCoursePlan(student, semester, year, numCredits, chooseOnes);
     }
 
+    /**
+     * Converts the string to camel case no matter what, but keeps BS/BA/BFA/etc. capitalized
+     * @param major
+     * @return
+     */
     public boolean validateMajor(String major) {
-        return directory.getMajorDirectory().containsKey(major);
+        if (major == null || major.trim().equals("")) {
+            throw new InvalidArgumentException("Major to check must not be null or empty!");
+        }
+        String[] majorTokenized = major.trim().split(" ");
+        String cleanMajor = major;
+        try {
+            for (int i=0; i < majorTokenized.length-1; i++) {
+                majorTokenized[i] = Character.toUpperCase(majorTokenized[i].charAt(0)) + majorTokenized[i].substring(1);
+            }
+            majorTokenized[majorTokenized.length-1] = majorTokenized[majorTokenized.length-1].toUpperCase();
+            cleanMajor = String.join(" ", majorTokenized);
+        } catch (IndexOutOfBoundsException e) {
+            //Do nothing
+        }
+        return directory.getMajorDirectory().containsKey(cleanMajor);
     }
 
     public List<Course> viewTakenCourses(String name){

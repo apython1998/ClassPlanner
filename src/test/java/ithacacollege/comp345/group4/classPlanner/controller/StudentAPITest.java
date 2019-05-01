@@ -1,10 +1,13 @@
 package ithacacollege.comp345.group4.classPlanner.controller;
 
 import ithacacollege.comp345.group4.classPlanner.InvalidArgumentException;
-import ithacacollege.comp345.group4.classPlanner.model.Course;
-import ithacacollege.comp345.group4.classPlanner.model.Directory;
-import ithacacollege.comp345.group4.classPlanner.model.Student;
+import ithacacollege.comp345.group4.classPlanner.model.*;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -91,13 +94,36 @@ public class StudentAPITest {
     }
 
     @Test
-    void validateMajorTest(){
+    void validateMajorTest() throws IOException {
+        List<Major> allMajors = JsonUtil.listFromJsonFile("src/main/resources/majorCatalogWithCourseObjects.json", Major.class);
+        Map<String, Major> majorCatalog = new HashMap<>();
+        for (Major major : allMajors) {
+            majorCatalog.put(major.getTitle() + " " + major.getType(), major);
+        }
         Directory d = new Directory();
-        d.uploadMajor("src/test/resources/TestMajorReqs.json");
+        d.setMajorDirectory(majorCatalog);
         StudentAPI studentAPI = new StudentAPI(d);
 
-        assertTrue(studentAPI.validateMajor("Computer Science"));
+        assertTrue(studentAPI.validateMajor("computer science major ba"));
+        assertTrue(studentAPI.validateMajor("Computer science major ba"));
+        assertTrue(studentAPI.validateMajor("computer Science major ba"));
+        assertTrue(studentAPI.validateMajor("Computer Science major ba"));
+        assertTrue(studentAPI.validateMajor("computer science major Ba"));
+        assertTrue(studentAPI.validateMajor("Computer science major Ba"));
+        assertTrue(studentAPI.validateMajor("computer Science major Ba"));
+        assertTrue(studentAPI.validateMajor("Computer Science major Ba"));
+        assertTrue(studentAPI.validateMajor("computer science major bA"));
+        assertTrue(studentAPI.validateMajor("Computer science major bA"));
+        assertTrue(studentAPI.validateMajor("computer Science major bA"));
+        assertTrue(studentAPI.validateMajor("Computer Science major bA"));
+        assertTrue(studentAPI.validateMajor("computer science major BA"));
+        assertTrue(studentAPI.validateMajor("Computer science major BA"));
+        assertTrue(studentAPI.validateMajor("computer Science major BA"));
+        assertTrue(studentAPI.validateMajor("Computer Science major BA"));
         assertFalse(studentAPI.validateMajor("Wine Tasting"));
+
+        assertThrows(InvalidArgumentException.class, ()->studentAPI.validateMajor(null));
+        assertThrows(InvalidArgumentException.class, ()->studentAPI.validateMajor(" "));
     }
 
     @Test
