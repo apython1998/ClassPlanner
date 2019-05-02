@@ -70,3 +70,9 @@ There are no new updates to the classes used in this use case.
 
 #### Sprint 3:
 Sprint Goal: Add support for faculty, fix bugs, and improve student functionality.
+
+Sprint 3 Review Demo Script:
+https://docs.google.com/document/d/1vWsowoQiqNLIVxFJEcm0_lJhqfbxqA0KeHYr3UceCBw/edit?usp=sharing
+
+Sprint 3 Retrospective Document:
+https://docs.google.com/document/d/1UrFYbD6odam3LeqvFBF-eW3eNaOCFV6NYMxZBjvCjGo/edit?usp=sharing

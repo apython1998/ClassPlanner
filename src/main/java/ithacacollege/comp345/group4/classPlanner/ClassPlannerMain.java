@@ -1,7 +1,8 @@
 package ithacacollege.comp345.group4.classPlanner;
 
 
-import ithacacollege.comp345.group4.classPlanner.model.*;
+import ithacacollege.comp345.group4.classPlanner.model.Directory;
+import ithacacollege.comp345.group4.classPlanner.model.JsonUtil;
 import ithacacollege.comp345.group4.classPlanner.ui.CombinedUI;
 
 import java.util.concurrent.TimeUnit;
@@ -18,6 +19,9 @@ public class ClassPlannerMain {
 //         */
 //        List<Course> allCourses = JsonUtil.listFromJsonFile("src/main/resources/courseCatalog.json", Course.class);
 //        Map<String, Course> courseCatalog = new HashMap<>();
+//        for (Course course : allCourses) {
+//            courseCatalog.put(course.getCourseNum(), course);
+//        }
 //        Map<String, List<Section>> sectionCatalog = new HashMap<>();
 //        String courseTimes1 = "MWF 9:00-9:50,TR 8:00-9:15";
 //        String courseTimes2 = "MWF 10:00-10:50,TR 9:25-10:40";
@@ -38,34 +42,6 @@ public class ClassPlannerMain {
 //
 //            sectionCatalog.put(course.getCourseNum(), thisSectionList);
 //        }
-//        /**
-//         * Load the Sections from a JSON file using JSON Util
-//         */
-//        List<Section> allSections = JsonUtil.listFromJsonFile("src/main/resources/sectionsCatalog.json", Section.class);
-//        Map<String, List<Section>> sectionCatalog = new HashMap<>();
-//        List<Section> list1 = allSections.subList(0, 2);
-//        List<Section> list2 = new ArrayList<>();
-//        Course course1 = courseCatalog.get("COMP11500");
-//        for (Section s: list1) {
-//            list2.add(s.setCourse(course1));
-//        }
-//        sectionCatalog.put("COMP11500", list2);
-//
-//        list1 = allSections.subList(2, 4);
-//        List<Section> list3 = new ArrayList<>();
-//        Course course2 = courseCatalog.get("MATH14400");
-//        for (Section s: list1) {
-//            list3.add(s.setCourse(course2));
-//        }
-//        sectionCatalog.put("MATH14400", list3);
-//
-//        list1 = allSections.subList(4, 6);
-//        List<Section> list4 = new ArrayList<>();
-//        Course course3 = courseCatalog.get("MATH11100");
-//        for (Section s: list1) {
-//            list3.add(s.setCourse(course3));
-//        }
-//        sectionCatalog.put("MATH11100", list4);
 //
 //
 //        /**
