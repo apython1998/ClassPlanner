@@ -6,11 +6,39 @@ import java.util.Scanner;
 
 public class uiUtils {
 
+    /**
+     * Min and max must be equal if there is only one option to select
+     * @param scanner
+     * @param optionsText
+     * @param min
+     * @param max
+     * @return
+     */
     public static int getIntOption(Scanner scanner, String optionsText, int min, int max) {
-        if (min >= max) {
+        if (min > max) {
             throw new InvalidArgumentException("Minimum Option must be less than the Max option");
         } else if (scanner == null || optionsText == null) {
             throw new InvalidArgumentException("Must pass in a valid scanner and string");
+        } else if (min == max) {
+            boolean valid = false;
+            int option = 0;
+            while (!valid) {
+                try {
+                    System.out.print("Please Choose One\n" +
+                            optionsText +
+                            "Enter Selection Here: ");
+                    option = scanner.nextInt();
+                    if (option == min) {
+                        valid = true;
+                    } else {
+                        System.out.println("Invalid Selection");
+                    }
+                } catch (Exception e) {
+                    System.out.println("You must enter a valid number");
+                    scanner.nextLine();
+                }
+            }
+            return option;
         } else {
             boolean valid = false;
             int option = 0;
