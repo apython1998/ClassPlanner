@@ -3,6 +3,9 @@
 
 Product Goal: The purpose of this product is to allow students to better plan their classes, and allow faculty to better organize classes based on student’s interest. 
 
+Final Retrospective (Sprint 3 Retrospective): 
+https://docs.google.com/document/d/1UrFYbD6odam3LeqvFBF-eW3eNaOCFV6NYMxZBjvCjGo/edit?usp=sharing
+
 #### Description:
 Class Planner is intended to expand on functionality offered by Degree Works. 
 It is a way for students to view more robust information regarding their future classes at Ithaca College, and create a better plan. 
