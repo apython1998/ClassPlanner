@@ -440,7 +440,7 @@ public class StudentUI {
                             System.out.print(i + ": ");
                             System.out.println(invitations.get(i));
                         }
-                        int inv = uiUtils.getIntOption(scanner, "Select an invitation:", 0, invitations.size() - 1);
+                        int inv = uiUtils.getIntOption(scanner, "Select an invitation:", 0, invitations.size()-1);
                         Course invitedCourse = invitations.get(inv);
                         System.out.println("Would you like to accept this invitation? (y/n):");
                         String confirm = "";
