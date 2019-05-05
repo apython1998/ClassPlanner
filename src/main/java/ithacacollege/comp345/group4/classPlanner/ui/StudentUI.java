@@ -46,12 +46,18 @@ public class StudentUI {
         }
         scanner.nextLine();
 
-        System.out.println("Please Enter a Major or 'None': ");
+        System.out.println("Please Enter a Major or 'None':\n" +
+                "Majors should be formatted\n" +
+                "[Major Title] \"Major\" [Type]\n" +
+                "Example: Physics Major BS");
         major = scanner.nextLine();
         major = uiUtils.cleanMajorString(major);
         while (!studentAPI.validateMajor(major) && !major.toLowerCase().equals("none")) {
             System.out.println("Major does not exist!");
-            System.out.println("Please Enter a Major or 'None': ");
+            System.out.println("Please Enter a Major or 'None':\n" +
+                    "Majors should be formatted\n" +
+                    "[Major Title] \"Major\" [Type]\n" +
+                    "Example: Physics Major BS");
             major = scanner.nextLine();
         }
         boolean registered = studentAPI.register(username, password);
@@ -201,7 +207,10 @@ public class StudentUI {
                     scanner.nextLine(); //clear buffer
 
                     System.out.println("You're currently enrolled in the " + student.getMajor() + " program.\n" +
-                            "Please enter your desired major here: ");
+                            "Please enter your desired major here or 'quit' if you no longer want to switch majors:\n"+
+                            "Majors should be formatted\n" +
+                            "[Major Title] \"Major\" [Type]\n" +
+                            "Example: Physics Major BS");
                     String major = scanner.nextLine();
                     major = uiUtils.cleanMajorString(major);
                     while (!studentAPI.validateMajor(major) && !major.toLowerCase().equals("quit")){
@@ -215,11 +224,12 @@ public class StudentUI {
                         System.out.println("You're now enrolled in the " + major + " program.");
                     }
                 } else if (option == 3) {
-                    String courseOptionsString = "1. View Past Courses\n" +
+                    String courseOptionsString = "0. Quit\n" +
+                            "1. View Past Courses\n" +
                             "2. View Current Courses\n" +
                             "3. View Planned Courses\n";
                     // TODO : Dylan View Courses
-                    int courseOp = uiUtils.getIntOption(scanner, courseOptionsString, 1, 3);
+                    int courseOp = uiUtils.getIntOption(scanner, courseOptionsString, 0, 3);
                     List<Course> viewCourses;
                     switch (courseOp) {
                         case 1:
@@ -252,82 +262,87 @@ public class StudentUI {
 
                     }
                 } else if (option == 4) {
-                    String addCourseOptionsString =  "1. Add Past Courses\n" +
+                    String addCourseOptionsString =  "0. Quit\n" +
+                            "1. Add Past Courses\n" +
                             "2. Add Current Courses\n" +
                             "3. Add Planned Courses\n";
-                    int addOp = uiUtils.getIntOption(scanner, addCourseOptionsString, 1, 3);
-                    System.out.print("Enter the department and course number for the course\n" +
-                            "Example Format: MATH11100\n" +
-                            "Department & Number: ");
-                    String name = scanner.next();
-                    Map<String, Course> catalog = studentAPI.getDirectory().getCourseCatalog();
-                    while (!catalog.containsKey(name)) {
-                        System.out.print("Course not found.\nEnter the department and course number for the course\n" +
+                    int addOp = uiUtils.getIntOption(scanner, addCourseOptionsString, 0, 3);
+                    if (addOp != 0) {
+                        System.out.print("Enter the department and course number for the course\n" +
                                 "Example Format: MATH11100\n" +
                                 "Department & Number: ");
-                        name = scanner.next();
-                    }
-                    Course course = catalog.get(name);
-                    boolean success;
-                    switch (addOp) {
-                        case 1:
-                            success = student.addTakenCourses(course);
-                            if (success) {
-                                boolean addTranscript;
-                                System.out.println("Successfully added this course to your profile");
-                                String enterGradeString = "Enter the number grade you received for this course: ";
-                                int grade = uiUtils.getGrade(scanner, enterGradeString, 0, 100);
-                                String letGrade = convertToLetterGrade(grade);
-                                if (grade >= 70) {
-                                    addTranscript = student.addToTranscript(course, letGrade, false, true);
+                        String name = scanner.next();
+                        Map<String, Course> catalog = studentAPI.getDirectory().getCourseCatalog();
+                        while (!catalog.containsKey(name)) {
+                            System.out.print("Course not found.\nEnter the department and course number for the course\n" +
+                                    "Example Format: MATH11100\n" +
+                                    "Department & Number: ");
+                            name = scanner.next();
+                        }
+                        Course course = catalog.get(name);
+                        boolean success;
+                        switch (addOp) {
+                            case 1:
+                                success = student.addTakenCourses(course);
+                                if (success) {
+                                    boolean addTranscript;
+                                    System.out.println("Successfully added this course to your profile");
+                                    String enterGradeString = "Enter the number grade you received for this course: ";
+                                    int grade = uiUtils.getGrade(scanner, enterGradeString, 0, 100);
+                                    String letGrade = convertToLetterGrade(grade);
+                                    if (grade >= 70) {
+                                        addTranscript = student.addToTranscript(course, letGrade, false, true);
+                                    } else {
+                                        addTranscript = student.addToTranscript(course, letGrade, false, false);
+                                    }
+                                    if (addTranscript) {
+                                        System.out.println("Course information has been added to your transcript.\n" +
+                                                student.getTranscript());
+                                    } else {
+                                        System.out.println("There was a problem adding this course to your transcript.");
+                                    }
                                 } else {
-                                    addTranscript = student.addToTranscript(course, letGrade, false, false);
+                                    System.out.println("There was a problem adding that course to your profile.");
                                 }
-                                if (addTranscript) {
-                                    System.out.println("Course information has been added to your transcript.\n" +
-                                            student.getTranscript());
+                                break;
+                            case 2:
+                                success = student.addCurrentCourses(course);
+                                if (success) {
+                                    boolean addTranscript;
+                                    System.out.println("Successfully added the course to your profile.");
+                                    addTranscript = student.addToTranscript(course, "", true, false);
+                                    if (addTranscript) {
+                                        System.out.println("Course information has been added to your transcript.\n" +
+                                                student.getTranscript());
+                                    } else {
+                                        System.out.println("There was a problem adding this course to your transcript.");
+                                    }
                                 } else {
-                                    System.out.println("There was a problem adding this course to your transcript.");
+                                    System.out.println("There was a problem adding that course to your profile.");
                                 }
-                            } else {
-                                System.out.println("There was a problem adding that course to your profile.");
-                            }
-                            break;
-                        case 2:
-                            success = student.addCurrentCourses(course);
-                            if (success) {
-                                boolean addTranscript;
-                                System.out.println("Successfully added the course to your profile.");
-                                addTranscript = student.addToTranscript(course, "", true, false);
-                                if (addTranscript) {
-                                    System.out.println("Course information has been added to your transcript.\n" +
-                                            student.getTranscript());
+                                break;
+                            case 3:
+                                success = student.addPlannedCourses(course);
+                                if (success) {
+                                    System.out.println("Successfully added the course to your profile.");
                                 } else {
-                                    System.out.println("There was a problem adding this course to your transcript.");
+                                    System.out.println("There was a problem adding that course to your profile.");
                                 }
-                            } else {
-                                System.out.println("There was a problem adding that course to your profile.");
-                            }
-                            break;
-                        case 3:
-                            success = student.addPlannedCourses(course);
-                            if (success) {
-                                System.out.println("Successfully added the course to your profile.");
-                            } else {
-                                System.out.println("There was a problem adding that course to your profile.");
-                            }
-                            break;
+                                break;
+                        }
                     }
                 } else if (option == 5) {
                     // TODO : Dan Input Transcript
-                    System.out.println("Please enter file path: ");
+                    System.out.println("Please enter file path or 'quit': ");
                     String file = scanner.next();
-                    try {
-                        Transcript transcript = new Transcript(file);
-                        student.setTranscript(transcript);
-                        System.out.println(student.getTranscript().toString());
-                    } catch (FileNotFoundException e) {
-                        System.out.println("Could not find file. Please try again");
+                    if (!file.toLowerCase().equals("quit")) {
+                        try {
+                            Transcript transcript = new Transcript(file);
+                            student.setTranscript(transcript);
+                            System.out.println(student.getTranscript().toString());
+                        } catch (FileNotFoundException e) {
+                            System.out.println("Could not find file. Please try again");
+                        }
                     }
                 } else if (option == 6) {
                     try {
@@ -459,32 +474,42 @@ public class StudentUI {
                     }
                 }
                 else if(option == 13) {
-                    System.out.println("Enter a prospective major: ");
+                    System.out.println("Enter a prospective major or 'quit': ");
                     scanner.nextLine();//Scanner needs to throw away a newline
                     String newMajor;
                     newMajor = scanner.nextLine();
-                    newMajor = uiUtils.cleanMajorString(newMajor);
-                    while (!studentAPI.validateMajor(newMajor)){
-                        System.out.println("Major does not exist!");
-                        System.out.println("Please Enter a Major: ");
-                        newMajor = scanner.nextLine();
+                    if (!newMajor.toLowerCase().equals("quit")) {
                         newMajor = uiUtils.cleanMajorString(newMajor);
+                        while (!studentAPI.validateMajor(newMajor)) {
+                            System.out.println("Major does not exist!");
+                            System.out.println("Please Enter a Major or 'quit': ");
+                            newMajor = scanner.nextLine();
+                            if (newMajor.toLowerCase().equals("quit")) {
+                                break;
+                            }
+                            newMajor = uiUtils.cleanMajorString(newMajor);
+                        }
+                        if (!newMajor.toLowerCase().equals("quit")) {
+                            List<Course> courses = studentAPI.searchMajorRequirements(student.getUsername(), newMajor);
+                            System.out.println("Courses you need to complete in this major:");
+                            for (Course c : courses) {
+                                System.out.println(c);
+                            }
+                        }
                     }
-
-                    List<Course> courses = studentAPI.searchMajorRequirements(student.getUsername(), newMajor);
-                    System.out.println("Courses you need to complete in this major:");
-                    for(Course c : courses)
-                        System.out.println(c);
                 } else if (option == 14) {
                     if (student.getFriendsList().isEmpty()) {
                         System.out.println("You have no friends");
                     } else {
                         System.out.println(student.friendsListToString());
-                        System.out.println("Enter username:");
+                        System.out.println("Enter username or 'quit':");
                         boolean exists = false;
                         String friendName = "";
                         while (!exists) {
                             friendName = scanner.next();
+                            if (friendName.toLowerCase().equals("quit")) {
+                                break;
+                            }
                             if (!studentAPI.getDirectory().getStudents().containsKey(friendName)) {
                                 System.out.println("Not a valid username. Try again:");
                             } else {
