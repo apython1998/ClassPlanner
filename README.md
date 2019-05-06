@@ -79,3 +79,6 @@ https://docs.google.com/document/d/1vWsowoQiqNLIVxFJEcm0_lJhqfbxqA0KeHYr3UceCBw/
 
 Sprint 3 Retrospective Document:
 https://docs.google.com/document/d/1UrFYbD6odam3LeqvFBF-eW3eNaOCFV6NYMxZBjvCjGo/edit?usp=sharing
+
+Sprint 3 Class Diagram:
+https://drive.google.com/file/d/1hCpHwbSYWoFGACVGish4WZLQsGQPHpvE/view?usp=sharing
