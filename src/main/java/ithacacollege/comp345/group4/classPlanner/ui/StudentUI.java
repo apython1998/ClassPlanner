@@ -102,6 +102,11 @@ public class StudentUI {
         return student;
     }
 
+    /**
+     * Translate number grade into a letter grade
+     * @param numGrade Grade as a number
+     * @return the converted letter grade
+     */
     private String convertToLetterGrade(int numGrade) {
         if (numGrade >= 93) {
             return "A";
@@ -146,6 +151,9 @@ public class StudentUI {
         return returnCourses;
     }
 
+    /**
+     * Endless loop to run StudentUI
+     */
     public void run() {
         Integer option = Integer.MAX_VALUE;
         Student student = null;
