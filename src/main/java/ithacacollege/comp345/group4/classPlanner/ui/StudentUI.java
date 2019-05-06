@@ -474,7 +474,10 @@ public class StudentUI {
                     }
                 }
                 else if(option == 13) {
-                    System.out.println("Enter a prospective major or 'quit': ");
+                    System.out.println("Enter a prospective major or 'quit':");
+                    System.out.println("Majors should be formatted\n" +
+                            "[Major Title] \"Major\" [Type]\n" +
+                            "Example: Physics Major BS");
                     scanner.nextLine();//Scanner needs to throw away a newline
                     String newMajor;
                     newMajor = scanner.nextLine();
