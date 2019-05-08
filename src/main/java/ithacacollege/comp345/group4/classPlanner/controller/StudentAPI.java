@@ -93,6 +93,12 @@ public class StudentAPI {
         return directory.addCurrentCourse(name, course);
     }
 
+    /**
+     * adds a transcript to a given student read in from a file
+     * @param studentName student that the transcript gets added to
+     * @param filename file path of the transcript json
+     * @throws InvalidArgumentException if the student is not in directory
+     */
     public void uploadTranscript(String studentName, String filename) {
         if (directory.getStudents().containsKey(studentName)) {
             Student student = directory.getStudents().get(studentName);

@@ -28,6 +28,10 @@ public class TranscriptEntry {
         courseComplete = courseCompleteIn;
     }
 
+    /**
+     * creates a transcript entry from a JSON file
+     * @param filename filepath
+     */
     public TranscriptEntry(String filename) {
         JSONParser jsonParser = new JSONParser();
         try (FileReader reader = new FileReader(filename)){
@@ -45,6 +49,9 @@ public class TranscriptEntry {
         }
     }
 
+    /**
+     * @return String with the course name, status and a grade
+     */
     public String toString() {
         if (course == null) {
             return "";
