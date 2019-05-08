@@ -318,6 +318,10 @@ public class Student extends User {
         invitations.remove(c);
     }
 
+    public void setInvitations(List<Course> invitations) {
+        this.invitations = invitations;
+    }
+
     public List<Course> getInvitations(){
         return invitations;
     }

@@ -3,6 +3,9 @@
 
 Product Goal: The purpose of this product is to allow students to better plan their classes, and allow faculty to better organize classes based on student’s interest. 
 
+Final Retrospective (Sprint 3 Retrospective): 
+https://docs.google.com/document/d/1UrFYbD6odam3LeqvFBF-eW3eNaOCFV6NYMxZBjvCjGo/edit?usp=sharing
+
 #### Description:
 Class Planner is intended to expand on functionality offered by Degree Works. 
 It is a way for students to view more robust information regarding their future classes at Ithaca College, and create a better plan. 
@@ -76,3 +79,8 @@ https://docs.google.com/document/d/1vWsowoQiqNLIVxFJEcm0_lJhqfbxqA0KeHYr3UceCBw/
 
 Sprint 3 Retrospective Document:
 https://docs.google.com/document/d/1UrFYbD6odam3LeqvFBF-eW3eNaOCFV6NYMxZBjvCjGo/edit?usp=sharing
+
+Sprint 3 Class Diagram:
+https://drive.google.com/file/d/1hCpHwbSYWoFGACVGish4WZLQsGQPHpvE/view?usp=sharing
+
+Sprint 3 State Diagram: There is no state diagram for this project as there are only two trivial states that are directly chosen by the user at the start of the program. The states reflect the actors in the use case diagram and we have deemed the diagram unnecessary because of its simplicity.

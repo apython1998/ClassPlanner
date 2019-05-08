@@ -12,14 +12,14 @@ public class uiUtils {
      * @param optionsText
      * @param min
      * @param max
-     * @return
+     * @return the int option
      */
     public static int getIntOption(Scanner scanner, String optionsText, int min, int max) {
         if (min > max) {
-            throw new InvalidArgumentException("Minimum Option must be less than the Max option");
+            throw new InvalidArgumentException("Minimum Option must be less than or equal to the Max option");
         } else if (scanner == null || optionsText == null) {
             throw new InvalidArgumentException("Must pass in a valid scanner and string");
-        } else if (min == max) {
+        } else if (min == max) { //Case if there is only one selection that can be made
             boolean valid = false;
             int option = 0;
             while (!valid) {
@@ -39,7 +39,7 @@ public class uiUtils {
                 }
             }
             return option;
-        } else {
+        } else { //Case if there are multiple options
             boolean valid = false;
             int option = 0;
             while (!valid) {
@@ -62,6 +62,14 @@ public class uiUtils {
         }
     }
 
+    /**
+     * Get grade input from users
+     * @param scanner
+     * @param userPrompt
+     * @param min
+     * @param max
+     * @return
+     */
     public static int getGrade(Scanner scanner, String userPrompt, int min, int max) {
         if (min >= max) {
             throw new InvalidArgumentException("Minimum Option must be less than the Max option");
@@ -88,6 +96,14 @@ public class uiUtils {
         }
     }
 
+    /**
+     * Get number of credits from a user (integers only) - half credits not supported
+     * @param scanner
+     * @param userPrompt
+     * @param min
+     * @param max
+     * @return
+     */
     public static int getIntCredits(Scanner scanner, String userPrompt, int min, int max) {
         if (min >= max) {
             throw new InvalidArgumentException("Minimum Option must be less than the Max option");
@@ -114,21 +130,26 @@ public class uiUtils {
         }
     }
 
+    /**
+     * Allow for major input to be case insensitive, but reformat to fit the system's major catalog
+     * @param major
+     * @return
+     */
     public static String cleanMajorString(String major) {
         if (major == null || major.trim().equals("")) {
             throw new InvalidArgumentException("Major to check must not be null or empty!");
         }
         major = major.toLowerCase();
-        String[] majorTokenized = major.trim().split(" ");
+        String[] majorTokenized = major.trim().split(" "); // Get rid of whitespace
         String cleanMajor = major;
         try {
-            for (int i=0; i < majorTokenized.length-1; i++) {
-                majorTokenized[i] = Character.toUpperCase(majorTokenized[i].charAt(0)) + majorTokenized[i].substring(1);
+            for (int i=0; i < majorTokenized.length-1; i++) { // For every word except the last which should be the type (BA/BS/BFA)
+                majorTokenized[i] = Character.toUpperCase(majorTokenized[i].charAt(0)) + majorTokenized[i].substring(1); //Capitalize the first letter
             }
-            majorTokenized[majorTokenized.length-1] = majorTokenized[majorTokenized.length-1].toUpperCase();
-            cleanMajor = String.join(" ", majorTokenized);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("");
+            majorTokenized[majorTokenized.length-1] = majorTokenized[majorTokenized.length-1].toUpperCase(); //Capitalize the type
+            cleanMajor = String.join(" ", majorTokenized);  // Set the clean major to what was input
+        } catch (IndexOutOfBoundsException e) {  // If there's a problem, just don't change anything and send it as wrong to the system anyway
+            System.out.println();
         }
         return cleanMajor;
     }

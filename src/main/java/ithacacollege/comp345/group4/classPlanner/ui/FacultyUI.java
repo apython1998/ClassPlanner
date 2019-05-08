@@ -83,6 +83,10 @@ public class FacultyUI {
         return faculty;
     }
 
+    /**
+     * Endless loop to run the faculty UI
+     * Pretty self-documented
+     */
     public void run() {
         Integer option = Integer.MAX_VALUE;
         Faculty faculty = null;

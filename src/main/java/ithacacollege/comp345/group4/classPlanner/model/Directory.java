@@ -43,6 +43,7 @@ public class Directory {
             return false;
         } else {
             Student newUser = new Student(username, password, null, null);
+            newUser.setInvitations(new ArrayList<>());
             students.put(newUser.getUsername(), newUser);
             return true;
         }
