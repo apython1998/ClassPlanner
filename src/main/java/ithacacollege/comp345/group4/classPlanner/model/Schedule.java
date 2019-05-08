@@ -11,6 +11,11 @@ public class Schedule {
         courses = new ArrayList<>();
     }
 
+    /**
+     * creates a new schedule from the list of courses without any time conflicts
+     * @param sections a map of a string (course num: COMP17100) to a list of sections
+     * @param courses list of courses to be added
+     */
     Schedule(Map<String, List<Section>> sections, List<Course> courses) {
         if (sections == null) {
             throw new InvalidArgumentException("ERROR: Section catalog does not exist");

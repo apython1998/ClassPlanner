@@ -186,6 +186,14 @@ public class Student extends User {
 
     }
 
+    /**
+     * takes a student and adds current student's username to their friendRequestList
+     * @param friend student object
+     * @return true if the student is added to other friend request list, false otherwise
+     * @throws InvalidArgumentException if name is already in their friend request list
+     * @throws AlreadyFriendsException if the students are already friends
+     * @throws IllegalArgumentException if the user tries to pass themself as an argument
+     */
     public boolean addFriend(Student friend) {
         if (friendRequestList.contains(friend.getUsername())) {
             friendsList.add(friend.getUsername());
@@ -206,6 +214,12 @@ public class Student extends User {
         return true;
     }
 
+    /**
+     * adds the student to the friends list or removes from pending requests
+     * @param friend student object
+     * @param confirm true to accept, false to decline
+     * @throws InvalidArgumentException if there isn't a friend request for the passed in student
+     */
     public void acceptFriendRequest(Student friend, boolean confirm) {
         if (!friendRequestList.contains(friend.getUsername())) {
             throw new InvalidArgumentException("There is no friend request for this student");

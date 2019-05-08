@@ -478,6 +478,13 @@ public class Directory {
         }
     }
 
+    /**
+     * gets each student from directory and sends friend request to second student
+     * @param studentName student sending the request
+     * @param friendName being added by the student
+     * @return true if sucessfully added
+     * @throws NoSuchElementException when either student is not in the directory
+     */
     public boolean addFriend(String studentName, String friendName) {
         if (students.containsKey(studentName) && students.containsKey(friendName)) {
             Student student = students.get(studentName);
@@ -488,6 +495,14 @@ public class Directory {
         }
     }
 
+    /**
+     * adds a given student to the friends list if true, removes from pending requests
+     * if false
+     * @param studentName student sending the request
+     * @param friendName being added by the student
+     * @param confirm true to accept, false to decline
+     * @throws NoSuchElementException when either student is not in the directory
+     */
     public void acceptFriendRequest(String studentName, String friendName, boolean confirm) {
         if (students.containsKey(studentName) && students.containsKey(friendName)) {
             Student student = students.get(studentName);
@@ -552,6 +567,15 @@ public class Directory {
         this.faculty = faculty;
     }
 
+    /**
+     * if the friend has a schedule, returns the schedule
+     * @param studentName student sending the request
+     * @param friendName being added by the student
+     * @return
+     * @throws NoSuchElementException when either student is not in the directory
+     * @throws NullPointerException if the friend hasn't created a schedule yet
+     * @throws IllegalArgumentException if the students aren't friends
+     */
     public String getFriendsSchedule(String studentName, String friendName) {
         if (!students.containsKey(studentName) || !students.containsKey(friendName)) {
             throw new NoSuchElementException("There is no such student in the directory");

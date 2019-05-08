@@ -44,7 +44,6 @@ public class Section extends Course {
     Section() {
         super();
     }
-
     Section(String name, String crn, double credits, String courseDiscAndNum, List<SemestersOffered> semesters_offered, CourseFrequency frequency_offered, List<String> preReqs, List<List<String>> chooseOnes, int num, String times, String year) {
         super(name, credits, courseDiscAndNum, semesters_offered, frequency_offered, preReqs, chooseOnes);
         this.num = num;
@@ -58,6 +57,15 @@ public class Section extends Course {
         this.year = year;
     }
 
+    /**
+     *
+     * @param course course object
+     * @param num section number as int
+     * @param crn five digit crn as String
+     * @param year semester and year as string e.g. "F2019"
+     * @param courseTimes course times as string e.g.:
+     *                    "MWF 9:00-9:50,TR 1:00-1:50,..."
+     */
     public Section(Course course, int num, String crn, String year, String courseTimes) {
         super(course.getName(), course.getCredits(), course.getCourseNum(), course.getSemestersOffered(), course.getFrequencyOffered(), course.getprereqs(), course.getChooseOnes());
         this.num = num;
@@ -124,6 +132,9 @@ public class Section extends Course {
 //        }
     }
 
+    /**
+     * @return info with course number, and all of the times it meets.
+     */
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(getCourseNum() + " " + num + " ");
